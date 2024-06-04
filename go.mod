@@ -1,3 +1,3 @@
-module github.com/RomanenkoDR/metrics.git
+module github.com/RomanenkoDR/metrics
 
 go 1.22.3
