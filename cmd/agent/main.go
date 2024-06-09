@@ -62,7 +62,7 @@ func (a *Agent) pushMetricsToServer(name string, metric metrics.Metric) {
 
 	var data string
 	if metric.Type == metrics.Gauge {
-		data = fmt.Sprintf("http://localhost:8080/update/%s/%s/%.17g", metric.Type, name, metric.Value.(float64))
+		data = fmt.Sprintf("http://localhost:8080/update/%s/%s/%f", metric.Type, name, metric.Value.(float64))
 	} else if metric.Type == metrics.Counter {
 		data = fmt.Sprintf("http://localhost:8080/update/%s/%s/%d", metric.Type, name, metric.Value.(int64))
 	} else {
