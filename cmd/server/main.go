@@ -17,5 +17,7 @@ func main() {
 
 	log.Println("Запуск веб-сервера на http://localhost:8080")
 	err := http.ListenAndServe(":8080", mux)
-	log.Fatal(err)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

@@ -1,11 +1,12 @@
 package handlers
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 	"strings"
 
-	memstorage "github.com/RomanenkoDR/metrics/internal/memStorage"
+	memstorage "github.com/RomanenkoDR/metrics/internal/storage/mem_storage"
 )
 
 const (
@@ -24,11 +25,10 @@ func Gauge(res http.ResponseWriter, req *http.Request) {
 	if req.Method != http.MethodPost {
 		res.WriteHeader(http.StatusBadRequest)
 		res.Write([]byte("Метод отличен от POST"))
-		//fmt.Println("Метод отличен от POST. Status code: ", http.StatusBadRequest)
+		fmt.Println("Метод отличен от POST. Status code: ", http.StatusBadRequest)
 		return
 	}
 
-	// Парсинг URL и получение значений метрик
 	urlParts := strings.Split(req.URL.Path, "/")
 	if len(urlParts) != 5 {
 		res.WriteHeader(http.StatusBadRequest)
@@ -50,10 +50,19 @@ func Gauge(res http.ResponseWriter, req *http.Request) {
 	// Проверка типа метрики
 	if metricType != MyTypeGauge && metricType != MyTypeCounter {
 		res.WriteHeader(http.StatusBadRequest)
-		// res.Write([]byte(fmt.Sprintf("Неверный тип метрики: %s", metricType)))
-		//fmt.Printf("Неверный тип метрики: %s. Status code: %d\n", metricType, http.StatusBadRequest)
+		res.Write([]byte(fmt.Sprintf("Неверный тип метрики: %s", metricType)))
+		fmt.Printf("Неверный тип метрики: %s. Status code: %d\n", metricType, http.StatusBadRequest)
 		return
 	}
+
+	// path := strings.TrimPrefix(req.URL.Path, "/update/")
+	// parts := strings.Split(path, "/")
+	// if len(parts) != 3 {
+	// 	http.Error(res, "Неверный формат запроса", http.StatusBadRequest)
+	// 	return
+	// }
+	// metricType, metricName, metricValue := parts[0], parts[1], parts[2]
+	// log.Printf("Получен запрос: тип=%s, имя=%s, значение=%s", metricType, metricName, metricValue)
 
 	switch metricType {
 	case MyTypeGauge:
@@ -63,6 +72,7 @@ func Gauge(res http.ResponseWriter, req *http.Request) {
 			return
 		}
 		storage.UpdateMetric(memstorage.MyTypeGauge, metricName, value)
+		fmt.Printf("Получена метрика - тип:%s, имя: %s, значение:%f\n", metricType, metricName, value)
 	case MyTypeCounter:
 		value, err := strconv.ParseInt(metricValue, 10, 64)
 		if err != nil {
@@ -70,9 +80,9 @@ func Gauge(res http.ResponseWriter, req *http.Request) {
 			return
 		}
 		storage.UpdateMetric(memstorage.MyTypeCounter, metricName, value)
+		fmt.Printf("Получена метрика - тип:%s, имя:%s, значение:%d\n", metricType, metricName, value)
 	}
-
 	res.WriteHeader(http.StatusOK)
-	//res.Write([]byte("POST запрос обработан"))
-	//fmt.Println("POST запрос обработан. Status code: ", http.StatusOK)
+	res.Write([]byte("Метрика обновлена"))
+	fmt.Println("Метрика обновлена")
 }
