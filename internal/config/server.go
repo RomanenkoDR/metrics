@@ -11,7 +11,7 @@ type ServerConfig struct {
 }
 
 // Создает и возвращает новый экземпляр ServerConfig с инициализированными значениями по умолчанию
-func NewServerConfig() *ServerConfig {
+func NewServerConfiguration() *ServerConfig {
 	return &ServerConfig{}
 }
 
