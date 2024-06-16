@@ -50,3 +50,14 @@ func (m *MemStorage) GetCounter(name string) int64 {
 	value := m.counters[name]
 	return value
 }
+
+func (m *MemStorage) GetAllMetrics() map[string]interface{} {
+	allMetrics := make(map[string]interface{})
+	for name, value := range m.gauges {
+		allMetrics[name] = value
+	}
+	for name, value := range m.counters {
+		allMetrics[name] = value
+	}
+	return allMetrics
+}

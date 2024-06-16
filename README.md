@@ -1,5 +1,8 @@
 # go-musthave-metrics-tpl
 
+## Актуальный комит:  `git commit -m "agent push to server update err"`
+
+
 Шаблон репозитория для трека «Сервер сбора метрик и алертинга».
 
 ## Начало работы
