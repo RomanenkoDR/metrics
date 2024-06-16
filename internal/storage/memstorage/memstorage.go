@@ -18,8 +18,8 @@ type MemStorage struct {
 // NewMemStorage создает новый экземпляр MemStorage
 func NewMemStorage() *MemStorage {
 	return &MemStorage{
-		gauges:   make(map[string]float64),
-		counters: make(map[string]int64),
+		gauges:   make(map[string]float64), // Инициализация мапы для gauge
+		counters: make(map[string]int64),   // Инициализация мапы для counter
 	}
 }
 
@@ -28,12 +28,12 @@ func (m *MemStorage) UpdateMetric(metricType MetricType, name string, value inte
 	switch metricType {
 	case MyTypeGauge:
 		if v, ok := value.(float64); ok {
-			m.gauges[name] = v
+			m.gauges[name] = v // Обновление метрики типа gauge
 			fmt.Println(metricType+" :", name+" =", v)
 		}
 	case MyTypeCounter:
 		if v, ok := value.(int64); ok {
-			m.counters[name] += v
+			m.counters[name] += v // Обновление метрики типа counter
 			fmt.Println(metricType+" :", name+" =", m.counters[name])
 		}
 	}
@@ -51,11 +51,14 @@ func (m *MemStorage) GetCounter(name string) int64 {
 	return value
 }
 
+// GetAllMetrics возвращает все метрики в виде мапы
 func (m *MemStorage) GetAllMetrics() map[string]interface{} {
 	allMetrics := make(map[string]interface{})
+	// Добавляем все gauge метрики в общую мапу
 	for name, value := range m.gauges {
 		allMetrics[name] = value
 	}
+	// Добавляем все counter метрики в общую мапу
 	for name, value := range m.counters {
 		allMetrics[name] = value
 	}

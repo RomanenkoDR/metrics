@@ -2,27 +2,40 @@ package config
 
 import (
 	"flag"
-	"os"
+	"fmt"
 )
 
-func getEnvOrDefault(key, defaultVal string) string {
-	if value, exists := os.LookupEnv(key); exists {
-		return value
-	}
-	return defaultVal
-}
-
+// Содержит конфигурацию сервера, такую как адрес.
 type ServerConfig struct {
-	Address string
+	Address string // Адрес сервера
 }
 
+// Создает и возвращает новый экземпляр ServerConfig с инициализированными значениями по умолчанию
 func NewServerConfig() *ServerConfig {
-	return &ServerConfig{
-		Address: getEnvOrDefault("ADDRESS", "localhost:8080"),
-	}
+	return &ServerConfig{}
 }
 
-func (c *ServerConfig) Init() {
-	flag.StringVar(&c.Address, "a", c.Address, "address and port to run server")
+// Инициализирует конфигурацию сервера, используя флаги командной строки и переменные окружения.
+func (c *ServerConfig) Init() *ServerConfig {
+
+	// Установка флага командной строки для адреса сервера с значением по умолчанию "localhost:8080"
+	flag.StringVar(&c.Address, "a", "localhost:8080", "Адрес и порт сервера для запуска сервера")
+	// Парсинг флагов командной строки
 	flag.Parse()
+
+	// Проверка на неизвестные флаги
+	// Проходит по всем зарегистрированным флагам
+	flag.VisitAll(func(f *flag.Flag) {
+		// Если флаг не был распознан (не спарсился), выводим сообщение об ошибке
+		if !flag.Parsed() {
+			fmt.Printf("неизвестный флаг: %s\n", f.Name)
+			// Выводим информацию о правильном использовании флагов
+			flag.Usage()
+			// Вызываем панику с сообщением об ошибке
+			panic(fmt.Errorf("неизвестный флаг: %s", f.Name))
+		}
+	})
+
+	// Возвращаем указатель на инициализированный обьект ServerConfig
+	return c
 }

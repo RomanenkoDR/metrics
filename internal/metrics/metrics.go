@@ -72,9 +72,13 @@ func (m *Metrics) Collection() {
 
 // Создаем копию метрик для отправки, что бы внешние изменения не повлияли на оригинальные данные
 func (m *Metrics) GetMetrics() map[string]Metric {
+	// Создаем новую мапу с тем же размером, что и "m.metrics"
 	copyMetrics := make(map[string]Metric, len(m.metrics))
+	// Перебираем все элементы в "m.metrics"
 	for key, value := range m.metrics {
+		// Для каждой пары ключ-значение в `m.metrics` делаем запись в `copyMetrics`
 		copyMetrics[key] = value
 	}
+	// Возвращаем созданную копию метрик
 	return copyMetrics
 }
