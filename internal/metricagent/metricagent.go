@@ -38,7 +38,7 @@ func (a *Agent) Start() {
 				// Логируем начало сбора метрик для информирования
 				log.Println("Сбор метрик...")
 				// Вызываем метод Collection() объекта метрик для сбора актуальных данных
-				a.metrics.Collection()
+				a.metrics.CollectionOfMetrics()
 			case <-tickerPushMetric.C:
 				log.Println("Отправка метрик на сервер...")
 				// Вызываем метод CollectionAllMetrics() для отправки всех собранных метрик на сервер

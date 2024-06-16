@@ -14,7 +14,7 @@ import (
 
 func main() {
 	// Инициализация конфигурации сервера.
-	cfg := config.NewServerConfig()
+	cfg := config.NewServerConfiguration()
 	cfg.Init()
 
 	// Изменение конфигурации на основе переменной окружения

@@ -14,7 +14,7 @@ import (
 func main() {
 	// Инициализация конфигурации агента.
 	cfg := config.NewAgentConfig()
-	cfg.Init()
+	cfg.InitAgentConfiguration()
 
 	// Изменение конфигурации на основе переменных окружения
 	// // Проверяем наличие переменной окружения ADDRESS
