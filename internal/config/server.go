@@ -31,8 +31,6 @@ func (c *ServerConfig) Init() *ServerConfig {
 			fmt.Printf("неизвестный флаг: %s\n", f.Name)
 			// Выводим информацию о правильном использовании флагов
 			flag.Usage()
-			// Вызываем панику с сообщением об ошибке
-			panic(fmt.Errorf("неизвестный флаг: %s", f.Name))
 		}
 	})
 

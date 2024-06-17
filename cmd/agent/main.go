@@ -31,7 +31,7 @@ func main() {
 			cfg.ReportInterval = time.Duration(dur) * time.Second
 		} else {
 			// Логируем ошибку, если значение неверное
-			log.Printf("Invalid value for REPORT_INTERVAL: %v", err)
+			log.Printf("Некорректно задан интервал REPORT_INTERVAL: %v", err)
 		}
 	}
 
@@ -44,7 +44,7 @@ func main() {
 			cfg.PollInterval = time.Duration(dur) * time.Second
 		} else {
 			// Логируем ошибку, если значение неверное
-			log.Printf("Invalid value for POLL_INTERVAL: %v", err)
+			log.Printf("Некорректно задан интервал POLL_INTERVAL: %v", err)
 		}
 	}
 
@@ -58,7 +58,7 @@ func main() {
 	agent.Start()
 
 	// Логирование сообщения о запуске агента и указание адреса сервера, на который отправляются метрики
-	log.Printf("Агент запущен, собирает и отправляет метрики на сервер %s...\n", cfg.Address)
+	log.Printf("Агент запущен, начинаем сбор метрик для отправки на сервер %s...\n", cfg.Address)
 
 	// Блокируем основную горутину
 	// Это позволяет приложению продолжать работу и ожидать внешних событий,
