@@ -32,7 +32,7 @@ func NewMetrics() *Metrics { // Указатель на тип Metrics
 }
 
 // Создание коллекции с метриками
-func (m *Metrics) Collection() {
+func (m *Metrics) CollectionOfMetrics() {
 
 	var memStats runtime.MemStats
 	runtime.ReadMemStats(&memStats)

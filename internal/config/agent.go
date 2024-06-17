@@ -24,7 +24,7 @@ func NewAgentConfig() *AgentConfig {
 }
 
 // Инициализирует конфигурацию агента, проверяя флаги командной строки и переменные окружения
-func (c *AgentConfig) Init() {
+func (c *AgentConfig) InitAgentConfiguration() {
 	// Определение флагов командной строки для настройки конфигурации.
 	flag.StringVar(&c.Address, "a", c.Address, "Адрес HTTP сервера")
 	flag.DurationVar(&c.ReportInterval, "r", c.ReportInterval, "Интервал отправки метрик")
