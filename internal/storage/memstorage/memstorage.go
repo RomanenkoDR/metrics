@@ -1,4 +1,4 @@
-package memStorage
+package memstorage
 
 type MetricType string
 

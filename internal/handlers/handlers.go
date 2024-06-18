@@ -46,7 +46,6 @@ func UpdateMetric(res http.ResponseWriter, req *http.Request, storage *memstorag
 		}
 		// Обновление метрики типа gauge
 		storage.UpdateMetric(memstorage.MyTypeGauge, metricName, value)
-		fmt.Printf("\nПолучена метрика типа: %s \n%s = %f\n", metricType, metricName, value)
 	case MyTypeCounter: // Если тип метрики Counter
 		// Преобразование значения метрики в int64
 		value, err := strconv.ParseInt(metricValue, 10, 64)
@@ -56,7 +55,6 @@ func UpdateMetric(res http.ResponseWriter, req *http.Request, storage *memstorag
 		}
 		// Обновление метрики типа counter
 		storage.UpdateMetric(memstorage.MyTypeCounter, metricName, value)
-		fmt.Printf("\nПолучена метрика типа: %s \n%s = %d\n", metricType, metricName, value)
 	default: // Если тип метрики не соответсвует ни одному из условий
 		http.Error(res, fmt.Sprintf("Неверный тип метрики: %s", metricType), http.StatusBadRequest)
 		return
