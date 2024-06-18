@@ -19,12 +19,15 @@ func TestIntegrationUpdateMetric(t *testing.T) {
 	// Имитируем ваш HTTP сервер с помощью Chi
 	r := chi.NewRouter()
 	r.HandleFunc("/metrics/{metricType}/{metricName}/{metricValue}", func(w http.ResponseWriter, r *http.Request) {
-		UpdateMetric(w, r, storage) // Обработчик, который будет вызываться при запросах на /metrics/{metricType}/{metricName}/{metricValue}
+		// Обработчик, который будет вызываться при запросах на /metrics/{metricType}/{metricName}/{metricValue}
+		UpdateMetric(w, r, storage)
 	})
 
 	// Запускаем ваш HTTP сервер в тестовом режиме
-	server := httptest.NewServer(r) // Создание тестового HTTP сервера с маршрутами, определенными в роутере `r`
-	defer server.Close()            // Закрытие сервера после завершения теста
+	// Создание тестового HTTP сервера с маршрутами, определенными в роутере `r`
+	server := httptest.NewServer(r)
+	// Закрытие сервера после завершения теста
+	defer server.Close()
 
 	// Определяем тестовые случаи
 	tests := []struct {
@@ -57,13 +60,16 @@ func TestIntegrationUpdateMetric(t *testing.T) {
 	// Проходим по всем тестовым случаям
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			req, err := http.NewRequest(http.MethodPost, test.url, nil) // Создание нового HTTP запроса POST по указанному URL
-			assert.NoError(t, err)                                      // Проверка отсутствия ошибок при создании запроса
-
-			res, err := http.DefaultClient.Do(req) // Выполнение HTTP запроса с использованием клиента по умолчанию
-			assert.NoError(t, err)                 // Проверка отсутствия ошибок при выполнении запроса
-			defer res.Body.Close()                 // Закрытие тела ответа после завершения проверок
-
+			// Создание нового HTTP запроса POST по указанному URL
+			req, err := http.NewRequest(http.MethodPost, test.url, nil)
+			// Проверка отсутствия ошибок при создании запроса
+			assert.NoError(t, err)
+			// Выполнение HTTP запроса с использованием клиента по умолчанию
+			res, err := http.DefaultClient.Do(req)
+			// Проверка отсутствия ошибок при выполнении запроса
+			assert.NoError(t, err)
+			// Закрытие тела ответа после завершения проверок
+			defer res.Body.Close()
 			// Проверяем код ответа
 			assert.Equal(t, test.expectedCode, res.StatusCode)
 
@@ -71,13 +77,19 @@ func TestIntegrationUpdateMetric(t *testing.T) {
 			if test.expectedCode == http.StatusOK {
 				switch {
 				case test.url[:15] == fmt.Sprintf("%s/metrics/gauge/", server.URL):
-					value := storage.GetGauge("my_metric_name")                               // Получаем текущее значение метрики типа gauge из хранилища
-					expectedValue, _ := strconv.ParseFloat(test.url[len(server.URL)+23:], 64) // Ожидаемое значение метрики, извлеченное из URL
-					assert.InDelta(t, expectedValue, value, 0.001)                            // Проверка на равенство с заданной точностью (допускается погрешность 0.001)
+					// Получаем текущее значение метрики типа gauge из хранилища
+					value := storage.GetGauge("my_metric_name")
+					// Ожидаемое значение метрики, извлеченное из URL
+					expectedValue, _ := strconv.ParseFloat(test.url[len(server.URL)+23:], 64)
+					// Проверка на равенство с заданной точностью (допускается погрешность 0.001)
+					assert.InDelta(t, expectedValue, value, 0.001)
 				case test.url[:18] == fmt.Sprintf("%s/metrics/counter/", server.URL):
-					value := storage.GetCounter("my_counter")                                   // Получаем текущее значение метрики типа counter из хранилища
-					expectedValue, _ := strconv.ParseInt(test.url[len(server.URL)+25:], 10, 64) // Ожидаемое значение метрики, извлеченное из URL
-					assert.Equal(t, expectedValue, value)                                       // Проверка на точное равенство ожидаемого и полученного значения
+					// Получаем текущее значение метрики типа counter из хранилища
+					value := storage.GetCounter("my_counter")
+					// Ожидаемое значение метрики, извлеченное из URL
+					expectedValue, _ := strconv.ParseInt(test.url[len(server.URL)+25:], 10, 64)
+					// Проверка на точное равенство ожидаемого и полученного значения
+					assert.Equal(t, expectedValue, value)
 				}
 			}
 		})
