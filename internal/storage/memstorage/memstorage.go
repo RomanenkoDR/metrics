@@ -1,7 +1,5 @@
 package memStorage
 
-import "fmt"
-
 type MetricType string
 
 const (
@@ -29,12 +27,10 @@ func (m *MemStorage) UpdateMetric(metricType MetricType, name string, value inte
 	case MyTypeGauge:
 		if v, ok := value.(float64); ok {
 			m.gauges[name] = v // Обновление метрики типа gauge
-			fmt.Println(metricType+" :", name+" =", v)
 		}
 	case MyTypeCounter:
 		if v, ok := value.(int64); ok {
 			m.counters[name] += v // Обновление метрики типа counter
-			fmt.Println(metricType+" :", name+" =", m.counters[name])
 		}
 	}
 }

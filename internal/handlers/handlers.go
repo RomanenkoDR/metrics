@@ -22,9 +22,6 @@ func UpdateMetric(res http.ResponseWriter, req *http.Request, storage *memstorag
 	metricName := chi.URLParam(req, "metricName")
 	metricValue := chi.URLParam(req, "metricValue")
 
-	// Выводим информацию о полученных параметрах
-	fmt.Printf("Получены параметры - тип: %s, имя: %s, значение: %s\n", metricType, metricName, metricValue)
-
 	// Проверка, что имя метрики не пустое
 	if metricName == "" {
 		http.Error(res, "Имя метрики отсутствует", http.StatusBadRequest)
@@ -49,7 +46,7 @@ func UpdateMetric(res http.ResponseWriter, req *http.Request, storage *memstorag
 		}
 		// Обновление метрики типа gauge
 		storage.UpdateMetric(memstorage.MyTypeGauge, metricName, value)
-		fmt.Printf("Получена метрика - тип: %s, имя: %s, значение: %f\n", metricType, metricName, value)
+		fmt.Printf("\nПолучена метрика типа: %s \n%s = %f\n", metricType, metricName, value)
 	case MyTypeCounter: // Если тип метрики Counter
 		// Преобразование значения метрики в int64
 		value, err := strconv.ParseInt(metricValue, 10, 64)
@@ -59,14 +56,13 @@ func UpdateMetric(res http.ResponseWriter, req *http.Request, storage *memstorag
 		}
 		// Обновление метрики типа counter
 		storage.UpdateMetric(memstorage.MyTypeCounter, metricName, value)
-		fmt.Printf("Получена метрика - тип: %s, имя: %s, значение: %d\n", metricType, metricName, value)
+		fmt.Printf("\nПолучена метрика типа: %s \n%s = %d\n", metricType, metricName, value)
 	default: // Если тип метрики не соответсвует ни одному из условий
 		http.Error(res, fmt.Sprintf("Неверный тип метрики: %s", metricType), http.StatusBadRequest)
 		return
 	}
 	// Установка статуса ответа HTTP 200 (OK)
 	res.WriteHeader(http.StatusOK)
-	res.Write([]byte("Метрика обновлена"))
 }
 
 // Вывод списка всех метрик из хранилища memStorage
@@ -100,13 +96,6 @@ func GetValue(res http.ResponseWriter, req *http.Request, storage *memstorage.Me
 		http.NotFound(res, req)
 		return
 	}
-
-	// // Проверка наличия метрики в хранилище
-	// if value == 0 {
-	// 	// Если значение метрики равно нулю, считаем, что метрика не найдена и возвращаем ошибку 404 Not Found
-	// 	http.NotFound(res, req)
-	// 	return
-	// }
 
 	// Возвращение значения метрики в текстовом виде
 	res.WriteHeader(http.StatusOK)

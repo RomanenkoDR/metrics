@@ -10,13 +10,13 @@ import (
 )
 
 type Agent struct {
-	metrics                     *metrics.Metrics
+	metrics                     *metrics.SystemMetrics
 	updateMetricCounterInterval time.Duration // Интервал опроса
 	pushMetricInterval          time.Duration // Интервал отправки
 }
 
 // Создаем новый экземпляр агента с указанными интервалами опроса и отправки метрик
-func NewAgent(m *metrics.Metrics, updateMetricCounterInterval, pushMetricInterval time.Duration) *Agent {
+func NewAgent(m *metrics.SystemMetrics, updateMetricCounterInterval, pushMetricInterval time.Duration) *Agent {
 	return &Agent{
 		metrics:                     m,
 		updateMetricCounterInterval: updateMetricCounterInterval,
@@ -60,7 +60,7 @@ func (a *Agent) CollectionAllMetrics() {
 }
 
 // Функция отправлки метрик на сервер
-func (a *Agent) pushMetricsToServer(name string, metric metrics.Metric) {
+func (a *Agent) pushMetricsToServer(name string, metric metrics.SystemMetric) {
 
 	var data string
 
