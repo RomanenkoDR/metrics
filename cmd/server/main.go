@@ -15,7 +15,7 @@ import (
 func main() {
 	// Инициализация конфигурации сервера.
 	cfg := config.NewServerConfiguration()
-	cfg.Init()
+	cfg.InitServerConfugiration()
 
 	// Изменение конфигурации на основе переменной окружения
 	if addr := os.Getenv("ADDRESS"); addr != "" {
