@@ -88,9 +88,10 @@ func TestIntegrationUpdateMetric(t *testing.T) {
 					value := storage.GetCounter("my_counter")
 					// Ожидаемое значение метрики, извлеченное из URL
 					expectedValue, _ := strconv.ParseInt(test.url[len(server.URL)+25:], 10, 64)
-					// Проверка на точное равенство ожидаемого и полученного значения
 					assert.Equal(t, expectedValue, value)
+					// Проверка на точное равенство ожидаемого и полученного значения
 				}
+
 			}
 		})
 	}

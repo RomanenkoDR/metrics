@@ -30,8 +30,7 @@ func UpdateMetric(res http.ResponseWriter, req *http.Request, storage *memstorag
 
 	// Проверка типа метрики на соотвествие одному из типов
 	if metricType != MyTypeGauge && metricType != MyTypeCounter {
-		res.WriteHeader(http.StatusBadRequest)
-		res.Write([]byte(fmt.Sprintf("Неверный тип метрики: %s", metricType)))
+		http.Error(res, "Некорректный тип метрики", http.StatusBadRequest)
 		return
 	}
 
