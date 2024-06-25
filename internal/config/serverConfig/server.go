@@ -16,7 +16,7 @@ func NewServerConfiguration() *ServerConfig {
 }
 
 // Инициализирует конфигурацию сервера, используя флаги командной строки и переменные окружения.
-func (c *ServerConfig) InitServerConfugiration() *ServerConfig {
+func (c *ServerConfig) InitServerConfiguration() *ServerConfig {
 
 	// Установка флага командной строки для адреса сервера с значением по умолчанию "localhost:8080"
 	flag.StringVar(&c.Address, "a", "localhost:8080", "Адрес и порт сервера для запуска сервера")

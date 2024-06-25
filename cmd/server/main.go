@@ -1,33 +1,42 @@
 package main
 
 import (
-	"log"
 	"net/http"
 	"os"
 
-	"github.com/RomanenkoDR/metrics/internal/config"
+	config "github.com/RomanenkoDR/metrics/internal/config/serverConfig"
 	handlers "github.com/RomanenkoDR/metrics/internal/handlers"
-	memStorage "github.com/RomanenkoDR/metrics/internal/storage/memstorage"
+	"github.com/RomanenkoDR/metrics/internal/logging"
+	memStorage "github.com/RomanenkoDR/metrics/internal/storage/memStorage"
+
 	"github.com/go-chi/chi/v5"
-	"github.com/go-chi/chi/v5/middleware"
+	"github.com/sirupsen/logrus"
 )
 
 func main() {
 	// Инициализация конфигурации сервера.
-	cfg := config.NewServerConfiguration()
-	cfg.InitServerConfugiration()
+	configuration := config.NewServerConfiguration()
+	configuration.InitServerConfiguration()
 
 	// Изменение конфигурации на основе переменной окружения
 	if addr := os.Getenv("ADDRESS"); addr != "" {
-		cfg.Address = addr
+		configuration.Address = addr
 	}
 
 	// Инициализация хранилища MemStorage
 	storage := memStorage.NewMemStorage()
 
+	// Настройка логгера logrus
+	logrus.SetFormatter(&logrus.TextFormatter{
+		FullTimestamp: true,
+	})
+	//	logrus.SetFormatter(&logrus.JSONFormatter{})
+	logrus.SetLevel(logrus.InfoLevel)
+
 	// Создание и настройка роутера chi
 	r := chi.NewRouter()
-	r.Use(middleware.Logger)
+	// r.Use(middleware.Logger)
+	r.Use(logging.LoggingMiddleware) // Используем наше middleware логирования
 
 	// Обработчики для обновления и получения метрик
 	// Получение метрик типом POST
@@ -48,9 +57,9 @@ func main() {
 	})
 
 	// Логирование и обработка ошибок
-	log.Printf("Запуск веб-сервера на %s\n", cfg.Address)
-	err := http.ListenAndServe(cfg.Address, r)
+	logrus.Infof("Запуск сервера на: %s", configuration.Address)
+	err := http.ListenAndServe(configuration.Address, r)
 	if err != nil {
-		log.Fatal(err)
+		logrus.Fatalf("Ошибка при запуске сервера: %v", err)
 	}
 }
