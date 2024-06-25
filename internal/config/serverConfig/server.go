@@ -1,8 +1,9 @@
-package config
+package serverConfig
 
 import (
 	"flag"
 	"fmt"
+	"os"
 )
 
 // Содержит конфигурацию сервера, такую как адрес.
@@ -17,14 +18,16 @@ func NewServerConfiguration() *ServerConfig {
 
 // Инициализирует конфигурацию сервера, используя флаги командной строки и переменные окружения.
 func (c *ServerConfig) InitServerConfiguration() *ServerConfig {
-
+	// Изменение конфигурации на основе переменной окружения
+	if addr := os.Getenv("ADDRESS"); addr != "" {
+		c.Address = addr
+	}
 	// Установка флага командной строки для адреса сервера с значением по умолчанию "localhost:8080"
 	flag.StringVar(&c.Address, "a", "localhost:8080", "Адрес и порт сервера для запуска сервера")
 	// Парсинг флагов командной строки
 	flag.Parse()
 
 	// Проверка на неизвестные флаги
-	// Проходит по всем зарегистрированным флагам
 	flag.VisitAll(func(f *flag.Flag) {
 		// Если флаг не был распознан (не спарсился), выводим сообщение об ошибке
 		if !flag.Parsed() {
@@ -33,7 +36,7 @@ func (c *ServerConfig) InitServerConfiguration() *ServerConfig {
 			flag.Usage()
 		}
 	})
-
 	// Возвращаем указатель на инициализированный обьект ServerConfig
 	return c
+
 }

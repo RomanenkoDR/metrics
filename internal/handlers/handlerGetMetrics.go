@@ -9,7 +9,7 @@ import (
 )
 
 // Вывод значения метрики по параметрам запроса
-func GetValue(res http.ResponseWriter, req *http.Request, storage *memstorage.MemStorage) {
+func GetValueByName(res http.ResponseWriter, req *http.Request, storage *memstorage.MemStorage) {
 	// Извлечение параметров metricType и metricName из URL запроса
 	metricType := chi.URLParam(req, "metricType")
 	metricName := chi.URLParam(req, "metricName")
@@ -33,7 +33,7 @@ func GetValue(res http.ResponseWriter, req *http.Request, storage *memstorage.Me
 }
 
 // Вывод списка всех метрик из хранилища memStorage
-func ListMetrics(res http.ResponseWriter, req *http.Request, storage *memstorage.MemStorage) {
+func ListAllMetrics(res http.ResponseWriter, req *http.Request, storage *memstorage.MemStorage) {
 	res.Header().Set("Content-Type", "text/plain")
 	res.WriteHeader(http.StatusOK)
 

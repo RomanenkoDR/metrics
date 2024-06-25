@@ -2,7 +2,6 @@ package main
 
 import (
 	"net/http"
-	"os"
 
 	config "github.com/RomanenkoDR/metrics/internal/config/serverConfig"
 	handlers "github.com/RomanenkoDR/metrics/internal/handlers"
@@ -18,11 +17,6 @@ func main() {
 	configuration := config.NewServerConfiguration()
 	configuration.InitServerConfiguration()
 
-	// Изменение конфигурации на основе переменной окружения
-	if addr := os.Getenv("ADDRESS"); addr != "" {
-		configuration.Address = addr
-	}
-
 	// Инициализация хранилища MemStorage
 	storage := memStorage.NewMemStorage()
 
@@ -37,7 +31,6 @@ func main() {
 	r := chi.NewRouter()
 	r.Use(logging.LoggingMiddleware) // Используем middleware логирование
 
-	// Обработчики для обновления и получения метрик
 	// Получение метрик типом POST
 	r.Post("/update/{metricType}/{metricName}/{metricValue}",
 		func(res http.ResponseWriter, req *http.Request) {
@@ -47,12 +40,12 @@ func main() {
 	// Отправка метрик типом GET
 	r.Get("/value/{metricType}/{metricName}",
 		func(res http.ResponseWriter, req *http.Request) {
-			handlers.GetValue(res, req, storage)
+			handlers.GetValueByName(res, req, storage)
 		})
 
 	// Отправка ВСЕХ метрик типом GET
 	r.Get("/", func(res http.ResponseWriter, req *http.Request) {
-		handlers.ListMetrics(res, req, storage)
+		handlers.ListAllMetrics(res, req, storage)
 	})
 
 	// Логирование и обработка ошибок

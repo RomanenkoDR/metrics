@@ -43,10 +43,21 @@ func (a *Agent) Start() {
 
 // Собирает все метрики и отправляет их на сервер
 func (a *Agent) CollectionAllMetrics() {
-	metrics := a.metrics.GetMetrics()
+	metrics := a.metrics.CopyMetricsBeforePush()
 	for name, metric := range metrics {
 		a.pushMetricsToServer(name, metric)
 	}
+}
+
+// Создаем копию метрик для отправки, что бы внешние изменения не повлияли на оригинальные данные
+func (m *SystemMetrics) CopyMetricsBeforePush() map[string]SystemMetric {
+	// Создаем новую мапу с тем же размером, что и "m.metrics"
+	copyMetrics := make(map[string]SystemMetric, len(m.metrics))
+	for key, value := range m.metrics {
+		copyMetrics[key] = value
+	}
+	// Возвращаем созданную копию метрик
+	return copyMetrics
 }
 
 // Функция отправлки метрик на сервер

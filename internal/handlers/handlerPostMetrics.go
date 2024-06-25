@@ -9,8 +9,6 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-const ()
-
 // Обновляет метрику в хранилище на основе данных, полученных в запросе к серверу
 func UpdateMetric(res http.ResponseWriter, req *http.Request, storage *memStorage.MemStorage) {
 	// Извлекаем параметры из URL
