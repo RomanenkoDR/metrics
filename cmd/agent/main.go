@@ -7,8 +7,7 @@ import (
 	"time"
 
 	config "github.com/RomanenkoDR/metrics/internal/config/agentConfig"
-	metricagent "github.com/RomanenkoDR/metrics/internal/metricagent"
-	"github.com/RomanenkoDR/metrics/internal/metrics"
+	metrics "github.com/RomanenkoDR/metrics/internal/metrics"
 )
 
 func main() {
@@ -38,8 +37,8 @@ func main() {
 	}
 
 	// Создание экземпляра метрик и агента
-	metrics := metrics.NewMetrics()
-	agent := metricagent.NewAgent(metrics, time.Duration(configuration.ReportInterval), time.Duration(configuration.PollInterval))
+	metric := metrics.NewMetrics()
+	agent := metrics.NewAgent(metric, time.Duration(configuration.ReportInterval), time.Duration(configuration.PollInterval))
 
 	// Запуск агента
 	agent.Start()

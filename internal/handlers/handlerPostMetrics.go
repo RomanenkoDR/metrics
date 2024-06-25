@@ -6,9 +6,10 @@ import (
 	"strconv"
 
 	memStorage "github.com/RomanenkoDR/metrics/internal/storage/memStorage"
-	typesMetrics "github.com/RomanenkoDR/metrics/internal/types"
 	"github.com/go-chi/chi/v5"
 )
+
+const ()
 
 // Обновляет метрику в хранилище на основе данных, полученных в запросе к серверу
 func UpdateMetric(res http.ResponseWriter, req *http.Request, storage *memStorage.MemStorage) {
@@ -24,14 +25,14 @@ func UpdateMetric(res http.ResponseWriter, req *http.Request, storage *memStorag
 	}
 
 	// Проверка типа метрики на соотвествие одному из типов
-	if metricType != typesMetrics.Gauge && metricType != typesMetrics.Counter {
+	if metricType != Gauge && metricType != Counter {
 		http.Error(res, "Некорректный тип метрики", http.StatusBadRequest)
 		return
 	}
 
 	// Обновление метрики в зависимости от ее типа
 	switch metricType {
-	case typesMetrics.Gauge: // Если тип метрики Gauge
+	case Gauge: // Если тип метрики Gauge
 		// Преобразование значения метрики в float64
 		value, err := strconv.ParseFloat(metricValue, 64)
 		if err != nil {
@@ -40,7 +41,7 @@ func UpdateMetric(res http.ResponseWriter, req *http.Request, storage *memStorag
 		}
 		// Обновление метрики типа gauge
 		storage.UpdateMetric(memStorage.MyTypeGauge, metricName, value)
-	case typesMetrics.Counter: // Если тип метрики Counter
+	case Counter: // Если тип метрики Counter
 		// Преобразование значения метрики в int64
 		value, err := strconv.ParseInt(metricValue, 10, 64)
 		if err != nil {

@@ -5,10 +5,10 @@ import (
 	"net/http"
 
 	memstorage "github.com/RomanenkoDR/metrics/internal/storage/memStorage"
-	typesMetrics "github.com/RomanenkoDR/metrics/internal/types"
 	"github.com/go-chi/chi/v5"
 )
 
+// Вывод значения метрики по параметрам запроса
 func GetValue(res http.ResponseWriter, req *http.Request, storage *memstorage.MemStorage) {
 	// Извлечение параметров metricType и metricName из URL запроса
 	metricType := chi.URLParam(req, "metricType")
@@ -16,13 +16,13 @@ func GetValue(res http.ResponseWriter, req *http.Request, storage *memstorage.Me
 
 	// Получение значения метрики из хранилища
 	var value interface{}
+
 	switch metricType {
-	case typesMetrics.Gauge:
+	case Gauge:
 		value = storage.GetGauge(metricName)
-	case typesMetrics.Counter:
+	case Counter:
 		value = storage.GetCounter(metricName)
 	default:
-		// Если указан неверный тип метрики (не попадает ни под одно условие из кейса), возвращаем ошибку
 		http.NotFound(res, req)
 		return
 	}

@@ -35,8 +35,7 @@ func main() {
 
 	// Создание и настройка роутера chi
 	r := chi.NewRouter()
-	// r.Use(middleware.Logger)
-	r.Use(logging.LoggingMiddleware) // Используем наше middleware логирования
+	r.Use(logging.LoggingMiddleware) // Используем middleware логирование
 
 	// Обработчики для обновления и получения метрик
 	// Получение метрик типом POST
