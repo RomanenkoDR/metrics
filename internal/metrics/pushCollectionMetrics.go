@@ -9,11 +9,11 @@ import (
 )
 
 type Agent struct {
-	serverAddress               string
 	metrics                     *SystemMetrics
 	updateMetricCounterInterval time.Duration // Интервал опроса
 	pushMetricInterval          time.Duration // Интервал отправки
 	logger                      *log.Logger   // Поле для логгера
+	serverAddress               string
 }
 
 // Создаем новый экземпляр агента с указанными интервалами опроса и отправки метрик
@@ -27,6 +27,7 @@ func NewAgent(m *SystemMetrics, updateMetricCounterInterval, pushMetricInterval 
 		metrics:                     m,
 		updateMetricCounterInterval: updateMetricCounterInterval,
 		pushMetricInterval:          pushMetricInterval,
+		serverAddress:               serverAddress,
 	}
 }
 
@@ -75,7 +76,7 @@ func (a *Agent) pushMetricsToServer(name string, metric SystemMetric) {
 
 	// Формируем URL для отправки метрики в зависимости от её типа
 	if metric.Type == Gauge {
-		data = fmt.Sprintf("%supdate/%s/%s/%f", a.serverAddress, metric.Type, name, metric.Value.(float64))
+		data = fmt.Sprintf("%s/update/%s/%s/%f", a.serverAddress, metric.Type, name, metric.Value.(float64))
 	} else if metric.Type == Counter {
 		data = fmt.Sprintf("%s/update/%s/%s/%d", a.serverAddress, metric.Type, name, metric.Value.(int64))
 	} else {

@@ -36,7 +36,7 @@ type AgentConfig struct {
 // NewAgentConfig создает экземпляр AgentConfig с параметрами по умолчанию
 func NewAgentConfig() *AgentConfig {
 	return &AgentConfig{
-		Address:        "localhost:8080",                    // Адрес сервера
+		Address:        "http://localhost:8080",             // Адрес сервера
 		ReportInterval: DurationInSeconds(10 * time.Second), // Интервал отправки метрик
 		PollInterval:   DurationInSeconds(2 * time.Second),  // Интервал опроса метрик
 	}
