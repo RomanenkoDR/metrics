@@ -4,17 +4,25 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"time"
 )
 
 type Agent struct {
+	serverAddress               string
 	metrics                     *SystemMetrics
 	updateMetricCounterInterval time.Duration // Интервал опроса
 	pushMetricInterval          time.Duration // Интервал отправки
+	logger                      *log.Logger   // Поле для логгера
 }
 
 // Создаем новый экземпляр агента с указанными интервалами опроса и отправки метрик
 func NewAgent(m *SystemMetrics, updateMetricCounterInterval, pushMetricInterval time.Duration) *Agent {
+	serverAddress := os.Getenv("SERVER_ADDRESS")
+	if serverAddress == "" {
+		serverAddress = "http://localhost:8080"
+	}
+
 	return &Agent{
 		metrics:                     m,
 		updateMetricCounterInterval: updateMetricCounterInterval,
@@ -67,9 +75,9 @@ func (a *Agent) pushMetricsToServer(name string, metric SystemMetric) {
 
 	// Формируем URL для отправки метрики в зависимости от её типа
 	if metric.Type == Gauge {
-		data = fmt.Sprintf("http://localhost:8080/update/%s/%s/%f", metric.Type, name, metric.Value.(float64))
+		data = fmt.Sprintf("%supdate/%s/%s/%f", a.serverAddress, metric.Type, name, metric.Value.(float64))
 	} else if metric.Type == Counter {
-		data = fmt.Sprintf("http://localhost:8080/update/%s/%s/%d", metric.Type, name, metric.Value.(int64))
+		data = fmt.Sprintf("%s/update/%s/%s/%d", a.serverAddress, metric.Type, name, metric.Value.(int64))
 	} else {
 		log.Printf("Неизвестный тип метрики: %s", metric.Type)
 		return
@@ -102,6 +110,6 @@ func (a *Agent) pushMetricsToServer(name string, metric SystemMetric) {
 
 	// Проверяем статус ответа сервера
 	if resp.StatusCode != http.StatusOK {
-		log.Printf("Ошибка ответа сервера: %v", resp.StatusCode)
+		a.logger.Printf("Метрика успешно отправлена: %s", name)
 	}
 }

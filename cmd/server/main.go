@@ -21,10 +21,10 @@ func main() {
 	storage := memStorage.NewMemStorage()
 
 	// Настройка логгера logrus
-	logrus.SetFormatter(&logrus.TextFormatter{
-		FullTimestamp: true,
-	})
-	//	logrus.SetFormatter(&logrus.JSONFormatter{})
+	// logrus.SetFormatter(&logrus.TextFormatter{
+	// 	FullTimestamp: true,
+	// })
+	logrus.SetFormatter(&logrus.JSONFormatter{})
 	logrus.SetLevel(logrus.InfoLevel)
 
 	// Создание и настройка роутера chi
