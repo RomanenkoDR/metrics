@@ -2,76 +2,31 @@ package agentConfig
 
 import (
 	"flag"
-	"fmt"
-	"os"
-	"strconv"
-	"time"
+
+	"github.com/caarlos0/env"
 )
 
-// DurationInSeconds - тип для интервала в секундах
-type DurationInSeconds time.Duration
-
-// String - метод для флага DurationInSeconds
-func (d *DurationInSeconds) String() string {
-	return fmt.Sprintf("%d", time.Duration(*d)/time.Second)
+type Options struct {
+	ServerAddress  string `env:"ADDRESS"`
+	PollInterval   int    `env:"POLL_INTERVAL"`
+	ReportInterval int    `env:"REPORT_INTERVAL"`
 }
 
-// Set - метод для флага DurationInSeconds
-func (d *DurationInSeconds) Set(value string) error {
-	v, err := strconv.Atoi(value)
-	if err != nil {
-		return err
-	}
-	*d = DurationInSeconds(time.Duration(v) * time.Second)
-	return nil
-}
+func ParseOptions() (Options, error) {
+	var opt Options
 
-// AgentConfig содержит конфигурационные параметры для агента
-type AgentConfig struct {
-	Address        string            // Адрес сервера
-	ReportInterval DurationInSeconds // Интервал отправки метрик
-	PollInterval   DurationInSeconds // Интервал опроса метрик
-}
-
-// NewAgentConfig создает экземпляр AgentConfig с параметрами по умолчанию
-func NewAgentConfig() *AgentConfig {
-	return &AgentConfig{
-		Address:        "http://localhost:8080",             // Адрес сервера
-		ReportInterval: DurationInSeconds(10 * time.Second), // Интервал отправки метрик
-		PollInterval:   DurationInSeconds(2 * time.Second),  // Интервал опроса метрик
-	}
-}
-
-// Инициализирует конфигурацию агента, проверяя флаги командной строки и переменные окружения
-func (c *AgentConfig) InitAgentConfiguration() {
-	// Определение флагов командной строки для настройки конфигурации.
-	flag.StringVar(&c.Address, "a", c.Address, "Адрес HTTP сервера")
-	flag.Var(&c.ReportInterval, "r", "Интервал отправки метрик в секундах")
-	flag.Var(&c.PollInterval, "p", "Интервал опроса метрик в секундах")
-
-	// Парсинг флагов командной строки
+	flag.IntVar(&opt.PollInterval, "p", 2,
+		"Frequensy in seconds for collecting metrics")
+	flag.IntVar(&opt.ReportInterval, "r", 10,
+		"Frequensy in seconds for sending report to the server")
+	flag.StringVar(&opt.ServerAddress, "a", "localhost:8080",
+		"Address of the server to send metrics")
 	flag.Parse()
 
-	// Проверка наличия переменной окружения для адреса сервера
-	if addr := os.Getenv("ADDRESS"); addr != "" {
-		c.Address = addr
+	err := env.Parse(&opt)
+	if err != nil {
+		return opt, err
 	}
 
-	// Проверка наличия переменной окружения для интервала отправки метрик
-	if reportIntervalStr := os.Getenv("REPORT_INTERVAL"); reportIntervalStr != "" {
-		if dur, err := strconv.Atoi(reportIntervalStr); err == nil {
-			c.ReportInterval = DurationInSeconds(time.Duration(dur) * time.Second)
-		} else {
-			fmt.Printf("Некорректное значение REPORT_INTERVAL: %v\n", err)
-		}
-	}
-
-	// Проверка наличия переменной окружения для интервала опроса метрик
-	if pollIntervalStr := os.Getenv("POLL_INTERVAL"); pollIntervalStr != "" {
-		if dur, err := strconv.Atoi(pollIntervalStr); err == nil {
-			c.PollInterval = DurationInSeconds(time.Duration(dur) * time.Second)
-		} else {
-			fmt.Printf("Некорректное значение POLL_INTERVAL: %v\n", err)
-		}
-	}
+	return opt, nil
 }

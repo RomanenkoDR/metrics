@@ -2,57 +2,64 @@ package logging
 
 import (
 	"net/http"
+	"time"
 
 	"go.uber.org/zap"
 )
 
-const defaultLogLevel = "INFO"
-
-var log *zap.Logger
-
-// NewLogger создает новый экземпляр логгера с заданным уровнем логирования
-func NewLogger(level string) (*zap.Logger, error) {
-	lvl := zap.NewAtomicLevel()
-	if err := lvl.UnmarshalText([]byte(level)); err != nil {
-		return nil, err
+type (
+	responseData struct {
+		status int
+		size   int
 	}
 
-	cfg := zap.NewProductionConfig()
-	cfg.Level = lvl
-
-	zl, err := cfg.Build()
-	if err != nil {
-		return nil, err
+	loggingResponseWriter struct {
+		http.ResponseWriter
+		responseData *responseData
 	}
+)
 
-	log = zl
-
-	return zl, err
+func (r *loggingResponseWriter) Write(b []byte) (int, error) {
+	size, err := r.ResponseWriter.Write(b)
+	r.responseData.size += size
+	return size, err
 }
 
-// Logger возвращает текущий экземпляр логгера
-func Logger() *zap.Logger {
-	if log != nil {
-		return log
-	}
-
-	var err error
-	log, err = NewLogger(defaultLogLevel)
-	if err != nil {
-		panic(err)
-	}
-
-	return log
+func (r *loggingResponseWriter) WriteHeader(statusCode int) {
+	r.ResponseWriter.WriteHeader(statusCode)
+	r.responseData.status = statusCode
 }
 
-// LoggingMiddleware создает middleware для логирования запросов
-func LoggingMiddleware(logger *zap.Logger) func(http.Handler) http.Handler {
-	return func(next http.Handler) http.Handler {
-		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-			logger.Info("Incoming request",
-				zap.String("method", r.Method),
-				zap.String("url", r.URL.String()))
-			next.ServeHTTP(w, r)
-		})
+func LogHandler(next http.Handler) http.Handler {
+	logFn := func(w http.ResponseWriter, r *http.Request) {
+
+		start := time.Now()
+
+		logger, err := zap.NewDevelopment()
+		if err != nil {
+			panic(err)
+		}
+		sugar := logger.Sugar()
+
+		responseData := &responseData{
+			status: 0,
+			size:   0,
+		}
+		lw := loggingResponseWriter{
+			ResponseWriter: w,
+			responseData:   responseData,
+		}
+		next.ServeHTTP(&lw, r)
+
+		duration := time.Since(start)
+
+		sugar.Infoln(
+			"uri", r.RequestURI,
+			"method", r.Method,
+			"status", responseData.status,
+			"duration", duration,
+			"size", responseData.size,
+		)
 	}
+	return http.HandlerFunc(logFn)
 }

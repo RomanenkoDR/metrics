@@ -1,62 +1,40 @@
 package mem
 
-type MetricType string
+import "fmt"
 
-const (
-	MyTypeGauge   MetricType = "gauge"
-	MyTypeCounter MetricType = "counter"
-)
+type Counter int64
+type Gauge float64
 
-// MemStorage - будет хранить метрики
 type MemStorage struct {
-	gauges   map[string]float64
-	counters map[string]int64
+	Data map[string]interface{}
 }
 
-// NewMemStorage создает новый экземпляр MemStorage
-func NewMemStorage() *MemStorage {
-	return &MemStorage{
-		gauges:   make(map[string]float64), // Инициализация мапы для gauge
-		counters: make(map[string]int64),   // Инициализация мапы для counter
+func New() MemStorage {
+	return MemStorage{
+		Data: map[string]interface{}{},
 	}
 }
 
-// UpdateMetric обновляет значение метрики в зависимости от её типа
-func (m *MemStorage) UpdateMetric(metricType MetricType, name string, value interface{}) {
-	switch metricType {
-	case MyTypeGauge:
-		if v, ok := value.(float64); ok {
-			m.gauges[name] = v // Обновление метрики типа gauge
-		}
-	case MyTypeCounter:
-		if v, ok := value.(int64); ok {
-			m.counters[name] += v // Обновление метрики типа counter
-		}
+func (m *MemStorage) Get(metric string) (interface{}, error) {
+	if v, ok := m.Data[metric]; ok {
+		return v, nil
 	}
+	return "No such metric in memstorage", fmt.Errorf("metric not found")
+
 }
 
-// GetGauge возвращает значение метрики типа gauge
-func (m *MemStorage) GetGauge(name string) float64 {
-	value := m.gauges[name]
-	return value
+func (m *MemStorage) GetAll() map[string]interface{} {
+	return m.Data
 }
 
-// GetCounter возвращает значение метрики типа counter
-func (m *MemStorage) GetCounter(name string) int64 {
-	value := m.counters[name]
-	return value
+func (m *MemStorage) UpdateGauge(metric string, value interface{}) {
+	m.Data[metric] = value.(Gauge)
 }
 
-// GetAllMetrics возвращает все метрики в виде мапы
-func (m *MemStorage) GetAllMetrics() map[string]interface{} {
-	allMetrics := make(map[string]interface{})
-	// Добавляем все gauge метрики в общую мапу
-	for name, value := range m.gauges {
-		allMetrics[name] = value
+func (m *MemStorage) UpdateCounter(metric string, value interface{}) {
+	if m.Data[metric] == nil {
+		m.Data[metric] = value.(Counter)
+		return
 	}
-	// Добавляем все counter метрики в общую мапу
-	for name, value := range m.counters {
-		allMetrics[name] = value
-	}
-	return allMetrics
+	m.Data[metric] = m.Data[metric].(Counter) + value.(Counter)
 }

@@ -4,31 +4,37 @@ import (
 	"log"
 	"time"
 
-	config "github.com/RomanenkoDR/metrics/internal/config/agentConfig"
-	logging "github.com/RomanenkoDR/metrics/internal/logging"
-	metrics "github.com/RomanenkoDR/metrics/internal/metrics"
+	agentConfigPcg "github.com/RomanenkoDR/metrics/internal/config/agentConfig"
+	metricsPcg "github.com/RomanenkoDR/metrics/internal/metrics"
+	memStoragePcg "github.com/RomanenkoDR/metrics/internal/storage/mem"
 )
 
 func main() {
-	// Инициализация конфигурации агента.
-	configuration := config.NewAgentConfig()
-	configuration.InitAgentConfiguration()
-
-	// Настройка логгера zap
-	logger, err := logging.NewLogger("INFO")
+	//parse cli options
+	config, err := agentConfigPcg.ParseOptions()
 	if err != nil {
 		panic(err)
 	}
-	defer logger.Sync() // flushes buffer, if any
 
-	// Создание экземпляра метрик и агента
-	metric := metrics.NewMetrics()
-	agent := metrics.NewAgent(metric, time.Duration(configuration.ReportInterval), time.Duration(configuration.PollInterval), logger)
+	// initiate tickers
+	pollTicker := time.NewTicker(time.Second * time.Duration(config.PollInterval))
+	defer pollTicker.Stop()
+	reportTicker := time.NewTicker(time.Second * time.Duration(config.ReportInterval))
+	defer reportTicker.Stop()
 
-	// Запуск агента
-	agent.Start()
+	//initiate new storage
+	m := memStoragePcg.New()
 
-	log.Printf("Агент запущен, начинаем сбор метрик для отправки на сервер %s...\n", configuration.Address)
-
-	select {}
+	//collect data from MemStats and send to the server
+	for {
+		select {
+		case <-pollTicker.C:
+			metricsPcg.ReadMemStats(&m)
+		case <-reportTicker.C:
+			err := metricsPcg.ProcessReport(config.ServerAddress, m)
+			if err != nil {
+				log.Println(err)
+			}
+		}
+	}
 }

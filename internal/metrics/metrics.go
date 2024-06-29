@@ -1,64 +1,107 @@
 package metrics
 
 import (
+	"bytes"
+	"encoding/json"
+	"fmt"
+	"io"
 	"math/rand"
+	"net/http"
 	"runtime"
+	"strings"
+
+	memStoragePcg "github.com/RomanenkoDR/metrics/internal/storage/mem"
 )
 
-// Структура содержащая тип метрики и ее значение в виде интерфейса
-type SystemMetric struct {
-	Type  string // Тип структур
-	Value interface{}
+type Metrics struct {
+	ID    string                `json:"id"`    // имя метрики
+	MType string                `json:"type"`  // параметр, принимающий значение gauge или counter
+	Delta memStoragePcg.Counter `json:"delta"` // значение метрики в случае передачи counter
+	Value memStoragePcg.Gauge   `json:"value"` // значение метрики в случае передачи gauge
 }
 
-// Структура содержащая переменную для счетчика кол-ва сборов метрики и мапу структур Metric
-type SystemMetrics struct {
-	metricCollectionCounter int64                   // Счетчик кол-ва сбора метрик
-	metrics                 map[string]SystemMetric // мапа структур Metric
+func ReadMemStats(m *memStoragePcg.MemStorage) {
+	var stat runtime.MemStats
+	runtime.ReadMemStats(&stat)
+	m.UpdateGauge("Alloc", memStoragePcg.Gauge(stat.Alloc))
+	m.UpdateGauge("BuckHashSys", memStoragePcg.Gauge(stat.BuckHashSys))
+	m.UpdateGauge("Frees", memStoragePcg.Gauge(stat.Frees))
+	m.UpdateGauge("GCCPUFraction", memStoragePcg.Gauge(stat.GCCPUFraction))
+	m.UpdateGauge("GCSys", memStoragePcg.Gauge(stat.GCSys))
+	m.UpdateGauge("HeapAlloc", memStoragePcg.Gauge(stat.HeapAlloc))
+	m.UpdateGauge("HeapIdle", memStoragePcg.Gauge(stat.HeapIdle))
+	m.UpdateGauge("HeapInuse", memStoragePcg.Gauge(stat.HeapInuse))
+	m.UpdateGauge("HeapObjects", memStoragePcg.Gauge(stat.HeapObjects))
+	m.UpdateGauge("HeapReleased", memStoragePcg.Gauge(stat.HeapReleased))
+	m.UpdateGauge("HeapSys", memStoragePcg.Gauge(stat.HeapSys))
+	m.UpdateGauge("LastGC", memStoragePcg.Gauge(stat.LastGC))
+	m.UpdateGauge("Lookups", memStoragePcg.Gauge(stat.Lookups))
+	m.UpdateGauge("MCacheInuse", memStoragePcg.Gauge(stat.MCacheInuse))
+	m.UpdateGauge("MCacheSys", memStoragePcg.Gauge(stat.MCacheSys))
+	m.UpdateGauge("MSpanInuse", memStoragePcg.Gauge(stat.MSpanInuse))
+	m.UpdateGauge("MSpanSys", memStoragePcg.Gauge(stat.MSpanSys))
+	m.UpdateGauge("Mallocs", memStoragePcg.Gauge(stat.Mallocs))
+	m.UpdateGauge("NextGC", memStoragePcg.Gauge(stat.NextGC))
+	m.UpdateGauge("NumForcedGC", memStoragePcg.Gauge(stat.NumForcedGC))
+	m.UpdateGauge("NumGC", memStoragePcg.Gauge(stat.NumGC))
+	m.UpdateGauge("OtherSys", memStoragePcg.Gauge(stat.OtherSys))
+	m.UpdateGauge("PauseTotalNs", memStoragePcg.Gauge(stat.PauseTotalNs))
+	m.UpdateGauge("StackInuse", memStoragePcg.Gauge(stat.StackInuse))
+	m.UpdateGauge("StackSys", memStoragePcg.Gauge(stat.StackSys))
+	m.UpdateGauge("Sys", memStoragePcg.Gauge(stat.Sys))
+	m.UpdateGauge("TotalAlloc", memStoragePcg.Gauge(stat.TotalAlloc))
+	m.UpdateGauge("RandomValue", memStoragePcg.Gauge(rand.Float32()))
+	m.UpdateCounter("PollCount", memStoragePcg.Counter(1))
 }
 
-// Создание нового экземпляра структуры Metrics
-func NewMetrics() *SystemMetrics {
-	return &SystemMetrics{
-		metrics: make(map[string]SystemMetric),
+func ProcessReport(serverAddress string, m memStoragePcg.MemStorage) error {
+	// metric type variable
+
+	var metrics Metrics
+
+	serverAddress = strings.Join([]string{"http:/", serverAddress, "update/"}, "/")
+
+	//send request to the server
+	for k, v := range m.Data {
+		switch v := v.(type) {
+		case memStoragePcg.Gauge:
+			metrics = Metrics{ID: k, MType: Gauge, Value: v}
+		case memStoragePcg.Counter:
+			metrics = Metrics{ID: k, MType: Counter, Delta: v}
+		default:
+			return fmt.Errorf("uknown type of metric")
+		}
+
+		data, err := json.Marshal(metrics)
+		if err != nil {
+			return err
+		}
+
+		//         fmt.Println(string(data))
+
+		request, err := http.NewRequest("POST", serverAddress, bytes.NewBuffer(data))
+		if err != nil {
+			return err
+		}
+		request.Header.Set("Content-Type", ContentType)
+
+		client := &http.Client{}
+		resp, err := client.Do(request)
+
+		if err != nil {
+			return err
+		}
+
+		if resp.StatusCode != http.StatusOK {
+			b, _ := io.ReadAll(resp.Body)
+			return fmt.Errorf("%s: %s; %s",
+				"Can't send report to the server",
+				resp.Status,
+				b)
+		}
+
+		defer resp.Body.Close()
+
 	}
-}
-
-// Создание коллекции с метриками
-func (m *SystemMetrics) CollectionOfMetrics() {
-
-	var memStats runtime.MemStats
-	runtime.ReadMemStats(&memStats)
-
-	m.metrics["Alloc"] = SystemMetric{Gauge, float64(memStats.Alloc)}
-	m.metrics["BuckHashSys"] = SystemMetric{Gauge, float64(memStats.BuckHashSys)}
-	m.metrics["Frees"] = SystemMetric{Gauge, float64(memStats.Frees)}
-	m.metrics["GCCPUFraction"] = SystemMetric{Gauge, memStats.GCCPUFraction}
-	m.metrics["GCSys"] = SystemMetric{Gauge, float64(memStats.GCSys)}
-	m.metrics["HeapAlloc"] = SystemMetric{Gauge, float64(memStats.HeapAlloc)}
-	m.metrics["HeapIdle"] = SystemMetric{Gauge, float64(memStats.HeapIdle)}
-	m.metrics["HeapInuse"] = SystemMetric{Gauge, float64(memStats.HeapInuse)}
-	m.metrics["HeapObjects"] = SystemMetric{Gauge, float64(memStats.HeapObjects)}
-	m.metrics["HeapReleased"] = SystemMetric{Gauge, float64(memStats.HeapReleased)}
-	m.metrics["HeapSys"] = SystemMetric{Gauge, float64(memStats.HeapSys)}
-	m.metrics["LastGC"] = SystemMetric{Gauge, float64(memStats.LastGC)}
-	m.metrics["Lookups"] = SystemMetric{Gauge, float64(memStats.Lookups)}
-	m.metrics["MCacheInuse"] = SystemMetric{Gauge, float64(memStats.MCacheInuse)}
-	m.metrics["MCacheSys"] = SystemMetric{Gauge, float64(memStats.MCacheSys)}
-	m.metrics["MSpanInuse"] = SystemMetric{Gauge, float64(memStats.MSpanInuse)}
-	m.metrics["MSpanSys"] = SystemMetric{Gauge, float64(memStats.MSpanSys)}
-	m.metrics["Mallocs"] = SystemMetric{Gauge, float64(memStats.Mallocs)}
-	m.metrics["NextGC"] = SystemMetric{Gauge, float64(memStats.NextGC)}
-	m.metrics["NumForcedGC"] = SystemMetric{Gauge, float64(memStats.NumForcedGC)}
-	m.metrics["NumGC"] = SystemMetric{Gauge, float64(memStats.NumGC)}
-	m.metrics["OtherSys"] = SystemMetric{Gauge, float64(memStats.OtherSys)}
-	m.metrics["PauseTotalNs"] = SystemMetric{Gauge, float64(memStats.PauseTotalNs)}
-	m.metrics["StackInuse"] = SystemMetric{Gauge, float64(memStats.StackInuse)}
-	m.metrics["StackSys"] = SystemMetric{Gauge, float64(memStats.StackSys)}
-	m.metrics["Sys"] = SystemMetric{Gauge, float64(memStats.Sys)}
-	m.metrics["TotalAlloc"] = SystemMetric{Gauge, float64(memStats.TotalAlloc)}
-
-	m.metricCollectionCounter++
-	m.metrics["PollCount"] = SystemMetric{Counter, m.metricCollectionCounter}
-	m.metrics["RandomValue"] = SystemMetric{Gauge, rand.Float64()}
+	return nil
 }
