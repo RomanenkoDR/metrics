@@ -6,17 +6,17 @@
     <title>gometrics</title>
 </head>
 <body>
-    <h1>gometrics</h1>
+    <h1>List of metrics GoLang</h1>
     <hr>
 
-    <h2>Counters</h2>
+    <h2>List Counters</h2>
     <ul>
     {{range $key, $value := .Counters}}
         <li>{{$key}}: {{$value}}</li>
     {{end}}
     </ul>
 
-    <h2>Gauges</h2>
+    <h2>List Gauges</h2>
     <ul>
     {{range $key, $value := .Gauges}}
         <li>{{$key}}: {{$value}}</li>
