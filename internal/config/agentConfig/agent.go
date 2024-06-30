@@ -6,27 +6,34 @@ import (
 	"github.com/caarlos0/env"
 )
 
+// Содержит параметры конфигурации для агента:
+// адрес сервера, интервал опроса и интервал отправки метрики.
+// Значения этих параметров могут быть заданы через переменные окружения.
 type Options struct {
-	ServerAddress  string `env:"ADDRESS"`
-	PollInterval   int    `env:"POLL_INTERVAL"`
-	ReportInterval int    `env:"REPORT_INTERVAL"`
+	ServerAddress  string `env:"ADDRESS"`         // Адрес сервера
+	PollInterval   int    `env:"POLL_INTERVAL"`   // Интервал опроса в секундах для сбора метрик
+	ReportInterval int    `env:"REPORT_INTERVAL"` // Интервал отправки отчета на сервер в секундах
 }
 
+// Парсит параметры конфигурации из командной строки и переменных окружения.
 func ParseOptions() (Options, error) {
-	var opt Options
+	var option Options
 
-	flag.IntVar(&opt.PollInterval, "p", 2,
-		"Frequensy in seconds for collecting metrics")
-	flag.IntVar(&opt.ReportInterval, "r", 10,
-		"Frequensy in seconds for sending report to the server")
-	flag.StringVar(&opt.ServerAddress, "a", "localhost:8080",
-		"Address of the server to send metrics")
+	// Установка значений по умолчанию и описаний для опций командной строки
+	flag.IntVar(&option.PollInterval, "p", 2,
+		"Частота в секундах для сбора метрик")
+	flag.IntVar(&option.ReportInterval, "r", 10,
+		"Частота в секундах для отправки отчета на сервер")
+	flag.StringVar(&option.ServerAddress, "a", "localhost:8080",
+		"Адрес сервера для отправки метрик")
 	flag.Parse()
 
-	err := env.Parse(&opt)
+	// Парсит значения из переменных окружения и перезаписывает
+	// соответствующие поля структуры option
+	err := env.Parse(&option)
 	if err != nil {
-		return opt, err
+		return option, err
 	}
 
-	return opt, nil
+	return option, nil
 }

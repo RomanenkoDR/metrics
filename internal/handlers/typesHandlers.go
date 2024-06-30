@@ -1,5 +1,6 @@
 package handlers
 
+// Структура для метрик, используемая для сериализации/десериализации JSON-запросов и ответов.
 type Metrics struct {
 	ID    string   `json:"id"`              // имя метрики
 	MType string   `json:"type"`            // параметр, принимающий значение gauge или counter

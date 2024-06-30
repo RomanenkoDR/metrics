@@ -24,6 +24,10 @@ type MetricsData struct {
 	Gauges   map[string]float64
 }
 
+// GetListAllMetrics обрабатывает запросы на получение списка всех метрик
+// Загружает HTML-шаблон для отображения всех метрик.
+// Получает все метрики из хранилища и сортирует их по типам (Counter и Gauge).
+// Выполняет шаблон с данными метрик и отправляет результат клиенту.
 func (h *handler) GetListAllMetrics(w http.ResponseWriter, r *http.Request) {
 	tmplPath := filepath.Join("../../internal/template/listMetricsPage.html")
 	tmpl, err := template.ParseFiles(tmplPath)
@@ -32,12 +36,14 @@ func (h *handler) GetListAllMetrics(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Получение всех метрик из хранилища
 	list := h.store.GetAll()
 	metricsData := MetricsData{
 		Counters: make(map[string]int64),
 		Gauges:   make(map[string]float64),
 	}
 
+	// Заполнение данных метрик
 	for k, v := range list {
 		switch value := v.(type) {
 		case memStoragePcg.Counter:
@@ -45,7 +51,7 @@ func (h *handler) GetListAllMetrics(w http.ResponseWriter, r *http.Request) {
 		case memStoragePcg.Gauge:
 			metricsData.Gauges[k] = float64(value)
 		default:
-			fmt.Printf("Unexpected type for key %s: %T\n", k, v)
+			fmt.Printf("Неожиданный тип для ключа %s: %T\n", k, v)
 		}
 	}
 
@@ -54,13 +60,16 @@ func (h *handler) GetListAllMetrics(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// // PostUpdateMetric обрабатывает запросы на обновление метрик
+// Получает параметры метрики (тип, имя и значение) из URL.
+// В зависимости от типа метрики (Counter или Gauge), обновляет значение метрики в хранилище.
 func (h *handler) PostUpdateMetric(w http.ResponseWriter, r *http.Request) {
-	// get context params
+	// Получение параметров из URL
 	metricType := chi.URLParam(r, "type")
 	metric := chi.URLParam(r, "metric")
 	value := chi.URLParam(r, "value")
 
-	// find out metric type
+	// Определение типа метрики
 	switch metricType {
 	case Counter:
 		v, err := strconv.Atoi(value)
@@ -75,10 +84,12 @@ func (h *handler) PostUpdateMetric(w http.ResponseWriter, r *http.Request) {
 		}
 		h.store.UpdateGauge(metric, memStoragePcg.Gauge(v))
 	default:
-		http.Error(w, "Incorrect metric type", http.StatusBadRequest)
+		http.Error(w, "Неверный тип метрики", http.StatusBadRequest)
 	}
 }
 
+// GetValueByName обрабатывает запросы на получение значения метрики по имени
+// Получает значение метрики по имени из URL и отправляет его клиенту.
 func (h *handler) GetValueByName(w http.ResponseWriter, r *http.Request) {
 	metric := chi.URLParam(r, "metric")
 	v, err := h.store.Get(metric)

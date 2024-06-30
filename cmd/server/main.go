@@ -9,11 +9,11 @@ import (
 )
 
 func main() {
-	//parse cli options
+	// Парсинг опций командной строки
 	cfg := serverConfigPcg.ParseOptions()
 
-	log.Println("Starting server...")
+	log.Println("Запуск сервера...")
 
-	//run server
+	// Запуск сервера
 	log.Fatal(http.ListenAndServe(cfg.Address, routers.InitRouter()))
 }

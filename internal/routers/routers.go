@@ -6,17 +6,23 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
+// InitRouter инициализирует маршрутизатор и задает маршруты
 func InitRouter() chi.Router {
+	// Создание нового обработчика
 	h := handlersPcg.NewHandler()
 
-	// Routers
+	// Создание нового маршрутизатора
 	router := chi.NewRouter()
+
+	// Добавление middleware для логирования
 	router.Use(loggerPcg.LogHandler)
-	router.Get("/", h.GetListAllMetrics)
-	router.Post("/update/{type}/{metric}/{value}", h.PostUpdateMetric)
-	router.Get("/value/gauge/{metric}", h.GetValueByName)
-	router.Get("/value/counter/{metric}", h.GetValueByName)
-	router.Post("/value/", h.PostValueByJSON)
-	router.Post("/update/", h.PostUpdateJSON)
+
+	// Определение маршрутов
+	router.Get("/", h.GetListAllMetrics)                               // Маршрут для получения списка всех метрик.
+	router.Post("/update/{type}/{metric}/{value}", h.PostUpdateMetric) // Маршрут для обновления метрики по типу, имени и значению
+	router.Get("/value/gauge/{metric}", h.GetValueByName)              // Маршрут для получения значения метрики типа gauge по имени
+	router.Get("/value/counter/{metric}", h.GetValueByName)            // Маршрут для получения значения метрики типа counter по имени
+	router.Post("/value/", h.PostValueByJSON)                          // Маршрут для получения значения метрики по JSON-запросу
+	router.Post("/update/", h.PostUpdateJSON)                          // Маршрут для обновления метрики по JSON-запросу
 	return router
 }

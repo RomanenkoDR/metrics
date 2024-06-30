@@ -9,6 +9,9 @@ import (
 	memStoragePcg "github.com/RomanenkoDR/metrics/internal/storage/mem"
 )
 
+// PostValueByJSON обрабатывает запросы на получение значения метрики в формате JSON
+// Читает запрос JSON, десериализует его и получает метрику из хранилища.
+// В зависимости от типа метрики (Counter или Gauge), добавляет значение к ответу JSON и отправляет его клиенту.
 func (h *handler) PostValueByJSON(w http.ResponseWriter, r *http.Request) {
 	var m Metrics
 	var buf bytes.Buffer
@@ -28,7 +31,7 @@ func (h *handler) PostValueByJSON(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(m)
 
 	if _, ok := h.store.Data[m.ID]; !ok {
-		http.Error(w, "not found", http.StatusNotFound)
+		http.Error(w, "не найдено", http.StatusNotFound)
 
 		return
 	}
@@ -53,6 +56,9 @@ func (h *handler) PostValueByJSON(w http.ResponseWriter, r *http.Request) {
 	w.Write(resp)
 }
 
+// PostUpdateJSON обрабатывает запросы на обновление метрик в формате JSON
+// Читает запрос JSON, десериализует его и обновляет значение метрики в хранилище
+// в зависимости от типа метрики (Counter или Gauge).
 func (h *handler) PostUpdateJSON(w http.ResponseWriter, r *http.Request) {
 	var m Metrics
 	var buf bytes.Buffer
@@ -74,20 +80,20 @@ func (h *handler) PostUpdateJSON(w http.ResponseWriter, r *http.Request) {
 	switch m.MType {
 	case Counter:
 		if m.Delta == nil {
-			http.Error(w, "metric value should not be empty", http.StatusBadRequest)
+			http.Error(w, "Значение метрики не должно быть пустым", http.StatusBadRequest)
 			return
 		}
 		h.store.UpdateCounter(m.ID, memStoragePcg.Counter(*m.Delta))
 		w.WriteHeader(http.StatusOK)
 	case Gauge:
 		if m.Value == nil {
-			http.Error(w, "metric value should not be empty", http.StatusBadRequest)
+			http.Error(w, "Значение метрики не должно быть пустым", http.StatusBadRequest)
 			return
 		}
 		h.store.UpdateGauge(m.ID, memStoragePcg.Gauge(*m.Value))
 		w.WriteHeader(http.StatusOK)
 	default:
-		http.Error(w, "Incorrect metric type", http.StatusBadRequest)
+		http.Error(w, "Неверный тип метрики", http.StatusBadRequest)
 	}
 
 }

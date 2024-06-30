@@ -10,28 +10,36 @@ import (
 )
 
 func main() {
-	//parse cli options
+
+	// Парсинг опций командной строки
+	// Такие как интервалы опроса и отчета,
+	// адрес сервера и другие настройки. Если происходит ошибка при парсинге,
+	// программа завершает работу с помощью panic.
 	config, err := agentConfigPcg.ParseOptions()
 	if err != nil {
 		panic(err)
 	}
 
-	// initiate tickers
+	// Инициализация тикеров
+	// pollTicker и reportTicker используются для периодического запуска задач.
+	// pollTicker запускает задачу по сбору данных
+	// reportTicker запускает задачу по отправке собранных данных на сервер.
+	// Интервалы задаются в конфигурации.
 	pollTicker := time.NewTicker(time.Second * time.Duration(config.PollInterval))
 	defer pollTicker.Stop()
 	reportTicker := time.NewTicker(time.Second * time.Duration(config.ReportInterval))
 	defer reportTicker.Stop()
 
-	//initiate new storage
+	// Инициализация нового хранилища
 	m := memStoragePcg.New()
 
-	//collect data from MemStats and send to the server
+	// Сбор данных из MemStats и отправка на сервер
 	for {
 		select {
 		case <-pollTicker.C:
-			metricsPcg.ReadMemStats(&m)
+			metricsPcg.ReadMemStats(&m) // Сбор данных из MemStats
 		case <-reportTicker.C:
-			err := metricsPcg.ProcessReport(config.ServerAddress, m)
+			err := metricsPcg.ProcessReport(config.ServerAddress, m) // Отправка данных на сервер
 			if err != nil {
 				log.Println(err)
 			}

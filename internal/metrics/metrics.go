@@ -13,6 +13,7 @@ import (
 	memStoragePcg "github.com/RomanenkoDR/metrics/internal/storage/mem"
 )
 
+// Структура Metrics для хранения данных метрик
 type Metrics struct {
 	ID    string                `json:"id"`    // имя метрики
 	MType string                `json:"type"`  // параметр, принимающий значение gauge или counter
@@ -20,6 +21,10 @@ type Metrics struct {
 	Value memStoragePcg.Gauge   `json:"value"` // значение метрики в случае передачи gauge
 }
 
+// ReadMemStats считывает статистику памяти и обновляет метрики в хранилище
+// Считывает статистику памяти с помощью runtime.ReadMemStats и
+// обновляет значения метрик в хранилище.
+// Также добавляет случайное значение и увеличивает счетчик запросов.
 func ReadMemStats(m *memStoragePcg.MemStorage) {
 	var stat runtime.MemStats
 	runtime.ReadMemStats(&stat)
@@ -54,14 +59,18 @@ func ReadMemStats(m *memStoragePcg.MemStorage) {
 	m.UpdateCounter("PollCount", memStoragePcg.Counter(1))
 }
 
+// ProcessReport отправляет отчет с метриками на сервер
+// Отправляет данные метрик на указанный сервер.
+// Для каждой метрики формируется JSON-запрос, который затем отправляется на сервер.
+// Если сервер возвращает ошибку, функция возвращает сообщение об ошибке.
 func ProcessReport(serverAddress string, m memStoragePcg.MemStorage) error {
-	// metric type variable
-
+	// Переменная для хранения метрик
 	var metrics Metrics
 
+	// Формирование URL для отправки запросов на сервер
 	serverAddress = strings.Join([]string{"http:/", serverAddress, "update/"}, "/")
 
-	//send request to the server
+	// отправка запроса на сервер для каждой метрики
 	for k, v := range m.Data {
 		switch v := v.(type) {
 		case memStoragePcg.Gauge:
@@ -69,22 +78,24 @@ func ProcessReport(serverAddress string, m memStoragePcg.MemStorage) error {
 		case memStoragePcg.Counter:
 			metrics = Metrics{ID: k, MType: Counter, Delta: v}
 		default:
-			return fmt.Errorf("uknown type of metric")
+			return fmt.Errorf("неизвестный тип метрики")
 		}
 
+		// Сериализация метрики в JSON
 		data, err := json.Marshal(metrics)
 		if err != nil {
 			return err
 		}
+		// fmt.Println(string(data))
 
-		//         fmt.Println(string(data))
-
+		// Создание нового запроса
 		request, err := http.NewRequest("POST", serverAddress, bytes.NewBuffer(data))
 		if err != nil {
 			return err
 		}
 		request.Header.Set("Content-Type", ContentType)
 
+		// Выполнение запроса
 		client := &http.Client{}
 		resp, err := client.Do(request)
 
@@ -92,12 +103,12 @@ func ProcessReport(serverAddress string, m memStoragePcg.MemStorage) error {
 			return err
 		}
 
+		// Проверка статуса ответа
 		if resp.StatusCode != http.StatusOK {
 			b, _ := io.ReadAll(resp.Body)
 			return fmt.Errorf("%s: %s; %s",
-				"Can't send report to the server",
-				resp.Status,
-				b)
+				"не удалось отправить метрики на сервер",
+				resp.Status, b)
 		}
 
 		defer resp.Body.Close()
