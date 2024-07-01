@@ -39,7 +39,7 @@ func main() {
 		case <-pollTicker.C:
 			metricsPcg.ReadMemStats(&m) // Сбор данных из MemStats
 		case <-reportTicker.C:
-			err := metricsPcg.ProcessReport(config.ServerAddress, m) // Отправка данных на сервер
+			err := metricsPcg.PushMetricsToServer(config.ServerAddress, m) // Отправка данных на сервер
 			if err != nil {
 				log.Println(err)
 			}

@@ -2,6 +2,7 @@ package metrics
 
 import (
 	"bytes"
+	"compress/gzip"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -15,10 +16,10 @@ import (
 
 // Структура Metrics для хранения данных метрик
 type Metrics struct {
-	ID    string                `json:"id"`    // имя метрики
-	MType string                `json:"type"`  // параметр, принимающий значение gauge или counter
-	Delta memStoragePcg.Counter `json:"delta"` // значение метрики в случае передачи counter
-	Value memStoragePcg.Gauge   `json:"value"` // значение метрики в случае передачи gauge
+	ID    string                `json:"id"`              // имя метрики
+	MType string                `json:"type"`            // параметр, принимающий значение gauge или counter
+	Delta memStoragePcg.Counter `json:"delta,omitempty"` // значение метрики в случае передачи counter
+	Value memStoragePcg.Gauge   `json:"value,omitempty"` // значение метрики в случае передачи gauge
 }
 
 // ReadMemStats считывает статистику памяти и обновляет метрики в хранилище
@@ -59,11 +60,40 @@ func ReadMemStats(m *memStoragePcg.MemStorage) {
 	m.UpdateCounter("PollCount", memStoragePcg.Counter(1))
 }
 
-// ProcessReport отправляет отчет с метриками на сервер
+// Compress сжимает входные данные data и возвращает сжатый результат или ошибку, если процесс сжатия не удался
+func Compress(data []byte) ([]byte, error) {
+	var b bytes.Buffer
+
+	// Создаем новый Writer с лучшей степенью сжатия
+	w, err := gzip.NewWriterLevel(&b, gzip.BestCompression)
+	if err != nil {
+		// Возвращаем ошибку, если не удалось инициализировать Writer для сжатия
+		return nil, fmt.Errorf("не удалось инициализировать Writer для сжатия: %v", err)
+	}
+
+	// Пишем данные для сжатия во временный буфер
+	_, err = w.Write(data)
+	if err != nil {
+		// Возвращаем ошибку, если не удалось записать данные во временный буфер для сжатия
+		return nil, fmt.Errorf("не удалось записать данные во временный буфер для сжатия: %v", err)
+	}
+
+	// Закрываем Writer, завершая процесс сжатия
+	err = w.Close()
+	if err != nil {
+		// Возвращаем ошибку, если не удалось завершить процесс сжатия
+		return nil, fmt.Errorf("не удалось завершить процесс сжатия: %v", err)
+	}
+
+	// Возвращаем сжатые данные
+	return b.Bytes(), nil
+}
+
+// PushMetricsToServer отправляет метрики на сервер
 // Отправляет данные метрик на указанный сервер.
 // Для каждой метрики формируется JSON-запрос, который затем отправляется на сервер.
 // Если сервер возвращает ошибку, функция возвращает сообщение об ошибке.
-func ProcessReport(serverAddress string, m memStoragePcg.MemStorage) error {
+func PushMetricsToServer(serverAddress string, m memStoragePcg.MemStorage) error {
 	// Переменная для хранения метрик
 	var metrics Metrics
 
@@ -86,16 +116,25 @@ func ProcessReport(serverAddress string, m memStoragePcg.MemStorage) error {
 		if err != nil {
 			return err
 		}
-		// fmt.Println(string(data))
 
-		// Создание нового запроса
+		// fmt.Println(string(data))
+		// Сжатие данных
+		data, err = Compress(data)
+		if err != nil {
+			return err
+		}
+		// Создание нового HTTP запроса
 		request, err := http.NewRequest("POST", serverAddress, bytes.NewBuffer(data))
 		if err != nil {
 			return err
 		}
-		request.Header.Set("Content-Type", ContentType)
 
-		// Выполнение запроса
+		// Установка заголовков для сжатия и типа контента
+		request.Header.Set("Content-Type", ContentTypeText)
+		request.Header.Set("Content-Encoding", Compression)
+		request.Header.Set("Accept-Encoding", Compression)
+
+		// Выполнение HTTP запроса
 		client := &http.Client{}
 		resp, err := client.Do(request)
 
@@ -110,7 +149,7 @@ func ProcessReport(serverAddress string, m memStoragePcg.MemStorage) error {
 				"не удалось отправить метрики на сервер",
 				resp.Status, b)
 		}
-
+		// Закрытие тела ответа
 		defer resp.Body.Close()
 
 	}
