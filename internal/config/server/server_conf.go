@@ -41,9 +41,10 @@ func ParseOptions() (Options, error) {
 		"Restore metrics value from file")
 
 	// Чтение флага "-d" для задания строки подключения к базе данных
+	//postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable
 	flag.StringVar(&cfg.DBDSN,
 		"d",
-		"postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable",
+		"",
 		"Connection string in Postgres format")
 
 	// Парсинг флагов командной строки
