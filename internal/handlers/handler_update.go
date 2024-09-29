@@ -35,7 +35,7 @@ func (h *Handler) HandleUpdate(w http.ResponseWriter, r *http.Request) {
 }
 
 // Handle JSON request to update metric value
-func (h *Handler) HandleUpdateJson(w http.ResponseWriter, r *http.Request) {
+func (h *Handler) HandleUpdateJSON(w http.ResponseWriter, r *http.Request) {
 	var m Metrics
 	var buf bytes.Buffer
 

@@ -18,7 +18,7 @@ func (h *Handler) HandleValue(w http.ResponseWriter, r *http.Request) {
 }
 
 // Handle JSON request to return value
-func (h *Handler) HandleValueJson(w http.ResponseWriter, r *http.Request) {
+func (h *Handler) HandleValueJSON(w http.ResponseWriter, r *http.Request) {
 	var m Metrics
 
 	decoder := json.NewDecoder(r.Body)

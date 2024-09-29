@@ -22,8 +22,8 @@ func InitRouter(cfg server.Options, h handlers.Handler) (chi.Router, error) {
 
 	// Post rout
 	router.Post("/update/{type}/{metric}/{value}", h.HandleUpdate)
-	router.Post("/value/", h.HandleValueJson)
-	router.Post("/update/", h.HandleUpdateJson)
+	router.Post("/value/", h.HandleValueJSON)
+	router.Post("/update/", h.HandleUpdateJSON)
 	router.Post("/updates/", h.HandleUpdateBatch)
 
 	return router, nil
