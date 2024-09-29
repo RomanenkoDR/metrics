@@ -8,9 +8,9 @@ import (
 
 func (h *Handler) HandlePing(w http.ResponseWriter, r *http.Request) {
 	v := "pong\n"
-	err := dbconn.Ping(context.Background())
+	err := h.DBconn.Ping(context.Background())
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Error(w, "Connection to DB is lost", http.StatusInternalServerError)
 		return
 	}
 	w.WriteHeader(http.StatusOK)

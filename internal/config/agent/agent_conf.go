@@ -1,8 +1,7 @@
-package agentcfg
+package agent
 
 import (
 	"flag"
-
 	"github.com/caarlos0/env"
 )
 

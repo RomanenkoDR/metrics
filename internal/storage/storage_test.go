@@ -1,9 +1,8 @@
 package storage
 
 import (
-	"testing"
-
 	"github.com/stretchr/testify/assert"
+	"testing"
 )
 
 // implement all the tests for storage
