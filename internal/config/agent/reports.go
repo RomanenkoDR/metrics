@@ -9,115 +9,121 @@ import (
 	"io"
 	"log"
 	"net/http"
-	"strings"
+	"time"
 )
 
-// sendRequest - вспомогательная функция для отправки HTTP-запроса на сервер
-func sendRequest(serverAddress string, data []byte) error {
-	// Сжимаем данные перед отправкой на сервер
+// Инициализация клиента HTTP с таймаутом в 10 секунд
+var httpClient = &http.Client{
+	Timeout: 10 * time.Second,
+}
+
+// Функция для отправки HTTP-запроса на сервер с данными
+// ctx - контекст для управления таймингом и отменой запроса
+// serverAddress - адрес сервера, куда отправляется запрос
+// data - данные для отправки, сжатые и упакованные в HTTP-запрос
+func sendRequest(ctx context.Context, serverAddress string, data []byte) error {
 	compressedData, err := compress(data)
 	if err != nil {
+		log.Printf("Failed to compress data: %v", err)
 		return err
 	}
 
-	// Создание нового HTTP запроса типа POST с телом запроса в виде сжатого JSON
-	request, err := http.NewRequest("POST", serverAddress, bytes.NewBuffer(compressedData))
+	// Создание нового HTTP-запроса с контекстом
+	request, err := http.NewRequestWithContext(ctx, "POST", serverAddress, bytes.NewBuffer(compressedData))
 	if err != nil {
 		return err
 	}
 
-	// Устанавливаем заголовки запроса: тип контента, кодировка и поддержка сжатия
+	// Установка заголовков запроса
 	request.Header.Set("Content-Type", contentType)
 	request.Header.Set("Content-Encoding", compression)
 	request.Header.Set("Accept-Encoding", compression)
 
-	// Создаем HTTP клиент для выполнения запроса
-	client := &http.Client{}
-	resp, err := client.Do(request)
+	// Выполнение HTTP-запроса
+	resp, err := httpClient.Do(request)
 	if err != nil {
 		return err
-	}
-
-	// Проверяем, успешно ли выполнен запрос (должен быть статус 200 OK)
-	if resp.StatusCode != http.StatusOK {
-		b, _ := io.ReadAll(resp.Body)
-		return fmt.Errorf("%s: %s; %s",
-			"Can't send report to the server",
-			resp.Status,
-			b)
 	}
 	defer resp.Body.Close()
+
+	// Проверка успешности выполнения запроса
+	if resp.StatusCode != http.StatusOK {
+		if resp.ContentLength > 0 {
+			b, _ := io.ReadAll(resp.Body)
+			log.Printf("Server response: %s", string(b))
+		}
+		return fmt.Errorf("can't send report to the server: %s", resp.Status)
+	}
+
 	return nil
 }
 
-// sendReport - функция для отправки одной метрики
-func sendReport(serverAddress string, metrics Metrics) error {
-	// Преобразование структуры метрики в JSON
+// Функция для отправки одного отчета на сервер
+// ctx - контекст
+// serverAddress - адрес сервера
+// metrics - данные метрики для отправки
+func sendReport(ctx context.Context, serverAddress string, metrics Metrics) error {
 	data, err := json.Marshal(metrics)
 	if err != nil {
 		return err
 	}
-	return sendRequest(serverAddress, data)
+	return sendRequest(ctx, serverAddress, data)
 }
 
-// sendReportBatch - функция для отправки нескольких метрик (батч)
-func sendReportBatch(serverAddress string, metrics []Metrics) error {
-	// Преобразование списка метрик в JSON
+// Функция для отправки батча (пакета) метрик на сервер
+// ctx - контекст
+// serverAddress - адрес сервера
+// metrics - список метрик для отправки
+func sendReportBatch(ctx context.Context, serverAddress string, metrics []Metrics) error {
 	data, err := json.Marshal(metrics)
 	if err != nil {
 		return err
 	}
-	return sendRequest(serverAddress, data)
+	return sendRequest(ctx, serverAddress, data)
 }
 
-// ProcessReport Обрабатываем все метрики и отправляем их по одной на сервер
-func ProcessReport(serverAddress string, m storage.MemStorage) error {
-	var metrics Metrics
+// ProcessReport - функция для обработки и отправки каждой метрики отдельно
+// ctx - контекст
+// serverAddress - адрес сервера
+// m - объект хранилища данных, содержащий метрики
+func ProcessReport(ctx context.Context, serverAddress string, m storage.MemStorage) error {
+	var metricsList []Metrics
 
-	// Формируем адрес для отправки метрик
-	serverAddress = strings.Join([]string{"http:/", serverAddress, "update/"}, "/")
-
-	// Отправляем каждую метрику типа counter на сервер
 	for k, v := range m.CounterData {
-		metrics = Metrics{ID: k, MType: counterType, Delta: v}
-		log.Println(metrics)
-		err := sendReport(serverAddress, metrics)
-		if err != nil {
-			return err
-		}
+		metricsList = append(metricsList, Metrics{ID: k, MType: counterType, Delta: v})
+	}
+	for k, v := range m.GaugeData {
+		metricsList = append(metricsList, Metrics{ID: k, MType: gaugeType, Value: v})
 	}
 
-	// Отправляем каждую метрику типа gauge на сервер
-	for k, v := range m.GaugeData {
-		metrics = Metrics{ID: k, MType: gaugeType, Value: v}
-		err := sendReport(serverAddress, metrics)
-		if err != nil {
+	for _, metrics := range metricsList {
+		log.Println(metrics)
+		if err := sendReport(ctx, serverAddress, metrics); err != nil {
+			log.Printf("Failed to send metric ID: %s, error: %v", metrics.ID, err)
 			return err
 		}
 	}
 	return nil
 }
 
-// ProcessBatch Функция для отправки батча (пакета) метрик
+// ProcessBatch - функция для обработки и отправки метрик батчем (пакетом)
+// ctx - контекст
+// serverAddress - адрес сервера
+// m - объект хранилища данных, содержащий метрики
 func ProcessBatch(ctx context.Context, serverAddress string, m storage.MemStorage) error {
 	var metrics []Metrics
 
-	// Формируем адрес для батч-отправки метрик
-	serverAddress = strings.Join([]string{"http:/", serverAddress, "updates/"}, "/")
-
-	// Добавляем все метрики типа counter в список для отправки
 	for k, v := range m.CounterData {
 		metrics = append(metrics, Metrics{ID: k, MType: counterType, Delta: v})
 	}
 
-	// Добавляем все метрики типа gauge в список для отправки
 	for k, v := range m.GaugeData {
 		metrics = append(metrics, Metrics{ID: k, MType: gaugeType, Value: v})
 	}
 
-	// Отправляем батч метрик на сервер
-	err := sendReportBatch(serverAddress, metrics)
+	err := sendReportBatch(ctx, serverAddress, metrics)
 	if err != nil {
+		log.Printf("Failed to send metrics batch: %v", err)
 		return err
 	}
 	return nil
