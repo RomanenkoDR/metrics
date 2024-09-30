@@ -7,3 +7,28 @@
 {"level":"info","ts":1727639138.722451,"msg":"Completed retry cycle with 0 attempts"}
 {"level":"info","ts":1727639148.721712,"msg":"Completed retry cycle with 0 attempts"}
 {"level":"warn","ts":1727639158.720337,"msg":"Function call failed: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, retrying in 1s"}
+{"level":"info","ts":1727700297.129618,"msg":"Starting the application"}
+{"level":"info","ts":1727700297.130451,"msg":"Initialization storage completed. Start main function"}
+{"level":"warn","ts":1727700307.132809,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 1s"}
+{"level":"warn","ts":1727700310.135914,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 3s"}
+{"level":"warn","ts":1727700315.1374269,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 5s"}
+{"level":"info","ts":1727700322.139906,"msg":"Completed retry cycle with 3 attempts"}
+{"level":"error","ts":1727700322.140152,"msg":"Failed to process batch: Post \"localhost:8080\": unsupported protocol scheme \"localhost\""}
+{"level":"warn","ts":1727700322.141417,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 1s"}
+{"level":"warn","ts":1727700325.1427279,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 3s"}
+{"level":"warn","ts":1727700330.146359,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 5s"}
+{"level":"info","ts":1727700337.147766,"msg":"Completed retry cycle with 3 attempts"}
+{"level":"error","ts":1727700337.148203,"msg":"Failed to process batch: Post \"localhost:8080\": unsupported protocol scheme \"localhost\""}
+{"level":"warn","ts":1727700337.1492631,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 1s"}
+{"level":"warn","ts":1727700340.1508741,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 3s"}
+{"level":"warn","ts":1727700345.153804,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 5s"}
+{"level":"info","ts":1727700352.156491,"msg":"Completed retry cycle with 3 attempts"}
+{"level":"error","ts":1727700352.15675,"msg":"Failed to process batch: Post \"localhost:8080\": unsupported protocol scheme \"localhost\""}
+{"level":"warn","ts":1727700352.1573608,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 1s"}
+{"level":"warn","ts":1727700355.1598878,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 3s"}
+{"level":"warn","ts":1727700360.162388,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 5s"}
+{"level":"info","ts":1727700367.166831,"msg":"Completed retry cycle with 3 attempts"}
+{"level":"error","ts":1727700367.167029,"msg":"Failed to process batch: Post \"localhost:8080\": unsupported protocol scheme \"localhost\""}
+{"level":"warn","ts":1727700367.167487,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 1s"}
+{"level":"warn","ts":1727700370.168803,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 3s"}
+{"level":"warn","ts":1727700375.170916,"msg":"Function call failed: Post \"localhost:8080\": unsupported protocol scheme \"localhost\", retrying in 5s"}
