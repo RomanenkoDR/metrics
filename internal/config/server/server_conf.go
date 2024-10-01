@@ -44,7 +44,7 @@ func ParseOptions() (Options, error) {
 	//postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable
 	flag.StringVar(&cfg.DBDSN,
 		"d",
-		"",
+		"host=localhost dbname=postgres user=postgres password=password sslmode=disable",
 		"Connection string in Postgres format")
 
 	// Парсинг флагов командной строки
