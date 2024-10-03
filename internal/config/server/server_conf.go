@@ -11,6 +11,7 @@ type Options struct {
 	Filename string `env:"FILE_STORAGE_PATH"`
 	Restore  bool   `env:"RESTORE"`
 	DBDSN    string `env:"DATABASE_DSN"`
+	Key      string `env:"KEY"`
 }
 
 func ParseOptions() (Options, error) {
@@ -40,8 +41,13 @@ func ParseOptions() (Options, error) {
 		true,
 		"Restore metrics value from file")
 
+	// Чтение флака "-k" для задания токена JWT
+	flag.StringVar(&cfg.Key,
+		"k",
+		"",
+		"Token auth by JWT")
+
 	// Чтение флага "-d" для задания строки подключения к базе данных
-	//postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable
 	flag.StringVar(&cfg.DBDSN,
 		"d",
 		"",

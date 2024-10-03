@@ -11,6 +11,9 @@ import (
 // Sender определяем тип функции, которая принимает контекст, строку с адресом сервера и объект MemStorage, и возвращает ошибку.
 type Sender func(context.Context, string, storage.MemStorage) error
 
+var encrypt bool
+var key []byte
+
 // Retry функция принимает другую функцию Sender, количество попыток retries и задержку delay, возвращает функцию того же типа,
 // которая выполняет sender с попытками повторов в случае неудачи.
 func Retry(sender Sender, retries int, delay time.Duration) Sender {
@@ -49,6 +52,11 @@ func main() {
 	if err != nil {
 		// Если произошла ошибка при парсинге, логируем фатальную ошибку и завершаем программу.
 		logger.DebugLogger.Sugar().Fatal("Failed to parse options: ", err)
+	}
+
+	if cfg.Key != "" {
+		encrypt = true
+		key = []byte(cfg.Key)
 	}
 
 	// Создаём тикеры для опроса с интервалами, указанными в конфигурации.

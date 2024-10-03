@@ -9,6 +9,7 @@ type Options struct {
 	ServerAddress  string `env:"ADDRESS"`
 	PollInterval   int    `env:"POLL_INTERVAL"`
 	ReportInterval int    `env:"REPORT_INTERVAL"`
+	Key            string `env:"KEY"`
 }
 
 func ParseOptions() (Options, error) {
@@ -31,6 +32,12 @@ func ParseOptions() (Options, error) {
 		"a",
 		"localhost:8080",
 		"Address of the server to send metrics")
+
+	// Чтение параметра командной строки для установки JWT токена
+	flag.StringVar(&opt.Key,
+		"k",
+		"",
+		"Token auth by JWT")
 
 	// Парсинг аргументов командной строки
 	flag.Parse()
