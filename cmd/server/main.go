@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	log.Println("Starting server...")
+	log.Println("Запуск сервера...")
 	// Определяем переменную store, которая будет использоваться для хранения метрик
 	// либо База данных, либо файл
 	var store storage.StorageWriter
@@ -27,21 +27,21 @@ func main() {
 	}
 
 	// Логируем полученные параметры конфигурации
-	log.Println("Params:", cfg)
+	log.Println("Параметры сервера:", cfg)
 
 	// Создаём новый обработчик запросов (handler), который будет управлять маршрутами и логикой обработки
 	h := handlers.NewHandler()
 
 	// Если в конфигурации указан DSN для подключения к базе данных, то подключаемся к базе
-	log.Println("Connecting to database with DBDSN server:", cfg.DBDSN)
+	log.Println("Подключения к базе данных DBDSN сервера:", cfg.DBDSN)
 	if cfg.DBDSN != "" {
 		// Логируем процесс подключения к базе данных
-		log.Println("Connecting to database with DSN:", cfg.DBDSN)
+		log.Println("Подключение к базе данных DSN:", cfg.DBDSN)
 		database, err := db.Connect(cfg.DBDSN)
 		if err != nil {
-			log.Fatalf("Database connection error: %v", err)
+			log.Fatalf("Ошибка подключения к базе данных: %v", err)
 		} else {
-			log.Println("Successfully connected to the database")
+			log.Println("Успешеное подключение к базе данных")
 		}
 
 		// Устанавливаем базу данных в качестве хранилища данных
@@ -66,7 +66,7 @@ func main() {
 		err := store.RestoreData(&h.Store)
 		// Логируем ошибку восстановления данных, если она произошла
 		if err != nil {
-			log.Println("Could not restore data: ", err)
+			log.Println("Не удалось восстановить данные: ", err)
 		}
 	}
 
@@ -85,8 +85,8 @@ func main() {
 	}
 
 	// Логируем, что сервер начал слушать входящие запросы на указанном адресе
-	log.Println("Listening on: ", cfg.Address)
-	log.Println("Started. Running ")
+	log.Println("Входящие запросы по: ", cfg.Address)
+	log.Println("Запуск сервера ")
 
 	// Настройка корректного завершения работы сервера
 	idleConnectionsClosed := make(chan struct{}) // Канал для оповещения о закрытии всех соединений
@@ -95,12 +95,12 @@ func main() {
 		signal.Notify(sigint, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
 		<-sigint // Ожидаем поступления сигнала
 		// Логируем начало процесса завершения работы
-		log.Println("Shutting down server")
+		log.Println("Остановка сервера")
 
 		// Сохраняем оставшиеся данные перед завершением работы
 		if err := store.Write(h.Store); err != nil {
 			// Логируем ошибку, если не удалось сохранить данные
-			log.Printf("Error during saving data to file: %v", err)
+			log.Printf("Ошибка сохранения даннных: %v", err)
 		}
 
 		// Закрываем хранилище (файл или БД)
@@ -109,7 +109,7 @@ func main() {
 		// Завершаем работу HTTP-сервера
 		if err := server.Shutdown(context.Background()); err != nil {
 			// Логируем ошибку завершения сервера, если она произошла
-			log.Printf("HTTP Server Shutdown Error: %v", err)
+			log.Printf("Ошибка завершения работы HTTP сервера: %v", err)
 		}
 		// Оповещаем, что все соединения закрыты
 		close(idleConnectionsClosed)
@@ -121,5 +121,5 @@ func main() {
 	// Ожидаем закрытия всех соединений перед завершением программы
 	<-idleConnectionsClosed
 	// Логируем завершение работы сервера
-	log.Println("Server shutdown")
+	log.Println("Сервер остановлен")
 }
