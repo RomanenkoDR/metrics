@@ -1,12 +1,13 @@
 package agent
 
 import (
-	"bytes"
-	"compress/gzip"
-	"fmt"
 	"github.com/RomanenkoDR/metrics/internal/storage"
+	"github.com/shirou/gopsutil/v3/cpu"
+	"github.com/shirou/gopsutil/v3/mem"
 	"math/rand/v2"
 	"runtime"
+	"sync"
+	"time"
 )
 
 type Metrics struct {
@@ -23,8 +24,12 @@ const counterType string = "counter"
 const gaugeType string = "gauge"
 
 // Renew metrics through runtime package
-func ReadMemStats(m *storage.MemStorage) {
+func ReadMemStats(m *storage.MemStorage, metricsCh chan storage.MemStorage) {
 	var stat runtime.MemStats
+	var mu sync.RWMutex
+
+	mu.Lock()
+
 	runtime.ReadMemStats(&stat)
 	m.UpdateGauge("Alloc", storage.Gauge(stat.Alloc))
 	m.UpdateGauge("BuckHashSys", storage.Gauge(stat.BuckHashSys))
@@ -55,28 +60,16 @@ func ReadMemStats(m *storage.MemStorage) {
 	m.UpdateGauge("TotalAlloc", storage.Gauge(stat.TotalAlloc))
 	m.UpdateGauge("RandomValue", storage.Gauge(rand.Float32()))
 	m.UpdateCounter("PollCount", storage.Counter(1))
-}
 
-// Функция для сжатия данных с использованием gzip
-func compress(data []byte) ([]byte, error) {
-	var b bytes.Buffer
-	w, err := gzip.NewWriterLevel(&b, gzip.BestSpeed)
-	if err != nil {
-		return nil, fmt.Errorf("failed init compress writer: %v", err)
-	}
+	// gopsutil metrics
+	vmem, _ := mem.VirtualMemory()
+	cpu1, _ := cpu.Percent(time.Duration(0), true)
 
-	// Пишем исходные данные в gzip writer для сжатия
-	_, err = w.Write(data)
-	if err != nil {
-		return nil, fmt.Errorf("failed write data to compress temporary buffer: %v", err)
-	}
+	m.UpdateGauge("TotalMemory", storage.Gauge(vmem.Total))
+	m.UpdateGauge("FreeMemory", storage.Gauge(vmem.Free))
+	m.UpdateGauge("CPUutilization1", storage.Gauge(cpu1[0]))
 
-	// Закрываем writer и завершаем процесс сжатия
-	err = w.Close()
-	if err != nil {
-		return nil, fmt.Errorf("failed compress data: %v", err)
-	}
+	mu.Unlock()
 
-	// Возвращаем сжатые данные в виде байтового среза
-	return b.Bytes(), nil
+	metricsCh <- *m
 }

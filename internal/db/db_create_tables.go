@@ -8,7 +8,7 @@ import (
 func (db *Database) createTables() error {
 	_, err := db.Conn.Exec(context.Background(), `CREATE TABLE IF NOT EXISTS gauge_metrics(
         id serial PRIMARY KEY,
-        name text,
+        name text UNIQUE,
         value double precision,
         timestamp timestamp)`)
 	if err != nil {
@@ -18,7 +18,7 @@ func (db *Database) createTables() error {
 
 	_, err = db.Conn.Exec(context.Background(), `CREATE TABLE IF NOT EXISTS counter_metrics(
         id serial PRIMARY KEY,
-        name text,
+        name text UNIQUE,
         value integer,
         timestamp timestamp)`)
 	if err != nil {
