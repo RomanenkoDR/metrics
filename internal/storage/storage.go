@@ -1,15 +1,12 @@
+// Implements storing data in RAM
 package storage
 
 import (
-	"encoding/json"
 	"fmt"
-	"os"
 )
 
 type Counter int64
 type Gauge float64
-
-var Data *MemStorage
 
 type MemStorage struct {
 	CounterData map[string]Counter
@@ -38,7 +35,7 @@ func (m *MemStorage) GetAllCounters() map[string]Counter {
 	return m.CounterData
 }
 
-func (m *MemStorage) GetAllGauges() map[string]Gauge {
+func (m *MemStorage) GetAllGauge() map[string]Gauge {
 	return m.GaugeData
 }
 
@@ -50,41 +47,9 @@ func (m *MemStorage) UpdateCounter(metric string, value Counter) {
 	m.CounterData[metric] = m.CounterData[metric] + value
 }
 
-func cleanFile(filename string) error {
-	f, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE, 0666)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
-	err = f.Truncate(0)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-func WriteDataToFile(filename string, store MemStorage) error {
-	//clear file
-	err := cleanFile(filename)
-	if err != nil {
-		return err
-	}
-
-	f, err := os.OpenFile(filename, os.O_WRONLY|os.O_CREATE, 0666)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
-	data, err := json.MarshalIndent(store, "", "  ")
-	if err != nil {
-		return err
-	}
-
-	_, err = f.Write(data)
-	if err != nil {
-		return err
-	}
-	return nil
+type StorageWriter interface {
+	Write(s MemStorage) error
+	RestoreData(s *MemStorage) error
+	Save(t int, s MemStorage) error
+	Close()
 }
