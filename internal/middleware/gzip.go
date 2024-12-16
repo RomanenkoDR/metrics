@@ -1,4 +1,4 @@
-package gzip
+package middleware
 
 import (
 	"compress/gzip"
@@ -12,24 +12,24 @@ type gzipWriter struct {
 	Writer io.Writer
 }
 
-type gzipReader struct {
-	http.Request
-	Reader io.Reader
-}
+//type gzipReader struct {
+//	http.Request
+//	Reader io.Reader
+//}
 
 var zipContent []string = []string{"application/json", "text/html"}
 
+//func zipable(t string) bool {
+//	for _, s := range zipContent {
+//		if strings.EqualFold(s, t) {
+//			return true
+//		}
+//	}
+//	return false
+//}
+
 func (w gzipWriter) Write(b []byte) (int, error) {
 	return w.Writer.Write(b)
-}
-
-func zipable(t string) bool {
-	for _, s := range zipContent {
-		if strings.EqualFold(s, t) {
-			return true
-		}
-	}
-	return false
 }
 
 func GzipHandle(next http.Handler) http.Handler {
@@ -44,6 +44,7 @@ func GzipHandle(next http.Handler) http.Handler {
 			io.WriteString(w, err.Error())
 			return
 		}
+
 		defer gz.Close()
 
 		if strings.Contains(r.Header.Get("Content-Encoding"), "gzip") {
