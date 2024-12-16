@@ -3,9 +3,7 @@ package routers
 import (
 	"github.com/RomanenkoDR/metrics/internal/config/server"
 	"github.com/RomanenkoDR/metrics/internal/handlers"
-	"github.com/RomanenkoDR/metrics/internal/middleware/gzip"
-	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
-	"github.com/RomanenkoDR/metrics/internal/middleware/token"
+	"github.com/RomanenkoDR/metrics/internal/middleware"
 	"github.com/go-chi/chi/v5"
 )
 
@@ -14,11 +12,9 @@ func InitRouter(cfg server.Options, h handlers.Handler) (chi.Router, error) {
 	router := chi.NewRouter()
 
 	// Use router
-	router.Use(logger.LogHandler)
-	router.Use(gzip.GzipHandle)
-	if cfg.Key != "" {
-		router.Use(token.CheckReqSign(cfg.Key))
-	}
+	router.Use(middleware.LogHandler)
+	router.Use(middleware.GzipHandle)
+	router.Use(middleware.AuthMiddleware)
 
 	// Get rout
 	router.Get("/", h.HandleMain)
