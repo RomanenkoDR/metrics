@@ -1,40 +1,62 @@
 package main
 
 import (
+	"context"
+	"github.com/RomanenkoDR/metrics/internal/config/agent"
+	"github.com/RomanenkoDR/metrics/internal/storage"
 	"log"
+	"os"
+	"os/signal"
+	"syscall"
 	"time"
-
-	cnfAgentPcg "github.com/RomanenkoDR/metrics/internal/config/agentcfg"
-	metricPcg "github.com/RomanenkoDR/metrics/internal/metrics"
-	memPcg "github.com/RomanenkoDR/metrics/internal/storage/mem"
 )
 
 func main() {
-	//parse cli options
-	cfg, err := cnfAgentPcg.ParseOptions()
+	// Parse cli options
+	cfg, err := agent.ParseOptions()
 	if err != nil {
 		panic(err)
 	}
 
-	// initiate tickers
-	pollTicker := time.NewTicker(time.Second * time.Duration(cfg.PollInterval))
-	defer pollTicker.Stop()
-	reportTicker := time.NewTicker(time.Second * time.Duration(cfg.ReportInterval))
-	defer reportTicker.Stop()
+	// Initiate new storage
+	m := storage.New()
 
-	//initiate new storage
-	m := memPcg.New()
+	// Init channels
+	done := make(chan struct{})
+	metricsCh := make(chan storage.MemStorage, cfg.RateLimit)
+	defer close(metricsCh)
 
-	//collect data from MemStats and send to the server
-	for {
-		select {
-		case <-pollTicker.C:
-			metricPcg.ReadMemStats(&m)
-		case <-reportTicker.C:
-			err := metricPcg.ProcessReport(cfg.ServerAddress, m)
-			if err != nil {
-				log.Println(err)
-			}
+	// Collect data from MemStats and send to the server
+	// Gather facts
+	go func(timer time.Duration) {
+		for {
+			time.Sleep(timer)
+			agent.ReadMemStats(&m, metricsCh)
 		}
+	}(time.Second * time.Duration(cfg.PollInterval))
+
+	// Send metrics to the server
+	for w := 1; w <= cfg.RateLimit; w++ {
+		go func(timer time.Duration) {
+			for {
+				time.Sleep(timer)
+				fn := agent.Retry(agent.ProcessBatch, 3, 1*time.Second)
+				err := fn(context.Background(), cfg, metricsCh)
+				if err != nil {
+					log.Println(err)
+				}
+			}
+		}(time.Second * time.Duration(cfg.ReportInterval))
 	}
+
+	// Gracefull shutdown
+	go func() {
+		sigint := make(chan os.Signal, 1)
+		signal.Notify(sigint, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
+		<-sigint
+
+		close(done)
+	}()
+
+	<-done
 }

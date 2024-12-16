@@ -2,10 +2,23 @@ package handlers
 
 import (
 	"encoding/json"
+	"fmt"
+	"github.com/go-chi/chi/v5"
 	"net/http"
 )
 
-func (h *Handler) HandleJSONValue(w http.ResponseWriter, r *http.Request) {
+// Handle URI request to return value
+func (h *Handler) HandleValue(w http.ResponseWriter, r *http.Request) {
+	metric := chi.URLParam(r, "metric")
+	v, err := h.Store.Get(metric)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusNotFound)
+	}
+	fmt.Fprint(w, v)
+}
+
+// Handle JSON request to return value
+func (h *Handler) HandleValueJSON(w http.ResponseWriter, r *http.Request) {
 	var m Metrics
 
 	decoder := json.NewDecoder(r.Body)
