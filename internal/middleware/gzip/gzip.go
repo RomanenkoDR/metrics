@@ -19,6 +19,10 @@ type gzipReader struct {
 
 var zipContent []string = []string{"application/json", "text/html"}
 
+func (w gzipWriter) Write(b []byte) (int, error) {
+	return w.Writer.Write(b)
+}
+
 func zipable(t string) bool {
 	for _, s := range zipContent {
 		if strings.EqualFold(s, t) {
@@ -26,10 +30,6 @@ func zipable(t string) bool {
 		}
 	}
 	return false
-}
-
-func (w gzipWriter) Write(b []byte) (int, error) {
-	return w.Writer.Write(b)
 }
 
 func GzipHandle(next http.Handler) http.Handler {
@@ -44,7 +44,6 @@ func GzipHandle(next http.Handler) http.Handler {
 			io.WriteString(w, err.Error())
 			return
 		}
-
 		defer gz.Close()
 
 		if strings.Contains(r.Header.Get("Content-Encoding"), "gzip") {
