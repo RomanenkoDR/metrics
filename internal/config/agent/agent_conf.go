@@ -3,51 +3,56 @@ package agent
 import (
 	"flag"
 	"github.com/caarlos0/env"
+	"strings"
 )
 
-type Options struct {
+type options struct {
 	ServerAddress  string `env:"ADDRESS"`
 	PollInterval   int    `env:"POLL_INTERVAL"`
 	ReportInterval int    `env:"REPORT_INTERVAL"`
+	RateLimit      int    `env:"RATE_LIMIT"`
 	Key            string `env:"KEY"`
+	KeyByte        []byte
+	Encrypt        bool
 }
 
-func ParseOptions() (Options, error) {
-	var opt Options
+func ParseOptions() (options, error) {
+	var cfg options
+	cfg.Encrypt = false
 
-	// Чтение параметра командной строки для интервала сбора метрик (по умолчанию 2 секунды)
-	flag.IntVar(&opt.PollInterval,
+	flag.IntVar(&cfg.PollInterval,
 		"p",
 		2,
-		"Frequency in seconds for collecting metrics")
-
-	// Чтение параметра командной строки для интервала отправки метрик (по умолчанию 10 секунд)
-	flag.IntVar(&opt.ReportInterval,
+		"Frequensy in seconds for collecting metrics")
+	flag.IntVar(&cfg.ReportInterval,
 		"r",
 		10,
-		"Frequency in seconds for sending report to the server")
-
-	// Чтение параметра командной строки для адреса сервера (по умолчанию "localhost:8080")
-	flag.StringVar(&opt.ServerAddress,
+		"Frequensy in seconds for sending report to the server")
+	flag.StringVar(&cfg.ServerAddress,
 		"a",
 		"localhost:8080",
 		"Address of the server to send metrics")
-
-	// Чтение параметра командной строки для установки JWT токена
-	flag.StringVar(&opt.Key,
+	flag.StringVar(&cfg.Key,
 		"k",
 		"",
-		"Token auth by JWT")
-
-	// Парсинг аргументов командной строки
+		"Encryption key")
+	flag.IntVar(&cfg.RateLimit,
+		"l",
+		3,
+		"Rate Limit")
 	flag.Parse()
 
-	// Парсинг переменных окружения и их присвоение в структуру Options
-	err := env.Parse(&opt)
-	if err != nil {
-		return opt, err
+	cfg.ServerAddress = strings.Join([]string{"http:/", cfg.ServerAddress, "updates/"}, "/")
+
+	if cfg.Key != "" {
+		cfg.Encrypt = true
+		cfg.KeyByte = []byte(cfg.Key)
 	}
 
-	// Возвращаем структуру с параметрами и nil (ошибки нет)
-	return opt, nil
+	err := env.Parse(&cfg)
+	if err != nil {
+		return cfg, err
+	}
+
+	return cfg, nil
 }
