@@ -3,56 +3,51 @@ package agent
 import (
 	"flag"
 	"github.com/caarlos0/env"
-	"strings"
 )
 
-type options struct {
+type Options struct {
 	ServerAddress  string `env:"ADDRESS"`
 	PollInterval   int    `env:"POLL_INTERVAL"`
 	ReportInterval int    `env:"REPORT_INTERVAL"`
-	RateLimit      int    `env:"RATE_LIMIT"`
 	Key            string `env:"KEY"`
-	KeyByte        []byte
-	Encrypt        bool
 }
 
-func ParseOptions() (options, error) {
-	var cfg options
-	cfg.Encrypt = false
+func ParseOptions() (Options, error) {
+	var opt Options
 
-	flag.IntVar(&cfg.PollInterval,
+	// Чтение параметра командной строки для интервала сбора метрик (по умолчанию 2 секунды)
+	flag.IntVar(&opt.PollInterval,
 		"p",
 		2,
-		"Frequensy in seconds for collecting metrics")
-	flag.IntVar(&cfg.ReportInterval,
+		"Frequency in seconds for collecting metrics")
+
+	// Чтение параметра командной строки для интервала отправки метрик (по умолчанию 10 секунд)
+	flag.IntVar(&opt.ReportInterval,
 		"r",
 		10,
-		"Frequensy in seconds for sending report to the server")
-	flag.StringVar(&cfg.ServerAddress,
+		"Frequency in seconds for sending report to the server")
+
+	// Чтение параметра командной строки для адреса сервера (по умолчанию "localhost:8080")
+	flag.StringVar(&opt.ServerAddress,
 		"a",
 		"localhost:8080",
 		"Address of the server to send metrics")
-	flag.StringVar(&cfg.Key,
+
+	// Чтение параметра командной строки для установки JWT токена
+	flag.StringVar(&opt.Key,
 		"k",
 		"",
-		"Encryption key")
-	flag.IntVar(&cfg.RateLimit,
-		"l",
-		3,
-		"Rate Limit")
+		"Token auth by JWT")
+
+	// Парсинг аргументов командной строки
 	flag.Parse()
 
-	cfg.ServerAddress = strings.Join([]string{"http:/", cfg.ServerAddress, "updates/"}, "/")
-
-	if cfg.Key != "" {
-		cfg.Encrypt = true
-		cfg.KeyByte = []byte(cfg.Key)
-	}
-
-	err := env.Parse(&cfg)
+	// Парсинг переменных окружения и их присвоение в структуру Options
+	err := env.Parse(&opt)
 	if err != nil {
-		return cfg, err
+		return opt, err
 	}
 
-	return cfg, nil
+	// Возвращаем структуру с параметрами и nil (ошибки нет)
+	return opt, nil
 }

@@ -34,7 +34,7 @@ func (h *Handler) HandleUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// Handle JSON request to update metric value
+// HandleUpdateJSON функция для обновления метрики JSON
 func (h *Handler) HandleUpdateJSON(w http.ResponseWriter, r *http.Request) {
 	var m Metrics
 	var buf bytes.Buffer
