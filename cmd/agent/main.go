@@ -50,8 +50,8 @@ func main() {
 		case <-reportTicker.C:
 
 			logger.DebugLogger.Sugar().Debug("Вызываем отправку метрик")
-			// Оборачиваем функцию ProcessBatch в функцию Retry, с попытками повтора в случае неудачи.
 			fn := agent.Retry(agent.ProcessBatch, 3, 1*time.Second)
+
 			// Пытаемся отправить данные на сервер.
 			err := fn(context.Background(), cfg.ServerAddress, m)
 			// Если отправка не удалась после всех попыток, логируем ошибку.

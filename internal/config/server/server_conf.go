@@ -2,20 +2,13 @@ package server
 
 import (
 	"flag"
+	"github.com/RomanenkoDR/metrics/internal/models"
 	"github.com/caarlos0/env"
+	"log"
 )
 
-type Options struct {
-	Address  string `env:"ADDRESS"`
-	Interval int    `env:"STORE_INTERVAL"`
-	Filename string `env:"FILE_STORAGE_PATH"`
-	Restore  bool   `env:"RESTORE"`
-	DBDSN    string `env:"DATABASE_DSN"`
-	Key      string `env:"KEY"`
-}
-
-func ParseOptions() (Options, error) {
-	var cfg Options
+func ParseOptions() (models.OptionsServer, error) {
+	var cfg models.OptionsServer
 
 	// Чтение флага "-a" для задания адреса сервера и порта
 	flag.StringVar(&cfg.Address,
@@ -62,5 +55,6 @@ func ParseOptions() (Options, error) {
 		return cfg, err
 	}
 
+	log.Println("Параметры запуска сервера:", cfg)
 	return cfg, nil
 }

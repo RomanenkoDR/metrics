@@ -2,18 +2,12 @@ package agent
 
 import (
 	"flag"
+	"github.com/RomanenkoDR/metrics/internal/models"
 	"github.com/caarlos0/env"
 )
 
-type Options struct {
-	ServerAddress  string `env:"ADDRESS"`
-	PollInterval   int    `env:"POLL_INTERVAL"`
-	ReportInterval int    `env:"REPORT_INTERVAL"`
-	Key            string `env:"KEY"`
-}
-
-func ParseOptions() (Options, error) {
-	var opt Options
+func ParseOptions() (models.OptionsAgent, error) {
+	var opt models.OptionsAgent
 
 	// Чтение параметра командной строки для интервала сбора метрик (по умолчанию 2 секунды)
 	flag.IntVar(&opt.PollInterval,
