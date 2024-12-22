@@ -6,10 +6,10 @@ import (
 )
 
 type Metrics struct {
-	ID    string   `json:"id"`              // имя метрики
+	ID    string   `json:"id"`              // Имя метрики
 	MType string   `json:"type"`            // параметр, принимающий значение gauge или counter
-	Delta *int64   `json:"delta,omitempty"` // значение метрики в случае передачи counter
-	Value *float64 `json:"value,omitempty"` // значение метрики в случае передачи gauge
+	Delta *int64   `json:"delta,omitempty"` // Значение метрики в случае передачи counter
+	Value *float64 `json:"value,omitempty"` // Значение метрики в случае передачи gauge
 }
 
 type Handler struct {
@@ -20,7 +20,6 @@ type Handler struct {
 const counterType = "counter"
 const gaugeType = "gauge"
 
-// Create new handler and previous reports info from file it needed
 func NewHandler() Handler {
 	var h Handler
 	h.Store = storage.New()

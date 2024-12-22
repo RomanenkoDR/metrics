@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/RomanenkoDR/metrics/internal/models"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"io"
 	"log"
@@ -12,9 +13,19 @@ import (
 	"strings"
 )
 
+var (
+	counterType = "counter"
+	gaugeType   = "gauge"
+)
+
 // sendRequest - вспомогательная функция для отправки HTTP-запроса на сервер
 func sendRequest(serverAddress string, data []byte) error {
 	// Сжимаем данные перед отправкой на сервер
+	var (
+		contentType = "application/json"
+		compression = "gzip"
+	)
+
 	compressedData, err := compress(data)
 	if err != nil {
 		return err
@@ -51,7 +62,7 @@ func sendRequest(serverAddress string, data []byte) error {
 }
 
 // sendReport - функция для отправки одной метрики
-func sendReport(serverAddress string, metrics Metrics) error {
+func sendReport(serverAddress string, metrics models.MetricsAgent) error {
 	// Преобразование структуры метрики в JSON
 	data, err := json.Marshal(metrics)
 	if err != nil {
@@ -61,7 +72,7 @@ func sendReport(serverAddress string, metrics Metrics) error {
 }
 
 // sendReportBatch - функция для отправки нескольких метрик (батч)
-func sendReportBatch(serverAddress string, metrics []Metrics) error {
+func sendReportBatch(serverAddress string, metrics []models.MetricsAgent) error {
 	// Преобразование списка метрик в JSON
 	data, err := json.Marshal(metrics)
 	if err != nil {
@@ -72,14 +83,14 @@ func sendReportBatch(serverAddress string, metrics []Metrics) error {
 
 // ProcessReport Обрабатываем все метрики и отправляем их по одной на сервер
 func ProcessReport(serverAddress string, m storage.MemStorage) error {
-	var metrics Metrics
+	var metrics models.MetricsAgent
 
 	// Формируем адрес для отправки метрик
 	serverAddress = strings.Join([]string{"http:/", serverAddress, "update/"}, "/")
 
 	// Отправляем каждую метрику типа counter на сервер
 	for k, v := range m.CounterData {
-		metrics = Metrics{ID: k, MType: counterType, Delta: v}
+		metrics = models.MetricsAgent{ID: k, MType: counterType, Delta: v}
 		log.Println(metrics)
 		err := sendReport(serverAddress, metrics)
 		if err != nil {
@@ -89,7 +100,7 @@ func ProcessReport(serverAddress string, m storage.MemStorage) error {
 
 	// Отправляем каждую метрику типа gauge на сервер
 	for k, v := range m.GaugeData {
-		metrics = Metrics{ID: k, MType: gaugeType, Value: v}
+		metrics = models.MetricsAgent{ID: k, MType: gaugeType, Value: v}
 		err := sendReport(serverAddress, metrics)
 		if err != nil {
 			return err
@@ -100,19 +111,19 @@ func ProcessReport(serverAddress string, m storage.MemStorage) error {
 
 // ProcessBatch Функция для отправки батча (пакета) метрик
 func ProcessBatch(ctx context.Context, serverAddress string, m storage.MemStorage) error {
-	var metrics []Metrics
+	var metrics []models.MetricsAgent
 
 	// Формируем адрес для батч-отправки метрик
 	serverAddress = strings.Join([]string{"http:/", serverAddress, "updates/"}, "/")
 
 	// Добавляем все метрики типа counter в список для отправки
 	for k, v := range m.CounterData {
-		metrics = append(metrics, Metrics{ID: k, MType: counterType, Delta: v})
+		metrics = append(metrics, models.MetricsAgent{ID: k, MType: counterType, Delta: v})
 	}
 
 	// Добавляем все метрики типа gauge в список для отправки
 	for k, v := range m.GaugeData {
-		metrics = append(metrics, Metrics{ID: k, MType: gaugeType, Value: v})
+		metrics = append(metrics, models.MetricsAgent{ID: k, MType: gaugeType, Value: v})
 	}
 
 	// Отправляем батч метрик на сервер
