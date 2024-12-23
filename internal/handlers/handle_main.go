@@ -8,7 +8,6 @@ import (
 // Return list with all the metrics
 
 func (h *Handler) HandleMain(w http.ResponseWriter, r *http.Request) {
-	//write static html page with all the items to the response; unsorted
 	body := `
         <!DOCTYPE html>
         <html>
