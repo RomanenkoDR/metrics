@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-type options struct {
+type Options struct {
 	ServerAddress  string `env:"ADDRESS"`
 	PollInterval   int    `env:"POLL_INTERVAL"`
 	ReportInterval int    `env:"REPORT_INTERVAL"`
@@ -16,29 +16,19 @@ type options struct {
 	Encrypt        bool
 }
 
-func ParseOptions() (options, error) {
-	var cfg options
+func ParseOptions() (Options, error) {
+	var cfg Options
 	cfg.Encrypt = false
 
-	flag.IntVar(&cfg.PollInterval,
-		"p",
-		2,
+	flag.IntVar(&cfg.PollInterval, "p", 2,
 		"Frequensy in seconds for collecting metrics")
-	flag.IntVar(&cfg.ReportInterval,
-		"r",
-		10,
+	flag.IntVar(&cfg.ReportInterval, "r", 10,
 		"Frequensy in seconds for sending report to the server")
-	flag.StringVar(&cfg.ServerAddress,
-		"a",
-		"localhost:8080",
+	flag.StringVar(&cfg.ServerAddress, "a", "localhost:8080",
 		"Address of the server to send metrics")
-	flag.StringVar(&cfg.Key,
-		"k",
-		"",
+	flag.StringVar(&cfg.Key, "k", "",
 		"Encryption key")
-	flag.IntVar(&cfg.RateLimit,
-		"l",
-		3,
+	flag.IntVar(&cfg.RateLimit, "l", 3,
 		"Rate Limit")
 	flag.Parse()
 

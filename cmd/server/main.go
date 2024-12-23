@@ -55,7 +55,7 @@ func main() {
 	}
 
 	if cfg.Restore {
-		err := store.RestoreData(&h.Store)
+		err := store.RestoreData(h.Store)
 		if err != nil {
 			log.Println("Could not restore data: ", err)
 		}

@@ -46,10 +46,3 @@ func (m *MemStorage) UpdateGauge(metric string, value Gauge) {
 func (m *MemStorage) UpdateCounter(metric string, value Counter) {
 	m.CounterData[metric] = m.CounterData[metric] + value
 }
-
-type StorageWriter interface {
-	Write(s MemStorage) error
-	RestoreData(s *MemStorage) error
-	Save(t int, s MemStorage) error
-	Close()
-}

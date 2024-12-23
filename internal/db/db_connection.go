@@ -3,7 +3,6 @@ package db
 import (
 	"context"
 	"github.com/jackc/pgx/v5"
-	"log"
 )
 
 type Database struct {
@@ -24,14 +23,11 @@ func Connect(connstring string) (Database, error) {
 		return db, err
 	}
 
-	log.Println("Connected to the database successfully")
-
 	err = db.createTables()
 	if err != nil {
 		return db, err
 	}
 
-	log.Println("Tables created or verified successfully")
 	return db, nil
 }
 

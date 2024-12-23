@@ -7,11 +7,10 @@ import (
 	"time"
 )
 
-// Retry функция принимает другую функцию Sender, количество попыток retries и задержку delay,
-// возвращает функцию того же типа,
-// которая выполняет sender с попытками повторов в случае неудачи.
-func Retry(sender sender, retries int, delay time.Duration) sender {
-	return func(ctx context.Context, cfg options, metricsCh chan storage.MemStorage) error {
+type Sender func(context.Context, Options, chan storage.MemStorage) error
+
+func Retry(sender Sender, retries int, delay time.Duration) Sender {
+	return func(ctx context.Context, cfg Options, metricsCh chan storage.MemStorage) error {
 		for r := 0; ; r++ {
 			err := sender(ctx, cfg, metricsCh)
 			if err == nil || r >= retries {
