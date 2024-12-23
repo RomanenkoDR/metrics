@@ -25,7 +25,6 @@ func (localfile *Localfile) cleanFile() error {
 }
 
 func (localfile *Localfile) Write(s MemStorage) error {
-	//clear file
 	err := localfile.cleanFile()
 	if err != nil {
 		return err
@@ -50,7 +49,6 @@ func (localfile *Localfile) Write(s MemStorage) error {
 }
 
 func (localfile *Localfile) RestoreData(s *MemStorage) error {
-	// Read saved metrics from file
 	f, err := os.OpenFile(localfile.Path, os.O_RDONLY|os.O_CREATE, 0666)
 	if err != nil {
 		return err

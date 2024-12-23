@@ -9,12 +9,12 @@ import (
 )
 
 func InitRouter(cfg server.Options, h handlers.Handler) (chi.Router, error) {
-	// Init rout for server
 	router := chi.NewRouter()
 	router.Use(logger.LogHandler)
-	router.Use(gzip.GzipHandle)
+	if cfg.Key != "" {
+		router.Use(gzip.GzipHandle)
+	}
 
-	// Get rout
 	router.Get("/", h.HandleMain)
 	router.Get("/ping", h.HandlePing)
 	router.Get("/value/gauge/{metric}", h.HandleValue)
