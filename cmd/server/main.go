@@ -15,111 +15,92 @@ import (
 )
 
 func main() {
-	log.Println("Запуск сервера...")
-	// Определяем переменную store, которая будет использоваться для хранения метрик
-	// либо База данных, либо файл
+	log.Println("Starting server...")
+	// Store variable will be used file or database to save metrics
 	var store storage.StorageWriter
 
-	// Парсим параметры командной строки и конфигурацию сервера
+	// Parse cli options into config
 	cfg, err := server.ParseOptions()
 	if err != nil {
 		panic(err)
 	}
 
-	// Логируем полученные параметры конфигурации
-	log.Println("Параметры сервера:", cfg)
+	log.Println("Params:", cfg)
 
-	// Создаём новый обработчик запросов (handler), который будет управлять маршрутами и логикой обработки
+	// Handler for router
 	h := handlers.NewHandler()
 
-	// Если в конфигурации указан DSN для подключения к базе данных, то подключаемся к базе
-	log.Println("Подключения к базе данных DBDSN сервера:", cfg.DBDSN)
+	// Identify wether use DB or file to save metrics
 	if cfg.DBDSN != "" {
-		// Логируем процесс подключения к базе данных
-		log.Println("Подключение к базе данных DSN:", cfg.DBDSN)
 		database, err := db.Connect(cfg.DBDSN)
 		if err != nil {
-			log.Fatalf("Ошибка подключения к базе данных: %v", err)
-		} else {
-			log.Println("Успешеное подключение к базе данных")
+			log.Println(err)
 		}
 
-		// Устанавливаем базу данных в качестве хранилища данных
+		// Use database as a store
 		store = &database
 
-		// Передаём подключение к базе данных в обработчик запросов
+		//Define DB for handlers
 		h.DBconn = database.Conn
 
 	} else {
-		// Если DSN для базы данных не указан, используем файл для хранения метрик
+		// use json file to store metrics
 		store = &storage.Localfile{Path: cfg.Filename}
 	}
 
-	// Инициализируем маршрутизатор с конфигурацией и хэндлером
+	// Init router
 	router, err := routers.InitRouter(cfg, h)
 	if err != nil {
 		panic(err)
 	}
 
-	// Если в конфигурации указан флаг "Restore", восстанавливаем данные из хранилища (файла или базы данных)
 	if cfg.Restore {
-		err := store.RestoreData(&h.Store)
-		// Логируем ошибку восстановления данных, если она произошла
+		err := store.RestoreData(h.Store)
 		if err != nil {
-			log.Println("Не удалось восстановить данные: ", err)
+			log.Println("Could not restore data: ", err)
 		}
 	}
 
-	// Запускаем горутину для периодической записи данных в хранилище (файл или БД).
-	// Интервал указывается в конфигурации.
+	// Write MemStorage to a store provider
+	// Interval used for file saving
 	go func() {
 		for {
 			store.Save(cfg.Interval, h.Store)
 		}
 	}()
 
-	// Определяем параметры HTTP-сервера
+	// Define server parameters
 	server := http.Server{
 		Addr:    cfg.Address,
 		Handler: router,
 	}
 
-	// Логируем, что сервер начал слушать входящие запросы на указанном адресе
-	log.Println("Входящие запросы по: ", cfg.Address)
-	log.Println("Запуск сервера ")
+	log.Println("Started. Running")
 
-	// Настройка корректного завершения работы сервера
-	idleConnectionsClosed := make(chan struct{}) // Канал для оповещения о закрытии всех соединений
+	// Graceful shutdown
+	idleConnectionsClosed := make(chan struct{})
 	go func() {
 		sigint := make(chan os.Signal, 1)
 		signal.Notify(sigint, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
-		<-sigint // Ожидаем поступления сигнала
-		// Логируем начало процесса завершения работы
-		log.Println("Остановка сервера")
+		<-sigint
+		log.Println("Shutting down server")
 
-		// Сохраняем оставшиеся данные перед завершением работы
 		if err := store.Write(h.Store); err != nil {
-			// Логируем ошибку, если не удалось сохранить данные
-			log.Printf("Ошибка сохранения даннных: %v", err)
+			log.Printf("Error during saving data to file: %v", err)
 		}
 
-		// Закрываем хранилище (файл или БД)
+		// Close file/db
 		defer store.Close()
 
-		// Завершаем работу HTTP-сервера
 		if err := server.Shutdown(context.Background()); err != nil {
-			// Логируем ошибку завершения сервера, если она произошла
-			log.Printf("Ошибка завершения работы HTTP сервера: %v", err)
+			log.Printf("HTTP Server Shutdown Error: %v", err)
 		}
-		// Оповещаем, что все соединения закрыты
 		close(idleConnectionsClosed)
 	}()
 
-	// Запускаем сервер для прослушивания входящих запросов
+	// Run server
 	log.Fatal(server.ListenAndServe())
 
-	// Ожидаем закрытия всех соединений перед завершением программы
 	<-idleConnectionsClosed
-	// Логируем завершение работы сервера
-	log.Println("Сервер остановлен")
+	log.Println("Server shutdown")
 }
