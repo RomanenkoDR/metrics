@@ -2,15 +2,16 @@ package agent
 
 import (
 	"context"
+	"github.com/RomanenkoDR/metrics/internal/models"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"log"
 	"time"
 )
 
-type Sender func(context.Context, Options, chan storage.MemStorage) error
+type Sender func(context.Context, models.ConfigAgent, chan storage.MemStorage) error
 
 func Retry(sender Sender, retries int, delay time.Duration) Sender {
-	return func(ctx context.Context, cfg Options, metricsCh chan storage.MemStorage) error {
+	return func(ctx context.Context, cfg models.ConfigAgent, metricsCh chan storage.MemStorage) error {
 		for r := 0; ; r++ {
 			err := sender(ctx, cfg, metricsCh)
 			if err == nil || r >= retries {

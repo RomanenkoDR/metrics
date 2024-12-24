@@ -5,6 +5,7 @@ import (
 	"compress/gzip"
 	"encoding/json"
 	"fmt"
+	"github.com/RomanenkoDR/metrics/internal/models"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"github.com/shirou/gopsutil/v3/cpu"
 	"github.com/shirou/gopsutil/v3/mem"
@@ -17,13 +18,6 @@ import (
 	"sync"
 	"time"
 )
-
-type Metrics struct {
-	ID    string          `json:"id"`    // имя метрики
-	MType string          `json:"type"`  // параметр, принимающий значение gauge или counter
-	Delta storage.Counter `json:"delta"` // значение метрики в случае передачи counter
-	Value storage.Gauge   `json:"value"` // значение метрики в случае передачи gauge
-}
 
 const contentType string = "application/json"
 const compression string = "gzip"
@@ -102,7 +96,7 @@ func compress(data []byte) ([]byte, error) {
 }
 
 // Send atomic metric report to the server
-func sendReport(serverAddress string, metrics Metrics) error {
+func sendReport(serverAddress string, metrics models.MetricsAgent) error {
 	data, err := json.Marshal(metrics)
 	if err != nil {
 		return err
@@ -143,13 +137,13 @@ func sendReport(serverAddress string, metrics Metrics) error {
 func ProcessReport(serverAddress string, m storage.MemStorage) error {
 	// metric type variable
 
-	var metrics Metrics
+	var metrics models.MetricsAgent
 
 	serverAddress = strings.Join([]string{"http:/", serverAddress, "update/"}, "/")
 
 	//send request to the server
 	for k, vmem := range m.CounterData {
-		metrics = Metrics{ID: k, MType: counterType, Delta: vmem}
+		metrics = models.MetricsAgent{ID: k, MType: counterType, Delta: vmem}
 		log.Println(metrics)
 		err := sendReport(serverAddress, metrics)
 		if err != nil {
@@ -158,7 +152,7 @@ func ProcessReport(serverAddress string, m storage.MemStorage) error {
 	}
 
 	for k, vmem := range m.GaugeData {
-		metrics = Metrics{ID: k, MType: gaugeType, Value: vmem}
+		metrics = models.MetricsAgent{ID: k, MType: gaugeType, Value: vmem}
 		err := sendReport(serverAddress, metrics)
 		if err != nil {
 			return err

@@ -13,7 +13,7 @@ import (
 
 func main() {
 	// Parse cli options
-	cfg, err := agent.ParseOptions()
+	cfg, err := agent.ParseOptionsAgent()
 	if err != nil {
 		panic(err)
 	}

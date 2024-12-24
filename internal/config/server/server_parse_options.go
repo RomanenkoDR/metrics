@@ -2,21 +2,13 @@ package server
 
 import (
 	"flag"
+	"github.com/RomanenkoDR/metrics/internal/models"
 
 	"github.com/caarlos0/env"
 )
 
-type Options struct {
-	Address  string `env:"ADDRESS"`
-	Interval int    `env:"STORE_INTERVAL"`
-	Filename string `env:"FILE_STORAGE_PATH"`
-	Restore  bool   `env:"RESTORE"`
-	DBDSN    string `env:"DATABASE_DSN"`
-	Key      string `env:"KEY"`
-}
-
-func ParseOptions() (Options, error) {
-	var cfg Options
+func ParseOptionsServer() (models.ConfigServer, error) {
+	var cfg models.ConfigServer
 
 	flag.StringVar(&cfg.Address,
 		"a", "localhost:8080",
@@ -31,15 +23,12 @@ func ParseOptions() (Options, error) {
 		"r", true,
 		"Restore metrics value from file")
 	flag.StringVar(&cfg.DBDSN,
-		"d", //fmt.Sprintf(
-		//"host=%s port=%d dbname=%s user=%s password=%s target_session_attrs=read-write",
-		//host, port, dbname, user, password),
-		"",
+		"d",
+		"postgres://postgres:postgres@localhost:5432/postgres?sslmode=disable",
 		"Connection string in Postgres format")
 	flag.StringVar(&cfg.Key, "k", "", "Sing key")
 	flag.Parse()
 
-	// get env vars
 	err := env.Parse(&cfg)
 	if err != nil {
 		return cfg, err

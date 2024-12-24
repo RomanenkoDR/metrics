@@ -2,22 +2,13 @@ package agent
 
 import (
 	"flag"
+	"github.com/RomanenkoDR/metrics/internal/models"
 	"github.com/caarlos0/env"
 	"strings"
 )
 
-type Options struct {
-	ServerAddress  string `env:"ADDRESS"`
-	PollInterval   int    `env:"POLL_INTERVAL"`
-	ReportInterval int    `env:"REPORT_INTERVAL"`
-	RateLimit      int    `env:"RATE_LIMIT"`
-	Key            string `env:"KEY"`
-	KeyByte        []byte
-	Encrypt        bool
-}
-
-func ParseOptions() (Options, error) {
-	var cfg Options
+func ParseOptionsAgent() (models.ConfigAgent, error) {
+	var cfg models.ConfigAgent
 	cfg.Encrypt = false
 
 	flag.IntVar(&cfg.PollInterval, "p", 2,

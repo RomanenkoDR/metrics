@@ -8,12 +8,13 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"github.com/RomanenkoDR/metrics/internal/models"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"io"
 	"net/http"
 )
 
-func sendBatchReport(cfg Options, metrics []Metrics) error {
+func sendBatchReport(cfg models.ConfigAgent, metrics []models.MetricsAgent) error {
 	var sha256sum string
 
 	data, err := json.Marshal(metrics)
@@ -65,19 +66,19 @@ func sendBatchReport(cfg Options, metrics []Metrics) error {
 	return nil
 }
 
-func ProcessBatch(ctx context.Context, cfg Options,
+func ProcessBatch(ctx context.Context, cfg models.ConfigAgent,
 	metricsCh chan storage.MemStorage) error {
-	var metrics []Metrics
+	var metrics []models.MetricsAgent
 
 	// Receive MemStorage with actual metrics
 	m := <-metricsCh
 
 	// Prepare structure to send to the server
 	for k, v := range m.CounterData {
-		metrics = append(metrics, Metrics{ID: k, MType: counterType, Delta: v})
+		metrics = append(metrics, models.MetricsAgent{ID: k, MType: counterType, Delta: v})
 	}
 	for k, v := range m.GaugeData {
-		metrics = append(metrics, Metrics{ID: k, MType: gaugeType, Value: v})
+		metrics = append(metrics, models.MetricsAgent{ID: k, MType: gaugeType, Value: v})
 	}
 
 	// Send report

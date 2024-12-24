@@ -6,7 +6,7 @@ import (
 	"github.com/RomanenkoDR/metrics/internal/db"
 	"github.com/RomanenkoDR/metrics/internal/handlers"
 	"github.com/RomanenkoDR/metrics/internal/routers"
-	storage "github.com/RomanenkoDR/metrics/internal/storage"
+	"github.com/RomanenkoDR/metrics/internal/storage"
 	"log"
 	"net/http"
 	"os"
@@ -18,7 +18,7 @@ func main() {
 	log.Println("Starting server...")
 	var store storage.StorageWriter
 
-	cfg, err := server.ParseOptions()
+	cfg, err := server.ParseOptionsServer()
 	if err != nil {
 		panic(err)
 	}
