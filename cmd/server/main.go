@@ -12,95 +12,87 @@ import (
 	"os"
 	"os/signal"
 	"syscall"
+	"time"
 )
 
 func main() {
 	log.Println("Starting server...")
-	// Store variable will be used file or database to save metrics
-	var store storage.StorageWriter
 
-	// Parse cli options into config
+	var store storage.WriterStorage
+
 	cfg, err := server.ParseOptions()
 	if err != nil {
 		panic(err)
 	}
 
-	log.Println("Params:", cfg)
+	log.Printf("Params: %+v", cfg)
 
-	// Handler for router
 	h := handlers.NewHandler()
 
-	// Identify wether use DB or file to save metrics
 	if cfg.DBDSN != "" {
 		database, err := db.Connect(cfg.DBDSN)
 		if err != nil {
-			log.Println(err)
+			log.Fatalf("Failed to connect to database: %v", err)
 		}
 
-		// Use database as a store
 		store = &database
-
-		//Define DB for handlers
 		h.DBconn = database.Conn
-
 	} else {
-		// use json file to store metrics
 		store = &storage.Localfile{Path: cfg.Filename}
 	}
 
-	// Init router
 	router, err := routers.InitRouter(cfg, h)
 	if err != nil {
 		panic(err)
 	}
 
 	if cfg.Restore {
-		err := store.RestoreData(h.Store)
+		log.Println("Restoring metrics from storage...")
+		err := store.RestoreData(&h.Store)
 		if err != nil {
-			log.Println("Could not restore data: ", err)
+			log.Printf("Could not restore data: %v", err)
 		}
 	}
 
-	// Write MemStorage to a store provider
-	// Interval used for file saving
 	go func() {
+		ticker := time.NewTicker(time.Second * time.Duration(cfg.Interval))
+		defer ticker.Stop()
 		for {
-			store.Save(cfg.Interval, h.Store)
+			select {
+			case <-ticker.C:
+				log.Println("Saving metrics to storage...")
+				if err := store.Save(cfg.Interval, h.Store); err != nil {
+					log.Printf("Error saving metrics: %v", err)
+				}
+			}
 		}
 	}()
 
-	// Define server parameters
 	server := http.Server{
 		Addr:    cfg.Address,
 		Handler: router,
 	}
 
-	log.Println("Started. Running")
+	log.Printf("Started server on %s", cfg.Address)
 
-	// Graceful shutdown
 	idleConnectionsClosed := make(chan struct{})
 	go func() {
 		sigint := make(chan os.Signal, 1)
 		signal.Notify(sigint, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
 		<-sigint
-		log.Println("Shutting down server")
 
+		log.Println("Shutting down server gracefully...")
 		if err := store.Write(h.Store); err != nil {
-			log.Printf("Error during saving data to file: %v", err)
+			log.Printf("Error saving data: %v", err)
 		}
-
-		// Close file/db
-		defer store.Close()
-
+		store.Close()
 		if err := server.Shutdown(context.Background()); err != nil {
-			log.Printf("HTTP Server Shutdown Error: %v", err)
+			log.Printf("HTTP server Shutdown Error: %v", err)
 		}
 		close(idleConnectionsClosed)
 	}()
 
-	// Run server
 	log.Fatal(server.ListenAndServe())
-
 	<-idleConnectionsClosed
 	log.Println("Server shutdown")
 }

@@ -1,9 +1,6 @@
-// Implements storing data in
 package storage
 
-import (
-	"fmt"
-)
+import "fmt"
 
 type Counter int64
 type Gauge float64
@@ -13,20 +10,27 @@ type MemStorage struct {
 	GaugeData   map[string]Gauge
 }
 
-// Write data to store
-func SaveData(m MemStorage, sw StorageWriter) error {
-	err := sw.Write(m)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
 func New() MemStorage {
 	return MemStorage{
 		CounterData: map[string]Counter{},
 		GaugeData:   map[string]Gauge{},
 	}
+}
+
+// Define methods to write/read data from different providers
+type WriterStorage interface {
+	Write(s MemStorage) error
+	RestoreData(s *MemStorage) error
+	Save(t int, s MemStorage) error
+	Close()
+}
+
+func SaveData(m MemStorage, sw WriterStorage) error {
+	err := sw.Write(m)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func (m *MemStorage) Get(metric string) (interface{}, error) {

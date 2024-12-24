@@ -5,6 +5,7 @@ import (
 	"github.com/RomanenkoDR/metrics/internal/handlers"
 	"github.com/RomanenkoDR/metrics/internal/middleware/gzip"
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
+	"github.com/RomanenkoDR/metrics/internal/middleware/token"
 	"github.com/go-chi/chi/v5"
 )
 
@@ -13,6 +14,10 @@ func InitRouter(cfg server.Options, h handlers.Handler) (chi.Router, error) {
 	router := chi.NewRouter()
 	router.Use(logger.LogHandler)
 	router.Use(gzip.GzipHandle)
+
+	if cfg.Key != "" {
+		router.Use(token.TokenCheckAuth(cfg.Key))
+	}
 
 	// Get rout
 	router.Get("/", h.HandleMain)

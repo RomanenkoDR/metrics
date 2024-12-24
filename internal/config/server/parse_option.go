@@ -7,10 +7,10 @@ import (
 )
 
 type Options struct {
-	Address  string `env:"ADDRESS"`
-	Interval int    `env:"STORE_INTERVAL"`
-	Filename string `env:"FILE_STORAGE_PATH"`
-	Restore  bool   `env:"RESTORE"`
+	Address  string `env:"ADDRESS" envDefault:"localhost:8080"`
+	Interval int    `env:"STORE_INTERVAL" envDefault:"300"`
+	Filename string `env:"FILE_STORAGE_PATH" envDefault:"/cmd/internal/storage/metrics-db.json"`
+	Restore  bool   `env:"RESTORE" envDefault:"true"`
 	DBDSN    string `env:"DATABASE_DSN"`
 	Key      string `env:"KEY"`
 }
