@@ -6,7 +6,7 @@ import (
 	"github.com/RomanenkoDR/metrics/internal/db"
 	"github.com/RomanenkoDR/metrics/internal/handlers"
 	"github.com/RomanenkoDR/metrics/internal/routers"
-	"github.com/RomanenkoDR/metrics/internal/storage"
+	storage "github.com/RomanenkoDR/metrics/internal/storage"
 	"log"
 	"net/http"
 	"os"
@@ -16,10 +16,8 @@ import (
 
 func main() {
 	log.Println("Starting server...")
-	// Store variable will be used file or database to save metrics
 	var store storage.StorageWriter
 
-	// Parse cli options into config
 	cfg, err := server.ParseOptions()
 	if err != nil {
 		panic(err)
@@ -27,28 +25,22 @@ func main() {
 
 	log.Println("Params:", cfg)
 
-	// Handler for router
 	h := handlers.NewHandler()
 
-	// Identify wether use DB or file to save metrics
 	if cfg.DBDSN != "" {
 		database, err := db.Connect(cfg.DBDSN)
 		if err != nil {
 			log.Println(err)
 		}
 
-		// Use database as a store
 		store = &database
 
-		//Define DB for handlers
 		h.DBconn = database.Conn
 
 	} else {
-		// use json file to store metrics
 		store = &storage.Localfile{Path: cfg.Filename}
 	}
 
-	// Init router
 	router, err := routers.InitRouter(cfg, h)
 	if err != nil {
 		panic(err)
@@ -61,15 +53,12 @@ func main() {
 		}
 	}
 
-	// Write MemStorage to a store provider
-	// Interval used for file saving
 	go func() {
 		for {
 			store.Save(cfg.Interval, h.Store)
 		}
 	}()
 
-	// Define server parameters
 	server := http.Server{
 		Addr:    cfg.Address,
 		Handler: router,
@@ -77,7 +66,6 @@ func main() {
 
 	log.Println("Started. Running")
 
-	// Graceful shutdown
 	idleConnectionsClosed := make(chan struct{})
 	go func() {
 		sigint := make(chan os.Signal, 1)
@@ -89,7 +77,6 @@ func main() {
 			log.Printf("Error during saving data to file: %v", err)
 		}
 
-		// Close file/db
 		defer store.Close()
 
 		if err := server.Shutdown(context.Background()); err != nil {
@@ -98,7 +85,6 @@ func main() {
 		close(idleConnectionsClosed)
 	}()
 
-	// Run server
 	log.Fatal(server.ListenAndServe())
 
 	<-idleConnectionsClosed

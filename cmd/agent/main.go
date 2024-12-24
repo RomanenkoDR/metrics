@@ -35,7 +35,6 @@ func main() {
 		}
 	}(time.Second * time.Duration(cfg.PollInterval))
 
-	// Send metrics to the server
 	for w := 1; w <= cfg.RateLimit; w++ {
 		go func(timer time.Duration) {
 			for {
