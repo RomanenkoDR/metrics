@@ -1,4 +1,4 @@
-// Implements storing data in RAM
+// Implements storing data in
 package storage
 
 import (
