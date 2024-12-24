@@ -13,14 +13,6 @@ type MemStorage struct {
 	GaugeData   map[string]Gauge
 }
 
-// Define methods to write/read data from different providers
-type StorageWriter interface {
-	Write(s MemStorage) error
-	RestoreData(s *MemStorage) error
-	Save(t int, s MemStorage) error
-	Close()
-}
-
 // Write data to store
 func SaveData(m MemStorage, sw StorageWriter) error {
 	err := sw.Write(m)
