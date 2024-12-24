@@ -49,7 +49,7 @@ func ParseOptions() (Options, error) {
 
 	// Парсинг флагов командной строки
 	flag.Parse()
-
+	Ï
 	// Получение значений из переменных окружения и их применение
 	err := env.Parse(&cfg)
 	if err != nil {
