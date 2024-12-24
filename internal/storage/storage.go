@@ -1,4 +1,4 @@
-// Implements storing data in RAM
+// Implements storing data in
 package storage
 
 import (
@@ -11,6 +11,15 @@ type Gauge float64
 type MemStorage struct {
 	CounterData map[string]Counter
 	GaugeData   map[string]Gauge
+}
+
+// Write data to store
+func SaveData(m MemStorage, sw StorageWriter) error {
+	err := sw.Write(m)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func New() MemStorage {

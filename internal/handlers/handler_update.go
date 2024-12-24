@@ -10,12 +10,10 @@ import (
 )
 
 func (h *Handler) HandleUpdate(w http.ResponseWriter, r *http.Request) {
-	// get context params
 	metricType := chi.URLParam(r, "type")
 	metric := chi.URLParam(r, "metric")
 	value := chi.URLParam(r, "value")
 
-	// find out metric type
 	switch metricType {
 	case counterType:
 		v, err := strconv.Atoi(value)
@@ -34,7 +32,6 @@ func (h *Handler) HandleUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// Handle JSON request to update metric value
 func (h *Handler) HandleUpdateJSON(w http.ResponseWriter, r *http.Request) {
 	var m Metrics
 	var buf bytes.Buffer

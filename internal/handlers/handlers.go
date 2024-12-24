@@ -20,7 +20,6 @@ type Handler struct {
 const counterType = "counter"
 const gaugeType = "gauge"
 
-// Create new handler and previous reports info from file it needed
 func NewHandler() Handler {
 	var h Handler
 	h.Store = storage.New()

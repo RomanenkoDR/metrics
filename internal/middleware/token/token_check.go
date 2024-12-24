@@ -10,7 +10,7 @@ import (
 	"net/http"
 )
 
-func AuthTokenCheck(key string) func(http.Handler) http.Handler {
+func TokenCheckAuth(key string) func(http.Handler) http.Handler {
 	return func(next http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			if r.Header.Get("HashSHA256") == "" {
