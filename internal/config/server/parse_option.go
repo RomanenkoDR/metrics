@@ -2,6 +2,7 @@ package server
 
 import (
 	"flag"
+
 	"github.com/caarlos0/env"
 )
 
@@ -30,12 +31,15 @@ func ParseOptions() (Options, error) {
 		"r", true,
 		"Restore metrics value from file")
 	flag.StringVar(&cfg.DBDSN,
-		"d",
+		"d", //fmt.Sprintf(
+		//"host=%s port=%d dbname=%s user=%s password=%s target_session_attrs=read-write",
+		//host, port, dbname, user, password),
 		"",
 		"Connection string in Postgres format")
 	flag.StringVar(&cfg.Key, "k", "", "Sing key")
 	flag.Parse()
 
+	// get env vars
 	err := env.Parse(&cfg)
 	if err != nil {
 		return cfg, err

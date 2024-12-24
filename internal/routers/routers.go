@@ -3,18 +3,18 @@ package routers
 import (
 	"github.com/RomanenkoDR/metrics/internal/config/server"
 	"github.com/RomanenkoDR/metrics/internal/handlers"
+	"github.com/RomanenkoDR/metrics/internal/middleware/gzip"
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
-	"github.com/RomanenkoDR/metrics/internal/middleware/token"
 	"github.com/go-chi/chi/v5"
 )
 
 func InitRouter(cfg server.Options, h handlers.Handler) (chi.Router, error) {
+	// Init rout for server
 	router := chi.NewRouter()
 	router.Use(logger.LogHandler)
-	if cfg.Key != "" {
-		router.Use(token.TokenCheckAuth(cfg.Key))
-	}
+	router.Use(gzip.GzipHandle)
 
+	// Get rout
 	router.Get("/", h.HandleMain)
 	router.Get("/ping", h.HandlePing)
 	router.Get("/value/gauge/{metric}", h.HandleValue)
