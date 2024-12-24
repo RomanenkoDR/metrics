@@ -1,6 +1,0 @@
-{"level":"info","ts":1727639098.722843,"msg":"uri /updates/ method POST status 200 duration 634.208µs size 23"}
-{"level":"info","ts":1727639108.720428,"msg":"uri /updates/ method POST status 200 duration 1.650542ms size 23"}
-{"level":"info","ts":1727639118.7378712,"msg":"uri /updates/ method POST status 200 duration 680.959µs size 23"}
-{"level":"info","ts":1727639128.7194061,"msg":"uri /updates/ method POST status 200 duration 1.255417ms size 23"}
-{"level":"info","ts":1727639138.721347,"msg":"uri /updates/ method POST status 200 duration 690.75µs size 23"}
-{"level":"info","ts":1727639148.720934,"msg":"uri /updates/ method POST status 200 duration 1.321042ms size 23"}

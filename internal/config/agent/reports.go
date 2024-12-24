@@ -2,43 +2,132 @@ package agent
 
 import (
 	"bytes"
-	"context"
+	"compress/gzip"
 	"encoding/json"
 	"fmt"
 	"github.com/RomanenkoDR/metrics/internal/storage"
+	"github.com/shirou/gopsutil/v3/cpu"
+	"github.com/shirou/gopsutil/v3/mem"
 	"io"
 	"log"
+	"math/rand/v2"
 	"net/http"
+	"runtime"
 	"strings"
+	"sync"
+	"time"
 )
 
-// sendRequest - вспомогательная функция для отправки HTTP-запроса на сервер
-func sendRequest(serverAddress string, data []byte) error {
-	// Сжимаем данные перед отправкой на сервер
-	compressedData, err := compress(data)
+type Metrics struct {
+	ID    string          `json:"id"`    // имя метрики
+	MType string          `json:"type"`  // параметр, принимающий значение gauge или counter
+	Delta storage.Counter `json:"delta"` // значение метрики в случае передачи counter
+	Value storage.Gauge   `json:"value"` // значение метрики в случае передачи gauge
+}
+
+const contentType string = "application/json"
+const compression string = "gzip"
+
+const counterType string = "counter"
+const gaugeType string = "gauge"
+
+// Renew metrics through runtime package
+func ReadMemStats(m *storage.MemStorage, metricsCh chan storage.MemStorage) {
+	var stat runtime.MemStats
+	var mu sync.RWMutex
+
+	mu.Lock()
+
+	runtime.ReadMemStats(&stat)
+	m.UpdateGauge("Alloc", storage.Gauge(stat.Alloc))
+	m.UpdateGauge("BuckHashSys", storage.Gauge(stat.BuckHashSys))
+	m.UpdateGauge("Frees", storage.Gauge(stat.Frees))
+	m.UpdateGauge("GCCPUFraction", storage.Gauge(stat.GCCPUFraction))
+	m.UpdateGauge("GCSys", storage.Gauge(stat.GCSys))
+	m.UpdateGauge("HeapAlloc", storage.Gauge(stat.HeapAlloc))
+	m.UpdateGauge("HeapIdle", storage.Gauge(stat.HeapIdle))
+	m.UpdateGauge("HeapInuse", storage.Gauge(stat.HeapInuse))
+	m.UpdateGauge("HeapObjects", storage.Gauge(stat.HeapObjects))
+	m.UpdateGauge("HeapReleased", storage.Gauge(stat.HeapReleased))
+	m.UpdateGauge("HeapSys", storage.Gauge(stat.HeapSys))
+	m.UpdateGauge("LastGC", storage.Gauge(stat.LastGC))
+	m.UpdateGauge("Lookups", storage.Gauge(stat.Lookups))
+	m.UpdateGauge("MCacheInuse", storage.Gauge(stat.MCacheInuse))
+	m.UpdateGauge("MCacheSys", storage.Gauge(stat.MCacheSys))
+	m.UpdateGauge("MSpanInuse", storage.Gauge(stat.MSpanInuse))
+	m.UpdateGauge("MSpanSys", storage.Gauge(stat.MSpanSys))
+	m.UpdateGauge("Mallocs", storage.Gauge(stat.Mallocs))
+	m.UpdateGauge("NextGC", storage.Gauge(stat.NextGC))
+	m.UpdateGauge("NumForcedGC", storage.Gauge(stat.NumForcedGC))
+	m.UpdateGauge("NumGC", storage.Gauge(stat.NumGC))
+	m.UpdateGauge("OtherSys", storage.Gauge(stat.OtherSys))
+	m.UpdateGauge("PauseTotalNs", storage.Gauge(stat.PauseTotalNs))
+	m.UpdateGauge("StackInuse", storage.Gauge(stat.StackInuse))
+	m.UpdateGauge("StackSys", storage.Gauge(stat.StackSys))
+	m.UpdateGauge("Sys", storage.Gauge(stat.Sys))
+	m.UpdateGauge("TotalAlloc", storage.Gauge(stat.TotalAlloc))
+	m.UpdateGauge("RandomValue", storage.Gauge(rand.Float32()))
+	m.UpdateCounter("PollCount", storage.Counter(1))
+
+	// gopsutil metrics
+	vmem, _ := mem.VirtualMemory()
+	cpu1, _ := cpu.Percent(time.Duration(0), true)
+
+	m.UpdateGauge("TotalMemory", storage.Gauge(vmem.Total))
+	m.UpdateGauge("FreeMemory", storage.Gauge(vmem.Free))
+	m.UpdateGauge("CPUutilization1", storage.Gauge(cpu1[0]))
+
+	mu.Unlock()
+
+	metricsCh <- *m
+}
+
+// Compress function profides fast compression
+// for requests to send to the server
+func compress(data []byte) ([]byte, error) {
+	var b bytes.Buffer
+	w, err := gzip.NewWriterLevel(&b, gzip.BestSpeed)
+	if err != nil {
+		return nil, fmt.Errorf("failed init compress writer: %vmem", err)
+	}
+	_, err = w.Write(data)
+	if err != nil {
+		return nil, fmt.Errorf("failed write data to compress temporary buffer: %vmem", err)
+	}
+	err = w.Close()
+	if err != nil {
+		return nil, fmt.Errorf("failed compress data: %vmem", err)
+	}
+	return b.Bytes(), nil
+}
+
+// Send atomic metric report to the server
+func sendReport(serverAddress string, metrics Metrics) error {
+	data, err := json.Marshal(metrics)
 	if err != nil {
 		return err
 	}
 
-	// Создание нового HTTP запроса типа POST с телом запроса в виде сжатого JSON
-	request, err := http.NewRequest("POST", serverAddress, bytes.NewBuffer(compressedData))
+	data, err = compress(data)
 	if err != nil {
 		return err
 	}
 
-	// Устанавливаем заголовки запроса: тип контента, кодировка и поддержка сжатия
+	request, err := http.NewRequest("POST", serverAddress, bytes.NewBuffer(data))
+	if err != nil {
+		return err
+	}
 	request.Header.Set("Content-Type", contentType)
 	request.Header.Set("Content-Encoding", compression)
 	request.Header.Set("Accept-Encoding", compression)
 
-	// Создаем HTTP клиент для выполнения запроса
 	client := &http.Client{}
 	resp, err := client.Do(request)
+
 	if err != nil {
 		return err
 	}
 
-	// Проверяем, успешно ли выполнен запрос (должен быть статус 200 OK)
 	if resp.StatusCode != http.StatusOK {
 		b, _ := io.ReadAll(resp.Body)
 		return fmt.Errorf("%s: %s; %s",
@@ -50,36 +139,17 @@ func sendRequest(serverAddress string, data []byte) error {
 	return nil
 }
 
-// sendReport - функция для отправки одной метрики
-func sendReport(serverAddress string, metrics Metrics) error {
-	// Преобразование структуры метрики в JSON
-	data, err := json.Marshal(metrics)
-	if err != nil {
-		return err
-	}
-	return sendRequest(serverAddress, data)
-}
-
-// sendReportBatch - функция для отправки нескольких метрик (батч)
-func sendReportBatch(serverAddress string, metrics []Metrics) error {
-	// Преобразование списка метрик в JSON
-	data, err := json.Marshal(metrics)
-	if err != nil {
-		return err
-	}
-	return sendRequest(serverAddress, data)
-}
-
-// ProcessReport Обрабатываем все метрики и отправляем их по одной на сервер
+// Process all the metrics and send them to the server one by one
 func ProcessReport(serverAddress string, m storage.MemStorage) error {
+	// metric type variable
+
 	var metrics Metrics
 
-	// Формируем адрес для отправки метрик
 	serverAddress = strings.Join([]string{"http:/", serverAddress, "update/"}, "/")
 
-	// Отправляем каждую метрику типа counter на сервер
-	for k, v := range m.CounterData {
-		metrics = Metrics{ID: k, MType: counterType, Delta: v}
+	//send request to the server
+	for k, vmem := range m.CounterData {
+		metrics = Metrics{ID: k, MType: counterType, Delta: vmem}
 		log.Println(metrics)
 		err := sendReport(serverAddress, metrics)
 		if err != nil {
@@ -87,38 +157,12 @@ func ProcessReport(serverAddress string, m storage.MemStorage) error {
 		}
 	}
 
-	// Отправляем каждую метрику типа gauge на сервер
-	for k, v := range m.GaugeData {
-		metrics = Metrics{ID: k, MType: gaugeType, Value: v}
+	for k, vmem := range m.GaugeData {
+		metrics = Metrics{ID: k, MType: gaugeType, Value: vmem}
 		err := sendReport(serverAddress, metrics)
 		if err != nil {
 			return err
 		}
-	}
-	return nil
-}
-
-// ProcessBatch Функция для отправки батча (пакета) метрик
-func ProcessBatch(ctx context.Context, serverAddress string, m storage.MemStorage) error {
-	var metrics []Metrics
-
-	// Формируем адрес для батч-отправки метрик
-	serverAddress = strings.Join([]string{"http:/", serverAddress, "updates/"}, "/")
-
-	// Добавляем все метрики типа counter в список для отправки
-	for k, v := range m.CounterData {
-		metrics = append(metrics, Metrics{ID: k, MType: counterType, Delta: v})
-	}
-
-	// Добавляем все метрики типа gauge в список для отправки
-	for k, v := range m.GaugeData {
-		metrics = append(metrics, Metrics{ID: k, MType: gaugeType, Value: v})
-	}
-
-	// Отправляем батч метрик на сервер
-	err := sendReportBatch(serverAddress, metrics)
-	if err != nil {
-		return err
 	}
 	return nil
 }

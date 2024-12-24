@@ -27,6 +27,7 @@ func (db *Database) Write(s storage.MemStorage) error {
 	return nil
 }
 
+// Write data on timer
 func (db *Database) Save(t int, s storage.MemStorage) error {
 	time.Sleep(time.Second * time.Duration(t))
 	return db.Write(s)
