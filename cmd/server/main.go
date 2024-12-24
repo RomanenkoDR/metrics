@@ -83,7 +83,7 @@ func main() {
 
 		log.Println("Shutting down server gracefully...")
 		if err := store.Write(h.Store); err != nil {
-			log.Printf("Error during saving data: %v", err)
+			log.Printf("Error saving data: %v", err)
 		}
 		store.Close()
 		if err := server.Shutdown(context.Background()); err != nil {
