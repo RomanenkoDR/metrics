@@ -18,7 +18,7 @@ func main() {
 	log.Println("Starting server...")
 	// Определяем переменную store, которая будет использоваться для хранения метрик
 	// либо База данных, либо файл
-	var store storage.StorageWriter
+	var store storage.WriterStorage
 
 	// Парсим параметры командной строки и конфигурацию сервера
 	cfg, err := server.ParseOptions()
