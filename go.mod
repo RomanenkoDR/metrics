@@ -1,6 +1,6 @@
 module github.com/RomanenkoDR/metrics
 
-go 1.23
+go 1.23.3
 
 require (
 	github.com/caarlos0/env v3.5.0+incompatible
