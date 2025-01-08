@@ -3,17 +3,22 @@ package agent
 import (
 	"flag"
 	"github.com/caarlos0/env"
+	"strings"
 )
 
 type Options struct {
 	ServerAddress  string `env:"ADDRESS"`
 	PollInterval   int    `env:"POLL_INTERVAL"`
 	ReportInterval int    `env:"REPORT_INTERVAL"`
+	RateLimit      int    `env:"RATE_LIMIT"`
 	Key            string `env:"KEY"`
+	KeyByte        []byte
+	Encrypt        bool
 }
 
 func ParseOptions() (Options, error) {
 	var opt Options
+	opt.Encrypt = false
 
 	// Чтение параметра командной строки для интервала сбора метрик (по умолчанию 2 секунды)
 	flag.IntVar(&opt.PollInterval,
@@ -39,8 +44,20 @@ func ParseOptions() (Options, error) {
 		"",
 		"Token auth by JWT")
 
+	flag.IntVar(&opt.RateLimit,
+		"l",
+		3,
+		"Rate Limit")
+
 	// Парсинг аргументов командной строки
 	flag.Parse()
+
+	opt.ServerAddress = strings.Join([]string{"http:/", opt.ServerAddress, "updates/"}, "/")
+
+	if opt.Key != "" {
+		opt.Encrypt = true
+		opt.KeyByte = []byte(opt.Key)
+	}
 
 	// Парсинг переменных окружения и их присвоение в структуру Options
 	err := env.Parse(&opt)

@@ -7,6 +7,11 @@ import (
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"math/rand/v2"
 	"runtime"
+	"sync"
+	"time"
+
+	"github.com/shirou/gopsutil/v3/cpu"
+	"github.com/shirou/gopsutil/v3/mem"
 )
 
 type Metrics struct {
@@ -23,9 +28,14 @@ const counterType string = "counter"
 const gaugeType string = "gauge"
 
 // Renew metrics through runtime package
-func ReadMemStats(m *storage.MemStorage) {
+func ReadMemStats(m *storage.MemStorage, metricsCh chan storage.MemStorage) {
 	var stat runtime.MemStats
+	var mu sync.RWMutex
+
+	mu.Lock()
+
 	runtime.ReadMemStats(&stat)
+
 	m.UpdateGauge("Alloc", storage.Gauge(stat.Alloc))
 	m.UpdateGauge("BuckHashSys", storage.Gauge(stat.BuckHashSys))
 	m.UpdateGauge("Frees", storage.Gauge(stat.Frees))
@@ -55,6 +65,17 @@ func ReadMemStats(m *storage.MemStorage) {
 	m.UpdateGauge("TotalAlloc", storage.Gauge(stat.TotalAlloc))
 	m.UpdateGauge("RandomValue", storage.Gauge(rand.Float32()))
 	m.UpdateCounter("PollCount", storage.Counter(1))
+
+	vmem, _ := mem.VirtualMemory()
+	cpu1, _ := cpu.Percent(time.Duration(0), true)
+
+	m.UpdateGauge("TotalMemory", storage.Gauge(vmem.Total))
+	m.UpdateGauge("FreeMemory", storage.Gauge(vmem.Free))
+	m.UpdateGauge("CPUutilization1", storage.Gauge(cpu1[0]))
+
+	mu.Unlock()
+
+	metricsCh <- *m
 }
 
 // Функция для сжатия данных с использованием gzip

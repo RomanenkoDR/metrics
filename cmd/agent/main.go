@@ -3,61 +3,61 @@ package main
 import (
 	"context"
 	"github.com/RomanenkoDR/metrics/internal/config/agent"
-	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/RomanenkoDR/metrics/internal/storage"
+	"log"
+	"os"
+	"os/signal"
+	"syscall"
 	"time"
 )
 
 func main() {
+	var cfg agent.Options
 	// Логируем старт приложения.
-	logger.DebugLogger.Sugar().Info("Начало основного приложения")
-
-	// Парсим параметры командной строки с помощью функции из пакета agent.
 	cfg, err := agent.ParseOptions()
 	if err != nil {
-		// Если произошла ошибка при парсинге, логируем фатальную ошибку и завершаем программу.
-		logger.DebugLogger.Sugar().Fatal("Ошибка разбора флагов: ", err)
+		panic(err)
 	}
 
-	if cfg.Key != "" {
-		agent.Encrypt = true
-		agent.Key = []byte(cfg.Key)
-	}
-
-	// Создаём тикеры для опроса с интервалами, указанными в конфигурации.
-	pollTicker := time.NewTicker(time.Second * time.Duration(cfg.PollInterval))
-	defer pollTicker.Stop()
-
-	// Создаём тикеры для отправки с интервалами, указанными в конфигурации.
-	reportTicker := time.NewTicker(time.Second * time.Duration(cfg.ReportInterval))
-	defer reportTicker.Stop()
-
-	// Инициализируем новое хранилище данных для метрик.
+	// Initiate new storage
 	m := storage.New()
 
-	// Логируем успешную инициализацию и начало основного цикла программы.
-	logger.DebugLogger.Sugar().Info("Инициализация хранилища успешна. Начало основной функции")
+	// Init channels
+	done := make(chan struct{})
+	metricsCh := make(chan storage.MemStorage, cfg.RateLimit)
+	defer close(metricsCh)
 
-	// Основной цикл программы, который работает вечно (пока не завершится).
-	for {
-		select {
-
-		case <-pollTicker.C:
-			logger.DebugLogger.Sugar().Debug("Вызываем сбор метрик")
-			// Вызываем функцию чтения метрик из памяти и сохраняем их в хранилище.
-			agent.ReadMemStats(&m)
-
-		case <-reportTicker.C:
-
-			logger.DebugLogger.Sugar().Debug("Вызываем отправку метрик")
-			// Оборачиваем функцию ProcessBatch в функцию Retry, с попытками повтора в случае неудачи.
-			fn := agent.Retry(agent.ProcessBatch, 3, 1*time.Second)
-			// Пытаемся отправить данные на сервер.
-			err := fn(context.Background(), cfg.ServerAddress, m)
-			// Если отправка не удалась после всех попыток, логируем ошибку.
-			if err != nil {
-				logger.DebugLogger.Sugar().Error("Не удалось обработать пакет batch: ", err)
-			}
+	// Collect data from MemStats and send to the server
+	// Gather facts
+	go func(timer time.Duration) {
+		for {
+			time.Sleep(timer)
+			agent.ReadMemStats(&m, metricsCh)
 		}
+	}(time.Second * time.Duration(cfg.PollInterval))
+
+	// Send metrics to the server
+	for w := 1; w <= cfg.RateLimit; w++ {
+		go func(timer time.Duration) {
+			for {
+				time.Sleep(timer)
+				fn := agent.Retry(agent.ProcessBatch, 3, 1*time.Second)
+				err := fn(context.Background(), cfg, metricsCh)
+				if err != nil {
+					log.Println(err)
+				}
+			}
+		}(time.Second * time.Duration(cfg.ReportInterval))
 	}
+
+	// Gracefull shutdown
+	go func() {
+		sigint := make(chan os.Signal, 1)
+		signal.Notify(sigint, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
+		<-sigint
+
+		close(done)
+	}()
+
+	<-done
 }
