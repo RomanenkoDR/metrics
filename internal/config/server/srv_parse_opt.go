@@ -2,12 +2,12 @@ package server
 
 import (
 	"flag"
-	"github.com/RomanenkoDR/metrics/internal/config/server/srvTypes"
+	"github.com/RomanenkoDR/metrics/internal/config/server/types"
 	"github.com/caarlos0/env"
 )
 
-func ParseOptions() (srvTypes.OptionsServer, error) {
-	var cfg srvTypes.OptionsServer
+func ParseOptions() (types.OptionsServer, error) {
+	var cfg types.OptionsServer
 
 	// Чтение флага "-a" для задания адреса сервера и порта
 	flag.StringVar(&cfg.Address,

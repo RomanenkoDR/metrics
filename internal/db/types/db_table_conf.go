@@ -1,4 +1,4 @@
-package dbTypes
+package types
 
 // TableConfig описывает конфигурацию для создания таблицы.
 type TableConfig struct {

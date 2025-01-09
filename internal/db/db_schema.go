@@ -1,10 +1,10 @@
 package db
 
-import "github.com/RomanenkoDR/metrics/internal/db/dbTypes"
+import "github.com/RomanenkoDR/metrics/internal/db/types"
 
 // TableConfigs возвращает конфигурации таблиц для базы данных.
-func tableConfigs() []dbTypes.TableConfig {
-	return []dbTypes.TableConfig{
+func tableConfigs() []types.TableConfig {
+	return []types.TableConfig{
 		{
 			Name: "gauge_metrics",
 			CreateQuery: `CREATE TABLE IF NOT EXISTS gauge_metrics (
