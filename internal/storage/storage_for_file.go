@@ -2,78 +2,93 @@ package storage
 
 import (
 	"encoding/json"
+	"errors"
+	"log"
 	"os"
 	"time"
 )
 
+// Localfile представляет хранилище данных в локальном файле.
 type Localfile struct {
 	Path string
 }
 
+// cleanFile очищает содержимое файла.
 func (localfile *Localfile) cleanFile() error {
-	f, err := os.OpenFile(localfile.Path, os.O_WRONLY|os.O_CREATE, 0666)
+	file, err := os.OpenFile(localfile.Path, os.O_WRONLY|os.O_CREATE, 0666)
 	if err != nil {
 		return err
 	}
-	defer f.Close()
+	defer file.Close()
 
-	err = f.Truncate(0)
-	if err != nil {
-		return err
-	}
-	return nil
+	return file.Truncate(0)
 }
 
+// Write записывает данные в файл.
 func (localfile *Localfile) Write(s MemStorage) error {
-	//clear file
-	err := localfile.cleanFile()
-	if err != nil {
+	// Очищаем файл перед записью.
+	if err := localfile.cleanFile(); err != nil {
+		log.Printf("Ошибка очистки файла: %v", err)
 		return err
 	}
 
-	f, err := os.OpenFile(localfile.Path, os.O_WRONLY|os.O_CREATE, 0666)
+	// Открываем файл для записи.
+	file, err := os.OpenFile(localfile.Path, os.O_WRONLY|os.O_CREATE, 0666)
 	if err != nil {
+		log.Printf("Ошибка открытия файла для записи: %v", err)
 		return err
 	}
-	defer f.Close()
+	defer file.Close()
 
+	// Кодируем данные в JSON и записываем в файл.
 	data, err := json.MarshalIndent(s, "", "  ")
 	if err != nil {
+		log.Printf("Ошибка кодирования данных: %v", err)
 		return err
 	}
 
-	_, err = f.Write(data)
-	if err != nil {
+	if _, err := file.Write(data); err != nil {
+		log.Printf("Ошибка записи данных в файл: %v", err)
 		return err
 	}
 	return nil
 }
 
+// RestoreData восстанавливает данные из файла.
 func (localfile *Localfile) RestoreData(s *MemStorage) error {
-	// Read saved metrics from file
-	f, err := os.OpenFile(localfile.Path, os.O_RDONLY|os.O_CREATE, 0666)
+	// Убедимся, что MemStorage инициализирован.
+	if s == nil {
+		return errors.New("memstorage is nil")
+	}
+
+	// Открываем файл для чтения.
+	file, err := os.OpenFile(localfile.Path, os.O_RDONLY|os.O_CREATE, 0666)
 	if err != nil {
+		log.Printf("Ошибка открытия файла для чтения: %v", err)
 		return err
 	}
-	defer f.Close()
+	defer file.Close()
 
-	decoder := json.NewDecoder(f)
-	err = decoder.Decode(&s)
-	if err != nil {
+	// Декодируем данные из файла в MemStorage.
+	decoder := json.NewDecoder(file)
+	if err := decoder.Decode(s); err != nil {
+		log.Printf("Ошибка декодирования данных из файла: %v", err)
 		return err
 	}
 	return nil
 }
 
+// Save сохраняет данные с указанным интервалом.
 func (localfile *Localfile) Save(t int, s MemStorage) error {
 	time.Sleep(time.Second * time.Duration(t))
-	err := localfile.Write(s)
-	if err != nil {
+	if err := localfile.Write(s); err != nil {
+		log.Printf("Ошибка сохранения данных: %v", err)
 		return err
 	}
 	return nil
 }
 
+// Close выполняет завершение работы с файлом (реализовано для интерфейса).
 func (localfile *Localfile) Close() {
-	//
+	log.Println("Localfile storage closed")
 }

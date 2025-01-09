@@ -1,42 +1,36 @@
-// Implements storing data in RAM
 package storage
 
 import (
-	"fmt"
+	"errors"
 )
 
+// Counter и Gauge представляют типы метрик.
 type Counter int64
 type Gauge float64
 
+// MemStorage хранит данные метрик в оперативной памяти.
 type MemStorage struct {
 	CounterData map[string]Counter
 	GaugeData   map[string]Gauge
 }
 
-// Define methods to write/read data from different providers
+// StorageWriter определяет интерфейс для работы с хранилищем.
 type StorageWriter interface {
-	Write(s MemStorage) error
-	RestoreData(s *MemStorage) error
-	Save(t int, s MemStorage) error
-	Close()
+	Write(s MemStorage) error        // Записывает данные.
+	RestoreData(s *MemStorage) error // Восстанавливает данные.
+	Save(t int, s MemStorage) error  // Сохраняет данные с интервалом.
+	Close()                          // Закрывает хранилище.
 }
 
-// Write data to store
-func SaveData(m MemStorage, sw StorageWriter) error {
-	err := sw.Write(m)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
+// New создает новый экземпляр MemStorage.
 func New() MemStorage {
 	return MemStorage{
-		CounterData: map[string]Counter{},
-		GaugeData:   map[string]Gauge{},
+		CounterData: make(map[string]Counter),
+		GaugeData:   make(map[string]Gauge),
 	}
 }
 
+// Get возвращает значение метрики по имени.
 func (m *MemStorage) Get(metric string) (interface{}, error) {
 	if v, ok := m.CounterData[metric]; ok {
 		return v, nil
@@ -44,22 +38,25 @@ func (m *MemStorage) Get(metric string) (interface{}, error) {
 	if v, ok := m.GaugeData[metric]; ok {
 		return v, nil
 	}
-	return "No such metric in memstorage", fmt.Errorf("metric not found")
-
+	return nil, errors.New("metric not found")
 }
 
+// GetAllCounters возвращает все метрики типа Counter.
 func (m *MemStorage) GetAllCounters() map[string]Counter {
 	return m.CounterData
 }
 
+// GetAllGauge возвращает все метрики типа Gauge.
 func (m *MemStorage) GetAllGauge() map[string]Gauge {
 	return m.GaugeData
 }
 
+// UpdateGauge обновляет значение метрики типа Gauge.
 func (m *MemStorage) UpdateGauge(metric string, value Gauge) {
 	m.GaugeData[metric] = value
 }
 
+// UpdateCounter обновляет значение метрики типа Counter.
 func (m *MemStorage) UpdateCounter(metric string, value Counter) {
-	m.CounterData[metric] = m.CounterData[metric] + value
+	m.CounterData[metric] += value
 }

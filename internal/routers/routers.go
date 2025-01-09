@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"github.com/RomanenkoDR/metrics/internal/config/server/types"
+	"github.com/RomanenkoDR/metrics/internal/config/server/srv_types"
 	"github.com/RomanenkoDR/metrics/internal/handlers"
 	"github.com/RomanenkoDR/metrics/internal/middleware/gzip"
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
@@ -9,7 +9,7 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-func setupMiddleware(router chi.Router, cfg types.OptionsServer) {
+func setupMiddleware(router chi.Router, cfg srv_types.OptionsServer) {
 	router.Use(logger.LogHandler)
 	router.Use(gzip.GzipHandle)
 	if cfg.Key != "" {
@@ -29,7 +29,7 @@ func setupRoutes(router chi.Router, h handlers.Handler) {
 	router.Post("/updates/", h.HandleUpdateBatch)
 }
 
-func InitRouter(cfg types.OptionsServer, h handlers.Handler) (chi.Router, error) {
+func InitRouter(cfg srv_types.OptionsServer, h handlers.Handler) (chi.Router, error) {
 	router := chi.NewRouter()
 
 	setupMiddleware(router, cfg)

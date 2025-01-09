@@ -8,7 +8,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
-	"github.com/RomanenkoDR/metrics/internal/config/agent/types"
+	"github.com/RomanenkoDR/metrics/internal/config/agent/agn_types"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"io"
 	"log"
@@ -18,7 +18,7 @@ import (
 )
 
 // startReporting отправляет собранные метрики на сервер
-func startReporting(ctx context.Context, cfg types.OptionsAgent, metricsCh chan storage.MemStorage, interval time.Duration) {
+func startReporting(ctx context.Context, cfg agn_types.OptionsAgent, metricsCh chan storage.MemStorage, interval time.Duration) {
 	ticker := time.NewTicker(interval)
 	defer ticker.Stop()
 
@@ -38,7 +38,7 @@ func startReporting(ctx context.Context, cfg types.OptionsAgent, metricsCh chan 
 }
 
 // sendReport - вспомогательная функция для отправки HTTP-запроса на сервер
-func sendReport(serverAddress string, metrics types.Metrics) error {
+func sendReport(serverAddress string, metrics agn_types.Metrics) error {
 	data, err := json.Marshal(metrics)
 	if err != nil {
 		return err
@@ -53,9 +53,9 @@ func sendReport(serverAddress string, metrics types.Metrics) error {
 	if err != nil {
 		return err
 	}
-	request.Header.Set("Content-Type", types.ContentType)
-	request.Header.Set("Content-Encoding", types.Compression)
-	request.Header.Set("Accept-Encoding", types.Compression)
+	request.Header.Set("Content-Type", agn_types.ContentType)
+	request.Header.Set("Content-Encoding", agn_types.Compression)
+	request.Header.Set("Accept-Encoding", agn_types.Compression)
 
 	client := &http.Client{}
 	resp, err := client.Do(request)
@@ -79,13 +79,13 @@ func sendReport(serverAddress string, metrics types.Metrics) error {
 func ProcessReport(serverAddress string, m storage.MemStorage) error {
 	// metric type variable
 
-	var metrics types.Metrics
+	var metrics agn_types.Metrics
 
 	serverAddress = strings.Join([]string{"http:/", serverAddress, "update/"}, "/")
 
 	//send request to the server
 	for k, vmem := range m.CounterData {
-		metrics = types.Metrics{ID: k, MType: types.CounterType, Delta: vmem}
+		metrics = agn_types.Metrics{ID: k, MType: agn_types.CounterType, Delta: vmem}
 		log.Println(metrics)
 		err := sendReport(serverAddress, metrics)
 		if err != nil {
@@ -94,7 +94,7 @@ func ProcessReport(serverAddress string, m storage.MemStorage) error {
 	}
 
 	for k, vmem := range m.GaugeData {
-		metrics = types.Metrics{ID: k, MType: types.GaugeType, Value: vmem}
+		metrics = agn_types.Metrics{ID: k, MType: agn_types.GaugeType, Value: vmem}
 		err := sendReport(serverAddress, metrics)
 		if err != nil {
 			return err
@@ -103,7 +103,7 @@ func ProcessReport(serverAddress string, m storage.MemStorage) error {
 	return nil
 }
 
-func sendBatchReport(cfg types.OptionsAgent, metrics []types.Metrics) error {
+func sendBatchReport(cfg agn_types.OptionsAgent, metrics []agn_types.Metrics) error {
 	var sha256sum string
 
 	data, err := json.Marshal(metrics)
@@ -133,9 +133,9 @@ func sendBatchReport(cfg types.OptionsAgent, metrics []types.Metrics) error {
 	// Redefine request content
 	request.Body = io.NopCloser(bytes.NewBuffer(data))
 
-	request.Header.Set("Content-Type", types.ContentType)
-	request.Header.Set("Content-Encoding", types.Compression)
-	request.Header.Set("Accept-Encoding", types.Compression)
+	request.Header.Set("Content-Type", agn_types.ContentType)
+	request.Header.Set("Content-Encoding", agn_types.Compression)
+	request.Header.Set("Accept-Encoding", agn_types.Compression)
 
 	client := &http.Client{}
 	resp, err := client.Do(request)
@@ -155,19 +155,19 @@ func sendBatchReport(cfg types.OptionsAgent, metrics []types.Metrics) error {
 	return nil
 }
 
-func ProcessBatch(ctx context.Context, cfg types.OptionsAgent,
+func ProcessBatch(ctx context.Context, cfg agn_types.OptionsAgent,
 	metricsCh chan storage.MemStorage) error {
-	var metrics []types.Metrics
+	var metrics []agn_types.Metrics
 
 	// Receive MemStorage with actual metrics
 	m := <-metricsCh
 
 	// Prepare structure to send to the server
 	for k, v := range m.CounterData {
-		metrics = append(metrics, types.Metrics{ID: k, MType: types.CounterType, Delta: v})
+		metrics = append(metrics, agn_types.Metrics{ID: k, MType: agn_types.CounterType, Delta: v})
 	}
 	for k, v := range m.GaugeData {
-		metrics = append(metrics, types.Metrics{ID: k, MType: types.GaugeType, Value: v})
+		metrics = append(metrics, agn_types.Metrics{ID: k, MType: agn_types.GaugeType, Value: v})
 	}
 
 	// Send report

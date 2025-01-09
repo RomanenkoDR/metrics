@@ -1,4 +1,4 @@
-package types
+package agn_types
 
 const ContentType string = "application/json"
 const Compression string = "gzip"

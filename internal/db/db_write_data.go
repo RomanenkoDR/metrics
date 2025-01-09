@@ -2,14 +2,20 @@ package db
 
 import (
 	"context"
+	"github.com/RomanenkoDR/metrics/internal/db/db_types"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"time"
 )
 
-func (db *Database) Write(s storage.MemStorage) error {
+// Write сохраняет или обновляет данные в базе данных.
+func Write(db *db_types.Database, s storage.MemStorage) error {
+	ctx := context.Background()
+
 	for k, v := range s.CounterData {
-		_, err := db.Conn.Exec(context.Background(),
-			`INSERT INTO counter_metrics (name, value, timestamp) VALUES ($1, $2, $3)`,
+		_, err := db.Conn.Exec(ctx,
+			`INSERT INTO counter_metrics (name, value, timestamp) 
+			 VALUES ($1, $2, $3) 
+			 ON CONFLICT (name) DO UPDATE SET value = $2, timestamp = $3`,
 			k, v, time.Now())
 		if err != nil {
 			return err
@@ -17,17 +23,15 @@ func (db *Database) Write(s storage.MemStorage) error {
 	}
 
 	for k, v := range s.GaugeData {
-		_, err := db.Conn.Exec(context.Background(),
-			`INSERT INTO gauge_metrics (name, value, timestamp) VALUES ($1, $2, $3)`,
+		_, err := db.Conn.Exec(ctx,
+			`INSERT INTO gauge_metrics (name, value, timestamp) 
+			 VALUES ($1, $2, $3) 
+			 ON CONFLICT (name) DO UPDATE SET value = $2, timestamp = $3`,
 			k, v, time.Now())
 		if err != nil {
 			return err
 		}
 	}
-	return nil
-}
 
-func (db *Database) Save(t int, s storage.MemStorage) error {
-	time.Sleep(time.Second * time.Duration(t))
-	return db.Write(s)
+	return nil
 }
