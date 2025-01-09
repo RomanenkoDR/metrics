@@ -14,19 +14,6 @@ import (
 	"github.com/shirou/gopsutil/v3/mem"
 )
 
-type Metrics struct {
-	ID    string          `json:"id"`    // имя метрики
-	MType string          `json:"type"`  // параметр, принимающий значение gauge или counter
-	Delta storage.Counter `json:"delta"` // значение метрики в случае передачи counter
-	Value storage.Gauge   `json:"value"` // значение метрики в случае передачи gauge
-}
-
-const contentType string = "application/json"
-const compression string = "gzip"
-
-const counterType string = "counter"
-const gaugeType string = "gauge"
-
 // Renew metrics through runtime package
 func ReadMemStats(m *storage.MemStorage, metricsCh chan storage.MemStorage) {
 	var stat runtime.MemStats

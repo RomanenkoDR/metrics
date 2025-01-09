@@ -2,6 +2,7 @@ package agent
 
 import (
 	"context"
+	"github.com/RomanenkoDR/metrics/internal/config/agent/types"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"log"
 	"os"
@@ -11,7 +12,7 @@ import (
 )
 
 func RunAgent() {
-	var cfg Options
+	var cfg types.OptionsAgent
 	// Логируем старт приложения.
 	cfg, err := ParseOptions()
 	if err != nil {

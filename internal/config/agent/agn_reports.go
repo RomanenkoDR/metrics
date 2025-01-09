@@ -8,6 +8,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
+	"github.com/RomanenkoDR/metrics/internal/config/agent/types"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"io"
 	"log"
@@ -30,9 +31,9 @@ func sendRequest(serverAddress string, data []byte) error {
 	}
 
 	// Устанавливаем заголовки запроса: тип контента, кодировка и поддержка сжатия
-	request.Header.Set("Content-Type", contentType)
-	request.Header.Set("Content-Encoding", compression)
-	request.Header.Set("Accept-Encoding", compression)
+	request.Header.Set("Content-Type", types.ContentType)
+	request.Header.Set("Content-Encoding", types.Compression)
+	request.Header.Set("Accept-Encoding", types.Compression)
 
 	// Создаем HTTP клиент для выполнения запроса
 	client := &http.Client{}
@@ -54,7 +55,7 @@ func sendRequest(serverAddress string, data []byte) error {
 }
 
 // sendReport - функция для отправки одной метрики
-func sendReport(serverAddress string, metrics Metrics) error {
+func sendReport(serverAddress string, metrics types.Metrics) error {
 	data, err := json.Marshal(metrics)
 	if err != nil {
 		return err
@@ -69,9 +70,9 @@ func sendReport(serverAddress string, metrics Metrics) error {
 	if err != nil {
 		return err
 	}
-	request.Header.Set("Content-Type", contentType)
-	request.Header.Set("Content-Encoding", compression)
-	request.Header.Set("Accept-Encoding", compression)
+	request.Header.Set("Content-Type", types.ContentType)
+	request.Header.Set("Content-Encoding", types.Compression)
+	request.Header.Set("Accept-Encoding", types.Compression)
 
 	client := &http.Client{}
 	resp, err := client.Do(request)
@@ -95,13 +96,13 @@ func sendReport(serverAddress string, metrics Metrics) error {
 func ProcessReport(serverAddress string, m storage.MemStorage) error {
 	// metric type variable
 
-	var metrics Metrics
+	var metrics types.Metrics
 
 	serverAddress = strings.Join([]string{"http:/", serverAddress, "update/"}, "/")
 
 	//send request to the server
 	for k, vmem := range m.CounterData {
-		metrics = Metrics{ID: k, MType: counterType, Delta: vmem}
+		metrics = types.Metrics{ID: k, MType: types.CounterType, Delta: vmem}
 		log.Println(metrics)
 		err := sendReport(serverAddress, metrics)
 		if err != nil {
@@ -110,7 +111,7 @@ func ProcessReport(serverAddress string, m storage.MemStorage) error {
 	}
 
 	for k, vmem := range m.GaugeData {
-		metrics = Metrics{ID: k, MType: gaugeType, Value: vmem}
+		metrics = types.Metrics{ID: k, MType: types.GaugeType, Value: vmem}
 		err := sendReport(serverAddress, metrics)
 		if err != nil {
 			return err
@@ -119,7 +120,7 @@ func ProcessReport(serverAddress string, m storage.MemStorage) error {
 	return nil
 }
 
-func sendBatchReport(cfg Options, metrics []Metrics) error {
+func sendBatchReport(cfg types.OptionsAgent, metrics []types.Metrics) error {
 	var sha256sum string
 
 	data, err := json.Marshal(metrics)
@@ -149,9 +150,9 @@ func sendBatchReport(cfg Options, metrics []Metrics) error {
 	// Redefine request content
 	request.Body = io.NopCloser(bytes.NewBuffer(data))
 
-	request.Header.Set("Content-Type", contentType)
-	request.Header.Set("Content-Encoding", compression)
-	request.Header.Set("Accept-Encoding", compression)
+	request.Header.Set("Content-Type", types.ContentType)
+	request.Header.Set("Content-Encoding", types.Compression)
+	request.Header.Set("Accept-Encoding", types.Compression)
 
 	client := &http.Client{}
 	resp, err := client.Do(request)
@@ -171,19 +172,19 @@ func sendBatchReport(cfg Options, metrics []Metrics) error {
 	return nil
 }
 
-func ProcessBatch(ctx context.Context, cfg Options,
+func ProcessBatch(ctx context.Context, cfg types.OptionsAgent,
 	metricsCh chan storage.MemStorage) error {
-	var metrics []Metrics
+	var metrics []types.Metrics
 
 	// Receive MemStorage with actual metrics
 	m := <-metricsCh
 
 	// Prepare structure to send to the server
 	for k, v := range m.CounterData {
-		metrics = append(metrics, Metrics{ID: k, MType: counterType, Delta: v})
+		metrics = append(metrics, types.Metrics{ID: k, MType: types.CounterType, Delta: v})
 	}
 	for k, v := range m.GaugeData {
-		metrics = append(metrics, Metrics{ID: k, MType: gaugeType, Value: v})
+		metrics = append(metrics, types.Metrics{ID: k, MType: types.GaugeType, Value: v})
 	}
 
 	// Send report
