@@ -1,4 +1,4 @@
-package srv_types
+package types
 
 type OptionsServer struct {
 	Address  string `env:"ADDRESS"`

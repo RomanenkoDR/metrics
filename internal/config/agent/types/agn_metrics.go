@@ -1,4 +1,4 @@
-package agn_types
+package types
 
 import "github.com/RomanenkoDR/metrics/internal/storage"
 
