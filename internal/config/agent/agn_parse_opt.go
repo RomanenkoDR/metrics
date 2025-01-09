@@ -2,22 +2,13 @@ package agent
 
 import (
 	"flag"
+	"github.com/RomanenkoDR/metrics/internal/config/agent/types"
 	"github.com/caarlos0/env"
 	"strings"
 )
 
-type Options struct {
-	ServerAddress  string `env:"ADDRESS"`
-	PollInterval   int    `env:"POLL_INTERVAL"`
-	ReportInterval int    `env:"REPORT_INTERVAL"`
-	RateLimit      int    `env:"RATE_LIMIT"`
-	Key            string `env:"KEY"`
-	KeyByte        []byte
-	Encrypt        bool
-}
-
-func ParseOptions() (Options, error) {
-	var opt Options
+func ParseOptions() (types.OptionsAgent, error) {
+	var opt types.OptionsAgent
 	opt.Encrypt = false
 
 	// Чтение параметра командной строки для интервала сбора метрик (по умолчанию 2 секунды)

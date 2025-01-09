@@ -1,7 +1,7 @@
 package routers
 
 import (
-	"github.com/RomanenkoDR/metrics/internal/config/server"
+	"github.com/RomanenkoDR/metrics/internal/config/server/types"
 	"github.com/RomanenkoDR/metrics/internal/handlers"
 	"github.com/RomanenkoDR/metrics/internal/middleware/gzip"
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
@@ -9,7 +9,7 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-func InitRouter(cfg server.Options, h handlers.Handler) (chi.Router, error) {
+func InitRouter(cfg types.OptionsServer, h handlers.Handler) (chi.Router, error) {
 	// Init rout for server
 	router := chi.NewRouter()
 
