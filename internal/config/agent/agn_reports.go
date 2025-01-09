@@ -14,47 +14,30 @@ import (
 	"log"
 	"net/http"
 	"strings"
+	"time"
 )
 
-// sendRequest - вспомогательная функция для отправки HTTP-запроса на сервер
-func sendRequest(serverAddress string, data []byte) error {
-	// Сжимаем данные перед отправкой на сервер
-	compressedData, err := compress(data)
-	if err != nil {
-		return err
-	}
+// startReporting отправляет собранные метрики на сервер
+func startReporting(ctx context.Context, cfg types.OptionsAgent, metricsCh chan storage.MemStorage, interval time.Duration) {
+	ticker := time.NewTicker(interval)
+	defer ticker.Stop()
 
-	// Создание нового HTTP запроса типа POST с телом запроса в виде сжатого JSON
-	request, err := http.NewRequest("POST", serverAddress, bytes.NewBuffer(compressedData))
-	if err != nil {
-		return err
+	for {
+		select {
+		case <-ctx.Done():
+			log.Println("Остановка отправки метрик...")
+			return
+		case <-ticker.C:
+			fn := Retry(ProcessBatch, 3, 1*time.Second)
+			err := fn(ctx, cfg, metricsCh)
+			if err != nil {
+				log.Printf("Ошибка при отправке метрик: %v", err)
+			}
+		}
 	}
-
-	// Устанавливаем заголовки запроса: тип контента, кодировка и поддержка сжатия
-	request.Header.Set("Content-Type", types.ContentType)
-	request.Header.Set("Content-Encoding", types.Compression)
-	request.Header.Set("Accept-Encoding", types.Compression)
-
-	// Создаем HTTP клиент для выполнения запроса
-	client := &http.Client{}
-	resp, err := client.Do(request)
-	if err != nil {
-		return err
-	}
-
-	// Проверяем, успешно ли выполнен запрос (должен быть статус 200 OK)
-	if resp.StatusCode != http.StatusOK {
-		b, _ := io.ReadAll(resp.Body)
-		return fmt.Errorf("%s: %s; %s",
-			"Can't send report to the server",
-			resp.Status,
-			b)
-	}
-	defer resp.Body.Close()
-	return nil
 }
 
-// sendReport - функция для отправки одной метрики
+// sendReport - вспомогательная функция для отправки HTTP-запроса на сервер
 func sendReport(serverAddress string, metrics types.Metrics) error {
 	data, err := json.Marshal(metrics)
 	if err != nil {

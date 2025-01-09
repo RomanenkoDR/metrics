@@ -2,62 +2,61 @@ package agent
 
 import (
 	"context"
-	"github.com/RomanenkoDR/metrics/internal/config/agent/types"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"log"
-	"os"
-	"os/signal"
-	"syscall"
+	"sync"
 	"time"
 )
 
+// RunAgent запускает выполнение агента.
+// Основная функция запускает сбор и отправку метрик, управляет завершением работы через graceful shutdown.
 func RunAgent() {
-	var cfg types.OptionsAgent
-	// Логируем старт приложения.
+	// Парсим конфигурацию
 	cfg, err := ParseOptions()
 	if err != nil {
-		panic(err)
+		log.Fatalf("Ошибка парсинга конфигурации: %v", err)
 	}
 
-	// Initiate new storage
+	// Инициализация хранилища метрик
 	m := storage.New()
 
-	// Init channels
-	done := make(chan struct{})
+	// Инициализация контекста для управления горутинами
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	// Каналы для передачи метрик
 	metricsCh := make(chan storage.MemStorage, cfg.RateLimit)
 	defer close(metricsCh)
 
-	// Collect data from MemStats and send to the server
-	// Gather facts
-	go func(timer time.Duration) {
-		for {
-			time.Sleep(timer)
-			ReadMemStats(&m, metricsCh)
-		}
-	}(time.Second * time.Duration(cfg.PollInterval))
+	// WaitGroup для ожидания завершения всех горутин
+	var wg sync.WaitGroup
 
-	// Send metrics to the server
-	for w := 1; w <= cfg.RateLimit; w++ {
-		go func(timer time.Duration) {
-			for {
-				time.Sleep(timer)
-				fn := Retry(ProcessBatch, 3, 1*time.Second)
-				err := fn(context.Background(), cfg, metricsCh)
-				if err != nil {
-					log.Println(err)
-				}
-			}
-		}(time.Second * time.Duration(cfg.ReportInterval))
-	}
-
-	// Gracefull shutdown
+	// Запуск горутины для сбора метрик через runtime
+	wg.Add(1)
 	go func() {
-		sigint := make(chan os.Signal, 1)
-		signal.Notify(sigint, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
-		<-sigint
-
-		close(done)
+		defer wg.Done()
+		startCollecting(ctx, m, metricsCh, time.Second*time.Duration(cfg.PollInterval))
 	}()
 
-	<-done
+	// Запуск горутины для сбора системных метрик через gopsutil
+	wg.Add(1)
+	go func() {
+		defer wg.Done()
+		startSystemMetricsCollecting(ctx, m, time.Second*time.Duration(cfg.PollInterval))
+	}()
+
+	// Запуск горутин для отправки метрик на сервер
+	for w := 1; w <= cfg.RateLimit; w++ {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			startReporting(ctx, cfg, metricsCh, time.Second*time.Duration(cfg.ReportInterval))
+		}()
+	}
+
+	// Ожидание сигнала завершения работы
+	waitForShutdown(cancel)
+
+	// Ожидание завершения всех горутин
+	wg.Wait()
 }
