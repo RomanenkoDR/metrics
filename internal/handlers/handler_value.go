@@ -20,7 +20,6 @@ func (h *Handler) HandleValue(w http.ResponseWriter, r *http.Request) {
 // Handle JSON request to return value
 func (h *Handler) HandleValueJSON(w http.ResponseWriter, r *http.Request) {
 	var m Metrics
-
 	decoder := json.NewDecoder(r.Body)
 	err := decoder.Decode(&m)
 	if err != nil {

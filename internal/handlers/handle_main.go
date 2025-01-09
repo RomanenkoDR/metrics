@@ -1,43 +1,39 @@
 package handlers
 
 import (
-	"fmt"
+	"html/template"
 	"net/http"
+
+	"github.com/RomanenkoDR/metrics/internal/storage"
 )
 
-// Return list with all the metrics
+type MetricsData struct {
+	Gauges   map[string]storage.Gauge
+	Counters map[string]storage.Counter
+}
 
+// HandleMain рендерит HTML-шаблон с метриками.
 func (h *Handler) HandleMain(w http.ResponseWriter, r *http.Request) {
-	//write static html page with all the items to the response; unsorted
-	body := `
-        <!DOCTYPE html>
-        <html>
-            <head>
-                <title>All tuples</title>
-            </head>
-            <body>
-            <table>
-                <tr>
-                    <td>Metric</td>
-                    <td>Value</td>
-                </tr>
-    `
-	listC := h.Store.GetAllCounters()
-	for k, v := range listC {
-		body = body + fmt.Sprintf("<tr>\n<td>%s</td>\n", k)
-		body = body + fmt.Sprintf("<td>%v</td>\n</tr>\n", v)
+	// Путь к HTML-шаблону
+	templatePath := "template/template.html"
+
+	// Загрузка шаблона
+	tmpl, err := template.ParseFiles(templatePath)
+	if err != nil {
+		http.Error(w, "Ошибка загрузки шаблона", http.StatusInternalServerError)
+		return
 	}
 
-	listG := h.Store.GetAllGauge()
-	for k, v := range listG {
-		body = body + fmt.Sprintf("<tr>\n<td>%s</td>\n", k)
-		body = body + fmt.Sprintf("<td>%v</td>\n</tr>\n", v)
+	// Подготовка данных для рендера
+	data := MetricsData{
+		Gauges:   h.Store.GetAllGauge(),
+		Counters: h.Store.GetAllCounters(),
 	}
 
-	body = body + " </table>\n </body>\n</html>"
-
-	// respond to agent
+	// Установка заголовков и рендер шаблона
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	w.WriteHeader(http.StatusOK)
-	w.Write([]byte(body))
+	if err := tmpl.Execute(w, data); err != nil {
+		http.Error(w, "Ошибка рендеринга шаблона", http.StatusInternalServerError)
+		return
+	}
 }
