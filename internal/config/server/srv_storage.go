@@ -18,7 +18,7 @@ func setupStorage(cfg srv_types.OptionsServer) (storage.StorageWriter, error) {
 			return nil, err
 		}
 		logger.DebugLogger.Info("Успешное подключение к базе данных")
-		return database, nil // database теперь соответствует интерфейсу StorageWriter
+		return database, nil // Возвращаем указатель, который реализует StorageWriter
 	}
 
 	logger.DebugLogger.Info("Используется локальное файловое хранилище", zap.String("file", cfg.Filename))

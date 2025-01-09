@@ -10,31 +10,24 @@ type Database struct {
 	Conn *pgx.Conn
 }
 
-func Connect(connstring string) (Database, error) {
-	var db Database
-
+// Connect устанавливает подключение к базе данных.
+func Connect(connstring string) (*Database, error) {
 	ctx := context.Background()
 	connConfig, err := pgx.ParseConfig(connstring)
 	if err != nil {
-		return db, err
+		return nil, err
 	}
 
-	db.Conn, err = pgx.ConnectConfig(ctx, connConfig)
+	conn, err := pgx.ConnectConfig(ctx, connConfig)
 	if err != nil {
-		return db, err
+		return nil, err
 	}
 
 	log.Println("Connected to the database successfully")
-
-	err = db.createTables()
-	if err != nil {
-		return db, err
-	}
-
-	log.Println("Tables created or verified successfully")
-	return db, nil
+	return &Database{Conn: conn}, nil // Возвращаем указатель
 }
 
+// Close завершает соединение с базой данных.
 func (db *Database) Close() {
 	db.Conn.Close(context.Background())
 }
