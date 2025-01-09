@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/RomanenkoDR/metrics/internal/config/server/types"
+	"github.com/RomanenkoDR/metrics/internal/config/server/srvTypes"
 	"github.com/RomanenkoDR/metrics/internal/db"
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/RomanenkoDR/metrics/internal/storage"
@@ -9,7 +9,7 @@ import (
 )
 
 // setupStorage настраивает хранилище данных (файл или база данных).
-func setupStorage(cfg types.OptionsServer) (storage.StorageWriter, error) {
+func setupStorage(cfg srvTypes.OptionsServer) (storage.StorageWriter, error) {
 	if cfg.DBDSN != "" {
 		logger.DebugLogger.Info("Подключение к базе данных", zap.String("dsn", cfg.DBDSN))
 		database, err := db.Connect(cfg.DBDSN)

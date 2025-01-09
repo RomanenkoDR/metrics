@@ -2,13 +2,13 @@ package agent
 
 import (
 	"flag"
-	"github.com/RomanenkoDR/metrics/internal/config/agent/types"
+	"github.com/RomanenkoDR/metrics/internal/config/agent/agnTypes"
 	"github.com/caarlos0/env"
 	"strings"
 )
 
-func ParseOptions() (types.OptionsAgent, error) {
-	var opt types.OptionsAgent
+func ParseOptions() (agnTypes.OptionsAgent, error) {
+	var opt agnTypes.OptionsAgent
 	opt.Encrypt = false
 
 	// Чтение параметра командной строки для интервала сбора метрик (по умолчанию 2 секунды)

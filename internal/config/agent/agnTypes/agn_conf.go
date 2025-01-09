@@ -1,4 +1,4 @@
-package types
+package agnTypes
 
 type OptionsAgent struct {
 	ServerAddress  string `env:"ADDRESS"`
