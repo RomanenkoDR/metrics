@@ -14,7 +14,7 @@ type Options struct {
 	Key      string `env:"KEY"`
 }
 
-func ParseOptions() (Options, error) {
+func parseOptions() (Options, error) {
 	var cfg Options
 
 	// Чтение флага "-a" для задания адреса сервера и порта
