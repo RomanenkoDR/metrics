@@ -31,7 +31,7 @@ func (h *Handler) HandleMain(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Установка заголовков и рендер шаблона
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 	if err := tmpl.Execute(w, data); err != nil {
 		http.Error(w, "Ошибка рендеринга шаблона", http.StatusInternalServerError)
 		return
