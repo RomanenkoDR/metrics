@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	agent.RunAgent()
+	agent.Run()
 }

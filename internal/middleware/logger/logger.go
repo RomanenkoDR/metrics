@@ -9,19 +9,23 @@ import (
 	"go.uber.org/zap/zapcore"
 )
 
-type responseData struct {
-	status int
-	size   int
-}
+type (
+	responseData struct {
+		status int
+		size   int
+	}
 
-type loggingResponseWriter struct {
-	http.ResponseWriter
-	responseData *responseData
-}
+	loggingResponseWriter struct {
+		http.ResponseWriter
+		responseData *responseData
+	}
+)
 
 const logfile string = "./info.log"
 
-var DebugLogger *zap.Logger
+var (
+	DebugLogger *zap.Logger
+)
 
 // Инициализация логгера
 func init() {
