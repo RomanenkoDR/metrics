@@ -16,14 +16,18 @@ type Metrics struct {
 	Value storage.Gauge   `json:"value"` // значение метрики в случае передачи gauge
 }
 
-const contentType string = "application/json"
-const compression string = "gzip"
+const (
+	contentTypeAppJSON string = "application/json"
 
-const counterType string = "counter"
-const gaugeType string = "gauge"
+	compression string = "gzip"
 
-// Renew metrics through runtime package
+	counterType string = "counter"
+	gaugeType   string = "gauge"
+)
+
+// ReadMemStats Renew metrics through runtime package
 func ReadMemStats(m *storage.MemStorage) {
+
 	var stat runtime.MemStats
 	runtime.ReadMemStats(&stat)
 	m.UpdateGauge("Alloc", storage.Gauge(stat.Alloc))

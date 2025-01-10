@@ -4,8 +4,10 @@ import (
 	"context"
 	"github.com/RomanenkoDR/metrics/internal/db"
 	"github.com/RomanenkoDR/metrics/internal/handlers"
+	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/RomanenkoDR/metrics/internal/routers"
 	"github.com/RomanenkoDR/metrics/internal/storage"
+	"go.uber.org/zap"
 	"log"
 	"net/http"
 	"os"
@@ -14,10 +16,10 @@ import (
 )
 
 func Run() {
+	// Логируем старт сервера
+	logger.Info("Запуск сервера...")
 
-	log.Println("Запуск сервера...")
-	// Определяем переменную store, которая будет использоваться для хранения метрик
-	// либо База данных, либо файл
+	// Объявляем переменную для хранилища данных
 	var store storage.StorageWriter
 
 	// Парсим параметры командной строки и конфигурацию сервера
@@ -27,7 +29,7 @@ func Run() {
 	}
 
 	// Логируем полученные параметры конфигурации
-	log.Println("Параметры сервера:", cfg)
+	log.Println("Параметры конфигурации сервера: ", zap.Any("metrics", cfg))
 
 	// Создаём новый обработчик запросов (handler), который будет управлять маршрутами и логикой обработки
 	h := handlers.NewHandler()
@@ -41,7 +43,7 @@ func Run() {
 		if err != nil {
 			log.Fatalf("Ошибка подключения к базе данных: %v", err)
 		} else {
-			log.Println("Успешеное подключение к базе данных")
+			logger.Info("Успешное подключение к базе данных")
 		}
 
 		// Устанавливаем базу данных в качестве хранилища данных

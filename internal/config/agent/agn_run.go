@@ -2,6 +2,7 @@ package agent
 
 import (
 	"context"
+	"go.uber.org/zap"
 	"time"
 
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
@@ -10,12 +11,12 @@ import (
 
 func Run() {
 	// Логируем старт приложения
-	logger.DebugLogger.Sugar().Info("Начало основного приложения")
+	logger.Info("Начало основного приложения")
 
 	// Парсим параметры конфигурации
 	cfg, err := ParseOptions()
 	if err != nil {
-		logger.DebugLogger.Sugar().Fatal("Ошибка разбора флагов: ", err)
+		logger.Fatal("Ошибка разбора флагов: ", zap.Any("err", err))
 	}
 
 	if cfg.Key != "" {
@@ -32,22 +33,23 @@ func Run() {
 
 	// Инициализируем хранилище метрик
 	memStorage := storage.New()
-	logger.DebugLogger.Sugar().Info("Инициализация хранилища успешна. Начало работы")
+	logger.Info("Инициализация хранилища успешна. Начало работы")
 
 	// Запускаем основной цикл
 	for {
 		select {
 		case <-pollTicker.C:
-			logger.DebugLogger.Sugar().Debug("Сбор метрик")
+			logger.Debug("Сбор метрик")
 			ReadMemStats(&memStorage)
 
 		case <-reportTicker.C:
-			logger.DebugLogger.Sugar().Debug("Отправка метрик")
+			logger.Debug("Отправка метрик")
 			send := Retry(ProcessBatch, 3, 1*time.Second)
 			err := send(context.Background(), cfg.ServerAddress, memStorage)
 			if err != nil {
 				logger.DebugLogger.Sugar().Error("Не удалось обработать пакет метрик: ", err)
 			}
+			logger.Info("Метрики отправлены на сервер")
 		}
 	}
 }

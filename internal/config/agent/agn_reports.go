@@ -27,7 +27,7 @@ func sendRequest(serverAddress string, data []byte) error {
 	}
 
 	// Устанавливаем заголовки запроса: тип контента, кодировка и поддержка сжатия
-	request.Header.Set("Content-Type", contentType)
+	request.Header.Set("Content-Type", contentTypeAppJSON)
 	request.Header.Set("Content-Encoding", compression)
 	request.Header.Set("Accept-Encoding", compression)
 
@@ -90,6 +90,7 @@ func ProcessReport(serverAddress string, m storage.MemStorage) error {
 	// Отправляем каждую метрику типа gauge на сервер
 	for k, v := range m.GaugeData {
 		metrics = Metrics{ID: k, MType: gaugeType, Value: v}
+		log.Println(metrics)
 		err := sendReport(serverAddress, metrics)
 		if err != nil {
 			return err
