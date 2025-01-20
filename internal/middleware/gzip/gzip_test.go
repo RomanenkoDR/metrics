@@ -3,7 +3,7 @@ package gzip
 import (
 	"bytes"
 	"compress/gzip"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"testing"
@@ -48,7 +48,7 @@ func TestGzipHandleCompress(t *testing.T) {
 	}
 	defer gzReader.Close()
 
-	uncompressedBody, err := ioutil.ReadAll(gzReader)
+	uncompressedBody, err := io.ReadAll(gzReader)
 	if err != nil {
 		t.Fatalf("Failed to read gzipped body: %v", err)
 	}
