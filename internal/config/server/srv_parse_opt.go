@@ -42,7 +42,7 @@ func ParseOptions() (types.OptionsServer, error) {
 	// Чтение флага "-d" для задания строки подключения к базе данных
 	flag.StringVar(&cfg.DBDSN,
 		"d",
-		"",
+		"postgres://postgres:password@localhost:5432/postgres?sslmode=disable",
 		"Connection string in Postgres format")
 
 	// Парсинг флагов командной строки
