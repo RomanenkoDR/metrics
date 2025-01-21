@@ -639,78 +639,33 @@
 {"level":"info","ts":1728233277.8737988,"msg":"uri /updates/ method POST status 200 duration 6.050083ms size 23"}
 {"level":"info","ts":1728233287.8697789,"msg":"uri /updates/ method POST status 200 duration 734.75µs size 23"}
 {"level":"info","ts":1728233297.871097,"msg":"uri /updates/ method POST status 200 duration 1.773625ms size 23"}
-{"level":"info","ts":1737313901.68173,"msg":"Запуск сервера..."}
-{"level":"info","ts":1737313901.682892,"msg":"Параметры конфигурации","config":{"Address":"localhost:8080","Interval":300,"Filename":"./metrics.json","Restore":true,"DBDSN":"","Key":""}}
-{"level":"info","ts":1737313901.6831858,"msg":"Используется локальное файловое хранилище","file":"./metrics.json"}
-{"level":"info","ts":1737313901.683209,"msg":"Восстановление данных из хранилища"}
-{"level":"info","ts":1737313901.683866,"msg":"Запуск HTTP сервера","address":"localhost:8080"}
-{"level":"info","ts":1737313950.317973,"msg":"uri /debug/pprof/profile?seconds=30 method GET status 404 duration 960.417µs size 47"}
-{"level":"info","ts":1737314021.3444018,"msg":"uri /debug/pprof/profile?seconds=30 method GET status 404 duration 479.708µs size 47"}
-{"level":"info","ts":1737314028.148382,"msg":"Получен сигнал завершения"}
-{"level":"info","ts":1737314028.1514308,"msg":"Сервер завершил работу"}
-{"level":"info","ts":1737314032.127075,"msg":"Запуск сервера..."}
-{"level":"info","ts":1737314032.1277618,"msg":"Параметры конфигурации","config":{"Address":"localhost:8080","Interval":300,"Filename":"./metrics.json","Restore":true,"DBDSN":"","Key":""}}
-{"level":"info","ts":1737314032.1281002,"msg":"Используется локальное файловое хранилище","file":"./metrics.json"}
-{"level":"info","ts":1737314032.1281102,"msg":"Восстановление данных из хранилища"}
-{"level":"info","ts":1737314032.1283991,"msg":"Запуск HTTP сервера","address":"localhost:8080"}
-{"level":"info","ts":1737314034.076851,"msg":"uri /debug/pprof/profile?seconds=30 method GET status 404 duration 258.292µs size 47"}
-{"level":"info","ts":1737314035.13918,"msg":"uri /debug/pprof/profile?seconds=30 method GET status 404 duration 216.958µs size 47"}
-{"level":"info","ts":1737314036.1268559,"msg":"uri /debug/pprof/profile?seconds=30 method GET status 404 duration 784.75µs size 47"}
-{"level":"info","ts":1737314037.784,"msg":"uri /debug/pprof/profile?seconds=30 method GET status 404 duration 318.5µs size 47"}
-{"level":"info","ts":1737314057.181366,"msg":"uri /debug/pprof/profile?seconds=30 method GET status 404 duration 3.105833ms size 47"}
-{"level":"info","ts":1737314060.495284,"msg":"Получен сигнал завершения"}
-{"level":"info","ts":1737314060.4968598,"msg":"Сервер завершил работу"}
-{"level":"info","ts":1737314062.96981,"msg":"Запуск сервера..."}
-{"level":"info","ts":1737314062.9707048,"msg":"Параметры конфигурации","config":{"Address":"localhost:8080","Interval":300,"Filename":"./metrics.json","Restore":true,"DBDSN":"","Key":""}}
-{"level":"info","ts":1737314062.9709911,"msg":"Используется локальное файловое хранилище","file":"./metrics.json"}
-{"level":"info","ts":1737314062.971008,"msg":"Восстановление данных из хранилища"}
-{"level":"info","ts":1737314062.971475,"msg":"Запуск HTTP сервера","address":"localhost:8080"}
-{"level":"info","ts":1737314065.123698,"msg":"uri /debug/pprof/profile?seconds=30 method GET status 404 duration 338.542µs size 47"}
-{"level":"info","ts":1737314084.092918,"msg":"uri /debug/pprof/ method GET status 404 duration 280.958µs size 47"}
-{"level":"info","ts":1737314084.258524,"msg":"uri /favicon.ico method GET status 404 duration 1.08025ms size 47"}
-{"level":"info","ts":1737314101.2309198,"msg":"uri /debug/pprof method GET status 301 duration 562.667µs size 64"}
-{"level":"info","ts":1737314101.24211,"msg":"uri / method GET status 500 duration 1.913458ms size 69"}
-{"level":"info","ts":1737314124.79197,"msg":"uri /debug/pprof/profile?seconds=30 method GET status 404 duration 17.771959ms size 47"}
-{"level":"info","ts":1737314128.028629,"msg":"uri /debug/pprof/profile method GET status 404 duration 9.670708ms size 47"}
-{"level":"info","ts":1737314128.37924,"msg":"uri /debug/pprof/profile method GET status 404 duration 312.791µs size 47"}
-{"level":"info","ts":1737314128.78657,"msg":"uri /favicon.ico method GET status 404 duration 879.875µs size 47"}
-{"level":"info","ts":1737314129.403903,"msg":"uri /debug/pprof/profile method GET status 404 duration 529.625µs size 47"}
-{"level":"info","ts":1737314129.937394,"msg":"uri /debug/pprof/profile method GET status 404 duration 2.325875ms size 47"}
-{"level":"info","ts":1737314130.21599,"msg":"uri /debug/pprof/profile method GET status 404 duration 4.402625ms size 47"}
-{"level":"info","ts":1737314130.51567,"msg":"uri /debug/pprof/profile method GET status 404 duration 1.882791ms size 47"}
-{"level":"info","ts":1737314137.044262,"msg":"uri / method GET status 500 duration 1.281125ms size 69"}
-{"level":"info","ts":1737314140.377839,"msg":"uri / method GET status 500 duration 1.287ms size 69"}
-{"level":"info","ts":1737314206.883202,"msg":"uri /debug/pprof/profile?seconds=30 method GET status 404 duration 430.083µs size 47"}
-{"level":"info","ts":1737314274.570393,"msg":"Получен сигнал завершения"}
-{"level":"info","ts":1737314274.573698,"msg":"Сервер завершил работу"}
-{"level":"info","ts":1737314277.0603478,"msg":"Запуск сервера..."}
-{"level":"info","ts":1737314277.0609238,"msg":"Параметры конфигурации","config":{"Address":"localhost:8080","Interval":300,"Filename":"./metrics.json","Restore":true,"DBDSN":"","Key":""}}
-{"level":"info","ts":1737314277.0610518,"msg":"Используется локальное файловое хранилище","file":"./metrics.json"}
-{"level":"info","ts":1737314277.0610602,"msg":"Восстановление данных из хранилища"}
-{"level":"info","ts":1737314277.0613,"msg":"Запуск HTTP сервера","address":"localhost:8080"}
-{"level":"info","ts":1737314286.0804858,"msg":"uri /debug/pprof/ method GET status 404 duration 449.625µs size 47"}
-{"level":"info","ts":1737314286.248783,"msg":"uri /favicon.ico method GET status 404 duration 112.041µs size 47"}
-{"level":"info","ts":1737314304.055548,"msg":"uri /debug/pprof/profile?seconds=30 method GET status 404 duration 864.042µs size 47"}
-{"level":"info","ts":1737314318.189696,"msg":"uri /debug/pprof/profile method GET status 404 duration 3.789458ms size 47"}
-{"level":"info","ts":1737314363.237099,"msg":"uri /debug/pprof/ method GET status 404 duration 420.25µs size 19"}
-{"level":"info","ts":1737314390.40517,"msg":"Получен сигнал завершения"}
-{"level":"info","ts":1737314390.407312,"msg":"Сервер завершил работу"}
-{"level":"info","ts":1737314393.260499,"msg":"Запуск сервера..."}
-{"level":"info","ts":1737314393.261222,"msg":"Параметры конфигурации","config":{"Address":"localhost:8080","Interval":300,"Filename":"./metrics.json","Restore":true,"DBDSN":"","Key":""}}
-{"level":"info","ts":1737314393.261558,"msg":"Используется локальное файловое хранилище","file":"./metrics.json"}
-{"level":"info","ts":1737314393.261579,"msg":"Восстановление данных из хранилища"}
-{"level":"info","ts":1737314393.2621388,"msg":"Запуск HTTP сервера","address":"localhost:8080"}
-{"level":"info","ts":1737314395.360241,"msg":"uri /debug/pprof/ method GET status 404 duration 274.958µs size 47"}
-{"level":"info","ts":1737314396.086393,"msg":"uri /debug/pprof/ method GET status 404 duration 201.25µs size 47"}
-{"level":"info","ts":1737314523.947187,"msg":"Получен сигнал завершения"}
-{"level":"info","ts":1737314523.958016,"msg":"Сервер завершил работу"}
-{"level":"info","ts":1737315188.8899982,"msg":"Запуск сервера..."}
-{"level":"info","ts":1737315188.891094,"msg":"Параметры конфигурации","config":{"Address":"localhost:8080","Interval":300,"Filename":"./metrics.json","Restore":true,"DBDSN":"","Key":""}}
-{"level":"info","ts":1737315188.891331,"msg":"Используется локальное файловое хранилище","file":"./metrics.json"}
-{"level":"info","ts":1737315188.891347,"msg":"Восстановление данных из хранилища"}
-{"level":"info","ts":1737315188.892395,"msg":"Запуск HTTP сервера","address":"localhost:8080"}
-{"level":"info","ts":1737315191.062973,"msg":"uri /debug/pprof/heap method GET status 404 duration 33.5µs size 19"}
-{"level":"info","ts":1737315215.500976,"msg":"uri /debug/pprof/heap method GET status 404 duration 193.959µs size 19"}
-{"level":"info","ts":1737315283.697629,"msg":"uri /debug/pprof/heap method GET status 404 duration 113.042µs size 19"}
-{"level":"info","ts":1737315324.4315279,"msg":"uri /favicon.ico method GET status 404 duration 1.099958ms size 47"}
-{"level":"info","ts":1737315325.908086,"msg":"uri /debug/pprof/ method GET status 404 duration 3.391459ms size 47"}
+{"level":"info","ts":1736501776.016717,"msg":"Запуск сервера..."}
+{"level":"info","ts":1736501779.871891,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 314.792µs, Размер: 23"}
+{"level":"info","ts":1736501781.8655438,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 2.7735ms, Размер: 23"}
+{"level":"info","ts":1736501791.8626728,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 618.375µs, Размер: 23"}
+{"level":"info","ts":1736501801.865356,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 1.936166ms, Размер: 23"}
+{"level":"info","ts":1736501811.862174,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 641.625µs, Размер: 23"}
+{"level":"info","ts":1736501821.867914,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 4.6925ms, Размер: 23"}
+{"level":"info","ts":1736501831.8622541,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 452.75µs, Размер: 23"}
+{"level":"info","ts":1736501841.869697,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 5.287083ms, Размер: 23"}
+{"level":"info","ts":1736501858.362344,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 935.042µs, Размер: 23"}
+{"level":"info","ts":1736501868.362753,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 5.729042ms, Размер: 23"}
+{"level":"info","ts":1736501885.489127,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 835µs, Размер: 23"}
+{"level":"info","ts":1736501906.575943,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 2.21375ms, Размер: 23"}
+{"level":"info","ts":1736501921.982854,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 895.833µs, Размер: 23"}
+{"level":"info","ts":1736501946.9104588,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 1.437083ms, Размер: 23"}
+{"level":"info","ts":1736501966.632669,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 915.833µs, Размер: 23"}
+{"level":"info","ts":1736501976.627039,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 1.460667ms, Размер: 23"}
+{"level":"info","ts":1736501986.626668,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 432.084µs, Размер: 23"}
+{"level":"info","ts":1736501996.6269498,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 2.918791ms, Размер: 23"}
+{"level":"info","ts":1736502006.627229,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 703.5µs, Размер: 23"}
+{"level":"info","ts":1736502016.626519,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 1.143625ms, Размер: 23"}
+{"level":"info","ts":1736502026.6321301,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 2.202625ms, Размер: 23"}
+{"level":"info","ts":1736502031.038786,"msg":"Запуск сервера..."}
+{"level":"info","ts":1736502036.626573,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 477.625µs, Размер: 23"}
+{"level":"info","ts":1736502046.6255722,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 491.75µs, Размер: 23"}
+{"level":"info","ts":1736502056.625552,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 1.077ms, Размер: 23"}
+{"level":"info","ts":1736502125.618088,"msg":"Запуск сервера..."}
+{"level":"info","ts":1736502131.634146,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 420.25µs, Размер: 23"}
+{"level":"info","ts":1736502131.6371741,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 409.667µs, Размер: 23"}
+{"level":"info","ts":1736502136.6270452,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 967.708µs, Размер: 23"}

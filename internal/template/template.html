@@ -3,63 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metrics Dashboard</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
-        }
-        header {
-            background: #35424a;
-            color: #ffffff;
-            padding: 10px 20px;
-            text-align: center;
-        }
-        h1, h2 {
-            margin: 0;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        li {
-            margin: 5px 0;
-            background: #ffffff;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        section {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background: #ffffff;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    <title>Metrics</title>
 </head>
 <body>
-<header>
-    <h1>Metrics Dashboard</h1>
-</header>
-<section>
+    <h1>Metrics</h1>
     <h2>Gauges</h2>
     <ul>
         {{range $name, $value := .Gauges}}
-        <li><strong>{{$name}}:</strong> {{$value}}</li>
+        <li>{{$name}}: {{$value}}</li>
         {{end}}
     </ul>
     <h2>Counters</h2>
     <ul>
         {{range $name, $value := .Counters}}
-        <li><strong>{{$name}}:</strong> {{$value}}</li>
+        <li>{{$name}}: {{$value}}</li>
         {{end}}
     </ul>
-</section>
 </body>
 </html>

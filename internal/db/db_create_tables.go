@@ -5,17 +5,27 @@ import (
 	"log"
 )
 
-// CreateTables проверяет и создает таблицы на основе конфигураций.
 func (db *Database) createTables() error {
-	configs := tableConfigs()
-
-	for _, cfg := range configs {
-		if _, err := db.Conn.Exec(context.Background(), cfg.CreateQuery); err != nil {
-			log.Printf("Ошибка создания таблицы '%s': %v\n", cfg.Name, err)
-			return err
-		}
-		log.Printf("Таблица '%s' создана или уже существует\n", cfg.Name)
+	_, err := db.Conn.Exec(context.Background(), `CREATE TABLE IF NOT EXISTS gauge_metrics(
+        id serial PRIMARY KEY,
+        name text,
+        value double precision,
+        timestamp timestamp)`)
+	if err != nil {
+		log.Println("Error creating gauge_metrics table:", err)
+		return err
 	}
 
+	_, err = db.Conn.Exec(context.Background(), `CREATE TABLE IF NOT EXISTS counter_metrics(
+        id serial PRIMARY KEY,
+        name text,
+        value integer,
+        timestamp timestamp)`)
+	if err != nil {
+		log.Println("Error creating counter_metrics table:", err)
+		return err
+	}
+
+	log.Println("Tables created successfully")
 	return nil
 }

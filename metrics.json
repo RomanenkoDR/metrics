@@ -1,0 +1,35 @@
+{
+  "CounterData": {
+    "PollCount": 232
+  },
+  "GaugeData": {
+    "Alloc": 2722792,
+    "BuckHashSys": 3317,
+    "Frees": 4228,
+    "GCCPUFraction": 0.000019352039478611824,
+    "GCSys": 2484744,
+    "HeapAlloc": 2722792,
+    "HeapIdle": 4382720,
+    "HeapInuse": 3563520,
+    "HeapObjects": 1039,
+    "HeapReleased": 2981888,
+    "HeapSys": 7946240,
+    "LastGC": 1736502104636281000,
+    "Lookups": 0,
+    "MCacheInuse": 9600,
+    "MCacheSys": 15600,
+    "MSpanInuse": 81600,
+    "MSpanSys": 97920,
+    "Mallocs": 5267,
+    "NextGC": 4194304,
+    "NumForcedGC": 0,
+    "NumGC": 10,
+    "OtherSys": 1137059,
+    "PauseTotalNs": 2347960,
+    "RandomValue": 0.5655806660652161,
+    "StackInuse": 393216,
+    "StackSys": 393216,
+    "Sys": 12078096,
+    "TotalAlloc": 27657952
+  }
+}

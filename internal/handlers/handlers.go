@@ -12,6 +12,11 @@ type Metrics struct {
 	Value *float64 `json:"value,omitempty"` // значение метрики в случае передачи gauge
 }
 
+type Handler struct {
+	Store  storage.MemStorage
+	DBconn *pgx.Conn
+}
+
 const counterType = "counter"
 const gaugeType = "gauge"
 
@@ -21,9 +26,4 @@ func NewHandler() Handler {
 	h.Store = storage.New()
 
 	return h
-}
-
-type Handler struct {
-	Store  storage.MemStorage
-	DBconn *pgx.Conn
 }

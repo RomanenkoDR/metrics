@@ -6,8 +6,8 @@ import (
 	"github.com/caarlos0/env"
 )
 
-func ParseOptions() (types.OptionsServer, error) {
-	var cfg types.OptionsServer
+func parseOptions() (types.Options, error) {
+	var cfg types.Options
 
 	// Чтение флага "-a" для задания адреса сервера и порта
 	flag.StringVar(&cfg.Address,

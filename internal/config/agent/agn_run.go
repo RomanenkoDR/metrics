@@ -2,61 +2,54 @@ package agent
 
 import (
 	"context"
-	"github.com/RomanenkoDR/metrics/internal/storage"
-	"log"
-	"sync"
+	"go.uber.org/zap"
 	"time"
+
+	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
+	"github.com/RomanenkoDR/metrics/internal/storage"
 )
 
-// RunAgent запускает выполнение агента.
-// Основная функция запускает сбор и отправку метрик, управляет завершением работы через graceful shutdown.
-func RunAgent() {
-	// Парсим конфигурацию
+func Run() {
+	// Логируем старт приложения
+	logger.Info("Начало основного приложения")
+
+	// Парсим параметры конфигурации
 	cfg, err := ParseOptions()
 	if err != nil {
-		log.Fatalf("Ошибка парсинга конфигурации: %v", err)
+		logger.Fatal("Ошибка разбора флагов: ", zap.Any("err", err))
 	}
 
-	// Инициализация хранилища метрик
-	m := storage.New()
-
-	// Инициализация контекста для управления горутинами
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
-
-	// Каналы для передачи метрик
-	metricsCh := make(chan storage.MemStorage, cfg.RateLimit)
-	defer close(metricsCh)
-
-	// WaitGroup для ожидания завершения всех горутин
-	var wg sync.WaitGroup
-
-	// Запуск горутины для сбора метрик через runtime
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		startCollecting(ctx, m, metricsCh, time.Second*time.Duration(cfg.PollInterval))
-	}()
-
-	// Запуск горутины для сбора системных метрик через gopsutil
-	wg.Add(1)
-	go func() {
-		defer wg.Done()
-		startSystemMetricsCollecting(ctx, m, time.Second*time.Duration(cfg.PollInterval))
-	}()
-
-	// Запуск горутин для отправки метрик на сервер
-	for w := 1; w <= cfg.RateLimit; w++ {
-		wg.Add(1)
-		go func() {
-			defer wg.Done()
-			startReporting(ctx, cfg, metricsCh, time.Second*time.Duration(cfg.ReportInterval))
-		}()
+	if cfg.Key != "" {
+		Encrypt = true
+		Key = []byte(cfg.Key)
 	}
 
-	// Ожидание сигнала завершения работы
-	waitForShutdown(cancel)
+	// Создаем тикеры
+	pollTicker := time.NewTicker(time.Second * time.Duration(cfg.PollInterval))
+	defer pollTicker.Stop()
 
-	// Ожидание завершения всех горутин
-	wg.Wait()
+	reportTicker := time.NewTicker(time.Second * time.Duration(cfg.ReportInterval))
+	defer reportTicker.Stop()
+
+	// Инициализируем хранилище метрик
+	memStorage := storage.New()
+	logger.Info("Инициализация хранилища успешна. Начало работы")
+
+	// Запускаем основной цикл
+	for {
+		select {
+		case <-pollTicker.C:
+			logger.Debug("Сбор метрик")
+			ReadMemStats(&memStorage)
+
+		case <-reportTicker.C:
+			logger.Debug("Отправка метрик")
+			send := Retry(ProcessBatch, 3, 1*time.Second)
+			err := send(context.Background(), cfg.ServerAddress, memStorage)
+			if err != nil {
+				logger.DebugLogger.Sugar().Error("Не удалось обработать пакет метрик: ", err)
+			}
+			logger.Info("Метрики отправлены на сервер")
+		}
+	}
 }
