@@ -8,7 +8,7 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-func setupMiddleware(router chi.Router, cfg types.OptionsServer) {
+func setupMiddleware(router chi.Router, cfg types.Options) {
 	router.Use(logger.LogHandler)
 	router.Use(gzip.GzipHandle)
 	if cfg.Key != "" {

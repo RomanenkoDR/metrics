@@ -1,6 +1,6 @@
 package types
 
-type OptionsServer struct {
+type Options struct {
 	Address  string `env:"ADDRESS"`
 	Interval int    `env:"STORE_INTERVAL"`
 	Filename string `env:"FILE_STORAGE_PATH"`

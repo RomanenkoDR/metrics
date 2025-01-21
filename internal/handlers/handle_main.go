@@ -1,41 +1,43 @@
 package handlers
 
 import (
-	"html/template"
-	"log"
+	"fmt"
 	"net/http"
-
-	"github.com/RomanenkoDR/metrics/internal/storage"
 )
 
-type MetricsData struct {
-	Gauges   map[string]storage.Gauge
-	Counters map[string]storage.Counter
-}
+// Return list with all the metrics
 
-// HandleMain рендерит HTML-шаблон с метриками.
 func (h *Handler) HandleMain(w http.ResponseWriter, r *http.Request) {
-	// Путь к HTML-шаблону
-	log.Println("запуска main функции")
-	templatePath := "template/template.html"
-
-	// Загрузка шаблона
-	tmpl, err := template.ParseFiles(templatePath)
-	if err != nil {
-		http.Error(w, "Ошибка загрузки шаблона", http.StatusInternalServerError)
-		return
+	//write static html page with all the items to the response; unsorted
+	body := `
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>All tuples</title>
+            </head>
+            <body>
+            <table>
+                <tr>
+                    <td>Metric</td>
+                    <td>Value</td>
+                </tr>
+    `
+	listC := h.Store.GetAllCounters()
+	for k, v := range listC {
+		body = body + fmt.Sprintf("<tr>\n<td>%s</td>\n", k)
+		body = body + fmt.Sprintf("<td>%v</td>\n</tr>\n", v)
 	}
 
-	// Подготовка данных для рендера
-	data := MetricsData{
-		Gauges:   h.Store.GetAllGauge(),
-		Counters: h.Store.GetAllCounters(),
+	listG := h.Store.GetAllGauge()
+	for k, v := range listG {
+		body = body + fmt.Sprintf("<tr>\n<td>%s</td>\n", k)
+		body = body + fmt.Sprintf("<td>%v</td>\n</tr>\n", v)
 	}
 
-	// Установка заголовков и рендер шаблона
+	body = body + " </table>\n </body>\n</html>"
+
+	// respond to agent
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	if err := tmpl.Execute(w, data); err != nil {
-		http.Error(w, "Ошибка рендеринга шаблона", http.StatusInternalServerError)
-		return
-	}
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte(body))
 }
