@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 
 	"github.com/RomanenkoDR/metrics/internal/storage"
@@ -15,6 +16,7 @@ type MetricsData struct {
 // HandleMain рендерит HTML-шаблон с метриками.
 func (h *Handler) HandleMain(w http.ResponseWriter, r *http.Request) {
 	// Путь к HTML-шаблону
+	log.Println("запуска main функции")
 	templatePath := "template/template.html"
 
 	// Загрузка шаблона
