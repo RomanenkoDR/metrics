@@ -3,18 +3,17 @@ package agent
 import (
 	"context"
 	"fmt"
-	"go.uber.org/zap"
-	"time"
-
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/RomanenkoDR/metrics/internal/storage"
+	"go.uber.org/zap"
+	"time"
 )
 
+// Run запускает основной цикл агента. Включает в себя сбор метрик,
+// периодическую отправку на сервер и управление интервалами выполнения операций.
 func Run() {
-	// Логируем старт приложения
 	logger.Info("Начало основного приложения")
 
-	// Парсим параметры конфигурации
 	cfg, err := ParseOptions()
 	if err != nil {
 		logger.Fatal("Ошибка разбора флагов: ", zap.Any("err", err))
@@ -27,18 +26,15 @@ func Run() {
 		Key = []byte(cfg.Key)
 	}
 
-	// Создаем тикеры
 	pollTicker := time.NewTicker(time.Second * time.Duration(cfg.PollInterval))
 	defer pollTicker.Stop()
 
 	reportTicker := time.NewTicker(time.Second * time.Duration(cfg.ReportInterval))
 	defer reportTicker.Stop()
 
-	// Инициализируем хранилище метрик
 	memStorage := storage.New()
 	logger.Info("Инициализация хранилища успешна. Начало работы")
 
-	// Запускаем основной цикл
 	for {
 		select {
 		case <-pollTicker.C:

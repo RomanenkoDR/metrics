@@ -7,35 +7,33 @@ import (
 	"time"
 )
 
-// Sender определяем тип функции, которая принимает контекст, строку с адресом сервера и объект MemStorage, и возвращает ошибку.
-type sender func(context.Context, string, storage.MemStorage) error
+// Sender определяет тип функции, которая принимает контекст, адрес сервера и хранилище метрик, возвращая ошибку.
+type Sender func(context.Context, string, storage.MemStorage) error
 
-var Encrypt bool
-var Key []byte
+var Encrypt bool // Флаг для указания необходимости шифрования
+var Key []byte   // Ключ для шифрования
 
-// Retry функция принимает другую функцию Sender, количество попыток retries и задержку delay, возвращает функцию того же типа,
-// которая выполняет sender с попытками повторов в случае неудачи.
-func Retry(sender sender, retries int, delay time.Duration) sender {
-	// Возвращаем новую функцию, которая пытается выполнить sender.
+// Retry создает обертку над функцией Sender, обеспечивающую повторные попытки выполнения функции в случае неудачи.
+// retries задает количество попыток, а delay - задержку между попытками.
+func Retry(sender Sender, retries int, delay time.Duration) Sender {
 	return func(ctx context.Context, serverAddress string, m storage.MemStorage) error {
 		for r := 0; ; r++ {
 			err := sender(ctx, serverAddress, m)
-			// Если ошибок нет или количество попыток исчерпано, логируем результат и возвращаем ошибку (если она была).
+			// Если ошибок нет или попытки исчерпаны, возвращаем результат
 			if err == nil || r >= retries {
-				logger.DebugLogger.Sugar().Infof("Кол-во повторных попыток %d", r)
+				logger.DebugLogger.Sugar().Infof("Количество повторов: %d", r)
 				return err
 			}
 
-			// Логируем сообщение о неудачной попытке и увеличиваем задержку перед следующей попыткой.
-			logger.DebugLogger.Sugar().Warnf("Отправка метрик завершила ошибкой: %v, повторная попытка %v", err, delay)
+			// Логируем попытку и ждем перед повторной попыткой
+			logger.DebugLogger.Sugar().Warnf("Ошибка отправки метрик: %v, повтор через %v", err, delay)
 
-			delay += time.Second * 2 // Увеличиваем задержку на 2 секунды после каждой попытки.
+			delay += time.Second * 2 // Увеличиваем задержку после каждой попытки
 
-			// Ожидаем либо окончания задержки, либо завершения контекста.
 			select {
 			case <-time.After(delay):
-			case <-ctx.Done(): // Если контекст завершён (например, программа была остановлена), возвращаем ошибку контекста.
-				logger.DebugLogger.Sugar().Error("Context отменен, остановка повторных попыток")
+			case <-ctx.Done(): // Завершение контекста
+				logger.DebugLogger.Sugar().Error("Контекст завершен, остановка повторных попыток")
 				return ctx.Err()
 			}
 		}

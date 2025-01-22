@@ -6,6 +6,8 @@ import (
 	"github.com/caarlos0/env"
 )
 
+// parseOptions парсит параметры конфигурации сервера из флагов командной строки и переменных окружения.
+// Возвращает структуру конфигурации Options и ошибку, если не удалось распарсить.
 func parseOptions() (types.Options, error) {
 	var cfg types.Options
 
@@ -33,7 +35,7 @@ func parseOptions() (types.Options, error) {
 		true,
 		"Restore metrics value from file")
 
-	// Чтение флака "-k" для задания токена JWT
+	// Чтение флага "-k" для задания токена JWT
 	flag.StringVar(&cfg.Key,
 		"k",
 		"",
