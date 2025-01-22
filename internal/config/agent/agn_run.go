@@ -19,7 +19,7 @@ func Run() {
 		logger.Fatal("Ошибка разбора флагов: ", zap.Any("err", err))
 	}
 
-	logger.Info(fmt.Sprintf("флаг на агенте: ", cfg.Key))
+	logger.Info(fmt.Sprint("флаг на агенте: ", cfg.Key))
 
 	if cfg.Key != "" {
 		Encrypt = true
