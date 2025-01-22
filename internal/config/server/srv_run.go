@@ -29,7 +29,7 @@ func Run() {
 		panic(err)
 	}
 
-	logger.Info(fmt.Sprint("флаг на сервере: ", cfg.Key))
+	logger.Info(fmt.Sprint("флаг на сервере:  ", cfg.Key))
 
 	log.Println("Параметры конфигурации сервера: ", zap.Any("metrics", cfg))
 
