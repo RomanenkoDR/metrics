@@ -12,12 +12,7 @@ type gzipWriter struct {
 	Writer io.Writer
 }
 
-type gzipReader struct {
-	http.Request
-	Reader io.Reader
-}
-
-var zipContent []string = []string{"application/json", "text/html"}
+var zipContent = []string{"application/json", "text/html"}
 
 func (w gzipWriter) Write(b []byte) (int, error) {
 	return w.Writer.Write(b)
