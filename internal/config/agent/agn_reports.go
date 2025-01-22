@@ -12,7 +12,9 @@ import (
 	"strings"
 )
 
-// sendRequest - вспомогательная функция для отправки HTTP-запроса на сервер
+// sendRequest отправляет HTTP POST запрос на сервер с указанными данными.
+// Перед отправкой данные сжимаются с помощью Gzip.
+// Возвращает ошибку, если запрос завершился неуспешно.
 func sendRequest(serverAddress string, data []byte) error {
 	// Сжимаем данные перед отправкой на сервер
 	compressedData, err := compress(data)
@@ -50,9 +52,9 @@ func sendRequest(serverAddress string, data []byte) error {
 	return nil
 }
 
-// sendReport - функция для отправки одной метрики
+// sendReport отправляет одну метрику на сервер в формате JSON.
+// Возвращает ошибку, если отправка не удалась.
 func sendReport(serverAddress string, metrics Metrics) error {
-	// Преобразование структуры метрики в JSON
 	data, err := json.Marshal(metrics)
 	if err != nil {
 		return err
@@ -60,9 +62,9 @@ func sendReport(serverAddress string, metrics Metrics) error {
 	return sendRequest(serverAddress, data)
 }
 
-// sendReportBatch - функция для отправки нескольких метрик (батч)
+// sendReportBatch отправляет список метрик на сервер в формате JSON.
+// Возвращает ошибку, если отправка не удалась.
 func sendReportBatch(serverAddress string, metrics []Metrics) error {
-	// Преобразование списка метрик в JSON
 	data, err := json.Marshal(metrics)
 	if err != nil {
 		return err
@@ -70,7 +72,8 @@ func sendReportBatch(serverAddress string, metrics []Metrics) error {
 	return sendRequest(serverAddress, data)
 }
 
-// ProcessReport Обрабатываем все метрики и отправляем их по одной на сервер
+// ProcessReport обрабатывает все метрики из локального хранилища и отправляет их на сервер по одной.
+// Возвращает ошибку, если отправка одной из метрик завершилась неуспешно.
 func ProcessReport(serverAddress string, m storage.MemStorage) error {
 	var metrics Metrics
 
@@ -99,7 +102,8 @@ func ProcessReport(serverAddress string, m storage.MemStorage) error {
 	return nil
 }
 
-// ProcessBatch Функция для отправки батча (пакета) метрик
+// ProcessBatch отправляет пакет метрик на сервер. Метрики собираются из локального хранилища.
+// Возвращает ошибку, если отправка завершилась неуспешно.
 func ProcessBatch(ctx context.Context, serverAddress string, m storage.MemStorage) error {
 	var metrics []Metrics
 
