@@ -2,6 +2,7 @@ package agent
 
 import (
 	"context"
+	"fmt"
 	"go.uber.org/zap"
 	"time"
 
@@ -18,6 +19,8 @@ func Run() {
 	if err != nil {
 		logger.Fatal("Ошибка разбора флагов: ", zap.Any("err", err))
 	}
+
+	logger.Info(fmt.Sprintf("флаг на агенте: ", cfg.Key))
 
 	if cfg.Key != "" {
 		Encrypt = true

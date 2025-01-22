@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"fmt"
 	"github.com/RomanenkoDR/metrics/internal/db"
 	"github.com/RomanenkoDR/metrics/internal/handlers"
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
@@ -30,6 +31,8 @@ func Run() {
 	if err != nil {
 		panic(err)
 	}
+
+	logger.Info(fmt.Sprintf("флаг на сервере: ", cfg.Key))
 
 	// Логируем полученные параметры конфигурации
 	log.Println("Параметры конфигурации сервера: ", zap.Any("metrics", cfg))
