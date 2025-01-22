@@ -9,23 +9,25 @@ import (
 	"runtime"
 )
 
+// Metrics представляет структуру для хранения данных о метриках.
 type Metrics struct {
-	ID    string          `json:"id"`    // имя метрики
-	MType string          `json:"type"`  // параметр, принимающий значение gauge или counter
-	Delta storage.Counter `json:"delta"` // значение метрики в случае передачи counter
-	Value storage.Gauge   `json:"value"` // значение метрики в случае передачи gauge
+	ID    string          `json:"id"`    // Имя метрики.
+	MType string          `json:"type"`  // Тип метрики: gauge или counter.
+	Delta storage.Counter `json:"delta"` // Значение метрики для counter.
+	Value storage.Gauge   `json:"value"` // Значение метрики для gauge.
 }
 
 const (
-	contentTypeAppJSON string = "application/json"
-
-	compression string = "gzip"
-
-	counterType string = "counter"
-	gaugeType   string = "gauge"
+	contentTypeAppJSON string = "application/json" // Заголовок Content-Type для JSON.
+	compression        string = "gzip"             // Тип сжатия данных.
+	counterType        string = "counter"          // Тип метрики counter.
+	gaugeType          string = "gauge"            // Тип метрики gauge.
 )
 
-// ReadMemStats Renew metrics through runtime package
+// ReadMemStats обновляет метрики, используя пакет runtime.
+//
+// Аргументы:
+//   - m: Ссылка на хранилище метрик для обновления данных.
 func ReadMemStats(m *storage.MemStorage) {
 
 	var stat runtime.MemStats
@@ -61,7 +63,14 @@ func ReadMemStats(m *storage.MemStorage) {
 	m.UpdateCounter("PollCount", storage.Counter(1))
 }
 
-// Функция для сжатия данных с использованием gzip
+// compress сжимает данные с использованием алгоритма gzip.
+//
+// Аргументы:
+//   - data: Данные в виде среза байт для сжатия.
+//
+// Возвращает:
+//   - []byte: Сжатые данные.
+//   - error: Ошибка в процессе сжатия, если произошла.
 func compress(data []byte) ([]byte, error) {
 	var b bytes.Buffer
 	w, err := gzip.NewWriterLevel(&b, gzip.BestSpeed)

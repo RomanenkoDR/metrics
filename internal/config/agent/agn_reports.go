@@ -12,7 +12,14 @@ import (
 	"strings"
 )
 
-// sendRequest - вспомогательная функция для отправки HTTP-запроса на сервер
+// sendRequest отправляет HTTP-запрос на сервер.
+//
+// Аргументы:
+//   - serverAddress: Адрес сервера для отправки данных.
+//   - data: Данные в виде среза байт для отправки.
+//
+// Возвращает:
+//   - error: Ошибка в процессе отправки, если произошла.
 func sendRequest(serverAddress string, data []byte) error {
 	// Сжимаем данные перед отправкой на сервер
 	compressedData, err := compress(data)
@@ -50,7 +57,14 @@ func sendRequest(serverAddress string, data []byte) error {
 	return nil
 }
 
-// sendReport - функция для отправки одной метрики
+// sendReport отправляет одну метрику на сервер.
+//
+// Аргументы:
+//   - serverAddress: Адрес сервера для отправки данных.
+//   - metrics: Метрика для отправки.
+//
+// Возвращает:
+//   - error: Ошибка в процессе отправки, если произошла.
 func sendReport(serverAddress string, metrics Metrics) error {
 	// Преобразование структуры метрики в JSON
 	data, err := json.Marshal(metrics)
@@ -60,7 +74,14 @@ func sendReport(serverAddress string, metrics Metrics) error {
 	return sendRequest(serverAddress, data)
 }
 
-// sendReportBatch - функция для отправки нескольких метрик (батч)
+// sendReportBatch отправляет несколько метрик (батч) на сервер.
+//
+// Аргументы:
+//   - serverAddress: Адрес сервера для отправки данных.
+//   - metrics: Список метрик для отправки.
+//
+// Возвращает:
+//   - error: Ошибка в процессе отправки, если произошла.
 func sendReportBatch(serverAddress string, metrics []Metrics) error {
 	// Преобразование списка метрик в JSON
 	data, err := json.Marshal(metrics)
@@ -70,7 +91,14 @@ func sendReportBatch(serverAddress string, metrics []Metrics) error {
 	return sendRequest(serverAddress, data)
 }
 
-// ProcessReport Обрабатываем все метрики и отправляем их по одной на сервер
+// ProcessReport обрабатывает все метрики и отправляет их по одной на сервер.
+//
+// Аргументы:
+//   - serverAddress: Адрес сервера для отправки данных.
+//   - m: Хранилище метрик для отправки.
+//
+// Возвращает:
+//   - error: Ошибка в процессе обработки, если произошла.
 func ProcessReport(serverAddress string, m storage.MemStorage) error {
 	var metrics Metrics
 
@@ -99,7 +127,15 @@ func ProcessReport(serverAddress string, m storage.MemStorage) error {
 	return nil
 }
 
-// ProcessBatch Функция для отправки батча (пакета) метрик
+// ProcessBatch отправляет пакет метрик на сервер.
+//
+// Аргументы:
+//   - ctx: Контекст выполнения.
+//   - serverAddress: Адрес сервера для отправки данных.
+//   - m: Хранилище метрик для отправки.
+//
+// Возвращает:
+//   - error: Ошибка в процессе обработки, если произошла.
 func ProcessBatch(ctx context.Context, serverAddress string, m storage.MemStorage) error {
 	var metrics []Metrics
 
