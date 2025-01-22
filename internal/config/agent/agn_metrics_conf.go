@@ -9,27 +9,30 @@ import (
 	"runtime"
 )
 
+// Metrics представляет структуру для хранения данных о метриках.
 type Metrics struct {
-	ID    string          `json:"id"`    // имя метрики
-	MType string          `json:"type"`  // параметр, принимающий значение gauge или counter
-	Delta storage.Counter `json:"delta"` // значение метрики в случае передачи counter
-	Value storage.Gauge   `json:"value"` // значение метрики в случае передачи gauge
+	ID    string          `json:"id"`    // Имя метрики.
+	MType string          `json:"type"`  // Тип метрики: gauge или counter.
+	Delta storage.Counter `json:"delta"` // Значение метрики для counter.
+	Value storage.Gauge   `json:"value"` // Значение метрики для gauge.
 }
 
 const (
-	contentTypeAppJSON string = "application/json"
+	contentTypeAppJSON string = "application/json" // Заголовок Content-Type для JSON.
+	compression        string = "gzip"             // Тип сжатия данных.
 
-	compression string = "gzip"
-
-	counterType string = "counter"
-	gaugeType   string = "gauge"
+	counterType string = "counter" // Тип метрики counter.
+	gaugeType   string = "gauge"   // Тип метрики gauge.
 )
 
-// ReadMemStats Renew metrics through runtime package
+// ReadMemStats обновляет метрики, используя пакет runtime.
+//
+// Аргументы:
+//   - m: Ссылка на хранилище метрик для обновления данных.
 func ReadMemStats(m *storage.MemStorage) {
-
 	var stat runtime.MemStats
 	runtime.ReadMemStats(&stat)
+
 	m.UpdateGauge("Alloc", storage.Gauge(stat.Alloc))
 	m.UpdateGauge("BuckHashSys", storage.Gauge(stat.BuckHashSys))
 	m.UpdateGauge("Frees", storage.Gauge(stat.Frees))
@@ -61,7 +64,14 @@ func ReadMemStats(m *storage.MemStorage) {
 	m.UpdateCounter("PollCount", storage.Counter(1))
 }
 
-// Функция для сжатия данных с использованием gzip
+// сompress сжимает данные с использованием алгоритма gzip.
+//
+// Аргументы:
+//   - data: Данные в виде среза байт для сжатия.
+//
+// Возвращает:
+//   - []byte: Сжатые данные.
+//   - error: Ошибка в процессе сжатия, если произошла.
 func compress(data []byte) ([]byte, error) {
 	var b bytes.Buffer
 	w, err := gzip.NewWriterLevel(&b, gzip.BestSpeed)
@@ -69,18 +79,18 @@ func compress(data []byte) ([]byte, error) {
 		return nil, fmt.Errorf("failed init compress writer: %v", err)
 	}
 
-	// Пишем исходные данные в gzip writer для сжатия
+	// Пишем исходные данные в gzip writer для сжатия.
 	_, err = w.Write(data)
 	if err != nil {
 		return nil, fmt.Errorf("failed write data to compress temporary buffer: %v", err)
 	}
 
-	// Закрываем writer и завершаем процесс сжатия
+	// Закрываем writer и завершаем процесс сжатия.
 	err = w.Close()
 	if err != nil {
 		return nil, fmt.Errorf("failed compress data: %v", err)
 	}
 
-	// Возвращаем сжатые данные в виде байтового среза
+	// Возвращаем сжатые данные в виде байтового среза.
 	return b.Bytes(), nil
 }

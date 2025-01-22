@@ -9,47 +9,35 @@ import (
 	"github.com/RomanenkoDR/metrics/internal/storage"
 )
 
+// Run запускает основной процесс агента, включая сбор и отправку метрик.
 func Run() {
-	// Логируем старт приложения
-	logger.Info("Начало основного приложения")
+	logger.Info("Запуск агента")
 
-	// Парсим параметры конфигурации
 	cfg, err := ParseOptions()
 	if err != nil {
-		logger.Fatal("Ошибка разбора флагов: ", zap.Any("err", err))
+		logger.Fatal("Ошибка конфигурации: ", zap.Error(err))
 	}
 
-	if cfg.Key != "" {
-		Encrypt = true
-		Key = []byte(cfg.Key)
-	}
-
-	// Создаем тикеры
-	pollTicker := time.NewTicker(time.Second * time.Duration(cfg.PollInterval))
+	pollTicker := time.NewTicker(time.Duration(cfg.PollInterval) * time.Second)
 	defer pollTicker.Stop()
 
-	reportTicker := time.NewTicker(time.Second * time.Duration(cfg.ReportInterval))
+	reportTicker := time.NewTicker(time.Duration(cfg.ReportInterval) * time.Second)
 	defer reportTicker.Stop()
 
-	// Инициализируем хранилище метрик
 	memStorage := storage.New()
-	logger.Info("Инициализация хранилища успешна. Начало работы")
+	logger.Info("Агент успешно запущен")
 
-	// Запускаем основной цикл
 	for {
 		select {
 		case <-pollTicker.C:
 			logger.Debug("Сбор метрик")
 			ReadMemStats(&memStorage)
-
 		case <-reportTicker.C:
 			logger.Debug("Отправка метрик")
-			send := Retry(ProcessBatch, 3, 1*time.Second)
-			err := send(context.Background(), cfg.ServerAddress, memStorage)
-			if err != nil {
-				logger.DebugLogger.Sugar().Error("Не удалось обработать пакет метрик: ", err)
+			send := Retry(ProcessBatch, 3, time.Second)
+			if err := send(context.Background(), cfg.ServerAddress, memStorage); err != nil {
+				logger.Error("Ошибка отправки метрик", zap.Error(err))
 			}
-			logger.Info("Метрики отправлены на сервер")
 		}
 	}
 }
