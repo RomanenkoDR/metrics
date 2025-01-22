@@ -20,9 +20,8 @@ type Metrics struct {
 const (
 	contentTypeAppJSON string = "application/json" // Заголовок Content-Type для JSON.
 	compression        string = "gzip"             // Тип сжатия данных.
-
-	counterType string = "counter" // Тип метрики counter.
-	gaugeType   string = "gauge"   // Тип метрики gauge.
+	counterType        string = "counter"          // Тип метрики counter.
+	gaugeType          string = "gauge"            // Тип метрики gauge.
 )
 
 // ReadMemStats обновляет метрики, используя пакет runtime.
@@ -30,9 +29,9 @@ const (
 // Аргументы:
 //   - m: Ссылка на хранилище метрик для обновления данных.
 func ReadMemStats(m *storage.MemStorage) {
+
 	var stat runtime.MemStats
 	runtime.ReadMemStats(&stat)
-
 	m.UpdateGauge("Alloc", storage.Gauge(stat.Alloc))
 	m.UpdateGauge("BuckHashSys", storage.Gauge(stat.BuckHashSys))
 	m.UpdateGauge("Frees", storage.Gauge(stat.Frees))
@@ -64,7 +63,7 @@ func ReadMemStats(m *storage.MemStorage) {
 	m.UpdateCounter("PollCount", storage.Counter(1))
 }
 
-// сompress сжимает данные с использованием алгоритма gzip.
+// compress сжимает данные с использованием алгоритма gzip.
 //
 // Аргументы:
 //   - data: Данные в виде среза байт для сжатия.
@@ -79,18 +78,18 @@ func compress(data []byte) ([]byte, error) {
 		return nil, fmt.Errorf("failed init compress writer: %v", err)
 	}
 
-	// Пишем исходные данные в gzip writer для сжатия.
+	// Пишем исходные данные в gzip writer для сжатия
 	_, err = w.Write(data)
 	if err != nil {
 		return nil, fmt.Errorf("failed write data to compress temporary buffer: %v", err)
 	}
 
-	// Закрываем writer и завершаем процесс сжатия.
+	// Закрываем writer и завершаем процесс сжатия
 	err = w.Close()
 	if err != nil {
 		return nil, fmt.Errorf("failed compress data: %v", err)
 	}
 
-	// Возвращаем сжатые данные в виде байтового среза.
+	// Возвращаем сжатые данные в виде байтового среза
 	return b.Bytes(), nil
 }
