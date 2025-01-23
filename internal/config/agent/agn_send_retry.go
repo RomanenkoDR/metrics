@@ -7,12 +7,6 @@ import (
 	"time"
 )
 
-// Sender определяем тип функции, которая принимает контекст, строку с адресом сервера и объект MemStorage, и возвращает ошибку.
-type sender func(context.Context, string, storage.MemStorage) error
-
-var Encrypt bool
-var Key []byte
-
 // Retry функция принимает другую функцию Sender, количество попыток retries и задержку delay, возвращает функцию того же типа,
 // которая выполняет sender с попытками повторов в случае неудачи.
 func Retry(sender sender, retries int, delay time.Duration) sender {
