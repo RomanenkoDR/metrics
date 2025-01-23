@@ -1,28 +1,9 @@
 package agent
 
 import (
-	"bytes"
-	"compress/gzip"
-	"fmt"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"math/rand/v2"
 	"runtime"
-)
-
-type Metrics struct {
-	ID    string          `json:"id"`    // имя метрики
-	MType string          `json:"type"`  // параметр, принимающий значение gauge или counter
-	Delta storage.Counter `json:"delta"` // значение метрики в случае передачи counter
-	Value storage.Gauge   `json:"value"` // значение метрики в случае передачи gauge
-}
-
-const (
-	contentTypeAppJSON string = "application/json"
-
-	compression string = "gzip"
-
-	counterType string = "counter"
-	gaugeType   string = "gauge"
 )
 
 // ReadMemStats Renew metrics through runtime package
@@ -59,28 +40,4 @@ func ReadMemStats(m *storage.MemStorage) {
 	m.UpdateGauge("TotalAlloc", storage.Gauge(stat.TotalAlloc))
 	m.UpdateGauge("RandomValue", storage.Gauge(rand.Float32()))
 	m.UpdateCounter("PollCount", storage.Counter(1))
-}
-
-// Функция для сжатия данных с использованием gzip
-func compress(data []byte) ([]byte, error) {
-	var b bytes.Buffer
-	w, err := gzip.NewWriterLevel(&b, gzip.BestSpeed)
-	if err != nil {
-		return nil, fmt.Errorf("failed init compress writer: %v", err)
-	}
-
-	// Пишем исходные данные в gzip writer для сжатия
-	_, err = w.Write(data)
-	if err != nil {
-		return nil, fmt.Errorf("failed write data to compress temporary buffer: %v", err)
-	}
-
-	// Закрываем writer и завершаем процесс сжатия
-	err = w.Close()
-	if err != nil {
-		return nil, fmt.Errorf("failed compress data: %v", err)
-	}
-
-	// Возвращаем сжатые данные в виде байтового среза
-	return b.Bytes(), nil
 }
