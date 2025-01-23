@@ -7,14 +7,14 @@ import (
 	"strings"
 )
 
-type gzipWriter struct {
+type writerGzip struct {
 	http.ResponseWriter
 	Writer io.Writer
 }
 
 var zipContent = []string{"application/json", "text/html"}
 
-func (w gzipWriter) Write(b []byte) (int, error) {
+func (w writerGzip) Write(b []byte) (int, error) {
 	return w.Writer.Write(b)
 }
 
@@ -27,7 +27,7 @@ func zipable(t string) bool {
 	return false
 }
 
-func GzipHandle(next http.Handler) http.Handler {
+func HandleGzip(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if !strings.Contains(r.Header.Get("Accept-Encoding"), "gzip") {
 			next.ServeHTTP(w, r)
@@ -50,6 +50,6 @@ func GzipHandle(next http.Handler) http.Handler {
 		}
 
 		w.Header().Set("Content-Encoding", "gzip")
-		next.ServeHTTP(gzipWriter{ResponseWriter: w, Writer: gz}, r)
+		next.ServeHTTP(writerGzip{ResponseWriter: w, Writer: gz}, r)
 	})
 }

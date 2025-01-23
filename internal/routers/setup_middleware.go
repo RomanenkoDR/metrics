@@ -10,7 +10,7 @@ import (
 
 func setupMiddleware(router chi.Router, cfg types.Options) {
 	router.Use(logger.LogHandler)
-	router.Use(gzip.GzipHandle)
+	router.Use(gzip.HandleGzip)
 	if cfg.Key != "" {
 		router.Use(token.CheckReqSign(cfg.Key))
 	}
