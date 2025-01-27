@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-// Handle URI request to return value
+// HandleValue URI request to return value
 func (h *Handler) HandleValue(w http.ResponseWriter, r *http.Request) {
 	metric := chi.URLParam(r, "metric")
 	v, err := h.Store.Get(metric)
@@ -17,7 +17,7 @@ func (h *Handler) HandleValue(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, v)
 }
 
-// Handle JSON request to return value
+// HandleValueJSON request to return value
 func (h *Handler) HandleValueJSON(w http.ResponseWriter, r *http.Request) {
 	var m Metrics
 

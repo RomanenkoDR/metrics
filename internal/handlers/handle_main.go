@@ -5,10 +5,7 @@ import (
 	"net/http"
 )
 
-// Return list with all the metrics
-
 func (h *Handler) HandleMain(w http.ResponseWriter, r *http.Request) {
-	//write static html page with all the items to the response; unsorted
 	body := `
         <!DOCTYPE html>
         <html>
@@ -36,7 +33,6 @@ func (h *Handler) HandleMain(w http.ResponseWriter, r *http.Request) {
 
 	body = body + " </table>\n </body>\n</html>"
 
-	// respond to agent
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte(body))
