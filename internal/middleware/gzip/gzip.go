@@ -12,20 +12,20 @@ type gzipWriter struct {
 	Writer io.Writer
 }
 
-var zipContent = []string{"application/json", "text/html"}
+//var zipContent = []string{"application/json", "text/html"}
 
 func (w gzipWriter) Write(b []byte) (int, error) {
 	return w.Writer.Write(b)
 }
 
-func zipable(t string) bool {
-	for _, s := range zipContent {
-		if strings.EqualFold(s, t) {
-			return true
-		}
-	}
-	return false
-}
+//func zipable(t string) bool {
+//	for _, s := range zipContent {
+//		if strings.EqualFold(s, t) {
+//			return true
+//		}
+//	}
+//	return false
+//}
 
 func GzipHandle(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
