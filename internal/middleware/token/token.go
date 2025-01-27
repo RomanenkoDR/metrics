@@ -27,7 +27,7 @@ func CheckReqSign(key string) func(http.Handler) http.Handler {
 				return
 			}
 
-			// Calcucalate hash for request body
+			// Calculate hash for request body
 			h := hmac.New(sha256.New, []byte(key))
 			h.Write(body)
 			sha256sum := h.Sum(nil)
