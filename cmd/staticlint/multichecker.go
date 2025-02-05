@@ -7,7 +7,6 @@ import (
 	"golang.org/x/tools/go/analysis/passes/inspect"
 	"golang.org/x/tools/go/analysis/passes/printf"
 	"golang.org/x/tools/go/analysis/passes/shadow"
-	"honnef.co/go/tools/staticcheck"
 )
 
 func main() {
