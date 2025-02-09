@@ -5,6 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/RomanenkoDR/metrics/internal/crypto"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"io"
 	"log"
@@ -14,45 +15,54 @@ import (
 
 // sendRequest - вспомогательная функция для отправки HTTP-запроса на сервер
 func sendRequest(serverAddress string, data []byte) error {
+	// Проверяем, есть ли публичный ключ
+	if crypto.PublicKey != nil {
+		encryptedData, err := crypto.EncryptData(data, crypto.PublicKey)
+		if err != nil {
+			log.Printf("Ошибка шифрования данных: %v", err)
+			return fmt.Errorf("ошибка шифрования: %v", err)
+		}
+		data = encryptedData
+	} else {
+		log.Println("Публичный ключ не загружен, данные отправляются без шифрования")
+	}
+
 	// Сжимаем данные перед отправкой на сервер
 	compressedData, err := compress(data)
 	if err != nil {
-		return err
+		return fmt.Errorf("ошибка сжатия данных: %v", err)
 	}
 
-	// Создание нового HTTP запроса типа POST с телом запроса в виде сжатого JSON
+	// Создаём HTTP-запрос
 	request, err := http.NewRequest("POST", serverAddress, bytes.NewBuffer(compressedData))
 	if err != nil {
 		return err
 	}
 
-	// Устанавливаем заголовки запроса: тип контента, кодировка и поддержка сжатия
-	request.Header.Set("Content-Type", contentTypeAppJSON)
-	request.Header.Set("Content-Encoding", compression)
-	request.Header.Set("Accept-Encoding", compression)
+	// Устанавливаем заголовки запроса
+	request.Header.Set("Content-Type", "application/json")
+	request.Header.Set("Content-Encoding", "gzip")
+	request.Header.Set("Accept-Encoding", "gzip")
 
-	// Создаем HTTP клиент для выполнения запроса
+	// Выполняем запрос
 	client := &http.Client{}
 	resp, err := client.Do(request)
 	if err != nil {
 		return err
 	}
+	defer resp.Body.Close()
 
-	// Проверяем, успешно ли выполнен запрос (должен быть статус 200 OK)
+	// Проверяем статус ответа
 	if resp.StatusCode != http.StatusOK {
 		b, _ := io.ReadAll(resp.Body)
-		return fmt.Errorf("%s: %s; %s",
-			"Can't send report to the server",
-			resp.Status,
-			b)
+		return fmt.Errorf("Ошибка отправки отчёта: %s; %s", resp.Status, b)
 	}
-	defer resp.Body.Close()
+
 	return nil
 }
 
 // sendReport - функция для отправки одной метрики
 func sendReport(serverAddress string, metrics Metrics) error {
-	// Преобразование структуры метрики в JSON
 	data, err := json.Marshal(metrics)
 	if err != nil {
 		return err
@@ -60,9 +70,8 @@ func sendReport(serverAddress string, metrics Metrics) error {
 	return sendRequest(serverAddress, data)
 }
 
-// sendReportBatch - функция для отправки нескольких метрик (батч)
+// sendReportBatch - функция для отправки нескольких метрик
 func sendReportBatch(serverAddress string, metrics []Metrics) error {
-	// Преобразование списка метрик в JSON
 	data, err := json.Marshal(metrics)
 	if err != nil {
 		return err
