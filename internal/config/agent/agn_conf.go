@@ -10,6 +10,7 @@ type Options struct {
 	PollInterval   int    `env:"POLL_INTERVAL"`
 	ReportInterval int    `env:"REPORT_INTERVAL"`
 	Key            string `env:"KEY"`
+	CryptoKey      string `env:"CRYPTO_KEY"`
 }
 
 func ParseOptions() (Options, error) {
@@ -38,6 +39,12 @@ func ParseOptions() (Options, error) {
 		"k",
 		"",
 		"Token auth by JWT")
+
+	// Флаг для пути к публичному ключу
+	flag.StringVar(&opt.CryptoKey,
+		"crypto-key",
+		"",
+		"Path to public key file")
 
 	// Парсинг аргументов командной строки
 	flag.Parse()

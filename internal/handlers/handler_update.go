@@ -3,8 +3,10 @@ package handlers
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/RomanenkoDR/metrics/internal/crypto"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"github.com/go-chi/chi/v5"
+	"log"
 	"net/http"
 	"strconv"
 )
@@ -34,7 +36,7 @@ func (h *Handler) HandleUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// Handle JSON request to update metric value
+// HandleUpdateJSON обновляет метрики через JSON
 func (h *Handler) HandleUpdateJSON(w http.ResponseWriter, r *http.Request) {
 	var m Metrics
 	var buf bytes.Buffer
@@ -45,7 +47,19 @@ func (h *Handler) HandleUpdateJSON(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	err = json.Unmarshal(buf.Bytes(), &m)
+	requestData := buf.Bytes()
+
+	// Если сервер работает с шифрованием, расшифровываем данные
+	if crypto.PrivateKey != nil {
+		requestData, err = crypto.DecryptData(requestData, crypto.PrivateKey)
+		if err != nil {
+			http.Error(w, "Ошибка расшифровки данных", http.StatusBadRequest)
+			return
+		}
+		log.Println("Сообщение успешно расшифровано")
+	}
+
+	err = json.Unmarshal(requestData, &m)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
@@ -71,39 +85,57 @@ func (h *Handler) HandleUpdateJSON(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleUpdateBatch обрабатывает пакетное обновление метрик
 func (h *Handler) HandleUpdateBatch(w http.ResponseWriter, r *http.Request) {
-	var m []Metrics
+	var metrics []Metrics
 	var buf bytes.Buffer
 
 	_, err := buf.ReadFrom(r.Body)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		http.Error(w, "Ошибка чтения тела запроса", http.StatusBadRequest)
 		return
 	}
 
-	err = json.Unmarshal(buf.Bytes(), &m)
+	requestData := buf.Bytes()
+
+	// Если сервер работает с шифрованием, расшифровываем данные
+	if crypto.PrivateKey != nil {
+		requestData, err = crypto.DecryptData(requestData, crypto.PrivateKey)
+		if err != nil {
+			http.Error(w, "Ошибка расшифровки данных", http.StatusBadRequest)
+			return
+		}
+		log.Println("Пакет данных успешно расшифрован")
+	}
+
+	// Декодируем JSON
+	err = json.Unmarshal(requestData, &metrics)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		http.Error(w, "Ошибка парсинга JSON", http.StatusBadRequest)
 		return
 	}
-	for _, v := range m {
+
+	// Обрабатываем каждую метрику
+	for _, v := range metrics {
 		switch v.MType {
 		case counterType:
 			if v.Delta == nil {
-				http.Error(w, "metric value should not be empty", http.StatusBadRequest)
+				http.Error(w, "Значение counter не должно быть пустым", http.StatusBadRequest)
 				return
 			}
 			h.Store.UpdateCounter(v.ID, storage.Counter(*v.Delta))
 		case gaugeType:
 			if v.Value == nil {
-				http.Error(w, "metric value should not be empty", http.StatusBadRequest)
+				http.Error(w, "Значение gauge не должно быть пустым", http.StatusBadRequest)
 				return
 			}
 			h.Store.UpdateGauge(v.ID, storage.Gauge(*v.Value))
 		default:
-			http.Error(w, "Incorrect metric type", http.StatusBadRequest)
+			http.Error(w, "Некорректный тип метрики", http.StatusBadRequest)
+			return
 		}
 	}
-	w.WriteHeader(http.StatusOK)
 
+	log.Println("Обновление метрик завершено")
+	w.WriteHeader(http.StatusOK)
 }
