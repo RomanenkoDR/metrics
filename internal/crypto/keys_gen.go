@@ -7,35 +7,59 @@ import (
 	"encoding/pem"
 	"fmt"
 	"os"
+	"path/filepath"
 )
 
 // GenerateRSAKeys генерирует пару RSA-ключей и сохраняет их в файлы.
-func GenerateRSAKeys(keySize int) error {
-	privateKeyPath := "private.pem"
-	publicKeyPath := "../agent/public.pem"
-
+func GenerateRSAKeys(bits int) error {
 	// Генерация приватного ключа
-	privateKey, err := rsa.GenerateKey(rand.Reader, keySize)
+	privateKey, err := rsa.GenerateKey(rand.Reader, bits)
 	if err != nil {
-		return fmt.Errorf("ошибка генерации приватного ключа: %v", err)
+		return fmt.Errorf("ошибка генерации ключа: %w", err)
 	}
 
-	// Сохранение приватного ключа
-	err = savePrivateKey(privateKey, privateKeyPath)
+	// Создание и запись приватного ключа
+	privateFile, err := os.Create("private.pem")
 	if err != nil {
-		return fmt.Errorf("ошибка сохранения приватного ключа: %v", err)
+		return fmt.Errorf("ошибка создания файла приватного ключа: %w", err)
+	}
+	defer privateFile.Close()
+
+	err = pem.Encode(privateFile, &pem.Block{Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(privateKey)})
+	if err != nil {
+		return fmt.Errorf("ошибка сохранения приватного ключа: %w", err)
 	}
 
-	// Сохранение публичного ключа
-	err = savePublicKey(&privateKey.PublicKey, publicKeyPath)
+	// Генерация публичного ключа
+	publicKey := &privateKey.PublicKey
+	publicKeyBytes, err := x509.MarshalPKIXPublicKey(publicKey)
 	if err != nil {
-		return fmt.Errorf("ошибка сохранения публичного ключа: %v", err)
+		return fmt.Errorf("ошибка кодирования публичного ключа: %w", err)
 	}
 
-	fmt.Println("RSA-ключи успешно сгенерированы:")
-	fmt.Println("Приватный ключ:", privateKeyPath)
-	fmt.Println("Публичный ключ:", publicKeyPath)
+	// Проверка существования папки перед созданием файла
+	publicKeyPath := "public.pem"
+	publicDir := filepath.Dir(publicKeyPath)
+	if _, err := os.Stat(publicDir); os.IsNotExist(err) {
+		err = os.MkdirAll(publicDir, os.ModePerm)
+		if err != nil {
+			return fmt.Errorf("ошибка создания директории для публичного ключа: %w", err)
+		}
+	}
 
+	// Создание и запись публичного ключа
+	publicFile, err := os.Create(publicKeyPath)
+	if err != nil {
+		return fmt.Errorf("ошибка создания файла публичного ключа: %w", err)
+	}
+	defer publicFile.Close()
+
+	err = pem.Encode(publicFile, &pem.Block{Type: "PUBLIC KEY", Bytes: publicKeyBytes})
+	if err != nil {
+		return fmt.Errorf("ошибка сохранения публичного ключа: %w", err)
+	}
+
+	fmt.Println("Ключи успешно сгенерированы.")
 	return nil
 }
 
