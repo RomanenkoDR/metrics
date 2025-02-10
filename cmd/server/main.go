@@ -21,12 +21,16 @@ func main() {
 	fmt.Printf("Build date: %s\n", buildDate)
 	fmt.Printf("Build commit: %s\n", buildCommit)
 
-	// Пути к ключам
+	// Путь к ключу
 	privateKeyPath := "private.pem"
+	publicKeyPath := "../agent/public.pem"
 
 	// Проверяем, существуют ли уже ключи
-	if _, err := os.Stat(privateKeyPath); os.IsNotExist(err) {
-		fmt.Println("Приватный ключ не найден. Генерируем новый...")
+	privateExists := fileExists(privateKeyPath)
+	publicExists := fileExists(publicKeyPath)
+
+	if !privateExists || !publicExists {
+		fmt.Println("Один из ключей не найден. Генерируем новые...")
 
 		err := crypto.GenerateRSAKeys(2048)
 		if err != nil {
@@ -35,8 +39,14 @@ func main() {
 		}
 		fmt.Println("Ключи успешно сгенерированы.")
 	} else {
-		fmt.Println("Приватный ключ найден, генерация не требуется.")
+		fmt.Println("Оба ключа найдены, генерация не требуется.")
 	}
 
 	server.Run()
+}
+
+// fileExists проверяет существование файла по указанному пути
+func fileExists(path string) bool {
+	_, err := os.Stat(path)
+	return !os.IsNotExist(err)
 }

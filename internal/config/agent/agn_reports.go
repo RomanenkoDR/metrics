@@ -55,7 +55,7 @@ func sendRequest(serverAddress string, data []byte) error {
 	// Проверяем статус ответа
 	if resp.StatusCode != http.StatusOK {
 		b, _ := io.ReadAll(resp.Body)
-		return fmt.Errorf("Ошибка отправки отчёта: %s; %s", resp.Status, b)
+		return fmt.Errorf("ошибка отправки отчёта: %s; %s", resp.Status, b)
 	}
 
 	return nil
