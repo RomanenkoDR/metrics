@@ -33,25 +33,27 @@ func LoadPrivateKey(path string) (*rsa.PrivateKey, error) {
 
 // LoadPublicKey загружает публичный ключ из файла
 func LoadPublicKey(path string) (*rsa.PublicKey, error) {
-	keyData, err := os.ReadFile(path)
+	data, err := os.ReadFile(path)
 	if err != nil {
-		return nil, fmt.Errorf("ошибка чтения публичного ключа: %v", err)
+		return nil, fmt.Errorf("ошибка чтения файла ключа: %w", err)
 	}
 
-	block, _ := pem.Decode(keyData)
-	if block == nil || block.Type != "RSA PUBLIC KEY" {
-		return nil, fmt.Errorf("неверный формат публичного ключа")
+	fmt.Println("Содержимое файла ключа:", string(data)) // Debug
+
+	block, _ := pem.Decode(data)
+	if block == nil {
+		return nil, fmt.Errorf("ошибка декодирования PEM блока")
 	}
 
-	publicKeyInterface, err := x509.ParsePKIXPublicKey(block.Bytes)
+	pub, err := x509.ParsePKIXPublicKey(block.Bytes)
 	if err != nil {
-		return nil, fmt.Errorf("ошибка парсинга публичного ключа: %v", err)
+		return nil, fmt.Errorf("ошибка парсинга публичного ключа: %w", err)
 	}
 
-	publicKey, ok := publicKeyInterface.(*rsa.PublicKey)
+	rsaPub, ok := pub.(*rsa.PublicKey)
 	if !ok {
-		return nil, fmt.Errorf("неверный тип публичного ключа")
+		return nil, fmt.Errorf("ключ не является RSA")
 	}
 
-	return publicKey, nil
+	return rsaPub, nil
 }
