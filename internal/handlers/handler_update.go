@@ -196,9 +196,8 @@ func (h *Handler) HandleUpdateBatch(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	logger.Info("Обновление метрик завершено")
 	w.WriteHeader(http.StatusOK)
-	logger.LogHTTPResponse(http.StatusOK, time.Since(start), len(decryptedData))
+	logger.Info("Обновление метрик завершено. Ожидаем следующий запрос")
 }
 
 func decryptAndParsePayload(requestData []byte, privKey *rsa.PrivateKey) ([]byte, error) {
@@ -233,8 +232,6 @@ func decryptAndParsePayload(requestData []byte, privKey *rsa.PrivateKey) ([]byte
 		return nil, fmt.Errorf("ошибка расшифровки данных: %w", err)
 	}
 
-	logger.Info("Данные успешно расшифрованы", zap.String("decrypted_data", string(decryptedData)))
-
 	// 🚀 Декодирование из base64 в JSON, если это строка в кавычках
 	if len(decryptedData) > 0 && decryptedData[0] == '"' {
 		var base64Str string
@@ -249,8 +246,5 @@ func decryptAndParsePayload(requestData []byte, privKey *rsa.PrivateKey) ([]byte
 
 		decryptedData = decodedJSON
 	}
-
-	logger.Info("Окончательные расшифрованные данные", zap.String("final_decrypted_data", string(decryptedData)))
-
 	return decryptedData, nil
 }

@@ -14242,3 +14242,1550 @@
 {"level":"info","timestamp":"2025-02-17T09:28:28.356+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
 {"level":"info","timestamp":"2025-02-17T09:28:28.356+0300","msg":"Шифрование AES-ключа с помощью RSA"}
 {"level":"warn","timestamp":"2025-02-17T09:28:28.358+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:22:04.576+0300","msg":"Запуск агента"}
+{"level":"info","timestamp":"2025-02-17T10:22:04.577+0300","msg":"Инициализация хранилища успешна. Начало работы"}
+{"level":"info","timestamp":"2025-02-17T10:22:14.579+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:22:14.580+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:22:14.580+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:22:14.580+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:22:14.580+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T10:22:14.580+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T10:22:14.580+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"warn","timestamp":"2025-02-17T10:22:14.580+0300","msg":"Отправка метрик завершила ошибкой: open public.pem: no such file or directory, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:23:07.812+0300","msg":"Запуск агента"}
+{"level":"info","timestamp":"2025-02-17T10:23:07.813+0300","msg":"Инициализация хранилища успешна. Начало работы"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.814+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.815+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.815+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.816+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.816+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.816+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.835+0300","msg":"Данные успешно зашифрованы и отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.835+0300","msg":"Кол-во повторных попыток 0"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.835+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:25:57.878+0300","msg":"Запуск агента"}
+{"level":"info","timestamp":"2025-02-17T10:25:57.879+0300","msg":"Инициализация хранилища успешна. Начало работы"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.881+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.882+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.882+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.882+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.882+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.882+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.906+0300","msg":"Данные успешно зашифрованы и отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.906+0300","msg":"Кол-во повторных попыток 0"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.906+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:27:20.491+0300","msg":"Запуск агента"}
+{"level":"info","timestamp":"2025-02-17T10:27:20.492+0300","msg":"Инициализация хранилища успешна. Начало работы"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.494+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.495+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.495+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.495+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.495+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.495+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.513+0300","msg":"Данные успешно зашифрованы и отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.513+0300","msg":"Кол-во повторных попыток 0"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.513+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.493+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.493+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.493+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.493+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.493+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.494+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Данные успешно зашифрованы и отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Кол-во повторных попыток 0"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:27:50.492+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:27:50.493+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:27:50.493+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:27:50.493+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:27:50.493+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:27:50.494+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:27:50.496+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:27:53.496+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:27:53.497+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:27:53.497+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:27:53.497+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:27:53.497+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:27:53.497+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:27:53.499+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:27:58.500+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:27:58.501+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:27:58.501+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:27:58.501+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:27:58.501+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:27:58.501+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:27:58.504+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.505+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.506+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.506+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.506+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.506+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.506+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.507+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:28:05.507+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.507+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.507+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.507+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.507+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.507+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.507+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:05.507+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:28:05.508+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:28:08.509+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:08.509+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:08.509+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:08.509+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:08.509+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:08.510+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:28:08.512+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:28:13.512+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:13.513+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:13.513+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:13.513+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:13.513+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:13.513+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:28:13.514+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.515+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.515+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.515+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.515+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.515+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.515+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.516+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:28:20.516+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.516+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.516+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.517+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.517+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.517+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.517+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:20.517+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:28:20.518+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:28:23.519+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:23.519+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:23.519+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:23.519+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:23.519+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:23.519+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:28:23.522+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:28:28.523+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:28.527+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:28.527+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:28.531+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:28.532+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:28.533+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:28:28.545+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.546+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.547+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.547+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.547+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.547+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.547+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.571+0300","msg":"Данные успешно зашифрованы и отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.571+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.571+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.571+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.571+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.571+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.571+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.571+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.572+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.590+0300","msg":"Данные успешно зашифрованы и отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.590+0300","msg":"Кол-во повторных попыток 0"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.590+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:28:40.494+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:40.494+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:40.494+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:40.494+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:40.494+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:40.494+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:28:40.497+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:28:43.498+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:43.498+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:43.498+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:43.498+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:43.499+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:43.499+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:28:43.501+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:28:48.502+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:48.502+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:48.502+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:48.502+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:48.502+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:48.502+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:28:48.503+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.504+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.505+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.505+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.505+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.505+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.505+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.506+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:28:55.506+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.506+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.506+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.506+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.506+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.506+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.506+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:55.506+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:28:55.507+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:28:58.508+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:28:58.509+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:28:58.509+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:58.509+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:58.509+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:58.510+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:28:58.512+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:29:03.514+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:03.514+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:03.514+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:03.514+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:03.514+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:03.514+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:29:03.517+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.518+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.519+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.519+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.519+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.519+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.519+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.521+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:29:10.521+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.521+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.522+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.522+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.522+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.522+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.522+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:10.522+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:29:10.523+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:29:13.524+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:13.525+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:13.525+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:13.525+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:13.525+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:13.525+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:29:13.527+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:29:18.528+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:18.528+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:18.528+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:18.528+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:18.529+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:18.529+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:29:18.531+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.532+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.533+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.533+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.533+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.533+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.533+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.535+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:29:25.535+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.535+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.535+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.535+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.535+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.535+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.535+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:25.536+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:29:25.537+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:29:28.537+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:28.538+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:28.538+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:28.538+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:28.538+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:28.538+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:29:28.540+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:29:33.541+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:33.542+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:33.542+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:33.542+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:33.542+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:33.543+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:29:33.548+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.549+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.550+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.550+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.550+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.550+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.551+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.552+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:29:40.553+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.553+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.553+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.553+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.553+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.553+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.553+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:40.553+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:29:40.554+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:29:43.555+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:43.555+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:43.555+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:43.555+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:43.555+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:43.556+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:29:43.557+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:29:48.558+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:48.559+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:48.559+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:48.559+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:48.559+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:48.560+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:29:48.563+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.596+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.600+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.601+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.602+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.602+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.611+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.646+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:29:55.647+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.647+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.648+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.648+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.648+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.648+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.648+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:55.648+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:29:55.671+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:29:58.693+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:29:58.732+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:29:58.732+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:29:58.733+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:29:58.733+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:29:58.752+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:29:58.776+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:30:03.785+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:03.790+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:03.794+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:03.796+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:03.796+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:03.800+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:30:03.876+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.891+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.892+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.892+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.892+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.892+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.893+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.901+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:30:10.901+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.901+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.902+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.902+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.902+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.902+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.902+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:10.902+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:30:10.904+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:30:13.906+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:13.907+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:13.908+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:13.908+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:13.908+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:13.908+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:30:13.922+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:30:18.924+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:18.925+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:18.926+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:18.926+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:18.926+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:18.928+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:30:18.931+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.933+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.933+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.933+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.933+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.933+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.934+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.935+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:30:25.935+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.935+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.935+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.935+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.935+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.936+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.936+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:25.936+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:30:25.936+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:30:28.938+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:28.938+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:28.939+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:28.939+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:28.939+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:28.939+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:30:28.943+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.945+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.945+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.945+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.945+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.945+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.946+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.973+0300","msg":"Данные успешно зашифрованы и отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.973+0300","msg":"Кол-во повторных попыток 2"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.973+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.973+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.973+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.973+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.973+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.973+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.974+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.986+0300","msg":"Данные успешно зашифрованы и отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.986+0300","msg":"Кол-во повторных попыток 0"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.986+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.492+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.492+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.492+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.492+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.492+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.493+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.517+0300","msg":"Данные успешно зашифрованы и отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.517+0300","msg":"Кол-во повторных попыток 0"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.517+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:30:50.492+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:50.492+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:50.492+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:50.492+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:50.492+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:50.493+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:30:50.496+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:30:53.497+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:53.497+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:53.497+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:53.497+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:53.497+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:53.497+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:30:53.499+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:30:58.500+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:30:58.501+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:30:58.501+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:58.501+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:58.501+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:58.502+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:30:58.503+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.505+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.505+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.505+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.505+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.505+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.505+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.507+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:31:05.507+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.507+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.507+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.507+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.507+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.507+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.507+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:05.507+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:31:05.508+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:31:08.509+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:08.510+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:08.510+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:08.510+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:08.510+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:08.510+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:31:08.512+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.513+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.513+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.514+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.514+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.514+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.514+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.538+0300","msg":"Данные успешно зашифрованы и отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.538+0300","msg":"Кол-во повторных попыток 2"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.538+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.538+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.538+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.538+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.538+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.538+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.538+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.568+0300","msg":"Данные успешно зашифрованы и отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.570+0300","msg":"Кол-во повторных попыток 0"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.571+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:31:20.493+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:20.494+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:20.494+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:20.494+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:20.494+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:20.494+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:31:20.496+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:31:23.497+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:23.497+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:23.497+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:23.497+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:23.497+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:23.497+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:31:23.499+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:31:28.499+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:28.500+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:28.500+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:28.500+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:28.500+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:28.501+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:31:28.502+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.504+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.504+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.504+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.504+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.504+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.505+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.508+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:31:35.508+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.508+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.508+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.508+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.508+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.508+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.508+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:35.508+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:31:35.510+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:31:38.511+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:38.512+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:38.512+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:38.512+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:38.512+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:38.513+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:31:38.515+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:31:43.516+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:43.516+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:43.516+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:43.517+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:43.517+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:43.517+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:31:43.519+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.520+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.521+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.521+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.521+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.521+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.521+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.527+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:31:50.528+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.528+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.528+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.528+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.528+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.528+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.528+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:50.528+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:31:50.530+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:31:53.533+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:53.533+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:53.533+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:53.533+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:53.533+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:53.533+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:31:53.535+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:31:58.536+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:31:58.537+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:31:58.537+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:58.537+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:58.537+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:58.537+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:31:58.540+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.541+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.542+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.542+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.542+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.542+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.542+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.546+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:32:05.546+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.546+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.546+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.546+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.546+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.546+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.546+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:05.546+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:32:05.548+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:32:08.549+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:08.549+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:08.549+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:08.549+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:08.549+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:08.549+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:32:08.551+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:32:13.552+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:13.552+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:13.552+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:13.552+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:13.552+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:13.553+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:32:13.554+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.555+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.557+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.557+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.557+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.557+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.557+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.559+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:32:20.559+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.559+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.559+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.559+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.559+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.559+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.559+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:20.560+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:32:20.561+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:32:23.562+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:23.562+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:23.562+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:23.562+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:23.562+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:23.563+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:32:23.564+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:32:28.566+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:28.566+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:28.566+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:28.566+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:28.566+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:28.566+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:32:28.569+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.570+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.570+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.570+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.570+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.570+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.570+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.572+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:32:35.572+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.572+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.572+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.572+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.572+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.572+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.572+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:35.572+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:32:35.574+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:32:38.576+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:38.577+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:38.577+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:38.577+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:38.577+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:38.577+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:32:38.579+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:32:43.581+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:43.581+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:43.581+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:43.581+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:43.581+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:43.581+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:32:43.583+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.584+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.585+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.585+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.585+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.585+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.586+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.588+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:32:50.588+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.588+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.588+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.588+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.589+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.589+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.589+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:50.589+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:32:50.591+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:32:53.592+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:53.592+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:53.592+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:53.592+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:53.592+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:53.593+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:32:53.594+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:32:58.595+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:32:58.596+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:32:58.596+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:32:58.597+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:32:58.597+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:32:58.597+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:32:58.599+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.601+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.602+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.602+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.602+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.602+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.602+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.604+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:33:05.604+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.604+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.604+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.604+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.604+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.604+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.604+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:05.604+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:33:05.607+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:33:08.608+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:08.608+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:08.609+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:08.609+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:08.609+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:08.609+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:33:08.611+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:33:13.613+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:13.614+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:13.614+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:13.614+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:13.614+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:13.615+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:33:13.620+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.622+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.622+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.622+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.622+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.623+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.623+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.625+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:33:20.625+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.625+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.626+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.626+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.626+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.626+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.626+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:20.626+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:33:20.628+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:33:23.628+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:23.628+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:23.628+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:23.628+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:23.628+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:23.629+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:33:23.631+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:33:28.632+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:28.633+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:28.633+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:28.633+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:28.633+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:28.634+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:33:28.636+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.641+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.643+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.643+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.645+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.645+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.669+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.675+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:33:35.676+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.676+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.676+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.676+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.676+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.676+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.676+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:35.676+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:33:35.681+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:33:38.682+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:38.682+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:38.682+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:38.682+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:38.682+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:38.682+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:33:38.684+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:33:43.685+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:43.686+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:43.686+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:43.686+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:43.686+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:43.687+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:33:43.688+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.689+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.690+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.690+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.690+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.690+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.690+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.692+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:33:50.692+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.692+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.692+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.692+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.692+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.692+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.693+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:50.693+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:33:50.694+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:33:53.696+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:53.696+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:53.696+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:53.696+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:53.696+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:53.697+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:33:53.699+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:33:58.700+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:33:58.701+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:33:58.701+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:33:58.701+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:33:58.701+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:33:58.701+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:33:58.702+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.703+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.704+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.704+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.704+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.704+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.704+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.705+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:34:05.705+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.705+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.705+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.706+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.706+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.706+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.706+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:05.706+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:34:05.706+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:34:08.708+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:08.708+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:08.708+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:08.708+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:08.708+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:08.708+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:34:08.710+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:34:13.711+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:13.712+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:13.712+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:13.712+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:13.712+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:13.713+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:34:13.714+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.715+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.716+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.716+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.716+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.716+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.716+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.719+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:34:20.720+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.720+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.720+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.720+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.720+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.720+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.720+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:20.720+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:34:20.723+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:34:23.724+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:23.724+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:23.724+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:23.724+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:23.724+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:23.724+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:34:23.727+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:34:28.728+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:28.729+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:28.729+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:28.729+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:28.729+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:28.729+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:34:28.732+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.733+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.733+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.733+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.733+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.733+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.733+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.736+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:34:35.736+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.736+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.736+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.736+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.736+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.736+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.736+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:35.736+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:34:35.739+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:34:38.740+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:38.741+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:38.741+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:38.741+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:38.742+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:38.742+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:34:38.745+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:34:43.746+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:43.746+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:43.746+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:43.746+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:43.746+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:43.746+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:34:43.749+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.749+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.750+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.750+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.751+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.751+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.752+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.754+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:34:50.754+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.754+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.754+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.755+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.755+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.755+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.755+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:50.755+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:34:50.756+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:34:53.758+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:53.758+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:53.758+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:53.758+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:53.758+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:53.758+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:34:53.760+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:34:58.761+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:34:58.762+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:34:58.762+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:34:58.762+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:34:58.762+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:34:58.762+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:34:58.764+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.765+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.769+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.769+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.769+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.769+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.769+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.771+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:35:05.771+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.771+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.771+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.771+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.771+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.771+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.771+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:05.771+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:35:05.773+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:35:08.775+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:08.775+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:08.775+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:08.775+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:08.775+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:08.776+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:35:08.779+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:35:13.780+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:13.780+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:13.780+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:13.780+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:13.780+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:13.781+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:35:13.782+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.783+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.783+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.783+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.783+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.783+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.784+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.786+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:35:20.786+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.786+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.787+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.787+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.787+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.787+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.787+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:20.787+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:35:20.788+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:35:23.789+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:23.789+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:23.789+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:23.790+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:23.790+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:23.790+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:35:23.794+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:35:28.795+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:28.796+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:28.796+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:28.796+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:28.796+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:28.797+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:35:28.799+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.800+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.801+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.801+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.801+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.801+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.801+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.803+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:35:35.803+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.803+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.803+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.803+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.803+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.803+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.803+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:35.803+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:35:35.805+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:35:38.806+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:38.807+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:38.807+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:38.807+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:38.807+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:38.807+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:35:38.810+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:35:43.811+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:43.812+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:43.812+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:43.812+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:43.812+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:43.812+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:35:43.813+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.823+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.823+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.823+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.823+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.823+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.824+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.826+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:35:50.826+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.826+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.826+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.826+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.826+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.826+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.826+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:50.826+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:35:50.828+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:35:53.833+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:53.833+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:53.833+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:53.833+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:53.833+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:53.834+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:35:53.835+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:35:58.842+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:35:58.842+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:35:58.842+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:35:58.842+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:35:58.843+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:35:58.843+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:35:58.844+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.851+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.851+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.851+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.852+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.852+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.852+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.854+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:36:05.854+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.854+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.854+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.854+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.854+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.854+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.854+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:05.854+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:36:05.855+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:36:08.858+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:08.859+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:08.859+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:08.859+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:08.859+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:08.860+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:36:08.861+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:36:13.865+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:13.866+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:13.866+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:13.866+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:13.866+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:13.867+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:36:13.884+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.887+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.887+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.887+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.887+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.887+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.887+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.890+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:36:20.890+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.890+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.890+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.890+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.890+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.890+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.890+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:20.890+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:36:20.893+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:36:23.894+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:23.895+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:23.895+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:23.895+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:23.895+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:23.895+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:36:23.897+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:36:28.899+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:28.900+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:28.900+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:28.900+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:28.900+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:28.900+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:36:28.903+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.905+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.906+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.906+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.906+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.906+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.906+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.908+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:36:35.909+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.909+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.909+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.909+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.909+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.909+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.909+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:35.909+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:36:35.910+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:36:38.911+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:38.912+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:38.912+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:38.912+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:38.912+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:38.912+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:36:38.914+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:36:43.915+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:43.916+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:43.916+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:43.916+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:43.916+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:43.917+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:36:43.920+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.922+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.923+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.923+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.923+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.924+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.924+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.926+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:36:50.926+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.926+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.926+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.926+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.926+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.926+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.926+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:50.927+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:36:50.935+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:36:53.937+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:53.937+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:53.937+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:53.937+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:53.937+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:53.937+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:36:53.939+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:36:58.940+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:36:58.941+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:36:58.941+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:36:58.941+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:36:58.941+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:36:58.941+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:36:58.944+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.945+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.946+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.946+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.947+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.947+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.947+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.949+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:37:05.949+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.949+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.949+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.949+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.949+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.949+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.949+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:05.949+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:37:05.950+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:37:08.952+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:08.952+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:08.952+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:08.952+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:08.952+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:08.952+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:37:08.955+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:37:13.956+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:13.957+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:13.957+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:13.958+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:13.958+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:13.958+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:37:13.960+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.961+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.962+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.962+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.962+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.962+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.963+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.965+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:37:20.965+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.965+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.966+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.966+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.966+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.966+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.966+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:20.966+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:37:20.967+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:37:23.968+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:23.968+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:23.968+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:23.968+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:23.968+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:23.969+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:37:23.971+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:37:28.972+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:28.972+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:28.972+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:28.973+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:28.973+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:28.973+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:37:28.974+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.975+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.976+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.976+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.976+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.976+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.977+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.979+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:37:35.979+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.979+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.980+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.980+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.980+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.980+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.980+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:35.980+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:37:35.982+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:37:38.983+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:38.984+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:38.985+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:38.985+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:38.985+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:38.985+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:37:38.987+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:37:43.988+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:43.989+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:43.989+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:43.989+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:43.989+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:43.989+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:37:43.991+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.992+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.993+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.993+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.993+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.993+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.993+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.994+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:37:50.994+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.994+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.994+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.994+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.994+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.994+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.994+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:50.994+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:37:50.994+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:37:53.996+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:53.996+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:53.996+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:53.996+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:53.996+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:53.996+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:37:53.997+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:37:58.998+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:37:58.999+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:37:58.999+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:37:58.999+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:37:58.999+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:37:58.999+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:37:59.003+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.004+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.005+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.005+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.006+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.006+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.006+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.007+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:38:06.007+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.007+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.007+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.007+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.007+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.007+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.007+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:06.007+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:38:06.008+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:38:09.010+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:09.010+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:09.010+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:09.010+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:09.010+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:09.010+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:38:09.013+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:38:14.014+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:14.014+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:14.014+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:14.014+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:14.014+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:14.014+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:38:14.017+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.020+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.022+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.022+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.022+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.022+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.024+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.033+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:38:21.034+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.034+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.034+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.034+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.034+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.034+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.034+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:21.034+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:38:21.036+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:38:24.037+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:24.037+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:24.037+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:24.037+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:24.037+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:24.038+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:38:24.039+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:38:29.039+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:29.041+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:29.041+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:29.041+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:29.041+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:29.042+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:38:29.043+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.044+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.045+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.045+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.045+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.045+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.046+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.052+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:38:36.052+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.052+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.052+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.052+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.052+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.052+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.052+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:36.053+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:38:36.055+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:38:39.056+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:39.057+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:39.057+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:39.057+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:39.057+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:39.057+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:38:39.059+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:38:44.060+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:44.060+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:44.060+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:44.061+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:44.061+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:44.061+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:38:44.073+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.075+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.077+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.078+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.078+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.078+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.078+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.082+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:38:51.082+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.082+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.082+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.082+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.082+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.082+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.082+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:51.082+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:38:51.084+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:38:54.085+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:54.085+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:54.085+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:54.085+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:54.085+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:54.085+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:38:54.086+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:38:59.088+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:38:59.089+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:38:59.089+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:38:59.089+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:38:59.089+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:38:59.089+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:38:59.091+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.092+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.093+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.093+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.093+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.093+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.093+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.096+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:39:06.096+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.096+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.096+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.096+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.096+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.096+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.096+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:06.097+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:39:06.098+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:39:09.099+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:09.100+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:09.100+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:09.100+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:09.100+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:09.101+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:39:09.103+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:39:14.104+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:14.105+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:14.105+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:14.105+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:14.105+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:14.105+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:39:14.107+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.108+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.109+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.109+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.109+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.109+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.109+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.111+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:39:21.111+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.111+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.112+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.112+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.112+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.112+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.112+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:21.112+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:39:21.114+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:39:24.115+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:24.115+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:24.115+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:24.115+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:24.115+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:24.115+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:39:24.116+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:39:29.117+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:29.118+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:29.118+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:29.119+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:29.119+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:29.119+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:39:29.120+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.122+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.123+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.123+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.123+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.123+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.123+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.126+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:39:36.126+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.126+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.127+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.127+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.127+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.127+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.127+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:36.127+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:39:36.129+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:39:39.130+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:39.130+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:39.130+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:39.131+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:39.131+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:39.131+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:39:39.132+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:39:44.133+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:44.134+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:44.134+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:44.134+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:44.134+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:44.134+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:39:44.136+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.138+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.138+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.139+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.139+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.139+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.139+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.144+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:39:51.145+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.145+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.145+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.145+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.145+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.145+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.145+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:51.145+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:39:51.146+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:39:54.147+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:54.148+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:54.148+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:54.148+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:54.148+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:54.148+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:39:54.150+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:39:59.152+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:39:59.152+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:39:59.153+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:39:59.153+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:39:59.153+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:39:59.153+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:39:59.154+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.157+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.158+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.159+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.159+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.159+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.159+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.163+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T10:40:06.164+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.165+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.170+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.170+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.170+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.170+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.170+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:40:06.175+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:40:06.184+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T10:40:09.185+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:40:09.185+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:40:09.186+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:40:09.186+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:40:09.186+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:40:09.186+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:40:09.188+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T10:40:14.189+0300","msg":"Подготовка к отправке данных"}
+{"level":"info","timestamp":"2025-02-17T10:40:14.189+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:40:14.189+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:40:14.189+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:40:14.189+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:40:14.189+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"warn","timestamp":"2025-02-17T10:40:14.191+0300","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp 127.0.0.1:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T10:40:18.915+0300","msg":"Запуск агента"}
+{"level":"info","timestamp":"2025-02-17T10:40:18.915+0300","msg":"Инициализация хранилища успешна. Начало работы"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.917+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.918+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.918+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.918+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.918+0300","msg":"Загрузка публичного ключа","path":"../../internal/config/agent/public.pem"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.919+0300","msg":"Шифрование AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Получен ответ от сервера","status":200,"response_body":""}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Данные успешно зашифрованы и отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Кол-во повторных попыток 0"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Метрики отправлены на сервер"}

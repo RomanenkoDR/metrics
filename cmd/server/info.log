@@ -1251,3 +1251,457 @@
 {"level":"info","timestamp":"2025-02-17T09:24:15.136+0300","msg":"Обновление метрик завершено"}
 {"level":"info","timestamp":"2025-02-17T09:24:15.136+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 9.914416ms, Размер: 1732"}
 {"level":"info","timestamp":"2025-02-17T09:24:15.137+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 10.238ms, Размер: 23"}
+{"level":"info","timestamp":"2025-02-17T10:22:01.653+0300","msg":"Генерация новой пары RSA-ключей"}
+{"level":"info","timestamp":"2025-02-17T10:22:02.829+0300","msg":"Ключи успешно сгенерированы и сохранены"}
+{"level":"info","timestamp":"2025-02-17T10:22:02.829+0300","msg":"Запуск сервера..."}
+{"level":"info","timestamp":"2025-02-17T10:23:05.980+0300","msg":"Ключи уже существуют, генерация не требуется"}
+{"level":"info","timestamp":"2025-02-17T10:23:05.981+0300","msg":"Запуск сервера..."}
+{"level":"info","timestamp":"2025-02-17T10:23:17.821+0300","msg":"HTTP-запрос - Метод: POST, URI: /updates/, Заголовки: map[Accept-Encoding:[gzip] Content-Length:[3701] Content-Type:[application/json] User-Agent:[Go-http-client/1.1]]"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.821+0300","msg":"Загрузка приватного ключа","path":"../../internal/config/server/private.pem"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.822+0300","msg":"Расшифровка AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.833+0300","msg":"Расшифровка данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.833+0300","msg":"Данные успешно расшифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.833+0300","msg":"Данные успешно расшифрованы","decrypted_data":"\"W3siaWQiOiJQb2xsQ291bnQiLCJ0eXBlIjoiY291bnRlciIsImRlbHRhIjo1LCJ2YWx1ZSI6MH0seyJpZCI6IkdDQ1BVRnJhY3Rpb24iLCJ0eXBlIjoiZ2F1Z2UiLCJkZWx0YSI6MCwidmFsdWUiOjB9LHsiaWQiOiJNYWxsb2NzIiwidHlwZSI6ImdhdWdlIiwiZGVsdGEiOjAsInZhbHVlIjo1ODZ9LHsiaWQiOiJOZXh0R0MiLCJ0eXBlIjoiZ2F1Z2UiLCJkZWx0YSI6MCwidmFsdWUiOjQxOTQzMDR9LHsiaWQiOiJIZWFwSWRsZSIsInR5cGUiOiJnYXVnZSIsImRlbHRhIjowLCJ2YWx1ZSI6MzI4NDk5Mn0seyJpZCI6IkhlYXBJbnVzZSIsInR5cGUiOiJnYXVnZSIsImRlbHRhIjowLCJ2YWx1ZSI6Njc5OTM2fSx7ImlkIjoiUmFuZG9tVmFsdWUiLCJ0eXBlIjoiZ2F1Z2UiLCJkZWx0YSI6MCwidmFsdWUiOjAuMTM0MTEwMzMxNTM1MzM5MzZ9LHsiaWQiOiJUb3RhbEFsbG9jIiwidHlwZSI6ImdhdWdlIiwiZGVsdGEiOjAsInZhbHVlIjoxODczMjB9LHsiaWQiOiJMb29rdXBzIiwidHlwZSI6ImdhdWdlIiwiZGVsdGEiOjAsInZhbHVlIjowfSx7ImlkIjoiU3lzIiwidHlwZSI6ImdhdWdlIiwiZGVsdGEiOjAsInZhbHVlIjo2NzA0MTQ0fSx7ImlkIjoiQnVja0hhc2hTeXMiLCJ0eXBlIjoiZ2F1Z2UiLCJkZWx0YSI6MCwidmFsdWUiOjMzMTV9LHsiaWQiOiJIZWFwT2JqZWN0cyIsInR5cGUiOiJnYXVnZSIsImRlbHRhIjowLCJ2YWx1ZSI6NTU3fSx7ImlkIjoiTGFzdEdDIiwidHlwZSI6ImdhdWdlIiwiZGVsdGEiOjAsInZhbHVlIjowfSx7ImlkIjoiTnVtRm9yY2VkR0MiLCJ0eXBlIjoiZ2F1Z2UiLCJkZWx0YSI6MCwidmFsdWUiOjB9LHsiaWQiOiJIZWFwU3lzIiwidHlwZSI6ImdhdWdlIiwiZGVsdGEiOjAsInZhbHVlIjozOTY0OTI4fSx7ImlkIjoiTnVtR0MiLCJ0eXBlIjoiZ2F1Z2UiLCJkZWx0YSI6MCwidmFsdWUiOjB9LHsiaWQiOiJPdGhlclN5cyIsInR5cGUiOiJnYXVnZSIsImRlbHRhIjowLCJ2YWx1ZSI6NzE0OTgxfSx7ImlkIjoiU3RhY2tTeXMiLCJ0eXBlIjoiZ2F1Z2UiLCJkZWx0YSI6MCwidmFsdWUiOjIyOTM3Nn0seyJpZCI6Ik1TcGFuSW51c2UiLCJ0eXBlIjoiZ2F1Z2UiLCJkZWx0YSI6MCwidmFsdWUiOjIzMzYwfSx7ImlkIjoiR0NTeXMiLCJ0eXBlIjoiZ2F1Z2UiLCJkZWx0YSI6MCwidmFsdWUiOjE3NDMzMDR9LHsiaWQiOiJIZWFwQWxsb2MiLCJ0eXBlIjoiZ2F1Z2UiLCJkZWx0YSI6MCwidmFsdWUiOjE4NzMyMH0seyJpZCI6IkhlYXBSZWxlYXNlZCIsInR5cGUiOiJnYXVnZSIsImRlbHRhIjowLCJ2YWx1ZSI6MzIxOTQ1Nn0seyJpZCI6Ik1DYWNoZUludXNlIiwidHlwZSI6ImdhdWdlIiwiZGVsdGEiOjAsInZhbHVlIjo5NjAwfSx7ImlkIjoiUGF1c2VUb3RhbE5zIiwidHlwZSI6ImdhdWdlIiwiZGVsdGEiOjAsInZhbHVlIjowfSx7ImlkIjoiU3RhY2tJbnVzZSIsInR5cGUiOiJnYXVnZSIsImRlbHRhIjowLCJ2YWx1ZSI6MjI5Mzc2fSx7ImlkIjoiQWxsb2MiLCJ0eXBlIjoiZ2F1Z2UiLCJkZWx0YSI6MCwidmFsdWUiOjE4NzMyMH0seyJpZCI6IkZyZWVzIiwidHlwZSI6ImdhdWdlIiwiZGVsdGEiOjAsInZhbHVlIjoyOX0seyJpZCI6Ik1DYWNoZVN5cyIsInR5cGUiOiJnYXVnZSIsImRlbHRhIjowLCJ2YWx1ZSI6MTU2MDB9LHsiaWQiOiJNU3BhblN5cyIsInR5cGUiOiJnYXVnZSIsImRlbHRhIjowLCJ2YWx1ZSI6MzI2NDB9XQ==\""}
+{"level":"info","timestamp":"2025-02-17T10:23:17.833+0300","msg":"Окончательные расшифрованные данные","final_decrypted_data":"[{\"id\":\"PollCount\",\"type\":\"counter\",\"delta\":5,\"value\":0},{\"id\":\"GCCPUFraction\",\"type\":\"gauge\",\"delta\":0,\"value\":0},{\"id\":\"Mallocs\",\"type\":\"gauge\",\"delta\":0,\"value\":586},{\"id\":\"NextGC\",\"type\":\"gauge\",\"delta\":0,\"value\":4194304},{\"id\":\"HeapIdle\",\"type\":\"gauge\",\"delta\":0,\"value\":3284992},{\"id\":\"HeapInuse\",\"type\":\"gauge\",\"delta\":0,\"value\":679936},{\"id\":\"RandomValue\",\"type\":\"gauge\",\"delta\":0,\"value\":0.13411033153533936},{\"id\":\"TotalAlloc\",\"type\":\"gauge\",\"delta\":0,\"value\":187320},{\"id\":\"Lookups\",\"type\":\"gauge\",\"delta\":0,\"value\":0},{\"id\":\"Sys\",\"type\":\"gauge\",\"delta\":0,\"value\":6704144},{\"id\":\"BuckHashSys\",\"type\":\"gauge\",\"delta\":0,\"value\":3315},{\"id\":\"HeapObjects\",\"type\":\"gauge\",\"delta\":0,\"value\":557},{\"id\":\"LastGC\",\"type\":\"gauge\",\"delta\":0,\"value\":0},{\"id\":\"NumForcedGC\",\"type\":\"gauge\",\"delta\":0,\"value\":0},{\"id\":\"HeapSys\",\"type\":\"gauge\",\"delta\":0,\"value\":3964928},{\"id\":\"NumGC\",\"type\":\"gauge\",\"delta\":0,\"value\":0},{\"id\":\"OtherSys\",\"type\":\"gauge\",\"delta\":0,\"value\":714981},{\"id\":\"StackSys\",\"type\":\"gauge\",\"delta\":0,\"value\":229376},{\"id\":\"MSpanInuse\",\"type\":\"gauge\",\"delta\":0,\"value\":23360},{\"id\":\"GCSys\",\"type\":\"gauge\",\"delta\":0,\"value\":1743304},{\"id\":\"HeapAlloc\",\"type\":\"gauge\",\"delta\":0,\"value\":187320},{\"id\":\"HeapReleased\",\"type\":\"gauge\",\"delta\":0,\"value\":3219456},{\"id\":\"MCacheInuse\",\"type\":\"gauge\",\"delta\":0,\"value\":9600},{\"id\":\"PauseTotalNs\",\"type\":\"gauge\",\"delta\":0,\"value\":0},{\"id\":\"StackInuse\",\"type\":\"gauge\",\"delta\":0,\"value\":229376},{\"id\":\"Alloc\",\"type\":\"gauge\",\"delta\":0,\"value\":187320},{\"id\":\"Frees\",\"type\":\"gauge\",\"delta\":0,\"value\":29},{\"id\":\"MCacheSys\",\"type\":\"gauge\",\"delta\":0,\"value\":15600},{\"id\":\"MSpanSys\",\"type\":\"gauge\",\"delta\":0,\"value\":32640}]"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен counter","metric":"PollCount","value":5}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"GCCPUFraction","value":0}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"Mallocs","value":586}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"NextGC","value":4194304}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"HeapIdle","value":3284992}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"HeapInuse","value":679936}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"RandomValue","value":0.13411033153533936}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"TotalAlloc","value":187320}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"Lookups","value":0}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"Sys","value":6704144}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"BuckHashSys","value":3315}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"HeapObjects","value":557}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"LastGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"NumForcedGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"HeapSys","value":3964928}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"NumGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"OtherSys","value":714981}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"StackSys","value":229376}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"MSpanInuse","value":23360}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"GCSys","value":1743304}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"HeapAlloc","value":187320}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"HeapReleased","value":3219456}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"MCacheInuse","value":9600}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"PauseTotalNs","value":0}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"StackInuse","value":229376}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"Alloc","value":187320}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"Frees","value":29}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"MCacheSys","value":15600}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновлен gauge","metric":"MSpanSys","value":32640}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"Обновление метрик завершено"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 13.179834ms, Размер: 1666"}
+{"level":"info","timestamp":"2025-02-17T10:23:17.834+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 13.530042ms, Размер: 23"}
+{"level":"info","timestamp":"2025-02-17T10:25:56.801+0300","msg":"Ключи уже существуют, генерация не требуется"}
+{"level":"info","timestamp":"2025-02-17T10:25:56.802+0300","msg":"Запуск сервера..."}
+{"level":"info","timestamp":"2025-02-17T10:26:07.887+0300","msg":"HTTP-запрос - Метод: POST, URI: /updates/, Заголовки: map[Accept-Encoding:[gzip] Content-Length:[3701] Content-Type:[application/json] User-Agent:[Go-http-client/1.1]]"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.887+0300","msg":"Загрузка приватного ключа","path":"../../internal/config/server/private.pem"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.888+0300","msg":"Расшифровка AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.904+0300","msg":"Расшифровка данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.904+0300","msg":"Данные успешно расшифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.904+0300","msg":"Окончательные расшифрованные данные","final_decrypted_data":"[{\"id\":\"PollCount\",\"type\":\"counter\",\"delta\":5,\"value\":0},{\"id\":\"NextGC\",\"type\":\"gauge\",\"delta\":0,\"value\":4194304},{\"id\":\"NumForcedGC\",\"type\":\"gauge\",\"delta\":0,\"value\":0},{\"id\":\"RandomValue\",\"type\":\"gauge\",\"delta\":0,\"value\":0.11880755424499512},{\"id\":\"BuckHashSys\",\"type\":\"gauge\",\"delta\":0,\"value\":3315},{\"id\":\"MSpanSys\",\"type\":\"gauge\",\"delta\":0,\"value\":48960},{\"id\":\"HeapIdle\",\"type\":\"gauge\",\"delta\":0,\"value\":3219456},{\"id\":\"HeapInuse\",\"type\":\"gauge\",\"delta\":0,\"value\":745472},{\"id\":\"HeapSys\",\"type\":\"gauge\",\"delta\":0,\"value\":3964928},{\"id\":\"MCacheSys\",\"type\":\"gauge\",\"delta\":0,\"value\":15600},{\"id\":\"PauseTotalNs\",\"type\":\"gauge\",\"delta\":0,\"value\":0},{\"id\":\"StackInuse\",\"type\":\"gauge\",\"delta\":0,\"value\":229376},{\"id\":\"Frees\",\"type\":\"gauge\",\"delta\":0,\"value\":29},{\"id\":\"GCCPUFraction\",\"type\":\"gauge\",\"delta\":0,\"value\":0},{\"id\":\"Sys\",\"type\":\"gauge\",\"delta\":0,\"value\":6966288},{\"id\":\"Mallocs\",\"type\":\"gauge\",\"delta\":0,\"value\":587},{\"id\":\"TotalAlloc\",\"type\":\"gauge\",\"delta\":0,\"value\":187400},{\"id\":\"Lookups\",\"type\":\"gauge\",\"delta\":0,\"value\":0},{\"id\":\"MSpanInuse\",\"type\":\"gauge\",\"delta\":0,\"value\":33600},{\"id\":\"LastGC\",\"type\":\"gauge\",\"delta\":0,\"value\":0},{\"id\":\"OtherSys\",\"type\":\"gauge\",\"delta\":0,\"value\":960805},{\"id\":\"MCacheInuse\",\"type\":\"gauge\",\"delta\":0,\"value\":9600},{\"id\":\"StackSys\",\"type\":\"gauge\",\"delta\":0,\"value\":229376},{\"id\":\"HeapAlloc\",\"type\":\"gauge\",\"delta\":0,\"value\":187400},{\"id\":\"HeapObjects\",\"type\":\"gauge\",\"delta\":0,\"value\":558},{\"id\":\"HeapReleased\",\"type\":\"gauge\",\"delta\":0,\"value\":3153920},{\"id\":\"NumGC\",\"type\":\"gauge\",\"delta\":0,\"value\":0},{\"id\":\"Alloc\",\"type\":\"gauge\",\"delta\":0,\"value\":187400},{\"id\":\"GCSys\",\"type\":\"gauge\",\"delta\":0,\"value\":1743304}]"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен counter","metric":"PollCount","value":5}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"NextGC","value":4194304}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"NumForcedGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"RandomValue","value":0.11880755424499512}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"BuckHashSys","value":3315}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"MSpanSys","value":48960}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"HeapIdle","value":3219456}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"HeapInuse","value":745472}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"HeapSys","value":3964928}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"MCacheSys","value":15600}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"PauseTotalNs","value":0}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"StackInuse","value":229376}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"Frees","value":29}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"GCCPUFraction","value":0}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"Sys","value":6966288}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"Mallocs","value":587}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"TotalAlloc","value":187400}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"Lookups","value":0}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"MSpanInuse","value":33600}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"LastGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"OtherSys","value":960805}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"MCacheInuse","value":9600}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"StackSys","value":229376}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"HeapAlloc","value":187400}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"HeapObjects","value":558}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"HeapReleased","value":3153920}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"NumGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"Alloc","value":187400}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновлен gauge","metric":"GCSys","value":1743304}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"Обновление метрик завершено"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.905+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 18.23475ms, Размер: 1666"}
+{"level":"info","timestamp":"2025-02-17T10:26:07.906+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 18.828333ms, Размер: 23"}
+{"level":"info","timestamp":"2025-02-17T10:27:17.262+0300","msg":"Ключи уже существуют, генерация не требуется"}
+{"level":"info","timestamp":"2025-02-17T10:27:17.263+0300","msg":"Запуск сервера..."}
+{"level":"info","timestamp":"2025-02-17T10:27:30.500+0300","msg":"HTTP-запрос - Метод: POST, URI: /updates/, Заголовки: map[Accept-Encoding:[gzip] Content-Length:[3693] Content-Type:[application/json] User-Agent:[Go-http-client/1.1]]"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.501+0300","msg":"Загрузка приватного ключа","path":"../../internal/config/server/private.pem"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.501+0300","msg":"Расшифровка AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Расшифровка данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Данные успешно расшифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен counter","metric":"PollCount","value":5}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"MSpanSys","value":48960}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"Mallocs","value":596}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"Sys","value":6966288}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"RandomValue","value":0.6268139481544495}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"GCCPUFraction","value":0}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"MCacheInuse","value":9600}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"BuckHashSys","value":3315}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"HeapObjects","value":567}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"PauseTotalNs","value":0}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"NumForcedGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"GCSys","value":1743304}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"HeapAlloc","value":188824}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"Lookups","value":0}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"StackInuse","value":262144}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"StackSys","value":262144}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"Frees","value":29}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"NumGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"OtherSys","value":960805}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"MCacheSys","value":15600}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"HeapInuse","value":778240}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"HeapSys","value":3932160}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"MSpanInuse","value":33600}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"NextGC","value":4194304}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"TotalAlloc","value":188824}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"HeapIdle","value":3153920}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"HeapReleased","value":3088384}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"LastGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновлен gauge","metric":"Alloc","value":188824}
+{"level":"info","timestamp":"2025-02-17T10:27:30.512+0300","msg":"Обновление метрик завершено"}
+{"level":"info","timestamp":"2025-02-17T10:27:30.513+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 12.387167ms, Размер: 23"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.495+0300","msg":"HTTP-запрос - Метод: POST, URI: /updates/, Заголовки: map[Accept-Encoding:[gzip] Content-Length:[3705] Content-Type:[application/json] User-Agent:[Go-http-client/1.1]]"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.495+0300","msg":"Загрузка приватного ключа","path":"../../internal/config/server/private.pem"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.495+0300","msg":"Расшифровка AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Расшифровка данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Данные успешно расшифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен counter","metric":"PollCount","value":10}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"StackInuse","value":262144}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"StackSys","value":262144}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"Frees","value":54}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"GCSys","value":1854328}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"HeapAlloc","value":362024}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"Lookups","value":0}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"MCacheSys","value":15600}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"NumGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"OtherSys","value":849781}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"NextGC","value":4194304}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"TotalAlloc","value":362024}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"HeapIdle","value":2834432}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"HeapInuse","value":1097728}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"HeapSys","value":3932160}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"MSpanInuse","value":33600}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"Alloc","value":362024}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"HeapReleased","value":2768896}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"LastGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"RandomValue","value":0.9900217652320862}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"GCCPUFraction","value":0}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"MSpanSys","value":48960}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"Mallocs","value":1121}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"Sys","value":6966288}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"BuckHashSys","value":3315}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"MCacheInuse","value":9600}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"HeapObjects","value":1067}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"NumForcedGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновлен gauge","metric":"PauseTotalNs","value":0}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"Обновление метрик завершено"}
+{"level":"info","timestamp":"2025-02-17T10:27:40.503+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 8.640959ms, Размер: 23"}
+{"level":"info","timestamp":"2025-02-17T10:28:28.849+0300","msg":"Ключи уже существуют, генерация не требуется"}
+{"level":"info","timestamp":"2025-02-17T10:28:28.850+0300","msg":"Запуск сервера..."}
+{"level":"info","timestamp":"2025-02-17T10:28:35.551+0300","msg":"HTTP-запрос - Метод: POST, URI: /updates/, Заголовки: map[Accept-Encoding:[gzip] Content-Length:[3717] Content-Type:[application/json] User-Agent:[Go-http-client/1.1]]"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.551+0300","msg":"Загрузка приватного ключа","path":"../../internal/config/server/private.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.552+0300","msg":"Расшифровка AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.569+0300","msg":"Расшифровка данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.569+0300","msg":"Данные успешно расшифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен counter","metric":"PollCount","value":16}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"NumForcedGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"PauseTotalNs","value":0}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"HeapAlloc","value":1295536}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"Lookups","value":0}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"StackInuse","value":262144}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"StackSys","value":262144}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"Frees","value":158}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"GCSys","value":1916008}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"OtherSys","value":788101}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"MCacheSys","value":15600}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"NumGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"HeapSys","value":3932160}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"MSpanInuse","value":43840}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"NextGC","value":4194304}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"TotalAlloc","value":1295536}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"HeapIdle","value":1818624}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"HeapInuse","value":2113536}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"LastGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"Alloc","value":1295536}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"HeapReleased","value":1753088}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"Mallocs","value":3990}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"Sys","value":6966288}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"RandomValue","value":0.024317026138305664}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"GCCPUFraction","value":0}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"MSpanSys","value":48960}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"BuckHashSys","value":3315}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"MCacheInuse","value":9600}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновлен gauge","metric":"HeapObjects","value":3832}
+{"level":"info","timestamp":"2025-02-17T10:28:35.570+0300","msg":"Обновление метрик завершено"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.571+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 21.054042ms, Размер: 23"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.573+0300","msg":"HTTP-запрос - Метод: POST, URI: /updates/, Заголовки: map[Accept-Encoding:[gzip] Content-Length:[3717] Content-Type:[application/json] User-Agent:[Go-http-client/1.1]]"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.573+0300","msg":"Загрузка приватного ключа","path":"../../internal/config/server/private.pem"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.574+0300","msg":"Расшифровка AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Расшифровка данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Данные успешно расшифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Обновлен counter","metric":"PollCount","value":16}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Обновлен gauge","metric":"BuckHashSys","value":3315}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Обновлен gauge","metric":"MCacheInuse","value":9600}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Обновлен gauge","metric":"HeapObjects","value":3832}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Обновлен gauge","metric":"NumForcedGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Обновлен gauge","metric":"PauseTotalNs","value":0}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Обновлен gauge","metric":"Frees","value":158}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Обновлен gauge","metric":"GCSys","value":1916008}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Обновлен gauge","metric":"HeapAlloc","value":1295536}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Обновлен gauge","metric":"Lookups","value":0}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Обновлен gauge","metric":"StackInuse","value":262144}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Обновлен gauge","metric":"StackSys","value":262144}
+{"level":"info","timestamp":"2025-02-17T10:28:35.588+0300","msg":"Обновлен gauge","metric":"MCacheSys","value":15600}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"NumGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"OtherSys","value":788101}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"HeapIdle","value":1818624}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"HeapInuse","value":2113536}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"HeapSys","value":3932160}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"MSpanInuse","value":43840}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"NextGC","value":4194304}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"TotalAlloc","value":1295536}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"Alloc","value":1295536}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"HeapReleased","value":1753088}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"LastGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"GCCPUFraction","value":0}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"MSpanSys","value":48960}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"Mallocs","value":3990}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"Sys","value":6966288}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновлен gauge","metric":"RandomValue","value":0.024317026138305664}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"Обновление метрик завершено"}
+{"level":"info","timestamp":"2025-02-17T10:28:35.589+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 16.075084ms, Размер: 23"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.635+0300","msg":"Ключи уже существуют, генерация не требуется"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.637+0300","msg":"Запуск сервера..."}
+{"level":"info","timestamp":"2025-02-17T10:30:33.951+0300","msg":"HTTP-запрос - Метод: POST, URI: /updates/, Заголовки: map[Accept-Encoding:[gzip] Content-Length:[3801] Content-Type:[application/json] User-Agent:[Go-http-client/1.1]]"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.951+0300","msg":"Загрузка приватного ключа","path":"../../internal/config/server/private.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.953+0300","msg":"Расшифровка AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.971+0300","msg":"Расшифровка данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Данные успешно расшифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен counter","metric":"PollCount","value":21}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"BuckHashSys","value":3315}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"MCacheInuse","value":9600}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"HeapObjects","value":4892}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"NumForcedGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"PauseTotalNs","value":36708}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"Frees","value":9494}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"GCSys","value":2549000}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"HeapAlloc","value":1724424}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"Lookups","value":0}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"StackInuse","value":458752}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"StackSys","value":458752}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"MCacheSys","value":15600}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"NumGC","value":1}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"OtherSys","value":1171301}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"HeapIdle","value":5013504}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"HeapInuse","value":2916352}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"HeapSys","value":7929856}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"MSpanInuse","value":92800}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"NextGC","value":4194304}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"TotalAlloc","value":4731272}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"Alloc","value":1724424}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"HeapReleased","value":2686976}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"LastGC","value":1739777373545555000}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"GCCPUFraction","value":0.0000026019980219734867}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"MSpanSys","value":146880}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"Mallocs","value":14386}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"Sys","value":12274704}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновлен gauge","metric":"RandomValue","value":0.04509919881820679}
+{"level":"info","timestamp":"2025-02-17T10:30:33.972+0300","msg":"Обновление метрик завершено .\n Ожидаем следующий запрос"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.973+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 21.81ms, Размер: 23"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.975+0300","msg":"HTTP-запрос - Метод: POST, URI: /updates/, Заголовки: map[Accept-Encoding:[gzip] Content-Length:[3801] Content-Type:[application/json] User-Agent:[Go-http-client/1.1]]"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.975+0300","msg":"Загрузка приватного ключа","path":"../../internal/config/server/private.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.975+0300","msg":"Расшифровка AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.984+0300","msg":"Расшифровка данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.984+0300","msg":"Данные успешно расшифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен counter","metric":"PollCount","value":22}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"BuckHashSys","value":3315}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"MCacheInuse","value":9600}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"HeapObjects","value":5801}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"NumForcedGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"PauseTotalNs","value":36708}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"Frees","value":9528}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"GCSys","value":2567504}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"HeapAlloc","value":2039640}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"Lookups","value":0}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"StackInuse","value":458752}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"StackSys","value":458752}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"MCacheSys","value":15600}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"NumGC","value":1}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"OtherSys","value":1152797}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"HeapIdle","value":4751360}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"HeapInuse","value":3178496}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"HeapSys","value":7929856}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"MSpanInuse","value":103040}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"NextGC","value":4194304}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"TotalAlloc","value":5046488}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"Alloc","value":2039640}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"HeapReleased","value":2686976}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"LastGC","value":1739777373545555000}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"GCCPUFraction","value":0.0000026019980219734867}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"MSpanSys","value":146880}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"Mallocs","value":15329}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"Sys","value":12274704}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновлен gauge","metric":"RandomValue","value":0.19402629137039185}
+{"level":"info","timestamp":"2025-02-17T10:30:33.985+0300","msg":"Обновление метрик завершено .\n Ожидаем следующий запрос"}
+{"level":"info","timestamp":"2025-02-17T10:30:33.986+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 10.249709ms, Размер: 23"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.495+0300","msg":"HTTP-запрос - Метод: POST, URI: /updates/, Заголовки: map[Accept-Encoding:[gzip] Content-Length:[3801] Content-Type:[application/json] User-Agent:[Go-http-client/1.1]]"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.495+0300","msg":"Загрузка приватного ключа","path":"../../internal/config/server/private.pem"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.496+0300","msg":"Расшифровка AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.515+0300","msg":"Расшифровка данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.515+0300","msg":"Данные успешно расшифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.515+0300","msg":"Обновлен counter","metric":"PollCount","value":26}
+{"level":"info","timestamp":"2025-02-17T10:30:40.515+0300","msg":"Обновлен gauge","metric":"NumGC","value":1}
+{"level":"info","timestamp":"2025-02-17T10:30:40.515+0300","msg":"Обновлен gauge","metric":"OtherSys","value":1402605}
+{"level":"info","timestamp":"2025-02-17T10:30:40.515+0300","msg":"Обновлен gauge","metric":"MCacheSys","value":15600}
+{"level":"info","timestamp":"2025-02-17T10:30:40.515+0300","msg":"Обновлен gauge","metric":"HeapInuse","value":3260416}
+{"level":"info","timestamp":"2025-02-17T10:30:40.515+0300","msg":"Обновлен gauge","metric":"HeapSys","value":7929856}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"MSpanInuse","value":103040}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"NextGC","value":4194304}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"TotalAlloc","value":5159688}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"HeapIdle","value":4669440}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"HeapReleased","value":2686976}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"LastGC","value":1739777373545555000}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"Alloc","value":2152840}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"MSpanSys","value":146880}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"Mallocs","value":15682}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"Sys","value":12536848}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"RandomValue","value":0.6820785999298096}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"GCCPUFraction","value":0.0000026019980219734867}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"MCacheInuse","value":9600}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"BuckHashSys","value":3315}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"HeapObjects","value":6144}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"PauseTotalNs","value":36708}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"NumForcedGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"GCSys","value":2579840}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"HeapAlloc","value":2152840}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"Lookups","value":0}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"StackInuse","value":458752}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"StackSys","value":458752}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновлен gauge","metric":"Frees","value":9538}
+{"level":"info","timestamp":"2025-02-17T10:30:40.516+0300","msg":"Обновление метрик завершено .\n Ожидаем следующий запрос"}
+{"level":"info","timestamp":"2025-02-17T10:30:40.517+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 22.011084ms, Размер: 23"}
+{"level":"info","timestamp":"2025-02-17T10:31:10.849+0300","msg":"Ключи уже существуют, генерация не требуется"}
+{"level":"info","timestamp":"2025-02-17T10:31:10.850+0300","msg":"Запуск сервера..."}
+{"level":"info","timestamp":"2025-02-17T10:31:13.516+0300","msg":"HTTP-запрос - Метод: POST, URI: /updates/, Заголовки: map[Accept-Encoding:[gzip] Content-Length:[3801] Content-Type:[application/json] User-Agent:[Go-http-client/1.1]]"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.517+0300","msg":"Загрузка приватного ключа","path":"../../internal/config/server/private.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.518+0300","msg":"Расшифровка AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.536+0300","msg":"Расшифровка данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.536+0300","msg":"Данные успешно расшифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.536+0300","msg":"Обновлен counter","metric":"PollCount","value":31}
+{"level":"info","timestamp":"2025-02-17T10:31:13.536+0300","msg":"Обновлен gauge","metric":"Alloc","value":2298304}
+{"level":"info","timestamp":"2025-02-17T10:31:13.536+0300","msg":"Обновлен gauge","metric":"HeapReleased","value":2686976}
+{"level":"info","timestamp":"2025-02-17T10:31:13.536+0300","msg":"Обновлен gauge","metric":"LastGC","value":1739777373545555000}
+{"level":"info","timestamp":"2025-02-17T10:31:13.536+0300","msg":"Обновлен gauge","metric":"GCCPUFraction","value":0.0000026019980219734867}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"MSpanSys","value":146880}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"Mallocs","value":16035}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"Sys","value":12536848}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"RandomValue","value":0.6081549525260925}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"BuckHashSys","value":3315}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"MCacheInuse","value":9600}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"HeapObjects","value":6487}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"NumForcedGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"PauseTotalNs","value":36708}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"Frees","value":9548}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"GCSys","value":2579840}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"HeapAlloc","value":2298304}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"Lookups","value":0}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"StackInuse","value":458752}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"StackSys","value":458752}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"MCacheSys","value":15600}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"NumGC","value":1}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"OtherSys","value":1402605}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"HeapIdle","value":4571136}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"HeapInuse","value":3358720}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"HeapSys","value":7929856}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"MSpanInuse","value":113280}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"NextGC","value":4194304}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновлен gauge","metric":"TotalAlloc","value":5305152}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"Обновление метрик завершено. Ожидаем следующий запрос"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.537+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 21.161292ms, Размер: 23"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.540+0300","msg":"HTTP-запрос - Метод: POST, URI: /updates/, Заголовки: map[Accept-Encoding:[gzip] Content-Length:[3801] Content-Type:[application/json] User-Agent:[Go-http-client/1.1]]"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.540+0300","msg":"Загрузка приватного ключа","path":"../../internal/config/server/private.pem"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.541+0300","msg":"Расшифровка AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Расшифровка данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Данные успешно расшифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен counter","metric":"PollCount","value":31}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"NumForcedGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"PauseTotalNs","value":36708}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"Frees","value":9548}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"GCSys","value":2579840}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"HeapAlloc","value":2298304}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"Lookups","value":0}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"StackInuse","value":458752}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"StackSys","value":458752}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"MCacheSys","value":15600}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"NumGC","value":1}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"OtherSys","value":1402605}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"HeapIdle","value":4571136}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"HeapInuse","value":3358720}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"HeapSys","value":7929856}
+{"level":"info","timestamp":"2025-02-17T10:31:13.566+0300","msg":"Обновлен gauge","metric":"MSpanInuse","value":113280}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновлен gauge","metric":"NextGC","value":4194304}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновлен gauge","metric":"TotalAlloc","value":5305152}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновлен gauge","metric":"Alloc","value":2298304}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновлен gauge","metric":"HeapReleased","value":2686976}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновлен gauge","metric":"LastGC","value":1739777373545555000}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновлен gauge","metric":"GCCPUFraction","value":0.0000026019980219734867}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновлен gauge","metric":"MSpanSys","value":146880}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновлен gauge","metric":"Mallocs","value":16035}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновлен gauge","metric":"Sys","value":12536848}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновлен gauge","metric":"RandomValue","value":0.6081549525260925}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновлен gauge","metric":"BuckHashSys","value":3315}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновлен gauge","metric":"MCacheInuse","value":9600}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновлен gauge","metric":"HeapObjects","value":6487}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"Обновление метрик завершено. Ожидаем следующий запрос"}
+{"level":"info","timestamp":"2025-02-17T10:31:13.567+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 27.011042ms, Размер: 23"}
+{"level":"info","timestamp":"2025-02-17T10:40:24.109+0300","msg":"Ключи уже существуют, генерация не требуется"}
+{"level":"info","timestamp":"2025-02-17T10:40:24.110+0300","msg":"Запуск сервера..."}
+{"level":"info","timestamp":"2025-02-17T10:40:28.923+0300","msg":"HTTP-запрос - Метод: POST, URI: /updates/, Заголовки: map[Accept-Encoding:[gzip] Content-Length:[3693] Content-Type:[application/json] User-Agent:[Go-http-client/1.1]]"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.923+0300","msg":"Загрузка приватного ключа","path":"../../internal/config/server/private.pem"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.924+0300","msg":"Расшифровка AES-ключа с помощью RSA"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Расшифровка данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Данные успешно расшифрованы"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен counter","metric":"PollCount","value":5}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"HeapInuse","value":679936}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"Lookups","value":0}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"Alloc","value":187608}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"NextGC","value":4194304}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"NumForcedGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"PauseTotalNs","value":0}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"MCacheInuse","value":9600}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"LastGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"GCCPUFraction","value":0}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"Mallocs","value":587}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"OtherSys","value":714980}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"HeapSys","value":3964928}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"StackSys","value":229376}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"RandomValue","value":0.9615967869758606}
+{"level":"info","timestamp":"2025-02-17T10:40:28.934+0300","msg":"Обновлен gauge","metric":"Frees","value":29}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновлен gauge","metric":"HeapIdle","value":3284992}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновлен gauge","metric":"TotalAlloc","value":187608}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновлен gauge","metric":"HeapAlloc","value":187608}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновлен gauge","metric":"MSpanInuse","value":23360}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновлен gauge","metric":"MSpanSys","value":32640}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновлен gauge","metric":"NumGC","value":0}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновлен gauge","metric":"HeapObjects","value":558}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновлен gauge","metric":"GCSys","value":1743304}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновлен gauge","metric":"HeapReleased","value":3219456}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновлен gauge","metric":"MCacheSys","value":15600}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновлен gauge","metric":"StackInuse","value":229376}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновлен gauge","metric":"Sys","value":6704144}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновлен gauge","metric":"BuckHashSys","value":3316}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Обновление метрик завершено. Ожидаем следующий запрос"}
+{"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"HTTP-ответ - Статус: 200, Длительность: 11.934458ms, Размер: 23"}
