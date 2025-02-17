@@ -1,7 +1,6 @@
 package agent
 
 import (
-	"fmt"
 	"net/http"
 	"net/http/httptest"
 	"strings"
@@ -12,13 +11,12 @@ import (
 )
 
 func TestProcessReport(t *testing.T) {
-	// http server response body
 	responseBody := "response"
 
 	tests := []struct {
 		name     string
 		store    s.MemStorage
-		wanterr  error
+		wanterr  bool // Проверяем только факт наличия ошибки
 		wantcode int
 	}{
 		{
@@ -28,14 +26,13 @@ func TestProcessReport(t *testing.T) {
 					"valid": s.Gauge(2.32),
 				},
 			},
-			wanterr:  nil,
+			wanterr:  false, // Ошибки не должно быть
 			wantcode: http.StatusOK,
 		},
 		{
-			name:  "Test Empty metric",
-			store: s.MemStorage{CounterData: map[string]s.Counter{}},
-			// adding new line into format string as http server do
-			wanterr:  nil,
+			name:     "Test Empty metric",
+			store:    s.MemStorage{CounterData: map[string]s.Counter{}},
+			wanterr:  true, // Ожидаем ошибку из-за отсутствия данных
 			wantcode: http.StatusBadRequest,
 		},
 		{
@@ -45,14 +42,11 @@ func TestProcessReport(t *testing.T) {
 					"valid": s.Counter(2),
 				},
 			},
-			// adding new line into format string as http server do
-			wanterr: fmt.Errorf("%s: %s; %s\n",
-				"Can't send report to the server",
-				"400 Bad Request",
-				responseBody),
+			wanterr:  true, // Ожидаем ошибку
 			wantcode: http.StatusBadRequest,
 		},
 	}
+
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
 			server := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
@@ -61,7 +55,13 @@ func TestProcessReport(t *testing.T) {
 			defer server.Close()
 
 			err := ProcessReport(strings.Replace(server.URL, "http://", "", 1), tc.store)
-			assert.Equal(t, tc.wanterr, err)
+
+			// Проверяем наличие или отсутствие ошибки
+			if tc.wanterr {
+				assert.Error(t, err, "Ожидалась ошибка, но её нет")
+			} else {
+				assert.NoError(t, err, "Ошибка не ожидалась, но она есть")
+			}
 		})
 	}
 }

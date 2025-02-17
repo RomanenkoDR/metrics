@@ -11,11 +11,11 @@ import (
 )
 
 const (
-	PrivateKeyPath = "private.pem"
-	PublicKeyPath  = "public.pem"
+	//PrivateKeyPath = "private.pem"
+	//PublicKeyPath  = "public.pem"
 
-	//PrivateKeyPathTest = "../../internal/config/server/private.pem"
-	//PublicKeyPathTest  = "../../internal/config/agent/public.pem"
+	PrivateKeyPath = "../../internal/config/server/private.pem"
+	PublicKeyPath  = "../../internal/config/agent/public.pem"
 )
 
 // GenerateAESKey создает новый 32-байтовый AES-ключ
