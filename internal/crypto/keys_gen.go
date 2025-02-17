@@ -5,97 +5,96 @@ import (
 	"crypto/rsa"
 	"crypto/x509"
 	"encoding/pem"
-	"fmt"
+	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
+	"go.uber.org/zap"
 	"os"
-	"path/filepath"
 )
 
-// GenerateRSAKeys генерирует пару RSA-ключей и сохраняет их в файлы.
-func GenerateRSAKeys(bits int) error {
-	// Генерация приватного ключа
-	privateKey, err := rsa.GenerateKey(rand.Reader, bits)
-	if err != nil {
-		return fmt.Errorf("ошибка генерации ключа: %w", err)
-	}
+const (
+	PrivateKeyPath = "../../internal/config/server/private.pem"
+	PublicKeyPath  = "../../internal/config/agent/public.pem"
+)
 
-	// Создание и запись приватного ключа
-	privateFile, err := os.Create("private.pem")
-	if err != nil {
-		return fmt.Errorf("ошибка создания файла приватного ключа: %w", err)
+// GenerateAESKey создает новый 32-байтовый AES-ключ
+func GenerateAESKey() ([]byte, error) {
+	aesKey := make([]byte, 32)
+	if _, err := rand.Read(aesKey); err != nil {
+		logger.Error("Ошибка генерации AES-ключа", zap.Error(err))
+		return nil, err
 	}
-	defer privateFile.Close()
+	logger.Info("Сгенерирован новый AES-ключ")
+	return aesKey, nil
+}
 
-	err = pem.Encode(privateFile, &pem.Block{Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(privateKey)})
-	if err != nil {
-		return fmt.Errorf("ошибка сохранения приватного ключа: %w", err)
-	}
-
-	// Генерация публичного ключа
-	publicKey := &privateKey.PublicKey
-	publicKeyBytes, err := x509.MarshalPKIXPublicKey(publicKey)
-	if err != nil {
-		return fmt.Errorf("ошибка кодирования публичного ключа: %w", err)
-	}
-
-	// Проверка существования папки перед созданием файла
-	publicKeyPath := "public.pem"
-	publicDir := filepath.Dir(publicKeyPath)
-	if _, err := os.Stat(publicDir); os.IsNotExist(err) {
-		err = os.MkdirAll(publicDir, os.ModePerm)
-		if err != nil {
-			return fmt.Errorf("ошибка создания директории для публичного ключа: %w", err)
+// GenerateKeys проверяет существование ключей и генерирует новые, если их нет
+func GenerateKeys() error {
+	if _, err := os.Stat(PrivateKeyPath); err == nil {
+		if _, err := os.Stat(PublicKeyPath); err == nil {
+			logger.Info("Ключи уже существуют, генерация не требуется")
+			return nil
 		}
 	}
 
-	// Создание и запись публичного ключа
-	publicFile, err := os.Create(publicKeyPath)
-	if err != nil {
-		return fmt.Errorf("ошибка создания файла публичного ключа: %w", err)
-	}
-	defer publicFile.Close()
+	logger.Info("Генерация новой пары RSA-ключей")
 
-	err = pem.Encode(publicFile, &pem.Block{Type: "PUBLIC KEY", Bytes: publicKeyBytes})
+	// Генерация приватного ключа (4096 бит)
+	privKey, err := rsa.GenerateKey(rand.Reader, 4096)
 	if err != nil {
-		return fmt.Errorf("ошибка сохранения публичного ключа: %w", err)
+		logger.Error("Ошибка генерации ключей", zap.Error(err))
+		return err
 	}
 
-	fmt.Println("Ключи успешно сгенерированы.")
+	// Сохранение приватного ключа
+	if err := savePrivateKey(privKey); err != nil {
+		return err
+	}
+
+	// Сохранение публичного ключа
+	if err := savePublicKey(&privKey.PublicKey); err != nil {
+		return err
+	}
+
+	logger.Info("Ключи успешно сгенерированы и сохранены")
 	return nil
 }
 
-// savePrivateKey сохраняет приватный ключ в PEM-формате.
-func savePrivateKey(privateKey *rsa.PrivateKey, path string) error {
-	privateKeyFile, err := os.Create(path)
+// savePrivateKey сохраняет приватный ключ в файл
+func savePrivateKey(privKey *rsa.PrivateKey) error {
+	privKeyFile, err := os.Create(PrivateKeyPath)
 	if err != nil {
-		return fmt.Errorf("ошибка создания файла приватного ключа: %v", err)
+		logger.Error("Ошибка создания файла приватного ключа", zap.Error(err))
+		return err
 	}
-	defer privateKeyFile.Close()
+	defer privKeyFile.Close()
 
-	privateKeyPEM := &pem.Block{
-		Type:  "RSA PRIVATE KEY",
-		Bytes: x509.MarshalPKCS1PrivateKey(privateKey),
+	privKeyPEM := pem.EncodeToMemory(&pem.Block{Type: "RSA PRIVATE KEY", Bytes: x509.MarshalPKCS1PrivateKey(privKey)})
+	if _, err := privKeyFile.Write(privKeyPEM); err != nil {
+		logger.Error("Ошибка записи приватного ключа", zap.Error(err))
+		return err
 	}
 
-	return pem.Encode(privateKeyFile, privateKeyPEM)
+	return nil
 }
 
-// savePublicKey сохраняет публичный ключ в PEM-формате.
-func savePublicKey(publicKey *rsa.PublicKey, path string) error {
-	publicKeyFile, err := os.Create(path)
+// savePublicKey сохраняет публичный ключ в файл
+func savePublicKey(pubKey *rsa.PublicKey) error {
+	pubKeyPEM, err := x509.MarshalPKIXPublicKey(pubKey)
 	if err != nil {
-		return fmt.Errorf("ошибка создания файла публичного ключа: %v", err)
+		logger.Error("Ошибка кодирования публичного ключа", zap.Error(err))
+		return err
 	}
-	defer publicKeyFile.Close()
 
-	publicKeyBytes, err := x509.MarshalPKIXPublicKey(publicKey)
+	pubKeyFile, err := os.Create(PublicKeyPath)
 	if err != nil {
-		return fmt.Errorf("ошибка маршалинга публичного ключа: %v", err)
+		logger.Error("Ошибка создания файла публичного ключа", zap.Error(err))
+		return err
+	}
+	defer pubKeyFile.Close()
+
+	if _, err := pubKeyFile.Write(pem.EncodeToMemory(&pem.Block{Type: "PUBLIC KEY", Bytes: pubKeyPEM})); err != nil {
+		logger.Error("Ошибка записи публичного ключа", zap.Error(err))
+		return err
 	}
 
-	publicKeyPEM := &pem.Block{
-		Type:  "RSA PUBLIC KEY",
-		Bytes: publicKeyBytes,
-	}
-
-	return pem.Encode(publicKeyFile, publicKeyPEM)
+	return nil
 }

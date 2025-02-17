@@ -3,46 +3,71 @@ package agent
 import (
 	"bytes"
 	"context"
+	"encoding/base64"
 	"encoding/json"
-	"fmt"
 	"github.com/RomanenkoDR/metrics/internal/crypto"
+	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/RomanenkoDR/metrics/internal/storage"
-	"io"
+	"go.uber.org/zap"
 	"log"
 	"net/http"
 	"strings"
 )
 
-// sendRequest - вспомогательная функция для отправки HTTP-запроса на сервер
-func sendRequest(serverAddress string, data []byte) error {
-	// Проверяем, есть ли публичный ключ
-	if crypto.PublicKey != nil {
-		encryptedData, err := crypto.EncryptData(data, crypto.PublicKey)
-		if err != nil {
-			log.Printf("Ошибка шифрования данных: %v", err)
-			return fmt.Errorf("ошибка шифрования: %v", err)
-		}
-		data = encryptedData
-	} else {
-		log.Println("Публичный ключ не загружен, данные отправляются без шифрования")
+// sendRequest - отправляет данные на сервер (с шифрованием AES и RSA)
+func sendRequest(serverURL string, data interface{}) error {
+	logger.Info("Подготовка к отправке данных")
+
+	// Кодируем данные в JSON
+	jsonData, err := json.Marshal(data)
+	if err != nil {
+		logger.Error("Ошибка сериализации данных в JSON", zap.Error(err))
+		return err
 	}
 
-	// Сжимаем данные перед отправкой на сервер
-	compressedData, err := compress(data)
+	// Генерируем AES-ключ
+	aesKey, err := crypto.GenerateAESKey()
 	if err != nil {
-		return fmt.Errorf("ошибка сжатия данных: %v", err)
+		logger.Error("Ошибка генерации AES-ключа", zap.Error(err))
+		return err
 	}
+
+	// Шифруем данные перед отправкой
+	encryptedData, err := crypto.EncryptData(jsonData, aesKey)
+	if err != nil {
+		logger.Error("Ошибка шифрования данных", zap.Error(err))
+		return err
+	}
+
+	// Загружаем публичный RSA-ключ
+	pubKey, err := crypto.LoadPublicKey(crypto.PublicKeyPath)
+	if err != nil {
+		logger.Error("Ошибка загрузки публичного ключа", zap.Error(err))
+		return err
+	}
+
+	// Шифруем AES-ключ с помощью публичного RSA-ключа
+	encryptedAESKey, err := crypto.EncryptAESKeyRSA(aesKey, pubKey)
+	if err != nil {
+		logger.Error("Ошибка шифрования AES-ключа", zap.Error(err))
+		return err
+	}
+
+	// Кодируем зашифрованные данные в base64
+	encryptedDataB64 := base64.StdEncoding.EncodeToString(encryptedData)
+	encryptedAESKeyB64 := base64.StdEncoding.EncodeToString(encryptedAESKey)
+
+	// Формируем JSON
+	payload := []byte(`{"aes_key":"` + encryptedAESKeyB64 + `", "data":"` + encryptedDataB64 + `"}`)
 
 	// Создаём HTTP-запрос
-	request, err := http.NewRequest("POST", serverAddress, bytes.NewBuffer(compressedData))
+	request, err := http.NewRequest("POST", serverURL, bytes.NewBuffer(payload))
 	if err != nil {
 		return err
 	}
 
 	// Устанавливаем заголовки запроса
 	request.Header.Set("Content-Type", "application/json")
-	request.Header.Set("Content-Encoding", "gzip")
-	request.Header.Set("Accept-Encoding", "gzip")
 
 	// Выполняем запрос
 	client := &http.Client{}
@@ -52,16 +77,10 @@ func sendRequest(serverAddress string, data []byte) error {
 	}
 	defer resp.Body.Close()
 
-	// Проверяем статус ответа
-	if resp.StatusCode != http.StatusOK {
-		b, _ := io.ReadAll(resp.Body)
-		return fmt.Errorf("ошибка отправки отчёта: %s; %s", resp.Status, b)
-	}
-
+	logger.Info("Данные успешно зашифрованы и отправлены на сервер")
 	return nil
 }
 
-// sendReport - функция для отправки одной метрики
 func sendReport(serverAddress string, metrics Metrics) error {
 	data, err := json.Marshal(metrics)
 	if err != nil {

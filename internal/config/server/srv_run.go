@@ -2,6 +2,7 @@ package server
 
 import (
 	"context"
+	"github.com/RomanenkoDR/metrics/internal/crypto"
 	"github.com/RomanenkoDR/metrics/internal/db"
 	"github.com/RomanenkoDR/metrics/internal/handlers"
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
@@ -16,6 +17,11 @@ import (
 )
 
 func Run() {
+	// Проверяем и генерируем ключи, если их нет
+	if err := crypto.GenerateKeys(); err != nil {
+		logger.Fatal("Ошибка генерации ключей", zap.Error(err))
+	}
+
 	// Запуск профилировщика pprof
 	runPprof()
 
@@ -61,6 +67,7 @@ func Run() {
 	}
 
 	// Инициализируем маршрутизатор с конфигурацией и хэндлером
+
 	router, err := routers.InitRouter(cfg, h)
 	if err != nil {
 		panic(err)
