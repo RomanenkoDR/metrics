@@ -11,12 +11,16 @@ import (
 )
 
 const (
-	PrivateKeyPath = "../../internal/config/server/private.pem"
-	PublicKeyPath  = "../../internal/config/agent/public.pem"
+	PrivateKeyPath = "private.pem"
+	PublicKeyPath  = "public.pem"
+
+	//PrivateKeyPathTest = "../../internal/config/server/private.pem"
+	//PublicKeyPathTest  = "../../internal/config/agent/public.pem"
 )
 
 // GenerateAESKey создает новый 32-байтовый AES-ключ
 func GenerateAESKey() ([]byte, error) {
+
 	aesKey := make([]byte, 32)
 	if _, err := rand.Read(aesKey); err != nil {
 		logger.Error("Ошибка генерации AES-ключа", zap.Error(err))
