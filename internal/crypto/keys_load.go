@@ -4,54 +4,64 @@ import (
 	"crypto/rsa"
 	"crypto/x509"
 	"encoding/pem"
-	"fmt"
+	"errors"
+	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
+	"go.uber.org/zap"
 	"os"
 )
 
-// LoadPrivateKey загружает приватный ключ из файла
-func LoadPrivateKey(path string) (*rsa.PrivateKey, error) {
-	// Читаем файл с приватным ключом
+// LoadPublicKey загружает публичный RSA-ключ из файла
+func LoadPublicKey(path string) (*rsa.PublicKey, error) {
+	logger.Info("Загрузка публичного ключа", zap.String("path", path))
+
 	keyData, err := os.ReadFile(path)
 	if err != nil {
-		return nil, fmt.Errorf("ошибка чтения приватного ключа: %v", err)
+		logger.Error("Ошибка чтения публичного ключа", zap.Error(err))
+		return nil, err
 	}
 
-	// Декодируем PEM-блок
 	block, _ := pem.Decode(keyData)
-	if block == nil || block.Type != "RSA PRIVATE KEY" {
-		return nil, fmt.Errorf("неверный формат приватного ключа")
+	if block == nil || block.Type != "PUBLIC KEY" {
+		logger.Error("Неверный формат публичного ключа")
+		return nil, errors.New("неверный формат публичного ключа")
 	}
 
-	// Парсим RSA-ключ
-	privateKey, err := x509.ParsePKCS1PrivateKey(block.Bytes)
+	pub, err := x509.ParsePKIXPublicKey(block.Bytes)
 	if err != nil {
-		return nil, fmt.Errorf("ошибка парсинга приватного ключа: %v", err)
+		logger.Error("Ошибка парсинга публичного ключа", zap.Error(err))
+		return nil, err
 	}
 
-	return privateKey, nil
+	pubKey, ok := pub.(*rsa.PublicKey)
+	if !ok {
+		logger.Error("Неверный тип публичного ключа")
+		return nil, errors.New("неверный тип публичного ключа")
+	}
+
+	return pubKey, nil
 }
 
-// LoadPublicKey загружает публичный ключ из файла
-func LoadPublicKey(path string) (*rsa.PublicKey, error) {
+// LoadPrivateKey загружает приватный RSA-ключ из файла
+func LoadPrivateKey(path string) (*rsa.PrivateKey, error) {
+	logger.Info("Загрузка приватного ключа", zap.String("path", path))
+
 	keyData, err := os.ReadFile(path)
 	if err != nil {
-		return nil, fmt.Errorf("ошибка чтения публичного ключа: %v", err)
+		logger.Error("Ошибка чтения приватного ключа", zap.Error(err))
+		return nil, err
 	}
 
 	block, _ := pem.Decode(keyData)
-	if block == nil || block.Type != "RSA PUBLIC KEY" {
-		return nil, fmt.Errorf("неверный формат публичного ключа")
+	if block == nil || block.Type != "RSA PRIVATE KEY" {
+		logger.Error("Неверный формат приватного ключа")
+		return nil, errors.New("неверный формат приватного ключа")
 	}
 
-	publicKeyInterface, err := x509.ParsePKIXPublicKey(block.Bytes)
+	privKey, err := x509.ParsePKCS1PrivateKey(block.Bytes)
 	if err != nil {
-		return nil, fmt.Errorf("ошибка парсинга публичного ключа: %v", err)
+		logger.Error("Ошибка парсинга приватного ключа", zap.Error(err))
+		return nil, err
 	}
 
-	publicKey, ok := publicKeyInterface.(*rsa.PublicKey)
-	if !ok {
-		return nil, fmt.Errorf("неверный тип публичного ключа")
-	}
-
-	return publicKey, nil
+	return privKey, nil
 }

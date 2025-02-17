@@ -3,9 +3,7 @@ package agent
 import (
 	"context"
 	"crypto/rsa"
-	"github.com/RomanenkoDR/metrics/internal/crypto"
 	"go.uber.org/zap"
-	"log"
 	"time"
 
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
@@ -16,26 +14,13 @@ var publicKey *rsa.PublicKey
 
 func Run() {
 	// Логируем старт приложения
-	logger.Info("Начало основного приложения")
+	logger.Info("Запуск агента")
 
 	// Парсим параметры конфигурации
 	cfg, err := ParseOptions()
 	if err != nil {
 		logger.Fatal("Ошибка разбора флагов: ", zap.Any("err", err))
 	}
-	// Загружаем публичный ключ для шифрования, если указан
-	keyPath := cfg.CryptoKey
-	if keyPath == "" {
-		keyPath = "public.pem" // Новый путь по умолчанию
-	}
-
-	log.Printf("Попытка публичного ключа из %s...", keyPath)
-	pubKey, err := crypto.LoadPublicKey(keyPath)
-	if err != nil {
-		log.Fatalf("Ошибка загрузки публичного ключа: %v", err)
-	}
-	crypto.PublicKey = pubKey
-	log.Println("Публичный ключ успешно загружен, шифрование включено")
 
 	if cfg.Key != "" {
 		Encrypt = true
