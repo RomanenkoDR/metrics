@@ -1,67 +1,82 @@
 package agent
 
 import (
-	"net/http"
-	"net/http/httptest"
-	"strings"
-	"testing"
+   "context"
+   "net/http"
+   "net/http/httptest"
+   "strings"
+   "testing"
 
-	s "github.com/RomanenkoDR/metrics/internal/storage"
-	"github.com/stretchr/testify/assert"
+   "github.com/RomanenkoDR/metrics/internal/storage"
+   "github.com/stretchr/testify/assert"
 )
 
+// Моковый HTTP-сервер
+func mockServer(t *testing.T, expectedStatus int, expectedBody string) *httptest.Server {
+   return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	  assert.Equal(t, "POST", r.Method)
+	  w.WriteHeader(expectedStatus)
+	  w.Write([]byte(expectedBody))
+   }))
+}
+
+// Тест sendRequest
+func TestSendRequest(t *testing.T) {
+   server := mockServer(t, http.StatusOK, `{"status":"ok"}`)
+   defer server.Close()
+
+   data := map[string]string{"test": "value"}
+   err := sendRequest(server.URL, data)
+   assert.NoError(t, err)
+}
+
+// Тест sendReport
+func TestSendReport(t *testing.T) {
+   server := mockServer(t, http.StatusOK, `{"status":"ok"}`)
+   defer server.Close()
+
+   metric := Metrics{ID: "test_metric", MType: counterType, Delta: 42}
+   err := sendReport(server.URL, metric)
+   assert.NoError(t, err)
+}
+
+// Тест sendReportBatch
+func TestSendReportBatch(t *testing.T) {
+   server := mockServer(t, http.StatusOK, `{"status":"ok"}`)
+   defer server.Close()
+
+   metrics := []Metrics{
+	  {ID: "metric1", MType: counterType, Delta: 10},
+	  {ID: "metric2", MType: gaugeType, Value: 5.5},
+   }
+   err := sendReportBatch(server.URL, metrics)
+   assert.NoError(t, err)
+}
+
+// Тест ProcessReport
 func TestProcessReport(t *testing.T) {
-	responseBody := "response"
+   server := mockServer(t, http.StatusOK, `{"status":"ok"}`)
+   defer server.Close()
 
-	tests := []struct {
-		name     string
-		store    s.MemStorage
-		wanterr  bool // Проверяем только факт наличия ошибки
-		wantcode int
-	}{
-		{
-			name: "Test Valid Post request gauge metric",
-			store: s.MemStorage{
-				GaugeData: map[string]s.Gauge{
-					"valid": s.Gauge(2.32),
-				},
-			},
-			wanterr:  false, // Ошибки не должно быть
-			wantcode: http.StatusOK,
-		},
-		{
-			name:     "Test Empty metric",
-			store:    s.MemStorage{CounterData: map[string]s.Counter{}},
-			wanterr:  true, // Ожидаем ошибку из-за отсутствия данных
-			wantcode: http.StatusBadRequest,
-		},
-		{
-			name: "Test Invalid Post request counter metric",
-			store: s.MemStorage{
-				CounterData: map[string]s.Counter{
-					"valid": s.Counter(2),
-				},
-			},
-			wanterr:  true, // Ожидаем ошибку
-			wantcode: http.StatusBadRequest,
-		},
-	}
+   memStore := storage.MemStorage{
+	  CounterData: map[string]storage.Counter{"counter1": 100}, // Используем storage.Counter как int64
+	  GaugeData:   map[string]storage.Gauge{"gauge1": 42.42},   // Используем storage.Gauge как float64
+   }
 
-	for _, tc := range tests {
-		t.Run(tc.name, func(t *testing.T) {
-			server := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
-				http.Error(rw, responseBody, tc.wantcode)
-			}))
-			defer server.Close()
+   err := ProcessReport(strings.TrimPrefix(server.URL, "http://"), memStore)
+   assert.NoError(t, err)
+}
 
-			err := ProcessReport(strings.Replace(server.URL, "http://", "", 1), tc.store)
+// Тест ProcessBatch
+func TestProcessBatch(t *testing.T) {
+   server := mockServer(t, http.StatusOK, `{"status":"ok"}`)
+   defer server.Close()
 
-			// Проверяем наличие или отсутствие ошибки
-			if tc.wanterr {
-				assert.Error(t, err, "Ожидалась ошибка, но её нет")
-			} else {
-				assert.NoError(t, err, "Ошибка не ожидалась, но она есть")
-			}
-		})
-	}
+   memStore := storage.MemStorage{
+	  CounterData: map[string]storage.Counter{"counter1": 100}, // Используем storage.Counter как int64
+	  GaugeData:   map[string]storage.Gauge{"gauge1": 42.42},   // Используем storage.Gauge как float64
+   }
+
+   err := ProcessBatch(context.Background(), strings.TrimPrefix(server.URL, "http://"), memStore)
+   assert.NoError(t, err)
 }

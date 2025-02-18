@@ -15789,3 +15789,131 @@
 {"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Данные успешно зашифрованы и отправлены на сервер"}
 {"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Кол-во повторных попыток 0"}
 {"level":"info","timestamp":"2025-02-17T10:40:28.935+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T14:51:20.571+0300","msg":"Запуск агента"}
+{"level":"info","timestamp":"2025-02-17T14:51:20.572+0300","msg":"Инициализация хранилища успешна. Начало работы"}
+{"level":"info","timestamp":"2025-02-17T14:51:30.575+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:51:30.575+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:51:30.575+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:51:30.575+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:51:30.575+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:51:30.576+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:51:30.576+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"warn","timestamp":"2025-02-17T14:51:30.576+0300","msg":"Отправка метрик завершила ошибкой: open public.pem: no such file or directory, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T14:51:33.577+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:51:33.577+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:51:33.577+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:51:33.577+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:51:33.577+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:51:33.577+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:51:33.577+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"warn","timestamp":"2025-02-17T14:51:33.577+0300","msg":"Отправка метрик завершила ошибкой: open public.pem: no such file or directory, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T14:51:38.578+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:51:38.579+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:51:38.579+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:51:38.579+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:51:38.579+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:51:38.579+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:51:38.579+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"warn","timestamp":"2025-02-17T14:51:38.579+0300","msg":"Отправка метрик завершила ошибкой: open public.pem: no such file or directory, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T14:51:45.580+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:51:45.581+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:51:45.581+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:51:45.581+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:51:45.581+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:51:45.581+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:51:45.581+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"info","timestamp":"2025-02-17T14:51:45.581+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T14:51:45.581+0300","msg":"Не удалось обработать пакет метрик: open public.pem: no such file or directory"}
+{"level":"info","timestamp":"2025-02-17T14:51:45.581+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T14:51:45.582+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:51:45.582+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:51:45.582+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:51:45.582+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:51:45.582+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:51:45.582+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:51:45.582+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"warn","timestamp":"2025-02-17T14:51:45.586+0300","msg":"Отправка метрик завершила ошибкой: open public.pem: no such file or directory, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T14:51:48.587+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:51:48.587+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:51:48.587+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:51:48.587+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:51:48.587+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:51:48.587+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:51:48.588+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"warn","timestamp":"2025-02-17T14:51:48.588+0300","msg":"Отправка метрик завершила ошибкой: open public.pem: no such file or directory, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T14:51:53.588+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:51:53.589+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:51:53.589+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:51:53.589+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:51:53.589+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:51:53.589+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:51:53.589+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"warn","timestamp":"2025-02-17T14:51:53.589+0300","msg":"Отправка метрик завершила ошибкой: open public.pem: no such file or directory, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T14:52:00.591+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:52:00.591+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:52:00.591+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:52:00.591+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:52:00.591+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:52:00.591+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:52:00.591+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"info","timestamp":"2025-02-17T14:52:00.591+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T14:52:00.591+0300","msg":"Не удалось обработать пакет метрик: open public.pem: no such file or directory"}
+{"level":"info","timestamp":"2025-02-17T14:52:00.591+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T14:52:00.592+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:52:00.592+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:52:00.592+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:52:00.592+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:52:00.592+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:52:00.592+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:52:00.592+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"warn","timestamp":"2025-02-17T14:52:00.599+0300","msg":"Отправка метрик завершила ошибкой: open public.pem: no such file or directory, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T14:52:03.600+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:52:03.602+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:52:03.602+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:52:03.602+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:52:03.602+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:52:03.602+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:52:03.602+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"warn","timestamp":"2025-02-17T14:52:03.602+0300","msg":"Отправка метрик завершила ошибкой: open public.pem: no such file or directory, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T14:52:08.603+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:52:08.603+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:52:08.603+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:52:08.603+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:52:08.603+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:52:08.604+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:52:08.604+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"warn","timestamp":"2025-02-17T14:52:08.604+0300","msg":"Отправка метрик завершила ошибкой: open public.pem: no such file or directory, повторная попытка 5s"}
+{"level":"info","timestamp":"2025-02-17T14:52:15.604+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:52:15.605+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:52:15.605+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:52:15.605+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:52:15.605+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:52:15.605+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:52:15.605+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"info","timestamp":"2025-02-17T14:52:15.605+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-17T14:52:15.605+0300","msg":"Не удалось обработать пакет метрик: open public.pem: no such file or directory"}
+{"level":"info","timestamp":"2025-02-17T14:52:15.606+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-17T14:52:15.606+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:52:15.606+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:52:15.606+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:52:15.607+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:52:15.607+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:52:15.607+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:52:15.607+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"warn","timestamp":"2025-02-17T14:52:15.607+0300","msg":"Отправка метрик завершила ошибкой: open public.pem: no such file or directory, повторная попытка 1s"}
+{"level":"info","timestamp":"2025-02-17T14:52:18.624+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:52:18.625+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:52:18.625+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:52:18.625+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:52:18.625+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:52:18.625+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:52:18.625+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"warn","timestamp":"2025-02-17T14:52:18.625+0300","msg":"Отправка метрик завершила ошибкой: open public.pem: no such file or directory, повторная попытка 3s"}
+{"level":"info","timestamp":"2025-02-17T14:52:23.626+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-17T14:52:23.627+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-17T14:52:23.627+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-17T14:52:23.627+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-17T14:52:23.627+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
+{"level":"error","timestamp":"2025-02-17T14:52:23.627+0300","msg":"Ошибка чтения публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"error","timestamp":"2025-02-17T14:52:23.627+0300","msg":"Ошибка загрузки публичного ключа","error":"open public.pem: no such file or directory"}
+{"level":"warn","timestamp":"2025-02-17T14:52:23.627+0300","msg":"Отправка метрик завершила ошибкой: open public.pem: no such file or directory, повторная попытка 5s"}
