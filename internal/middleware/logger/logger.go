@@ -35,21 +35,8 @@ func init() {
 		panic(err)
 	}
 
-	// Настройки кодирования JSON-логов (для файла)
-	fileEncoderConfig := zap.NewProductionEncoderConfig()
-	fileEncoderConfig.TimeKey = "timestamp"
-	fileEncoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder // Дата в читаемом формате
-
-	// Настройки кодирования консольных логов (цвет + формат даты)
-	consoleEncoderConfig := zap.NewDevelopmentEncoderConfig()
-	consoleEncoderConfig.EncodeLevel = zapcore.CapitalColorLevelEncoder // Цветные уровни логов
-	consoleEncoderConfig.TimeKey = "timestamp"
-	consoleEncoderConfig.EncodeTime = func(t time.Time, enc zapcore.PrimitiveArrayEncoder) {
-		enc.AppendString(t.Format("2006-01-02 15:04:05")) // Читаемый формат даты
-	}
-
-	fileEncoder := zapcore.NewJSONEncoder(fileEncoderConfig)
-	consoleEncoder := zapcore.NewConsoleEncoder(consoleEncoderConfig)
+	fileEncoder := zapcore.NewJSONEncoder(zap.NewProductionEncoderConfig())
+	consoleEncoder := zapcore.NewConsoleEncoder(zap.NewDevelopmentEncoderConfig())
 
 	core := zapcore.NewTee(
 		zapcore.NewCore(fileEncoder, zapcore.AddSync(file), zap.InfoLevel),
@@ -87,7 +74,8 @@ func LogHandler(next http.Handler) http.Handler {
 
 		duration := time.Since(start)
 
-		LogHTTPResponse(responseData.status, duration, responseData.size)
+		DebugLogger.Sugar().Infof("URI: %s, Метод: %s, Статус: %d, Длительность: %s, Размер: %d",
+			r.RequestURI, r.Method, responseData.status, duration, responseData.size)
 	})
 }
 
