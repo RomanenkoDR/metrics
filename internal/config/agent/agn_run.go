@@ -2,7 +2,6 @@ package agent
 
 import (
 	"context"
-	"crypto/rsa"
 	"go.uber.org/zap"
 	"time"
 
@@ -10,11 +9,9 @@ import (
 	"github.com/RomanenkoDR/metrics/internal/storage"
 )
 
-var publicKey *rsa.PublicKey
-
 func Run() {
 	// Логируем старт приложения
-	logger.Info("Запуск агента")
+	logger.Info("Начало основного приложения")
 
 	// Парсим параметры конфигурации
 	cfg, err := ParseOptions()

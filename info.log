@@ -56,3 +56,10 @@
 {"level":"info","timestamp":"2025-02-18T09:52:38.027+0300","msg":"Шифрование AES-ключа с помощью RSA"}
 {"level":"error","timestamp":"2025-02-18T09:52:38.034+0300","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
 {"level":"info","timestamp":"2025-02-18T09:52:38.034+0300","msg":"Кол-во повторных попыток 3"}
+{"level":"error","timestamp":"2025-02-18T10:27:57.036+0300","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"info","timestamp":"2025-02-18T10:27:57.037+0300","msg":"Метрики отправлены на сервер"}
+{"level":"info","timestamp":"2025-02-18T10:27:57.041+0300","msg":"Подготовка к отправке данных","server_url":"http://localhost:8080/updates/"}
+{"level":"info","timestamp":"2025-02-18T10:27:57.042+0300","msg":"Сгенерирован новый AES-ключ"}
+{"level":"info","timestamp":"2025-02-18T10:27:57.042+0300","msg":"Шифрование данных с помощью AES"}
+{"level":"info","timestamp":"2025-02-18T10:27:57.042+0300","msg":"Данные успешно зашифрованы"}
+{"level":"info","timestamp":"2025-02-18T10:27:57.042+0300","msg":"Загрузка публичного ключа","path":"public.pem"}
