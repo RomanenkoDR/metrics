@@ -36,17 +36,18 @@ func sendRequest(serverAddress string, data []byte, cryptoKeyPath string) error 
 			return err
 		}
 
-		// Создаём JSON-объект для отправки
-		payload := map[string][]byte{"data": encryptedData}
-
-		// Если указан путь к RSA-ключу, шифруем и сам AES-ключ
+		// Шифруем AES-ключ с помощью RSA
 		encryptedAESKey, err := crypto.EncryptRSA(aesKey, cryptoKeyPath)
 		if err != nil {
 			logger.Error("Ошибка шифрования AES-ключа RSA", zap.Error(err))
 			return err
 		}
-		payload["key"] = encryptedAESKey
-		logger.Info("Данные зашифрованы с использованием AES + RSA")
+
+		// Создаём JSON-объект для отправки
+		payload := map[string][]byte{
+			"data": encryptedData,
+			"key":  encryptedAESKey,
+		}
 
 		// Сериализуем зашифрованные данные в JSON
 		data, err = json.Marshal(payload)
@@ -54,6 +55,8 @@ func sendRequest(serverAddress string, data []byte, cryptoKeyPath string) error 
 			logger.Error("Ошибка сериализации зашифрованных данных", zap.Error(err))
 			return err
 		}
+
+		logger.Info("Данные зашифрованы с использованием AES + RSA")
 	}
 
 	// Создаём HTTP-запрос
@@ -89,11 +92,13 @@ func sendRequest(serverAddress string, data []byte, cryptoKeyPath string) error 
 // sendReport - отправка одной метрики
 func sendReport(serverAddress, cryptoKeyPath string, metrics Metrics) error {
 	logger.Debug("Подготовка к отправке метрики", zap.Any("metrics", metrics))
+
 	data, err := json.Marshal(metrics)
 	if err != nil {
 		logger.Error("Ошибка сериализации метрики", zap.Error(err))
 		return err
 	}
+
 	logger.Debug("Отправка метрики на сервер", zap.String("serverAddress", serverAddress))
 	return sendRequest(serverAddress, data, cryptoKeyPath)
 }
@@ -101,11 +106,13 @@ func sendReport(serverAddress, cryptoKeyPath string, metrics Metrics) error {
 // sendReportBatch - отправка батча метрик
 func sendReportBatch(serverAddress, cryptoKeyPath string, metrics []Metrics) error {
 	logger.Debug("Подготовка к отправке батча метрик", zap.Int("batch_size", len(metrics)))
+
 	data, err := json.Marshal(metrics)
 	if err != nil {
 		logger.Error("Ошибка сериализации батча метрик", zap.Error(err))
 		return err
 	}
+
 	logger.Debug("Отправка батча метрик на сервер", zap.String("serverAddress", serverAddress))
 	return sendRequest(serverAddress, data, cryptoKeyPath)
 }

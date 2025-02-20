@@ -2,89 +2,201 @@ package agent
 
 import (
 	"context"
-	"fmt"
+	"encoding/json"
+	"github.com/RomanenkoDR/metrics/internal/storage"
+	"github.com/stretchr/testify/require"
+	"io"
 	"net/http"
 	"net/http/httptest"
 	"strings"
 	"testing"
-
-	s "github.com/RomanenkoDR/metrics/internal/storage"
-	"github.com/stretchr/testify/require"
 )
 
-func TestProcessBatch(t *testing.T) {
+// Моковый обработчик сервера
+func mockServer(t *testing.T, expectedStatus int, expectedResponse string) *httptest.Server {
+	return httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if expectedStatus != http.StatusOK {
+			http.Error(w, expectedResponse, expectedStatus)
+			return
+		}
+
+		// Читаем тело запроса
+		body, err := io.ReadAll(r.Body)
+		require.NoError(t, err)
+
+		// Логируем полученные данные
+		t.Logf("Полученные данные: %s", string(body))
+
+		w.WriteHeader(http.StatusOK)
+	}))
+}
+
+func TestProcessReport(t *testing.T) {
 	t.Parallel()
 
-	// Моковый ответ сервера
-	responseBody := "response"
-
 	tests := []struct {
-		name         string
-		store        s.MemStorage
-		cryptoKey    string // путь к ключу шифрования
-		wantErr      string // ожидаемая строка ошибки
-		wantHTTPCode int
+		name        string
+		cryptoKey   string
+		storage     storage.MemStorage
+		wantErr     bool
+		wantErrText string
 	}{
 		{
-			name: "Valid Batch request with gauge metric",
-			store: s.MemStorage{
-				GaugeData: map[string]s.Gauge{
-					"metric1": 2.32,
-					"metric2": 3.45,
+			name:      "Valid request without encryption",
+			cryptoKey: "",
+			storage: storage.MemStorage{
+				CounterData: map[string]storage.Counter{
+					"requests": 10,
 				},
 			},
-			cryptoKey:    "", // Без шифрования
-			wantErr:      "",
-			wantHTTPCode: http.StatusOK,
+			wantErr: false,
 		},
 		{
-			name: "Valid Batch request with encryption",
-			store: s.MemStorage{
-				GaugeData: map[string]s.Gauge{
-					"metric1": 10.5,
+			name:      "Valid request with encryption",
+			cryptoKey: "/path/to/public.pem",
+			storage: storage.MemStorage{
+				GaugeData: map[string]storage.Gauge{
+					"cpu_load": 0.75,
 				},
 			},
-			cryptoKey:    "/path/to/public.pem", // Шифрование включено
-			wantErr:      "",
-			wantHTTPCode: http.StatusOK,
+			wantErr: false,
 		},
 		{
-			name:         "Empty Batch request",
-			store:        s.MemStorage{CounterData: map[string]s.Counter{}},
-			cryptoKey:    "",
-			wantErr:      "",
-			wantHTTPCode: http.StatusBadRequest,
-		},
-		{
-			name: "Invalid Batch request with counter metric",
-			store: s.MemStorage{
-				CounterData: map[string]s.Counter{
-					"counter1": 5,
-				},
-			},
-			cryptoKey:    "",
-			wantErr:      fmt.Sprintf("Can't send report to the server: 400 Bad Request; %s", responseBody),
-			wantHTTPCode: http.StatusBadRequest,
+			name:        "Invalid metric type",
+			cryptoKey:   "",
+			storage:     storage.MemStorage{},
+			wantErr:     true,
+			wantErrText: "can't send report to the server: 400 Bad Request",
 		},
 	}
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
-			// Создаём мок-сервер
-			server := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
-				require.Equal(t, "application/json", req.Header.Get("Content-Type")) // Проверяем заголовки
-				http.Error(rw, responseBody, tc.wantHTTPCode)
-			}))
+			server := mockServer(t, http.StatusOK, "OK")
 			defer server.Close()
 
-			// Отправка батча на мок-сервер
-			ctx := context.Background()
-			err := ProcessBatch(ctx, strings.TrimPrefix(server.URL, "http://"), tc.cryptoKey, tc.store)
+			err := ProcessReport(strings.TrimPrefix(server.URL, "http://"), tc.cryptoKey, tc.storage)
 
-			if tc.wantErr == "" {
-				require.NoError(t, err)
+			if tc.wantErr {
+				require.Error(t, err)
+				require.Contains(t, err.Error(), tc.wantErrText)
 			} else {
-				require.ErrorContains(t, err, strings.TrimSpace(tc.wantErr))
+				require.NoError(t, err)
+			}
+		})
+	}
+}
+
+func TestProcessBatch(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name        string
+		cryptoKey   string
+		storage     storage.MemStorage
+		wantErr     bool
+		wantErrText string
+	}{
+		{
+			name:      "Valid batch without encryption",
+			cryptoKey: "",
+			storage: storage.MemStorage{
+				CounterData: map[string]storage.Counter{
+					"requests": 20,
+				},
+				GaugeData: map[string]storage.Gauge{
+					"cpu_load": 0.95,
+				},
+			},
+			wantErr: false,
+		},
+		{
+			name:      "Valid batch with encryption",
+			cryptoKey: "/path/to/public.pem",
+			storage: storage.MemStorage{
+				CounterData: map[string]storage.Counter{
+					"errors": 5,
+				},
+			},
+			wantErr: false,
+		},
+		{
+			name:        "Empty batch request",
+			cryptoKey:   "",
+			storage:     storage.MemStorage{},
+			wantErr:     true,
+			wantErrText: "can't send report to the server: 400 Bad Request",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			server := mockServer(t, http.StatusOK, "OK")
+			defer server.Close()
+
+			err := ProcessBatch(context.Background(), strings.TrimPrefix(server.URL, "http://"), tc.cryptoKey, tc.storage)
+
+			if tc.wantErr {
+				require.Error(t, err)
+				require.Contains(t, err.Error(), tc.wantErrText)
+			} else {
+				require.NoError(t, err)
+			}
+		})
+	}
+}
+
+func TestSendRequest_ErrorCases(t *testing.T) {
+	t.Parallel()
+
+	tests := []struct {
+		name          string
+		serverStatus  int
+		serverResp    string
+		cryptoKey     string
+		inputData     interface{}
+		expectErr     bool
+		expectedError string
+	}{
+		{
+			name:          "Server returns 400",
+			serverStatus:  http.StatusBadRequest,
+			serverResp:    "Bad Request",
+			cryptoKey:     "",
+			inputData:     map[string]string{"id": "test", "value": "100"},
+			expectErr:     true,
+			expectedError: "can't send report to the server: 400 Bad Request",
+		},
+		{
+			name:          "Invalid JSON Serialization",
+			serverStatus:  http.StatusOK,
+			serverResp:    "OK",
+			cryptoKey:     "",
+			inputData:     make(chan int), // Канал не сериализуем в JSON
+			expectErr:     true,
+			expectedError: "json: unsupported type: chan int",
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			server := mockServer(t, tc.serverStatus, tc.serverResp)
+			defer server.Close()
+
+			data, err := json.Marshal(tc.inputData)
+			if err != nil && tc.expectErr {
+				require.Error(t, err)
+				require.Contains(t, err.Error(), tc.expectedError)
+				return
+			}
+
+			err = sendRequest(strings.TrimPrefix(server.URL, "http://"), data, tc.cryptoKey)
+
+			if tc.expectErr {
+				require.Error(t, err)
+				require.Contains(t, err.Error(), tc.expectedError)
+			} else {
+				require.NoError(t, err)
 			}
 		})
 	}

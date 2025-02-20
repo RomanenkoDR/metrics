@@ -9,7 +9,6 @@ import (
 	"github.com/go-chi/chi/v5"
 	"go.uber.org/zap"
 	"net/http"
-
 	"strconv"
 )
 
@@ -47,6 +46,7 @@ func (h *Handler) HandleUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// HandleUpdateJSON обрабатывает обновление одной метрики в формате JSON
 func (h *Handler) HandleUpdateJSON(w http.ResponseWriter, r *http.Request) {
 	var m Metrics
 	var buf bytes.Buffer
@@ -62,30 +62,11 @@ func (h *Handler) HandleUpdateJSON(w http.ResponseWriter, r *http.Request) {
 
 	// Если передан ключ, расшифровываем AES-ключ, затем данные
 	if h.PrivateKeyPath != "" {
-		var encryptedPayload map[string][]byte
-		err = json.Unmarshal(data, &encryptedPayload)
+		data, err = h.decryptPayload(data)
 		if err != nil {
-			logger.Error("Ошибка десериализации зашифрованного JSON", zap.Error(err))
-			http.Error(w, err.Error(), http.StatusBadRequest)
-			return
-		}
-
-		// Расшифровка AES-ключа
-		aesKey, err := crypto.DecryptRSA(encryptedPayload["key"], h.PrivateKeyPath)
-		if err != nil {
-			logger.Error("Ошибка расшифровки AES-ключа", zap.Error(err))
-			http.Error(w, "Ошибка расшифровки ключа", http.StatusBadRequest)
-			return
-		}
-
-		// Расшифровка данных
-		decryptedData, err := crypto.DecryptAES(encryptedPayload["data"], aesKey)
-		if err != nil {
-			logger.Error("Ошибка расшифровки данных", zap.Error(err))
 			http.Error(w, "Ошибка расшифровки данных", http.StatusBadRequest)
 			return
 		}
-		data = decryptedData
 	}
 
 	err = json.Unmarshal(data, &m)
@@ -116,6 +97,7 @@ func (h *Handler) HandleUpdateJSON(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 }
 
+// HandleUpdateBatch обрабатывает обновление нескольких метрик в формате JSON
 func (h *Handler) HandleUpdateBatch(w http.ResponseWriter, r *http.Request) {
 	var metrics []Metrics
 	var buf bytes.Buffer
@@ -133,24 +115,10 @@ func (h *Handler) HandleUpdateBatch(w http.ResponseWriter, r *http.Request) {
 
 	// Расшифровка, если передан ключ
 	if h.PrivateKeyPath != "" {
-		var encryptedPayload map[string][]byte
-		if err := json.Unmarshal(data, &encryptedPayload); err == nil {
-			if encryptedKey, ok := encryptedPayload["key"]; ok {
-				decryptedKey, err := crypto.DecryptRSA(encryptedKey, h.PrivateKeyPath)
-				if err != nil {
-					logger.Error("Ошибка расшифровки AES-ключа", zap.Error(err))
-					http.Error(w, "Ошибка расшифровки ключа", http.StatusBadRequest)
-					return
-				}
-				if encryptedData, ok := encryptedPayload["data"]; ok {
-					data, err = crypto.DecryptAES(encryptedData, decryptedKey)
-					if err != nil {
-						logger.Error("Ошибка расшифровки данных", zap.Error(err))
-						http.Error(w, "Ошибка расшифровки данных", http.StatusBadRequest)
-						return
-					}
-				}
-			}
+		data, err = h.decryptPayload(data)
+		if err != nil {
+			http.Error(w, "Ошибка расшифровки данных", http.StatusBadRequest)
+			return
 		}
 	}
 
@@ -189,4 +157,30 @@ func (h *Handler) HandleUpdateBatch(w http.ResponseWriter, r *http.Request) {
 
 	logger.Info("Батч метрик успешно обработан", zap.Int("batch_size", len(metrics)))
 	w.WriteHeader(http.StatusOK)
+}
+
+// decryptPayload расшифровывает полученные данные, если указан приватный ключ
+func (h *Handler) decryptPayload(data []byte) ([]byte, error) {
+	var encryptedPayload map[string][]byte
+	err := json.Unmarshal(data, &encryptedPayload)
+	if err != nil {
+		logger.Error("Ошибка десериализации зашифрованного JSON", zap.Error(err))
+		return nil, err
+	}
+
+	// Расшифровка AES-ключа
+	aesKey, err := crypto.DecryptRSA(encryptedPayload["key"], h.PrivateKeyPath)
+	if err != nil {
+		logger.Error("Ошибка расшифровки AES-ключа", zap.Error(err))
+		return nil, err
+	}
+
+	// Расшифровка данных
+	decryptedData, err := crypto.DecryptAES(encryptedPayload["data"], aesKey)
+	if err != nil {
+		logger.Error("Ошибка расшифровки данных", zap.Error(err))
+		return nil, err
+	}
+
+	return decryptedData, nil
 }
