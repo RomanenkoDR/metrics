@@ -44,7 +44,10 @@ func Run() {
 
 		case <-reportTicker.C:
 			logger.Debug("Отправка метрик")
-			send := Retry(ProcessBatch, 3, 1*time.Second)
+			send := Retry(func(ctx context.Context, serverAddress string, m storage.MemStorage) error {
+				return ProcessBatch(ctx, serverAddress, cfg.CryptoKey, m)
+			}, 3, 1*time.Second)
+
 			err := send(context.Background(), cfg.ServerAddress, memStorage)
 			if err != nil {
 				logger.DebugLogger.Sugar().Error("Не удалось обработать пакет метрик: ", err)

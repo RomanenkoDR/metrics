@@ -3,123 +3,153 @@ package agent
 import (
 	"bytes"
 	"context"
+	"crypto/rand"
 	"encoding/json"
 	"fmt"
+	"github.com/RomanenkoDR/metrics/internal/crypto"
+	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/RomanenkoDR/metrics/internal/storage"
+	"go.uber.org/zap"
 	"io"
-	"log"
 	"net/http"
 	"strings"
 )
 
 // sendRequest - вспомогательная функция для отправки HTTP-запроса на сервер
-func sendRequest(serverAddress string, data []byte) error {
-	// Сжимаем данные перед отправкой на сервер
-	compressedData, err := compress(data)
+func sendRequest(serverAddress string, data []byte, cryptoKeyPath string) error {
+	// Генерируем AES-ключ
+	aesKey := make([]byte, 32)
+	_, err := rand.Read(aesKey)
 	if err != nil {
+		logger.Error("Ошибка генерации AES-ключа", zap.Error(err))
 		return err
 	}
 
-	// Создание нового HTTP запроса типа POST с телом запроса в виде сжатого JSON
-	request, err := http.NewRequest("POST", serverAddress, bytes.NewBuffer(compressedData))
+	// Шифруем данные AES-ключом
+	encryptedData, err := crypto.EncryptAES(data, aesKey)
 	if err != nil {
+		logger.Error("Ошибка шифрования данных", zap.Error(err))
 		return err
 	}
 
-	// Устанавливаем заголовки запроса: тип контента, кодировка и поддержка сжатия
-	request.Header.Set("Content-Type", contentTypeAppJSON)
-	request.Header.Set("Content-Encoding", compression)
-	request.Header.Set("Accept-Encoding", compression)
+	// Переменная для хранения зашифрованного AES-ключа
+	var encryptedAESKey []byte
+	if cryptoKeyPath != "" {
+		// Шифруем AES-ключ публичным RSA-ключом, если передан путь к ключу
+		encryptedAESKey, err = crypto.EncryptRSA(aesKey, cryptoKeyPath)
+		if err != nil {
+			logger.Error("Ошибка шифрования AES-ключа", zap.Error(err))
+			return err
+		}
+	}
 
-	// Создаем HTTP клиент для выполнения запроса
+	// Формируем JSON с зашифрованными данными
+	payload := map[string][]byte{"data": encryptedData}
+	if cryptoKeyPath != "" {
+		payload["key"] = encryptedAESKey
+	}
+
+	encryptedPayload, err := json.Marshal(payload)
+	if err != nil {
+		logger.Error("Ошибка сериализации зашифрованных данных", zap.Error(err))
+		return err
+	}
+
+	// Создаём HTTP-запрос
+	request, err := http.NewRequest("POST", serverAddress, bytes.NewBuffer(encryptedPayload))
+	if err != nil {
+		logger.Error("Ошибка создания HTTP-запроса", zap.Error(err))
+		return err
+	}
+
+	// Устанавливаем заголовки
+	request.Header.Set("Content-Type", "application/json")
+
+	// Отправляем HTTP-запрос
 	client := &http.Client{}
 	resp, err := client.Do(request)
 	if err != nil {
+		logger.Error("Ошибка выполнения HTTP-запроса", zap.Error(err))
 		return err
-	}
-
-	// Проверяем, успешно ли выполнен запрос (должен быть статус 200 OK)
-	if resp.StatusCode != http.StatusOK {
-		b, _ := io.ReadAll(resp.Body)
-		return fmt.Errorf("%s: %s; %s",
-			"Can't send report to the server",
-			resp.Status,
-			b)
 	}
 	defer resp.Body.Close()
+
+	// Проверяем HTTP-статус
+	if resp.StatusCode != http.StatusOK {
+		b, _ := io.ReadAll(resp.Body)
+		logger.Error("Ошибка при отправке метрик", zap.String("status", resp.Status), zap.String("response", string(b)))
+		return fmt.Errorf("Can't send report to the server: %s; %s", resp.Status, b)
+	}
+
+	logger.Info("Метрики успешно отправлены на сервер")
 	return nil
 }
 
-// sendReport - функция для отправки одной метрики
-func sendReport(serverAddress string, metrics Metrics) error {
-	// Преобразование структуры метрики в JSON
+// sendReport - отправка одной метрики
+func sendReport(serverAddress, cryptoKeyPath string, metrics Metrics) error {
+	logger.Debug("Подготовка к отправке метрики", zap.Any("metrics", metrics))
 	data, err := json.Marshal(metrics)
 	if err != nil {
+		logger.Error("Ошибка сериализации метрики", zap.Error(err))
 		return err
 	}
-	return sendRequest(serverAddress, data)
+	logger.Debug("Отправка метрики на сервер", zap.String("serverAddress", serverAddress))
+	return sendRequest(serverAddress, data, cryptoKeyPath)
 }
 
-// sendReportBatch - функция для отправки нескольких метрик (батч)
-func sendReportBatch(serverAddress string, metrics []Metrics) error {
-	// Преобразование списка метрик в JSON
+// sendReportBatch - отправка батча метрик
+func sendReportBatch(serverAddress, cryptoKeyPath string, metrics []Metrics) error {
+	logger.Debug("Подготовка к отправке батча метрик", zap.Int("batch_size", len(metrics)))
 	data, err := json.Marshal(metrics)
 	if err != nil {
+		logger.Error("Ошибка сериализации батча метрик", zap.Error(err))
 		return err
 	}
-	return sendRequest(serverAddress, data)
+	logger.Debug("Отправка батча метрик на сервер", zap.String("serverAddress", serverAddress))
+	return sendRequest(serverAddress, data, cryptoKeyPath)
 }
 
-// ProcessReport Обрабатываем все метрики и отправляем их по одной на сервер
-func ProcessReport(serverAddress string, m storage.MemStorage) error {
+// ProcessReport - отправка метрик по одной
+func ProcessReport(serverAddress, cryptoKeyPath string, m storage.MemStorage) error {
 	var metrics Metrics
 
-	// Формируем адрес для отправки метрик
 	serverAddress = strings.Join([]string{"http:/", serverAddress, "update/"}, "/")
 
-	// Отправляем каждую метрику типа counter на сервер
 	for k, v := range m.CounterData {
 		metrics = Metrics{ID: k, MType: counterType, Delta: v}
-		log.Println(metrics)
-		err := sendReport(serverAddress, metrics)
+		logger.Debug("Отправка метрики", zap.Any("metrics", metrics))
+		err := sendReport(serverAddress, cryptoKeyPath, metrics)
 		if err != nil {
+			logger.Error("Ошибка отправки метрики", zap.Error(err))
 			return err
 		}
 	}
 
-	// Отправляем каждую метрику типа gauge на сервер
 	for k, v := range m.GaugeData {
 		metrics = Metrics{ID: k, MType: gaugeType, Value: v}
-		log.Println(metrics)
-		err := sendReport(serverAddress, metrics)
+		logger.Debug("Отправка метрики", zap.Any("metrics", metrics))
+		err := sendReport(serverAddress, cryptoKeyPath, metrics)
 		if err != nil {
+			logger.Error("Ошибка отправки метрики", zap.Error(err))
 			return err
 		}
 	}
 	return nil
 }
 
-// ProcessBatch Функция для отправки батча (пакета) метрик
-func ProcessBatch(ctx context.Context, serverAddress string, m storage.MemStorage) error {
+// ProcessBatch - отправка батча метрик
+func ProcessBatch(ctx context.Context, serverAddress, cryptoKeyPath string, m storage.MemStorage) error {
 	var metrics []Metrics
 
-	// Формируем адрес для батч-отправки метрик
 	serverAddress = strings.Join([]string{"http:/", serverAddress, "updates/"}, "/")
 
-	// Добавляем все метрики типа counter в список для отправки
 	for k, v := range m.CounterData {
 		metrics = append(metrics, Metrics{ID: k, MType: counterType, Delta: v})
 	}
 
-	// Добавляем все метрики типа gauge в список для отправки
 	for k, v := range m.GaugeData {
 		metrics = append(metrics, Metrics{ID: k, MType: gaugeType, Value: v})
 	}
 
-	// Отправляем батч метрик на сервер
-	err := sendReportBatch(serverAddress, metrics)
-	if err != nil {
-		return err
-	}
-	return nil
+	return sendReportBatch(serverAddress, cryptoKeyPath, metrics)
 }
