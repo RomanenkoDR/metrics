@@ -17,7 +17,7 @@ import (
 
 // sendRequest - вспомогательная функция для отправки HTTP-запроса на сервер
 func sendRequest(serverAddress string, data []byte, cryptoKeyPath string) error {
-	// Генерируем AES-ключ
+	// Генерируем случайный AES-ключ
 	aesKey := make([]byte, 32)
 	_, err := rand.Read(aesKey)
 	if err != nil {
@@ -25,30 +25,30 @@ func sendRequest(serverAddress string, data []byte, cryptoKeyPath string) error 
 		return err
 	}
 
-	// Шифруем данные AES-ключом
+	// Шифруем данные с помощью AES
 	encryptedData, err := crypto.EncryptAES(data, aesKey)
 	if err != nil {
-		logger.Error("Ошибка шифрования данных", zap.Error(err))
+		logger.Error("Ошибка шифрования данных AES", zap.Error(err))
 		return err
 	}
 
-	// Переменная для хранения зашифрованного AES-ключа
-	var encryptedAESKey []byte
+	// Создаём JSON-объект для отправки
+	payload := map[string][]byte{"data": encryptedData}
+
+	// Если указан путь к RSA-ключу, шифруем и сам AES-ключ
 	if cryptoKeyPath != "" {
-		// Шифруем AES-ключ публичным RSA-ключом, если передан путь к ключу
-		encryptedAESKey, err = crypto.EncryptRSA(aesKey, cryptoKeyPath)
+		encryptedAESKey, err := crypto.EncryptRSA(aesKey, cryptoKeyPath)
 		if err != nil {
-			logger.Error("Ошибка шифрования AES-ключа", zap.Error(err))
+			logger.Error("Ошибка шифрования AES-ключа RSA", zap.Error(err))
 			return err
 		}
-	}
-
-	// Формируем JSON с зашифрованными данными
-	payload := map[string][]byte{"data": encryptedData}
-	if cryptoKeyPath != "" {
 		payload["key"] = encryptedAESKey
+		logger.Info("Данные зашифрованы с использованием AES + RSA")
+	} else {
+		logger.Warn("Публичный ключ RSA не передан, используется только AES-шифрование")
 	}
 
+	// Сериализуем зашифрованные данные в JSON
 	encryptedPayload, err := json.Marshal(payload)
 	if err != nil {
 		logger.Error("Ошибка сериализации зашифрованных данных", zap.Error(err))
@@ -74,7 +74,7 @@ func sendRequest(serverAddress string, data []byte, cryptoKeyPath string) error 
 	}
 	defer resp.Body.Close()
 
-	// Проверяем HTTP-статус
+	// Проверяем статус ответа сервера
 	if resp.StatusCode != http.StatusOK {
 		b, _ := io.ReadAll(resp.Body)
 		logger.Error("Ошибка при отправке метрик", zap.String("status", resp.Status), zap.String("response", string(b)))

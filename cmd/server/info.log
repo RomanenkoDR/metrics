@@ -910,3 +910,10 @@
 {"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:15:07","msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 11.749333ms, Размер: 23"}
 {"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:15:11","msg":"Остановка сервера"}
 {"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:15:11","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:33:28","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:33:28","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:33:28","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:33:36","msg":"Батч метрик успешно обработан","batch_size":29}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:33:36","msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 19.196625ms, Размер: 23"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:33:43","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:33:43","msg":"Сервер остановлен"}
