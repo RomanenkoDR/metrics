@@ -8312,3 +8312,57 @@
 {"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:33:36","msg":"Метрики успешно отправлены на сервер"}
 {"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:33:36","msg":"Кол-во повторных попыток 0"}
 {"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:33:36","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:45:15","msg":"Начало основного приложения"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:45:15","msg":"Инициализация хранилища успешна. Начало работы"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:45:25","msg":"Публичный ключ RSA не передан, используется только AES-шифрование"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:45:25","msg":"Ошибка при отправке метрик","status":"400 Bad Request","response":"json: cannot unmarshal object into Go value of type []handlers.Metrics\n"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:45:25","msg":"Отправка метрик завершила ошибкой: can't send report to the server: 400 Bad Request; json: cannot unmarshal object into Go value of type []handlers.Metrics\n, повторная попытка 1s"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:45:28","msg":"Публичный ключ RSA не передан, используется только AES-шифрование"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:45:28","msg":"Ошибка при отправке метрик","status":"400 Bad Request","response":"json: cannot unmarshal object into Go value of type []handlers.Metrics\n"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:45:28","msg":"Отправка метрик завершила ошибкой: can't send report to the server: 400 Bad Request; json: cannot unmarshal object into Go value of type []handlers.Metrics\n, повторная попытка 3s"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:50:41","msg":"Начало основного приложения"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:50:41","msg":"Инициализация хранилища успешна. Начало работы"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:50:51","msg":"Публичный ключ RSA не передан, используется только AES-шифрование"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:50:51","msg":"Ошибка при отправке метрик","status":"400 Bad Request","response":"invalid character ';' looking for beginning of value\n"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:50:51","msg":"Отправка метрик завершила ошибкой: can't send report to the server: 400 Bad Request; invalid character ';' looking for beginning of value\n, повторная попытка 1s"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:50:54","msg":"Публичный ключ RSA не передан, используется только AES-шифрование"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:50:54","msg":"Ошибка при отправке метрик","status":"400 Bad Request","response":"invalid character '©' looking for beginning of value\n"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:50:54","msg":"Отправка метрик завершила ошибкой: can't send report to the server: 400 Bad Request; invalid character '©' looking for beginning of value\n, повторная попытка 3s"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:50:59","msg":"Публичный ключ RSA не передан, используется только AES-шифрование"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:50:59","msg":"Ошибка при отправке метрик","status":"400 Bad Request","response":"invalid character 'Í' looking for beginning of value\n"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:50:59","msg":"Отправка метрик завершила ошибкой: can't send report to the server: 400 Bad Request; invalid character 'Í' looking for beginning of value\n, повторная попытка 5s"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:51:06","msg":"Публичный ключ RSA не передан, используется только AES-шифрование"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:51:06","msg":"Ошибка при отправке метрик","status":"400 Bad Request","response":"invalid character '&' looking for beginning of value\n"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:51:06","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:51:06","msg":"Не удалось обработать пакет метрик: can't send report to the server: 400 Bad Request; invalid character '&' looking for beginning of value\n"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:51:06","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:51:06","msg":"Публичный ключ RSA не передан, используется только AES-шифрование"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:51:06","msg":"Ошибка при отправке метрик","status":"400 Bad Request","response":"invalid character '\\x05' looking for beginning of value\n"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:51:06","msg":"Отправка метрик завершила ошибкой: can't send report to the server: 400 Bad Request; invalid character '\\x05' looking for beginning of value\n, повторная попытка 1s"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:56:39","msg":"Начало основного приложения"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:56:39","msg":"Инициализация хранилища успешна. Начало работы"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:56:49","msg":"Публичный ключ RSA не передан, используется только AES-шифрование"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:56:49","msg":"Ошибка при отправке метрик","status":"400 Bad Request","response":"json: cannot unmarshal object into Go value of type []handlers.Metrics\n"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:56:49","msg":"Отправка метрик завершила ошибкой: can't send report to the server: 400 Bad Request; json: cannot unmarshal object into Go value of type []handlers.Metrics\n, повторная попытка 1s"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:56:52","msg":"Публичный ключ RSA не передан, используется только AES-шифрование"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:56:52","msg":"Ошибка при отправке метрик","status":"400 Bad Request","response":"json: cannot unmarshal object into Go value of type []handlers.Metrics\n"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:56:52","msg":"Отправка метрик завершила ошибкой: can't send report to the server: 400 Bad Request; json: cannot unmarshal object into Go value of type []handlers.Metrics\n, повторная попытка 3s"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:58:10","msg":"Начало основного приложения"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:58:10","msg":"Инициализация хранилища успешна. Начало работы"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:58:20","msg":"Публичный ключ RSA не передан, используется только AES-шифрование"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:58:20","msg":"Ошибка при отправке метрик","status":"400 Bad Request","response":"invalid character '\\u0084' after top-level value\n"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:58:20","msg":"Отправка метрик завершила ошибкой: can't send report to the server: 400 Bad Request; invalid character '\\u0084' after top-level value\n, повторная попытка 1s"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:58:23","msg":"Публичный ключ RSA не передан, используется только AES-шифрование"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:58:23","msg":"Ошибка при отправке метрик","status":"400 Bad Request","response":"invalid character '}' looking for beginning of value\n"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:58:23","msg":"Отправка метрик завершила ошибкой: can't send report to the server: 400 Bad Request; invalid character '}' looking for beginning of value\n, повторная попытка 3s"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:05:25","msg":"Начало основного приложения"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:05:25","msg":"Инициализация хранилища успешна. Начало работы"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 01:05:35","msg":"Публичный ключ RSA не передан, отправка данных без шифрования"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 01:05:35","msg":"Ошибка при отправке метрик","status":"400 Bad Request","response":"json: cannot unmarshal array into Go value of type map[string]string\n"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 01:05:35","msg":"Отправка метрик завершила ошибкой: can't send report to the server: 400 Bad Request; json: cannot unmarshal array into Go value of type map[string]string\n, повторная попытка 1s"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:08:12","msg":"Начало основного приложения"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:08:12","msg":"Инициализация хранилища успешна. Начало работы"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 01:08:22","msg":"Публичный ключ RSA не передан, отправка данных без шифрования"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:08:22","msg":"Метрики успешно отправлены на сервер"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:08:22","msg":"Кол-во повторных попыток 0"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:08:22","msg":"Метрики отправлены на сервер"}

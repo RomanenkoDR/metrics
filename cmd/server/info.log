@@ -917,3 +917,59 @@
 {"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:33:36","msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 19.196625ms, Размер: 23"}
 {"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:33:43","msg":"Остановка сервера"}
 {"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:33:43","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:45:06","msg":"Запуск сервера..."}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:45:06","msg":"Флаг -crypto-key не задан, сервер не сможет расшифровывать данные"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:45:06","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:45:25","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:45:25","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 2.921167ms, Размер: 99"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:45:28","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:45:28","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 2.678709ms, Размер: 99"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:45:32","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:45:32","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:50:38","msg":"Запуск сервера..."}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:50:38","msg":"Флаг -crypto-key не задан, сервер не сможет расшифровывать данные"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:50:38","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:50:51","msg":"Ошибка десериализации JSON","error":"invalid character ';' looking for beginning of value"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:50:51","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 3.778958ms, Размер: 77"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:50:54","msg":"Ошибка десериализации JSON","error":"invalid character '©' looking for beginning of value"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:50:54","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 7.270458ms, Размер: 82"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:50:59","msg":"Ошибка десериализации JSON","error":"invalid character 'Í' looking for beginning of value"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:50:59","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 3.846125ms, Размер: 82"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:51:06","msg":"Ошибка десериализации JSON","error":"invalid character '&' looking for beginning of value"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:51:06","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 10.673292ms, Размер: 76"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:51:06","msg":"Ошибка десериализации JSON","error":"invalid character '\\x05' looking for beginning of value"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:51:06","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 5.147583ms, Размер: 84"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:51:09","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:51:09","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:56:45","msg":"Запуск сервера..."}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:56:45","msg":"Флаг -crypto-key не задан, сервер не сможет расшифровывать данные"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:56:45","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:56:49","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:56:49","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.677917ms, Размер: 99"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:56:52","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:56:52","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.297708ms, Размер: 99"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:58:02","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:58:02","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:58:06","msg":"Запуск сервера..."}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:58:06","msg":"Флаг -crypto-key не задан, сервер не сможет расшифровывать данные"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:58:06","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:58:20","msg":"Ошибка десериализации метрик","error":"invalid character '\\u0084' after top-level value"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:58:20","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 2.695ms, Размер: 77"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:58:23","msg":"Ошибка десериализации метрик","error":"invalid character '}' looking for beginning of value"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:58:23","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 829.333µs, Размер: 77"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:00:28","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:00:28","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:05:22","msg":"Запуск сервера..."}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 01:05:22","msg":"Флаг -crypto-key не задан, сервер не сможет расшифровывать данные"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:05:22","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 01:05:35","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal array into Go value of type map[string]string"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:05:35","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 4.907958ms, Размер: 90"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:08:13","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:08:13","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:08:17","msg":"Запуск сервера..."}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 01:08:17","msg":"Флаг -crypto-key не задан, сервер не сможет расшифровывать данные"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:08:17","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:08:22","msg":"Батч метрик успешно обработан","batch_size":29}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:08:22","msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 1.1545ms, Размер: 23"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:08:26","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 01:08:26","msg":"Сервер остановлен"}

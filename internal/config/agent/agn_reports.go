@@ -17,26 +17,29 @@ import (
 
 // sendRequest - вспомогательная функция для отправки HTTP-запроса на сервер
 func sendRequest(serverAddress string, data []byte, cryptoKeyPath string) error {
-	// Генерируем случайный AES-ключ
-	aesKey := make([]byte, 32)
-	_, err := rand.Read(aesKey)
-	if err != nil {
-		logger.Error("Ошибка генерации AES-ключа", zap.Error(err))
-		return err
-	}
+	// Если ключа нет — отправляем данные без шифрования
+	if cryptoKeyPath == "" {
+		logger.Warn("Публичный ключ RSA не передан, отправка данных без шифрования")
+	} else {
+		// Генерируем случайный AES-ключ
+		aesKey := make([]byte, 32)
+		_, err := rand.Read(aesKey)
+		if err != nil {
+			logger.Error("Ошибка генерации AES-ключа", zap.Error(err))
+			return err
+		}
 
-	// Шифруем данные с помощью AES
-	encryptedData, err := crypto.EncryptAES(data, aesKey)
-	if err != nil {
-		logger.Error("Ошибка шифрования данных AES", zap.Error(err))
-		return err
-	}
+		// Шифруем данные с помощью AES
+		encryptedData, err := crypto.EncryptAES(data, aesKey)
+		if err != nil {
+			logger.Error("Ошибка шифрования данных AES", zap.Error(err))
+			return err
+		}
 
-	// Создаём JSON-объект для отправки
-	payload := map[string][]byte{"data": encryptedData}
+		// Создаём JSON-объект для отправки
+		payload := map[string][]byte{"data": encryptedData}
 
-	// Если указан путь к RSA-ключу, шифруем и сам AES-ключ
-	if cryptoKeyPath != "" {
+		// Если указан путь к RSA-ключу, шифруем и сам AES-ключ
 		encryptedAESKey, err := crypto.EncryptRSA(aesKey, cryptoKeyPath)
 		if err != nil {
 			logger.Error("Ошибка шифрования AES-ключа RSA", zap.Error(err))
@@ -44,19 +47,17 @@ func sendRequest(serverAddress string, data []byte, cryptoKeyPath string) error 
 		}
 		payload["key"] = encryptedAESKey
 		logger.Info("Данные зашифрованы с использованием AES + RSA")
-	} else {
-		logger.Warn("Публичный ключ RSA не передан, используется только AES-шифрование")
-	}
 
-	// Сериализуем зашифрованные данные в JSON
-	encryptedPayload, err := json.Marshal(payload)
-	if err != nil {
-		logger.Error("Ошибка сериализации зашифрованных данных", zap.Error(err))
-		return err
+		// Сериализуем зашифрованные данные в JSON
+		data, err = json.Marshal(payload)
+		if err != nil {
+			logger.Error("Ошибка сериализации зашифрованных данных", zap.Error(err))
+			return err
+		}
 	}
 
 	// Создаём HTTP-запрос
-	request, err := http.NewRequest("POST", serverAddress, bytes.NewBuffer(encryptedPayload))
+	request, err := http.NewRequest("POST", serverAddress, bytes.NewBuffer(data))
 	if err != nil {
 		logger.Error("Ошибка создания HTTP-запроса", zap.Error(err))
 		return err
