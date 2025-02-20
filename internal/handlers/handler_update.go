@@ -3,13 +3,11 @@ package handlers
 import (
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"github.com/RomanenkoDR/metrics/internal/crypto"
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"github.com/go-chi/chi/v5"
 	"go.uber.org/zap"
-
 	"net/http"
 
 	"strconv"
@@ -119,7 +117,7 @@ func (h *Handler) HandleUpdateJSON(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) HandleUpdateBatch(w http.ResponseWriter, r *http.Request) {
-	var m []Metrics
+	var metrics []Metrics
 	var buf bytes.Buffer
 
 	// Читаем тело запроса
@@ -156,30 +154,19 @@ func (h *Handler) HandleUpdateBatch(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	// Десериализуем JSON
-	err = json.Unmarshal(data, &m)
+	// Десериализуем JSON как массив метрик
+	err = json.Unmarshal(data, &metrics)
 	if err != nil {
-		logger.Error("Ошибка десериализации JSON", zap.Error(err))
+		logger.Error("Ошибка десериализации JSON (массив метрик)", zap.Error(err))
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
 	// Логируем успешную десериализацию
-	logger.Debug("Успешно десериализовано", zap.Int("batch_size", len(m)))
-
-	// Храним данные для форматированного вывода
-	var metricsLog []map[string]interface{}
+	logger.Debug("Успешно десериализовано", zap.Int("batch_size", len(metrics)))
 
 	// Обрабатываем каждую метрику
-	for _, v := range m {
-		metricLog := map[string]interface{}{
-			"ID":    v.ID,
-			"Type":  v.MType,
-			"Value": v.Value,
-			"Delta": v.Delta,
-		}
-		metricsLog = append(metricsLog, metricLog)
-
+	for _, v := range metrics {
 		switch v.MType {
 		case counterType:
 			if v.Delta == nil {
@@ -196,13 +183,10 @@ func (h *Handler) HandleUpdateBatch(w http.ResponseWriter, r *http.Request) {
 		default:
 			logger.Warn("Некорректный тип метрики", zap.String("MType", v.MType))
 			http.Error(w, "Incorrect metric type", http.StatusBadRequest)
+			return
 		}
 	}
 
-	// Выводим все метрики одним лог-сообщением
-	formattedMetrics, _ := json.MarshalIndent(metricsLog, "", "  ")
-	fmt.Println("Метрики записаны:\n", string(formattedMetrics))
-
-	logger.Info("Батч метрик успешно обработан", zap.Int("batch_size", len(m)))
+	logger.Info("Батч метрик успешно обработан", zap.Int("batch_size", len(metrics)))
 	w.WriteHeader(http.StatusOK)
 }
