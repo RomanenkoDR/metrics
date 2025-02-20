@@ -7608,3 +7608,299 @@
 {"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:15:50","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
 {"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:15:55","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
 {"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:15:55","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:02","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:16:02","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:02","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:16:02","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:02","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:16:02","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:05","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:16:05","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:10","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:16:10","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:17","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:16:17","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:17","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:16:17","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:17","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:16:17","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:20","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:16:20","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:25","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:16:25","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:32","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:16:32","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:32","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:16:32","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:32","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:16:32","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:35","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:16:35","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:40","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:16:40","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:47","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:16:47","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:47","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:16:47","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:47","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:16:47","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:50","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:16:50","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:16:55","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:16:55","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:02","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:17:02","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:02","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:17:02","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:02","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:17:02","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:05","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:17:05","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:10","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:17:10","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:17","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:17:17","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:17","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:17:17","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:17","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:17:17","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:20","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:17:20","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:25","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:17:25","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:32","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:17:32","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:32","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:17:32","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:32","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:17:32","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:35","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:17:35","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:40","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:17:40","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:47","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:17:47","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:47","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:17:47","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:47","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:17:47","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:50","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:17:50","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:17:55","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:17:55","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:02","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:18:02","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:02","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:18:02","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:03","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:18:03","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:06","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:18:06","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:11","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:18:11","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:18","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:18:18","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:18","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:18:18","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:18","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:18:18","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:21","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:18:21","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:26","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:18:26","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:33","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:18:33","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:33","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:18:33","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:33","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:18:33","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:36","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:18:36","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:41","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:18:41","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:48","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:18:48","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:48","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:18:48","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:48","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:18:48","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:51","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:18:51","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:18:56","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:18:56","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:03","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:19:03","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:03","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:19:03","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:03","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:19:03","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:06","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:19:06","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:11","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:19:11","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:18","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:19:18","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:18","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:19:18","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:18","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:19:18","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:21","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:19:21","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:26","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:19:26","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:33","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:19:33","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:33","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:19:33","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:33","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:19:33","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:36","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:19:36","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:41","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:19:41","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:48","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:19:48","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:48","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:19:48","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:48","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:19:48","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:51","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:19:51","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:19:56","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:19:56","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:03","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:20:03","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:03","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:20:03","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:03","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:20:03","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:06","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:20:06","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:11","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:20:11","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:18","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:20:18","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:18","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:20:18","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:18","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:20:18","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:21","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:20:21","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:26","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:20:26","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:33","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:20:33","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:33","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:20:33","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:33","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:20:33","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:36","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:20:36","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:41","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:20:41","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:48","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:20:48","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:48","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:20:48","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:48","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:20:48","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:51","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:20:51","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:20:56","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:20:56","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:03","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:21:03","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:03","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:21:03","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:03","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:21:03","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:06","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:21:06","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:11","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:21:11","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:18","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:21:18","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:18","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:21:18","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:18","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:21:18","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:21","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:21:21","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:26","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:21:26","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:33","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:21:33","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:33","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:21:33","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:33","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:21:33","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:36","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:21:36","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:41","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:21:41","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:48","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:21:48","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:48","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:21:48","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:48","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:21:48","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:51","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:21:51","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:21:56","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:21:56","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:03","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:22:03","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:03","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:22:03","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:03","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:22:03","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:06","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:22:06","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:11","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:22:11","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:18","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:22:18","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:18","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:22:18","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:18","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:22:18","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:21","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:22:21","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:26","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:22:26","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:33","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:22:33","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:33","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:22:33","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:33","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:22:33","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:36","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:22:36","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:41","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:22:41","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:48","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:22:48","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:48","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:22:48","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:48","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:22:48","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:51","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:22:51","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:22:56","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:22:56","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:23:03","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:23:03","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:23:03","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:23:03","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:23:03","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:23:03","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:23:06","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:23:06","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 3s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:23:11","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:23:11","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 5s"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:23:18","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:23:18","msg":"Кол-во повторных попыток 3"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:23:18","msg":"Не удалось обработать пакет метрик: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:23:18","msg":"Метрики отправлены на сервер"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:23:18","msg":"Ошибка выполнения HTTP-запроса","error":"Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-21 00:23:18","msg":"Отправка метрик завершила ошибкой: Post \"http://localhost:8080/updates/\": dial tcp [::1]:8080: connect: connection refused, повторная попытка 1s"}
