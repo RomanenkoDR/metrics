@@ -2,13 +2,12 @@ package server
 
 import (
 	"context"
+	//"github.com/RomanenkoDR/metrics/internal/config/server/types"
 	"github.com/RomanenkoDR/metrics/internal/db"
 	"github.com/RomanenkoDR/metrics/internal/handlers"
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/RomanenkoDR/metrics/internal/routers"
-	"github.com/RomanenkoDR/metrics/internal/storage"
 	"go.uber.org/zap"
-	"log"
 	"net/http"
 	"os"
 	"os/signal"
@@ -16,115 +15,75 @@ import (
 )
 
 func Run() {
-	// Запуск профилировщика pprof
-	runPprof()
-
 	// Логируем старт сервера
 	logger.Info("Запуск сервера...")
-
-	// Объявляем переменную для хранилища данных
-	var store storage.StorageWriter
 
 	// Парсим параметры командной строки и конфигурацию сервера
 	cfg, err := parseOptions()
 	if err != nil {
-		panic(err)
+		logger.Fatal("Ошибка разбора флагов", zap.Error(err))
 	}
 
-	// Логируем полученные параметры конфигурации
-	log.Println("Параметры конфигурации сервера: ", zap.Any("metrics", cfg))
-
-	// Создаём новый обработчик запросов (handler), который будет управлять маршрутами и логикой обработки
+	// Создаём новый обработчик запросов
 	h := handlers.NewHandler()
 
-	// Если в конфигурации указан DSN для подключения к базе данных, то подключаемся к базе
-	log.Println("Подключения к базе данных DBDSN сервера:", cfg.DBDSN)
-	if cfg.DBDSN != "" {
-		// Логируем процесс подключения к базе данных
-		log.Println("Подключение к базе данных DSN:", cfg.DBDSN)
-		database, err := db.Connect(cfg.DBDSN)
-		if err != nil {
-			log.Fatalf("Ошибка подключения к базе данных: %v", err)
-		} else {
-			logger.Info("Успешное подключение к базе данных")
-		}
-
-		// Устанавливаем базу данных в качестве хранилища данных
-		store = &database
-
-		// Передаём подключение к базе данных в обработчик запросов
-		h.DBconn = database.Conn
-
+	// Проверяем переданный путь к приватному ключу
+	if cfg.CryptoKey == "" {
+		logger.Warn("Флаг -crypto-key не задан, сервер не сможет расшифровывать данные")
 	} else {
-		// Если DSN для базы данных не указан, используем файл для хранения метрик
-		store = &storage.Localfile{Path: cfg.Filename}
+		logger.Info("Используется приватный ключ для расшифровки", zap.String("cryptoKey", cfg.CryptoKey))
+		h.SetCryptoKey(cfg.CryptoKey)
 	}
 
-	// Инициализируем маршрутизатор с конфигурацией и хэндлером
+	// Подключаемся к базе данных, если указан DSN
+	if cfg.DBDSN != "" {
+		dbConn, err := db.Connect(cfg.DBDSN)
+		if err != nil {
+			logger.Fatal("Ошибка подключения к базе данных", zap.Error(err))
+		}
+		logger.Info("Успешное подключение к базе данных")
+		h.DBconn = dbConn.Conn
+	}
+
+	// Инициализируем маршрутизатор
 	router, err := routers.InitRouter(cfg, h)
 	if err != nil {
-		panic(err)
+		logger.Fatal("Ошибка инициализации маршрутизатора", zap.Error(err))
 	}
 
-	// Если в конфигурации указан флаг "Restore", восстанавливаем данные из хранилища (файла или базы данных)
-	if cfg.Restore {
-		err := store.RestoreData(&h.Store)
-		// Логируем ошибку восстановления данных, если она произошла
-		if err != nil {
-			log.Println("Не удалось восстановить данные: ", err)
-		}
-	}
-
-	// Запускаем горутину для периодической записи данных в хранилище (файл или БД).
-	// Интервал указывается в конфигурации.
-	go func() {
-		for {
-			store.Save(cfg.Interval, h.Store)
-		}
-	}()
-
-	// Определяем параметры HTTP-сервера
+	// Определяем HTTP-сервер
 	server := http.Server{
 		Addr:    cfg.Address,
 		Handler: router,
 	}
 
-	// Логируем, что сервер начал слушать входящие запросы на указанном адресе
-	log.Println("Входящие запросы по: ", cfg.Address)
-	log.Println("Запуск сервера ")
-
-	// Настройка корректного завершения работы сервера
-	idleConnectionsClosed := make(chan struct{}) // Канал для оповещения о закрытии всех соединений
+	// Обрабатываем сигналы завершения работы сервера
+	idleConnectionsClosed := make(chan struct{})
 	go func() {
 		sigint := make(chan os.Signal, 1)
 		signal.Notify(sigint, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
-		<-sigint // Ожидаем поступления сигнала
-		// Логируем начало процесса завершения работы
-		log.Println("Остановка сервера")
+		<-sigint // Ждём сигнал завершения
 
-		// Сохраняем оставшиеся данные перед завершением работы
-		if err := store.Write(h.Store); err != nil {
-			// Логируем ошибку, если не удалось сохранить данные
-			log.Printf("Ошибка сохранения даннных: %v", err)
+		logger.Info("Остановка сервера")
+
+		// Закрываем соединение с базой данных
+		if h.DBconn != nil {
+			h.DBconn.Close(context.Background())
 		}
-
-		// Закрываем хранилище (файл или БД)
-		defer store.Close()
 
 		// Завершаем работу HTTP-сервера
 		if err := server.Shutdown(context.Background()); err != nil {
-			// Логируем ошибку завершения сервера, если она произошла
-			log.Printf("Ошибка завершения работы HTTP сервера: %v", err)
+			logger.Error("Ошибка завершения сервера", zap.Error(err))
 		}
-		// Оповещаем, что все соединения закрыты
 		close(idleConnectionsClosed)
 	}()
 
-	// Запускаем сервер для прослушивания входящих запросов
-	log.Fatal(server.ListenAndServe())
+	// Запускаем сервер
+	logger.Info("Сервер запущен", zap.String("address", cfg.Address))
+	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+		logger.Fatal("Ошибка запуска сервера", zap.Error(err))
+	}
 
-	// Ожидаем закрытия всех соединений перед завершением программы
 	<-idleConnectionsClosed
-	// Логируем завершение работы сервера
-	log.Println("Сервер остановлен")
+	logger.Info("Сервер остановлен")
 }

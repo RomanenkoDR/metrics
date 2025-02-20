@@ -671,3 +671,242 @@
 {"level":"info","ts":1736502136.6270452,"msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 967.708µs, Размер: 23"}
 {"level":"info","ts":1737447682.092026,"msg":"Запуск сервера..."}
 {"level":"info","ts":1737465718.9625201,"msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:38:46","msg":"Запуск сервера..."}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:38:48","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:38:48","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 698.083µs, Размер: 99"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:38:55","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:38:55","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 12.632125ms, Размер: 99"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:38:55","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:38:55","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 595.333µs, Размер: 99"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:38:58","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:38:58","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 4.840792ms, Размер: 99"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:39:03","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:39:03","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.090584ms, Размер: 99"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:39:10","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:39:10","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 4.105708ms, Размер: 99"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:39:10","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:39:10","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 473.167µs, Размер: 99"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:39:13","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:39:13","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 4.799708ms, Размер: 99"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:39:57","msg":"Запуск сервера..."}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:39:59","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics","received_json":"{\"data\":\"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\"}"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:39:59","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.74025ms, Размер: 99"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:40:04","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics","received_json":"{\"data\":\"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\"}"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:40:04","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 10.102583ms, Размер: 99"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:41:03","msg":"Запуск сервера..."}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:41:04","msg":"Ошибка расшифровки данных","error":"crypto/aes: invalid key size 0"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:41:04","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.243792ms, Размер: 77"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:41:11","msg":"Ошибка расшифровки данных","error":"crypto/aes: invalid key size 0"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:41:11","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.731333ms, Размер: 77"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:41:11","msg":"Ошибка расшифровки данных","error":"crypto/aes: invalid key size 0"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:41:11","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 31.591709ms, Размер: 77"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:41:14","msg":"Ошибка расшифровки данных","error":"crypto/aes: invalid key size 0"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:41:14","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 3.071958ms, Размер: 77"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:41:19","msg":"Ошибка расшифровки данных","error":"crypto/aes: invalid key size 0"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:41:19","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 5.793708ms, Размер: 77"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:41:26","msg":"Ошибка расшифровки данных","error":"crypto/aes: invalid key size 0"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:41:26","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 2.122833ms, Размер: 77"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:41:26","msg":"Ошибка расшифровки данных","error":"crypto/aes: invalid key size 0"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:41:26","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 3.186666ms, Размер: 77"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 21:41:29","msg":"Ошибка расшифровки данных","error":"crypto/aes: invalid key size 0"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:41:29","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.356542ms, Размер: 77"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:43:05","msg":"Запуск сервера..."}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:43:11","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:43:11","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 878.333µs, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:43:11","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:43:11","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 135.834µs, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:43:14","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:43:14","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 14.970584ms, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:43:19","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:43:19","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 827µs, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:43:26","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:43:26","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 5.045333ms, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:43:26","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:43:26","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.219209ms, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:43:29","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:43:29","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 2.423375ms, Размер: 50"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:45:22","msg":"Запуск сервера..."}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:45:26","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:45:26","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 321.333µs, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:45:26","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:45:26","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 139.708µs, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:45:29","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:45:29","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 13.375209ms, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:45:34","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:45:34","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 2.312833ms, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:45:41","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:45:41","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 10.049458ms, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:45:41","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:45:41","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.856792ms, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:45:44","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:45:44","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.56175ms, Размер: 50"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:45:50","msg":"Запуск сервера..."}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:45:56","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:45:56","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 738.375µs, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 21:45:56","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:45:56","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 253.708µs, Размер: 50"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 21:46:24","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:11:02","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:12:01","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:12:56","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:13:58","msg":"Запуск сервера..."}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 23:14:26","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:14:26","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.313417ms, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 23:14:29","msg":"Переменная CRYPTO_KEY не задана, расшифровка невозможна, обработка прервана"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:14:29","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 612µs, Размер: 50"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:15:53","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:27:00","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:27:00","msg":"Параметры конфигурации сервера","config":{"Address":"localhost:8080","Interval":300,"Filename":"./metrics.json","Restore":true,"DBDSN":"","Key":"","CryptoKey":"../../internal/crypto/private.pem"}}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:27:00","msg":"Используется асимметричное шифрование","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:27:00","msg":"Используется файловое хранилище","path":"./metrics.json"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:27:00","msg":"Данные успешно восстановлены"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:27:00","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 23:27:06","msg":"Ошибка расшифровки AES-ключа","error":"crypto/rsa: decryption error"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:27:06","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 6.252917ms, Размер: 75"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 23:27:09","msg":"Получен сигнал завершения, останавливаем сервер"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:27:09","msg":"Сервер успешно остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:29:54","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:29:54","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:29:54","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:31:34","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:31:34","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:32:40","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:32:40","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:32:40","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 23:32:59","msg":"Приватный ключ не задан, расшифровка невозможна"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:32:59","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 811.75µs, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 23:33:02","msg":"Приватный ключ не задан, расшифровка невозможна"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:33:02","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 630.583µs, Размер: 50"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:34:52","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:34:52","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:35:28","msg":"Запуск сервера..."}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 23:35:28","msg":"Флаг -crypto-key не задан, сервер не сможет расшифровывать данные"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:35:28","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:35:32","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:35:32","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:35:36","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:35:36","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:35:36","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:35:42","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:35:42","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:36:08","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:36:08","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:36:08","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 23:36:23","msg":"Приватный ключ не задан, расшифровка невозможна"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:36:23","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 937.5µs, Размер: 50"}
+{"level":"\u001b[33mWARN\u001b[0m","timestamp":"2025-02-20 23:36:26","msg":"Приватный ключ не задан, расшифровка невозможна"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:36:26","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 385µs, Размер: 50"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:36:27","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:36:27","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:42:31","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:42:31","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:42:31","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 23:42:31","msg":"Ошибка десериализации JSON","error":"json: cannot unmarshal object into Go value of type []handlers.Metrics"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:42:31","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.406291ms, Размер: 99"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:42:35","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:42:35","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:43:50","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:43:50","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:43:50","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 23:43:54","msg":"Ошибка: отсутствует AES-ключ в данных"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:43:54","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.317917ms, Размер: 78"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 23:43:54","msg":"Ошибка: отсутствует AES-ключ в данных"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:43:54","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 499.75µs, Размер: 78"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:43:55","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:43:55","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:45:31","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:45:31","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:45:31","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 23:45:56","msg":"Ошибка: отсутствует AES-ключ в данных"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:45:56","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 2.623416ms, Размер: 78"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 23:45:59","msg":"Ошибка: отсутствует AES-ключ в данных"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:45:59","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.347958ms, Размер: 78"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-20 23:46:04","msg":"Ошибка: отсутствует AES-ключ в данных"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-20 23:46:04","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 14.351166ms, Размер: 78"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:06:05","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:06:05","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:06:10","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:06:10","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:06:10","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:08:10","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:08:10","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:08:12","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:08:12","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:08:12","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:08:16","msg":"Ошибка расшифровки AES-ключа","error":"open ../../internal/crypto/private.pem: no such file or directory"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:08:16","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 2.511792ms, Размер: 75"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:08:19","msg":"Ошибка расшифровки AES-ключа","error":"open ../../internal/crypto/private.pem: no such file or directory"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:08:19","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.559584ms, Размер: 75"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:08:24","msg":"Ошибка расшифровки AES-ключа","error":"open ../../internal/crypto/private.pem: no such file or directory"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:08:24","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 11.309625ms, Размер: 75"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:08:31","msg":"Ошибка расшифровки AES-ключа","error":"open ../../internal/crypto/private.pem: no such file or directory"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:08:31","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.834375ms, Размер: 75"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:08:31","msg":"Ошибка расшифровки AES-ключа","error":"open ../../internal/crypto/private.pem: no such file or directory"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:08:31","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.681959ms, Размер: 75"}
+{"level":"\u001b[31mERROR\u001b[0m","timestamp":"2025-02-21 00:08:34","msg":"Ошибка расшифровки AES-ключа","error":"open ../../internal/crypto/private.pem: no such file or directory"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:08:34","msg":"URI: /updates/, Метод: POST, Статус: 400, Длительность: 1.827708ms, Размер: 75"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:08:35","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:08:35","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:06","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:06","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:06","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:09","msg":"Батч метрик успешно обработан","batch_size":29}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:09","msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 10.022125ms, Размер: 23"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:09","msg":"Батч метрик успешно обработан","batch_size":29}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:09","msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 3.6575ms, Размер: 23"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:13","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:13","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:31","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:31","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:31","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:39","msg":"Батч метрик успешно обработан","batch_size":29}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:39","msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 10.530583ms, Размер: 23"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:49","msg":"Батч метрик успешно обработан","batch_size":29}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:49","msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 7.228166ms, Размер: 23"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:59","msg":"Батч метрик успешно обработан","batch_size":29}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:09:59","msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 3.669792ms, Размер: 23"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:10:01","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:10:01","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:52","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:52","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:52","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"PollCount","Type":"counter","Value":0,"Delta":5}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"NextGC","Type":"gauge","Value":4194304,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"PauseTotalNs","Type":"gauge","Value":0,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"StackSys","Type":"gauge","Value":229376,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"Frees","Type":"gauge","Value":29,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"HeapIdle","Type":"gauge","Value":3162112,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"HeapObjects","Type":"gauge","Value":559,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"MSpanInuse","Type":"gauge","Value":24000,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"NumForcedGC","Type":"gauge","Value":0,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"HeapInuse","Type":"gauge","Value":802816,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"OtherSys","Type":"gauge","Value":971312,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"GCSys","Type":"gauge","Value":1688080,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"HeapAlloc","Type":"gauge","Value":189248,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"HeapSys","Type":"gauge","Value":3964928,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"MCacheSys","Type":"gauge","Value":15600,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"HeapReleased","Type":"gauge","Value":3096576,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"LastGC","Type":"gauge","Value":0,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"TotalAlloc","Type":"gauge","Value":189248,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"RandomValue","Type":"gauge","Value":0.15027034282684326,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"BuckHashSys","Type":"gauge","Value":2912,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"Lookups","Type":"gauge","Value":0,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"MSpanSys","Type":"gauge","Value":32640,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"Alloc","Type":"gauge","Value":189248,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"GCCPUFraction","Type":"gauge","Value":0,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"Mallocs","Type":"gauge","Value":588,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"NumGC","Type":"gauge","Value":0,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"StackInuse","Type":"gauge","Value":229376,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"MCacheInuse","Type":"gauge","Value":9600,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Метрика записана","ID":"Sys","Type":"gauge","Value":6904848,"Delta":0}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"Батч метрик успешно обработан","batch_size":29}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:11:59","msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 9.157834ms, Размер: 23"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:12:03","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:12:03","msg":"Сервер остановлен"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:15:02","msg":"Запуск сервера..."}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:15:02","msg":"Используется приватный ключ для расшифровки","cryptoKey":"../../internal/crypto/private.pem"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:15:02","msg":"Сервер запущен","address":"localhost:8080"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:15:07","msg":"Батч метрик успешно обработан","batch_size":29}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:15:07","msg":"URI: /updates/, Метод: POST, Статус: 200, Длительность: 11.749333ms, Размер: 23"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:15:11","msg":"Остановка сервера"}
+{"level":"\u001b[34mINFO\u001b[0m","timestamp":"2025-02-21 00:15:11","msg":"Сервер остановлен"}
