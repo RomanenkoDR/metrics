@@ -78,7 +78,7 @@ func sendRequest(serverAddress string, data []byte, cryptoKeyPath string) error 
 	if resp.StatusCode != http.StatusOK {
 		b, _ := io.ReadAll(resp.Body)
 		logger.Error("Ошибка при отправке метрик", zap.String("status", resp.Status), zap.String("response", string(b)))
-		return fmt.Errorf("Can't send report to the server: %s; %s", resp.Status, b)
+		return fmt.Errorf("can't send report to the server: %s; %s", resp.Status, b)
 	}
 
 	logger.Info("Метрики успешно отправлены на сервер")
