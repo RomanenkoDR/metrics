@@ -1,6 +1,7 @@
 package agent
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 	"net/http/httptest"
@@ -8,60 +9,83 @@ import (
 	"testing"
 
 	s "github.com/RomanenkoDR/metrics/internal/storage"
-	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
-func TestProcessReport(t *testing.T) {
-	// http server response body
+func TestProcessBatch(t *testing.T) {
+	t.Parallel()
+
+	// Моковый ответ сервера
 	responseBody := "response"
 
 	tests := []struct {
-		name     string
-		store    s.MemStorage
-		wanterr  error
-		wantcode int
+		name         string
+		store        s.MemStorage
+		cryptoKey    string // путь к ключу шифрования
+		wantErr      string // ожидаемая строка ошибки
+		wantHTTPCode int
 	}{
 		{
-			name: "Test Valid Post request gauge metric",
+			name: "Valid Batch request with gauge metric",
 			store: s.MemStorage{
 				GaugeData: map[string]s.Gauge{
-					"valid": s.Gauge(2.32),
+					"metric1": 2.32,
+					"metric2": 3.45,
 				},
 			},
-			wanterr:  nil,
-			wantcode: http.StatusOK,
+			cryptoKey:    "", // Без шифрования
+			wantErr:      "",
+			wantHTTPCode: http.StatusOK,
 		},
 		{
-			name:  "Test Empty metric",
-			store: s.MemStorage{CounterData: map[string]s.Counter{}},
-			// adding new line into format string as http server do
-			wanterr:  nil,
-			wantcode: http.StatusBadRequest,
+			name: "Valid Batch request with encryption",
+			store: s.MemStorage{
+				GaugeData: map[string]s.Gauge{
+					"metric1": 10.5,
+				},
+			},
+			cryptoKey:    "/path/to/public.pem", // Шифрование включено
+			wantErr:      "",
+			wantHTTPCode: http.StatusOK,
 		},
 		{
-			name: "Test Invalid Post request counter metric",
+			name:         "Empty Batch request",
+			store:        s.MemStorage{CounterData: map[string]s.Counter{}},
+			cryptoKey:    "",
+			wantErr:      "",
+			wantHTTPCode: http.StatusBadRequest,
+		},
+		{
+			name: "Invalid Batch request with counter metric",
 			store: s.MemStorage{
 				CounterData: map[string]s.Counter{
-					"valid": s.Counter(2),
+					"counter1": 5,
 				},
 			},
-			// adding new line into format string as http server do
-			wanterr: fmt.Errorf("%s: %s; %s\n",
-				"Can't send report to the server",
-				"400 Bad Request",
-				responseBody),
-			wantcode: http.StatusBadRequest,
+			cryptoKey:    "",
+			wantErr:      fmt.Sprintf("Can't send report to the server: 400 Bad Request; %s", responseBody),
+			wantHTTPCode: http.StatusBadRequest,
 		},
 	}
+
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
+			// Создаём мок-сервер
 			server := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, req *http.Request) {
-				http.Error(rw, responseBody, tc.wantcode)
+				require.Equal(t, "application/json", req.Header.Get("Content-Type")) // Проверяем заголовки
+				http.Error(rw, responseBody, tc.wantHTTPCode)
 			}))
 			defer server.Close()
 
-			err := ProcessReport(strings.Replace(server.URL, "http://", "", 1), tc.store)
-			assert.Equal(t, tc.wanterr, err)
+			// Отправка батча на мок-сервер
+			ctx := context.Background()
+			err := ProcessBatch(ctx, strings.TrimPrefix(server.URL, "http://"), tc.cryptoKey, tc.store)
+
+			if tc.wantErr == "" {
+				require.NoError(t, err)
+			} else {
+				require.ErrorContains(t, err, strings.TrimSpace(tc.wantErr))
+			}
 		})
 	}
 }
