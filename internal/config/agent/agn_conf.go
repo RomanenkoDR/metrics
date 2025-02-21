@@ -1,13 +1,11 @@
 package agent
 
 import (
-	"encoding/json"
 	"flag"
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/caarlos0/env"
 	"go.uber.org/zap"
 	"os"
-	"time"
 )
 
 type Options struct {
