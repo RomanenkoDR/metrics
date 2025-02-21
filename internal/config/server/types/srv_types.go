@@ -8,4 +8,5 @@ type Options struct {
 	DBDSN     string `env:"DATABASE_DSN"`
 	Key       string `env:"KEY"`
 	CryptoKey string `env:"CRYPTO_KEY"`
+	Config    string `env:"CONFIG"`
 }

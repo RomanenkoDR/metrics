@@ -1,10 +1,43 @@
 package server
 
 import (
+	"encoding/json"
 	"flag"
 	"github.com/RomanenkoDR/metrics/internal/config/server/types"
+	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/caarlos0/env"
+	"go.uber.org/zap"
+	"os"
+	"time"
 )
+
+// ServerConfig хранит конфигурацию сервера из JSON-файла
+type ServerConfig struct {
+	Address       string        `json:"address"`        // Адрес сервера
+	Restore       bool          `json:"restore"`        // Восстанавливать ли метрики из файла
+	StoreInterval time.Duration `json:"store_interval"` // Интервал сохранения метрик
+	StoreFile     string        `json:"store_file"`     // Файл хранения метрик
+	DatabaseDSN   string        `json:"database_dsn"`   // Строка подключения к БД
+	CryptoKey     string        `json:"crypto_key"`     // Путь к приватному ключу
+}
+
+// LoadConfigFromFile загружает конфигурацию сервера из JSON-файла
+func LoadConfigFromFile(path string) (*ServerConfig, error) {
+	file, err := os.Open(path)
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	decoder := json.NewDecoder(file)
+	cfg := &ServerConfig{}
+	err = decoder.Decode(cfg)
+	if err != nil {
+		return nil, err
+	}
+
+	return cfg, nil
+}
 
 func parseOptions() (types.Options, error) {
 	var cfg types.Options
@@ -30,6 +63,8 @@ func parseOptions() (types.Options, error) {
 	// Чтение параметра командной строки для пути к файлу с публичным ключом
 	flag.StringVar(&cfg.CryptoKey, "crypto-key", "", "Path to the public key for encryption")
 
+	flag.StringVar(&cfg.Config, "c", "", "Path to config file")
+
 	// Парсинг флагов командной строки
 	flag.Parse()
 
@@ -37,6 +72,49 @@ func parseOptions() (types.Options, error) {
 	err := env.Parse(&cfg)
 	if err != nil {
 		return cfg, err
+	}
+
+	// Загружаем JSON, если указан файл конфигурации через `-c`
+	var jsonCfg *ServerConfig
+	if cfg.Config != "" {
+		jsonCfg, err = LoadConfigFromFile(cfg.Config)
+		if err != nil {
+			logger.Warn("Ошибка загрузки JSON-конфигурации", zap.String("file", cfg.Config), zap.Error(err))
+		} else {
+			logger.Info("Загружена конфигурация из JSON-файла", zap.String("file", cfg.Config))
+		}
+	}
+
+	// Переменная окружения CONFIG имеет приоритет над флагом `-c`
+	if envConfig := os.Getenv("CONFIG"); envConfig != "" {
+		jsonCfg, err = LoadConfigFromFile(envConfig)
+		if err != nil {
+			logger.Warn("Ошибка загрузки конфигурации из ENV CONFIG", zap.String("file", envConfig), zap.Error(err))
+		} else {
+			logger.Info("Загружена конфигурация из ENV CONFIG", zap.String("file", envConfig))
+		}
+	}
+
+	// Применяем значения из JSON, если они не переопределены флагами или переменными окружения
+	if jsonCfg != nil {
+		if cfg.Address == "localhost:8080" {
+			cfg.Address = jsonCfg.Address
+		}
+		if cfg.Interval == 300 {
+			cfg.Interval = int(jsonCfg.StoreInterval.Seconds())
+		}
+		if cfg.Filename == "./metrics.json" {
+			cfg.Filename = jsonCfg.StoreFile
+		}
+		if cfg.Restore {
+			cfg.Restore = jsonCfg.Restore
+		}
+		if cfg.DBDSN == "" {
+			cfg.DBDSN = jsonCfg.DatabaseDSN
+		}
+		if cfg.CryptoKey == "" {
+			cfg.CryptoKey = jsonCfg.CryptoKey
+		}
 	}
 
 	return cfg, nil
