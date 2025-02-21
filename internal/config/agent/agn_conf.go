@@ -19,32 +19,6 @@ type Options struct {
 	Config         string `env:"CONFIG"`
 }
 
-// AgentConfig хранит конфигурацию агента из JSON-файла
-type AgentConfig struct {
-	ServerAddress  string        `json:"address"`         // Адрес сервера для отправки метрик
-	ReportInterval time.Duration `json:"report_interval"` // Интервал отправки метрик на сервер
-	PollInterval   time.Duration `json:"poll_interval"`   // Интервал сбора метрик
-	CryptoKey      string        `json:"crypto_key"`      // Путь к публичному ключу для шифрования
-}
-
-// LoadConfigFromFile загружает конфигурацию агента из JSON-файла
-func LoadConfigFromFile(path string) (*AgentConfig, error) {
-	file, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
-
-	decoder := json.NewDecoder(file)
-	cfg := &AgentConfig{}
-	err = decoder.Decode(cfg)
-	if err != nil {
-		return nil, err
-	}
-
-	return cfg, nil
-}
-
 func ParseOptions() (Options, error) {
 	var opt Options
 
@@ -75,9 +49,9 @@ func ParseOptions() (Options, error) {
 	}
 
 	// Загружаем JSON, если указан файл конфигурации через `-c`
-	var cfg *AgentConfig
+	var cfg *agentConfFromFile
 	if opt.Config != "" {
-		cfg, err = LoadConfigFromFile(opt.Config)
+		cfg, err = loadConfigFromFile(opt.Config)
 		if err != nil {
 			logger.Warn("Ошибка загрузки JSON-конфигурации", zap.Error(err))
 		}
@@ -85,7 +59,7 @@ func ParseOptions() (Options, error) {
 
 	// Переменная окружения CONFIG имеет приоритет над флагом `-c`
 	if envConfig := os.Getenv("CONFIG"); envConfig != "" {
-		cfg, err = LoadConfigFromFile(envConfig)
+		cfg, err = loadConfigFromFile(envConfig)
 		if err != nil {
 			logger.Warn("Ошибка загрузки конфигурации из ENV CONFIG", zap.Error(err))
 		}

@@ -1,43 +1,13 @@
 package server
 
 import (
-	"encoding/json"
 	"flag"
 	"github.com/RomanenkoDR/metrics/internal/config/server/types"
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/caarlos0/env"
 	"go.uber.org/zap"
 	"os"
-	"time"
 )
-
-// ServerConfig хранит конфигурацию сервера из JSON-файла
-type ServerConfig struct {
-	Address       string        `json:"address"`        // Адрес сервера
-	Restore       bool          `json:"restore"`        // Восстанавливать ли метрики из файла
-	StoreInterval time.Duration `json:"store_interval"` // Интервал сохранения метрик
-	StoreFile     string        `json:"store_file"`     // Файл хранения метрик
-	DatabaseDSN   string        `json:"database_dsn"`   // Строка подключения к БД
-	CryptoKey     string        `json:"crypto_key"`     // Путь к приватному ключу
-}
-
-// LoadConfigFromFile загружает конфигурацию сервера из JSON-файла
-func LoadConfigFromFile(path string) (*ServerConfig, error) {
-	file, err := os.Open(path)
-	if err != nil {
-		return nil, err
-	}
-	defer file.Close()
-
-	decoder := json.NewDecoder(file)
-	cfg := &ServerConfig{}
-	err = decoder.Decode(cfg)
-	if err != nil {
-		return nil, err
-	}
-
-	return cfg, nil
-}
 
 func parseOptions() (types.Options, error) {
 	var cfg types.Options
@@ -75,9 +45,9 @@ func parseOptions() (types.Options, error) {
 	}
 
 	// Загружаем JSON, если указан файл конфигурации через `-c`
-	var jsonCfg *ServerConfig
+	var jsonCfg *serverFileConfig
 	if cfg.Config != "" {
-		jsonCfg, err = LoadConfigFromFile(cfg.Config)
+		jsonCfg, err = loadConfigFromFile(cfg.Config)
 		if err != nil {
 			logger.Warn("Ошибка загрузки JSON-конфигурации", zap.String("file", cfg.Config), zap.Error(err))
 		} else {
@@ -87,7 +57,7 @@ func parseOptions() (types.Options, error) {
 
 	// Переменная окружения CONFIG имеет приоритет над флагом `-c`
 	if envConfig := os.Getenv("CONFIG"); envConfig != "" {
-		jsonCfg, err = LoadConfigFromFile(envConfig)
+		jsonCfg, err = loadConfigFromFile(envConfig)
 		if err != nil {
 			logger.Warn("Ошибка загрузки конфигурации из ENV CONFIG", zap.String("file", envConfig), zap.Error(err))
 		} else {
