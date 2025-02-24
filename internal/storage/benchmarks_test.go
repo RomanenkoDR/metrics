@@ -1,14 +1,13 @@
 package storage
 
 import (
-	"context"
 	"testing"
 )
 
 // MockWriter - реализация StorageWriter для тестирования
 type MockWriter struct{}
 
-func (mw *MockWriter) Write(s *MemStorage) error {
+func (mw *MockWriter) Write(s MemStorage) error {
 	return nil
 }
 
@@ -19,20 +18,20 @@ func (mw *MockWriter) RestoreData(s *MemStorage) error {
 	return nil
 }
 
-func (mw *MockWriter) Save(ctx context.Context, t int, s *MemStorage) error {
+func (mw *MockWriter) Save(t int, s MemStorage) error {
 	return nil
 }
 
 func (mw *MockWriter) Close() {}
 
-// BenchmarkRestoreData тестирует производительность восстановления данных
 func BenchmarkRestoreData(b *testing.B) {
+	// Инициализация хранилища и mock Writer
 	mockWriter := &MockWriter{}
-	memStorage := New() // ✅ Теперь memStorage — это *MemStorage
+	memStorage := New()
 
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		err := mockWriter.RestoreData(memStorage) // ✅ Теперь передаётся *MemStorage
+		err := mockWriter.RestoreData(&memStorage)
 		if err != nil {
 			b.Fatalf("RestoreData failed: %v", err)
 		}
@@ -40,16 +39,15 @@ func BenchmarkRestoreData(b *testing.B) {
 }
 
 func BenchmarkSaveData(b *testing.B) {
+	// Инициализация хранилища и mock Writer
 	mockWriter := &MockWriter{}
-	memStorage := New() // ✅ Теперь memStorage — это *MemStorage
+	memStorage := New()
 	memStorage.UpdateCounter("metric1", 42)
 	memStorage.UpdateGauge("metric2", 3.14)
 
-	ctx := context.Background()
-
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		err := mockWriter.Save(ctx, 10, memStorage) // ✅ Теперь передаётся *MemStorage
+		err := SaveData(memStorage, mockWriter)
 		if err != nil {
 			b.Fatalf("SaveData failed: %v", err)
 		}
