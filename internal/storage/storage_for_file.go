@@ -1,16 +1,18 @@
 package storage
 
 import (
+	"context"
 	"encoding/json"
-	"go.uber.org/zap"
 	"os"
 	"sync"
 	"time"
+
+	"go.uber.org/zap"
 )
 
 type Localfile struct {
 	Path string
-	mu   sync.Mutex
+	mu   sync.RWMutex
 }
 
 // Очистка файла перед записью
@@ -30,7 +32,7 @@ func (localfile *Localfile) cleanFile() error {
 	return nil
 }
 
-// Запись данных в файл (с блокировкой)
+// Запись данных в файл с блокировкой
 func (localfile *Localfile) Write(s MemStorage) error {
 	localfile.mu.Lock()
 	defer localfile.mu.Unlock()
@@ -65,6 +67,9 @@ func (localfile *Localfile) Write(s MemStorage) error {
 
 // Восстановление данных из файла
 func (localfile *Localfile) RestoreData(s *MemStorage) error {
+	localfile.mu.Lock()
+	defer localfile.mu.Unlock()
+
 	f, err := os.OpenFile(localfile.Path, os.O_RDWR|os.O_CREATE, 0666)
 	if err != nil {
 		zap.L().Error("Ошибка открытия файла для восстановления", zap.String("path", localfile.Path), zap.Error(err))
@@ -93,25 +98,30 @@ func (localfile *Localfile) RestoreData(s *MemStorage) error {
 	return nil
 }
 
-// Периодическое сохранение данных в фоне
-func (localfile *Localfile) Save(interval int, s MemStorage) error {
+// Фоновое сохранение данных с поддержкой graceful shutdown
+func (localfile *Localfile) Save(ctx context.Context, interval int, s *MemStorage) error {
 	ticker := time.NewTicker(time.Duration(interval) * time.Second)
 	defer ticker.Stop()
 
-	for range ticker.C {
-		localfile.mu.Lock()
-		err := localfile.Write(s)
-		localfile.mu.Unlock()
+	for {
+		select {
+		case <-ctx.Done():
+			zap.L().Info("Фоновое сохранение остановлено")
+			return nil
+		case <-ticker.C:
+			localfile.mu.RLock()
+			err := localfile.Write(*s)
+			localfile.mu.RUnlock()
 
-		if err != nil {
-			zap.L().Error("Ошибка автосохранения данных", zap.String("path", localfile.Path), zap.Error(err))
-			return err
+			if err != nil {
+				zap.L().Error("Ошибка автосохранения данных", zap.String("path", localfile.Path), zap.Error(err))
+				return err
+			}
 		}
 	}
-	return nil
 }
 
-// Закрытие файлового хранилища (пока заглушка)
+// Закрытие файлового хранилища (логирование перед закрытием)
 func (localfile *Localfile) Close() {
-	zap.L().Info("Файловое хранилище закрыто")
+	zap.L().Info("Файловое хранилище закрыто", zap.String("path", localfile.Path))
 }

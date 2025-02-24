@@ -14,22 +14,31 @@ import (
 )
 
 func Run() {
+	// Логируем старт приложения
 	logger.Info("Запуск агента...")
 
 	// Парсим параметры конфигурации
 	cfg, err := ParseOptions()
 	if err != nil {
-		logger.Fatal("Ошибка разбора флагов: ", zap.Error(err))
+		logger.Fatal("Ошибка разбора флагов", zap.Error(err))
 	}
 
-	// Контекст с отменой для graceful shutdown
-	ctx, cancel := context.WithCancel(context.Background())
+	// Если задан ключ шифрования, включаем его
+	if cfg.Key != "" {
+		Encrypt = true
+		Key = []byte(cfg.Key)
+		logger.Info("Шифрование включено")
+	}
 
-	// Канал для обработки сигналов завершения
+	// Создаём контекст с отменой для graceful shutdown
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	// Канал для перехвата системных сигналов
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
 
-	// Создаем таймеры для сбора и отправки метрик
+	// Создаём тикеры
 	pollTicker := time.NewTicker(time.Second * time.Duration(cfg.PollInterval))
 	defer pollTicker.Stop()
 
@@ -40,24 +49,12 @@ func Run() {
 	memStorage := storage.New()
 	logger.Info("Инициализация хранилища успешна. Начало работы")
 
-	// Канал завершения работы
-	done := make(chan struct{})
-
-	// Основной процесс в горутине
+	// Основной цикл
 	go func() {
-		defer close(done)
 		for {
 			select {
 			case <-ctx.Done():
-				logger.Info("Получен сигнал завершения. Отправляем последние метрики...")
-
-				// Отправляем накопленные метрики перед завершением
-				err := ProcessBatch(context.Background(), cfg.ServerAddress, cfg.CryptoKey, memStorage)
-				if err != nil {
-					logger.Error("Ошибка при отправке метрик перед завершением", zap.Error(err))
-				}
-
-				logger.Info("Агент завершил работу корректно.")
+				logger.Info("Остановка агента...")
 				return
 
 			case <-pollTicker.C:
@@ -70,9 +67,9 @@ func Run() {
 					return ProcessBatch(ctx, serverAddress, cfg.CryptoKey, m)
 				}, 3, 1*time.Second)
 
-				err := send(context.Background(), cfg.ServerAddress, memStorage)
+				err := send(ctx, cfg.ServerAddress, memStorage)
 				if err != nil {
-					logger.Error("Ошибка отправки метрик", zap.Error(err))
+					logger.Error("Не удалось обработать пакет метрик", zap.Error(err))
 				} else {
 					logger.Info("Метрики успешно отправлены на сервер")
 				}
@@ -82,10 +79,12 @@ func Run() {
 
 	// Ожидаем сигнал завершения
 	sig := <-sigChan
-	logger.Info("Получен сигнал", zap.String("signal", sig.String()))
-	cancel() // Отправляем сигнал завершения в контекст
+	logger.Info("Получен сигнал завершения", zap.String("signal", sig.String()))
 
-	// Ожидаем завершения горутины
-	<-done
-	logger.Info("Агент завершил работу.")
+	// Завершаем контекст, останавливаем агент
+	cancel()
+
+	// Ожидаем завершения всех операций перед выходом
+	time.Sleep(1 * time.Second)
+	logger.Info("Агент остановлен")
 }
