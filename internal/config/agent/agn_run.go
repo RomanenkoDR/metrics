@@ -2,12 +2,8 @@ package agent
 
 import (
 	"context"
-	"os"
-	"os/signal"
-	"syscall"
-	"time"
-
 	"go.uber.org/zap"
+	"time"
 
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/RomanenkoDR/metrics/internal/storage"
@@ -15,33 +11,20 @@ import (
 
 func Run() {
 	// Логируем старт приложения
-
-	logger.Info("Начало работы агента")
-
+	logger.Info("Начало основного приложения")
 
 	// Парсим параметры конфигурации
 	cfg, err := ParseOptions()
 	if err != nil {
+		logger.Fatal("Ошибка разбора флагов: ", zap.Any("err", err))
+	}
 
-		logger.Fatal("Ошибка разбора флагов: ", zap.Error(err))
-
-
-	// Если задан ключ шифрования, включаем его
 	if cfg.Key != "" {
 		Encrypt = true
 		Key = []byte(cfg.Key)
-		logger.Info("Шифрование включено")
 	}
 
-	// Создаём контекст с отменой для graceful shutdown
-	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel()
-
-	// Канал для перехвата системных сигналов
-	sigChan := make(chan os.Signal, 1)
-	signal.Notify(sigChan, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
-
-	// Создаём тикеры
+	// Создаем тикеры
 	pollTicker := time.NewTicker(time.Second * time.Duration(cfg.PollInterval))
 	defer pollTicker.Stop()
 
@@ -52,31 +35,9 @@ func Run() {
 	memStorage := storage.New()
 	logger.Info("Инициализация хранилища успешна. Начало работы")
 
-
-	// Создаем контекст с отменой для управления завершением
-	ctx, cancel := context.WithCancel(context.Background())
-
-	// Канал для перехвата сигналов завершения
-	sigChan := make(chan os.Signal, 1)
-	signal.Notify(sigChan, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
-
-	// Запускаем горутину для обработки сигналов
-	go func() {
-		sig := <-sigChan
-		logger.Info("Получен сигнал: ", zap.String("signal", sig.String()))
-		cancel() // Отправляем сигнал завершения основному циклу
-	}()
-
 	// Запускаем основной цикл
-loop:
 	for {
 		select {
-		case <-ctx.Done():
-			logger.Info("Завершение работы агента. Отправка оставшихся данных...")
-			flushData(cfg.ServerAddress, cfg.CryptoKey, &memStorage)
-			logger.Info("Все данные успешно отправлены. Агент завершает работу.")
-			break loop
-
 		case <-pollTicker.C:
 			logger.Debug("Сбор метрик")
 			ReadMemStats(&memStorage)
@@ -87,38 +48,11 @@ loop:
 				return ProcessBatch(ctx, serverAddress, cfg.CryptoKey, m)
 			}, 3, 1*time.Second)
 
-			err := send(ctx, cfg.ServerAddress, memStorage)
+			err := send(context.Background(), cfg.ServerAddress, memStorage)
 			if err != nil {
-				logger.Error("Не удалось обработать пакет метрик: ", zap.Error(err))
-			} else {
-				logger.Info("Метрики отправлены на сервер")
-
+				logger.DebugLogger.Sugar().Error("Не удалось обработать пакет метрик: ", err)
 			}
+			logger.Info("Метрики отправлены на сервер")
 		}
-	}()
-
-	// Ожидаем сигнал завершения
-	sig := <-sigChan
-	logger.Info("Получен сигнал завершения", zap.String("signal", sig.String()))
-
-	// Завершаем контекст, останавливаем агент
-	cancel()
-
-	// Ожидаем завершения всех операций перед выходом
-	time.Sleep(1 * time.Second)
-	logger.Info("Агент остановлен")
-}
-
-// flushData отправляет все накопленные метрики перед завершением работы агента.
-func flushData(serverAddress, cryptoKey string, memStorage *storage.MemStorage) {
-	send := Retry(func(ctx context.Context, serverAddress string, m storage.MemStorage) error {
-		return ProcessBatch(ctx, serverAddress, cryptoKey, m)
-	}, 3, 1*time.Second)
-
-	err := send(context.Background(), serverAddress, *memStorage)
-	if err != nil {
-		logger.Error("Ошибка при финальной отправке данных: ", zap.Error(err))
-	} else {
-		logger.Info("Финальные данные успешно отправлены на сервер.")
 	}
 }
