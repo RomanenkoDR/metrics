@@ -121,12 +121,33 @@ func Run() {
 		shutdownCtx, shutdownCancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer shutdownCancel()
 
-		// Завершаем HTTP-сервер
-		if err := server.Shutdown(shutdownCtx); err != nil {
-			logger.Error("Ошибка завершения сервера", zap.Error(err))
+		errCh := make(chan error, 1)
+
+		go func() {
+			errCh <- server.Shutdown(shutdownCtx)
+		}()
+
+		select {
+		case err := <-errCh:
+			if err != nil {
+				logger.Error("Ошибка завершения сервера", zap.Error(err))
+			} else {
+				logger.Info("Сервер успешно завершил работу")
+			}
+		case <-time.After(5 * time.Second): // Принудительное завершение через 5 секунд
+			logger.Error("Сервер не завершился за 5 секунд, принудительно останавливаем процесс")
+			os.Exit(1) // Экстренное завершение программы
 		}
 
-		// Завершаем фоновое сохранение данных
+		// Сохраняем все несохранённые данные
+		logger.Info("Сохранение данных перед выходом")
+		if err := store.Write(h.Store); err != nil {
+			logger.Error("Ошибка сохранения данных", zap.Error(err))
+		}
+
+		// Закрываем хранилище, если оно использует БД
+		store.Close()
+
 		close(done)
 	}()
 
