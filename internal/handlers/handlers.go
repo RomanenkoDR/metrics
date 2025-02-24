@@ -13,9 +13,9 @@ type Metrics struct {
 }
 
 type Handler struct {
-	Store          storage.MemStorage
+	Store          *storage.MemStorage
 	DBconn         *pgx.Conn
-	PrivateKeyPath string // Добавляем поле для хранения пути к приватному ключу
+	PrivateKeyPath string
 }
 
 const counterType = "counter"
