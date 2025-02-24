@@ -24,8 +24,8 @@ type StorageWriter interface {
 }
 
 // Создание нового хранилища данных в памяти
-func New() MemStorage {
-	return MemStorage{
+func New() *MemStorage {
+	return &MemStorage{
 		CounterData: make(map[string]Counter),
 		GaugeData:   make(map[string]Gauge),
 	}
