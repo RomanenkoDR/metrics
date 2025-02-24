@@ -2,6 +2,8 @@ package server
 
 import (
 	"context"
+	"fmt"
+	"net"
 	"net/http"
 	"os"
 	"os/signal"
@@ -27,20 +29,26 @@ func Run() {
 		logger.Fatal("Ошибка разбора флагов", zap.Error(err))
 	}
 
+	// Проверяем доступность порта перед запуском
+	ln, err := net.Listen("tcp", cfg.Address)
+	if err != nil {
+		logger.Fatal("Порт занят, невозможно запустить сервер", zap.String("address", cfg.Address), zap.Error(err))
+	}
+	ln.Close() // Освобождаем порт перед запуском сервера
+
 	// Создаём новый обработчик запросов
 	h := handlers.NewHandler()
 
-	// Проверяем, указан ли приватный ключ
-	if cfg.CryptoKey == "" {
-		logger.Warn("Флаг -crypto-key не задан, сервер не сможет расшифровывать данные")
-	} else {
+	// Устанавливаем приватный ключ для расшифровки (если указан)
+	if cfg.CryptoKey != "" {
 		logger.Info("Используется приватный ключ для расшифровки", zap.String("cryptoKey", cfg.CryptoKey))
 		h.SetCryptoKey(cfg.CryptoKey)
+	} else {
+		logger.Warn("Флаг -crypto-key не задан, сервер не сможет расшифровывать данные")
 	}
 
 	// Определяем хранилище данных (БД или файл)
 	var store storage.StorageWriter
-
 	if cfg.DBDSN != "" {
 		database, err := db.Connect(cfg.DBDSN)
 		if err != nil {
@@ -53,10 +61,10 @@ func Run() {
 		store = &storage.Localfile{Path: cfg.Filename}
 	}
 
-	// Создаём новое хранилище данных
+	// Инициализируем хранилище данных
 	h.Store = storage.New()
 
-	// Восстанавливаем данные, если они есть
+	// Восстанавливаем данные
 	if err := store.RestoreData(&h.Store); err != nil {
 		logger.Warn("Не удалось восстановить данные из хранилища", zap.Error(err))
 	} else {
@@ -76,9 +84,8 @@ func Run() {
 	}
 
 	// Контекст с отменой для graceful shutdown
-	// Контекст с отменой для graceful shutdown
 	ctx, cancel := context.WithCancel(context.Background())
-	defer cancel() // Гарантируем вызов cancel() перед выходом
+	defer cancel()
 
 	// Канал для перехвата сигналов ОС
 	sigChan := make(chan os.Signal, 1)
@@ -95,32 +102,35 @@ func Run() {
 		}
 	}()
 
-	// Запускаем периодическое сохранение данных в отдельной горутине
+	// Запускаем фоновое сохранение данных
+	ticker := time.NewTicker(time.Duration(cfg.Interval) * time.Second)
 	go func() {
-		ticker := time.NewTicker(time.Duration(cfg.Interval) * time.Second)
-		defer ticker.Stop()
 		for {
 			select {
 			case <-ctx.Done():
 				logger.Info("Остановка фонового сохранения данных")
+				ticker.Stop()
 				return
 			case <-ticker.C:
 				logger.Debug("Автосохранение данных")
-				store.Save(cfg.Interval, h.Store)
+				if err := store.Save(cfg.Interval, h.Store); err != nil {
+					logger.Error("Ошибка автосохранения", zap.Error(err))
+				}
 			}
 		}
 	}()
 
-	// Ожидаем сигнала завершения
+	// Ожидаем сигнал завершения
 	go func() {
 		sig := <-sigChan
 		logger.Info("Получен сигнал завершения", zap.String("signal", sig.String()))
-		cancel() // Завершаем контекст работы сервера
+		cancel()
 
-		// Создаём контекст с таймаутом для shutdown
+		// Контекст с таймаутом для graceful shutdown
 		shutdownCtx, shutdownCancel := context.WithTimeout(context.Background(), 5*time.Second)
 		defer shutdownCancel()
 
+		logger.Info("Ожидание завершения сервера...")
 		errCh := make(chan error, 1)
 
 		go func() {
@@ -130,29 +140,34 @@ func Run() {
 		select {
 		case err := <-errCh:
 			if err != nil {
-				logger.Error("Ошибка завершения сервера", zap.Error(err))
+				logger.Error("Ошибка при завершении сервера", zap.Error(err))
 			} else {
-				logger.Info("Сервер успешно завершил работу")
+				logger.Info("Сервер успешно завершился")
 			}
-		case <-time.After(5 * time.Second): // Принудительное завершение через 5 секунд
-			logger.Error("Сервер не завершился за 5 секунд, принудительно останавливаем процесс")
-			os.Exit(1) // Экстренное завершение программы
+		case <-time.After(5 * time.Second): // Принудительный выход
+			logger.Error("Принудительное завершение, сервер завис")
+			os.Exit(1)
 		}
 
-		// Сохраняем все несохранённые данные
+		// Финальное сохранение данных
 		logger.Info("Сохранение данных перед выходом")
 		if err := store.Write(h.Store); err != nil {
 			logger.Error("Ошибка сохранения данных", zap.Error(err))
 		}
 
-		// Закрываем хранилище, если оно использует БД
+		// Закрываем соединение с БД (если используется)
+		logger.Info("Закрытие соединения с хранилищем")
 		store.Close()
+		logger.Info("Соединение с хранилищем закрыто")
+
+		// Выводим сообщение, что сервер остановился (для теста `restart_server`)
+		fmt.Println("SERVER STOPPED")
+		logger.Info("Сервер остановлен, можно запускать новый процесс")
 
 		close(done)
 	}()
 
-	// Ожидаем завершения работы
+	// Ожидаем завершения работы сервера
 	<-done
-	logger.Info("Сервер остановлен")
-
+	logger.Info("Сервер полностью остановлен")
 }
