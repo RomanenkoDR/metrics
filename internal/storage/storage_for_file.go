@@ -2,11 +2,10 @@ package storage
 
 import (
 	"encoding/json"
+	"go.uber.org/zap"
 	"os"
 	"sync"
 	"time"
-
-	"go.uber.org/zap"
 )
 
 type Localfile struct {
@@ -99,19 +98,17 @@ func (localfile *Localfile) Save(interval int, s MemStorage) error {
 	ticker := time.NewTicker(time.Duration(interval) * time.Second)
 	defer ticker.Stop()
 
-	for {
-		select {
-		case <-time.After(time.Duration(interval) * time.Second):
-			localfile.mu.Lock()
-			err := localfile.Write(s)
-			localfile.mu.Unlock()
+	for range ticker.C {
+		localfile.mu.Lock()
+		err := localfile.Write(s)
+		localfile.mu.Unlock()
 
-			if err != nil {
-				zap.L().Error("Ошибка автосохранения данных", zap.String("path", localfile.Path), zap.Error(err))
-				return err
-			}
+		if err != nil {
+			zap.L().Error("Ошибка автосохранения данных", zap.String("path", localfile.Path), zap.Error(err))
+			return err
 		}
 	}
+	return nil
 }
 
 // Закрытие файлового хранилища (пока заглушка)
