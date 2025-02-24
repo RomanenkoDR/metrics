@@ -1,35 +1,35 @@
 {
   "CounterData": {
-    "PollCount": 5
+    "PollCount": 67
   },
   "GaugeData": {
-    "Alloc": 191424,
-    "BuckHashSys": 2912,
-    "Frees": 29,
+    "Alloc": 1258232,
+    "BuckHashSys": 2931,
+    "Frees": 486,
     "GCCPUFraction": 0,
-    "GCSys": 1688080,
-    "HeapAlloc": 191424,
-    "HeapIdle": 3080192,
-    "HeapInuse": 884736,
-    "HeapObjects": 571,
-    "HeapReleased": 3014656,
-    "HeapSys": 3964928,
+    "GCSys": 1885456,
+    "HeapAlloc": 1258232,
+    "HeapIdle": 1679360,
+    "HeapInuse": 2056192,
+    "HeapObjects": 11594,
+    "HeapReleased": 1392640,
+    "HeapSys": 3735552,
     "LastGC": 0,
     "Lookups": 0,
     "MCacheInuse": 9600,
     "MCacheSys": 15600,
-    "MSpanInuse": 34080,
+    "MSpanInuse": 44320,
     "MSpanSys": 48960,
-    "Mallocs": 600,
+    "Mallocs": 12080,
     "NextGC": 4194304,
     "NumForcedGC": 0,
     "NumGC": 0,
-    "OtherSys": 954992,
+    "OtherSys": 757597,
     "PauseTotalNs": 0,
-    "RandomValue": 0.9158011078834534,
-    "StackInuse": 229376,
-    "StackSys": 229376,
+    "RandomValue": 0.8665061593055725,
+    "StackInuse": 458752,
+    "StackSys": 458752,
     "Sys": 6904848,
-    "TotalAlloc": 191424
+    "TotalAlloc": 1258232
   }
 }
