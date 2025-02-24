@@ -115,7 +115,7 @@ func Run() {
 	go func() {
 		sig := <-sigChan
 		logger.Info("Получен сигнал завершения", zap.String("signal", sig.String()))
-		cancel() // Теперь вызываем cancel() при завершении работы сервера
+		cancel() // Завершаем контекст работы сервера
 
 		// Создаём контекст с таймаутом для shutdown
 		shutdownCtx, shutdownCancel := context.WithTimeout(context.Background(), 5*time.Second)
@@ -126,15 +126,7 @@ func Run() {
 			logger.Error("Ошибка завершения сервера", zap.Error(err))
 		}
 
-		// Сохраняем все несохранённые данные
-		logger.Info("Сохранение данных перед выходом")
-		if err := store.Write(h.Store); err != nil {
-			logger.Error("Ошибка сохранения данных", zap.Error(err))
-		}
-
-		// Закрываем хранилище, если оно использует БД
-		store.Close()
-
+		// Завершаем фоновое сохранение данных
 		close(done)
 	}()
 
