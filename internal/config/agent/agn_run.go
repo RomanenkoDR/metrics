@@ -15,20 +15,33 @@ import (
 
 func Run() {
 	// Логируем старт приложения
+
 	logger.Info("Начало работы агента")
+
 
 	// Парсим параметры конфигурации
 	cfg, err := ParseOptions()
 	if err != nil {
-		logger.Fatal("Ошибка разбора флагов: ", zap.Error(err))
-	}
 
+		logger.Fatal("Ошибка разбора флагов: ", zap.Error(err))
+
+
+	// Если задан ключ шифрования, включаем его
 	if cfg.Key != "" {
 		Encrypt = true
 		Key = []byte(cfg.Key)
+		logger.Info("Шифрование включено")
 	}
 
-	// Создаем тикеры
+	// Создаём контекст с отменой для graceful shutdown
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	// Канал для перехвата системных сигналов
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
+
+	// Создаём тикеры
 	pollTicker := time.NewTicker(time.Second * time.Duration(cfg.PollInterval))
 	defer pollTicker.Stop()
 
@@ -38,6 +51,7 @@ func Run() {
 	// Инициализируем хранилище метрик
 	memStorage := storage.New()
 	logger.Info("Инициализация хранилища успешна. Начало работы")
+
 
 	// Создаем контекст с отменой для управления завершением
 	ctx, cancel := context.WithCancel(context.Background())
@@ -78,9 +92,21 @@ loop:
 				logger.Error("Не удалось обработать пакет метрик: ", zap.Error(err))
 			} else {
 				logger.Info("Метрики отправлены на сервер")
+
 			}
 		}
-	}
+	}()
+
+	// Ожидаем сигнал завершения
+	sig := <-sigChan
+	logger.Info("Получен сигнал завершения", zap.String("signal", sig.String()))
+
+	// Завершаем контекст, останавливаем агент
+	cancel()
+
+	// Ожидаем завершения всех операций перед выходом
+	time.Sleep(1 * time.Second)
+	logger.Info("Агент остановлен")
 }
 
 // flushData отправляет все накопленные метрики перед завершением работы агента.

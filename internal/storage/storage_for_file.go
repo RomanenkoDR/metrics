@@ -1,14 +1,18 @@
 package storage
 
 import (
+	"context"
 	"encoding/json"
-	"go.uber.org/zap"
 	"os"
+	"sync"
 	"time"
+
+	"go.uber.org/zap"
 )
 
 type Localfile struct {
 	Path string
+	mu   sync.RWMutex
 }
 
 // Очистка файла перед записью
@@ -28,8 +32,11 @@ func (localfile *Localfile) cleanFile() error {
 	return nil
 }
 
-// Запись данных в файл
+// Запись данных в файл с блокировкой
 func (localfile *Localfile) Write(s MemStorage) error {
+	localfile.mu.Lock()
+	defer localfile.mu.Unlock()
+
 	err := localfile.cleanFile()
 	if err != nil {
 		return err
@@ -60,7 +67,9 @@ func (localfile *Localfile) Write(s MemStorage) error {
 
 // Восстановление данных из файла
 func (localfile *Localfile) RestoreData(s *MemStorage) error {
-	// Открываем файл в режиме чтения и записи
+	localfile.mu.Lock()
+	defer localfile.mu.Unlock()
+
 	f, err := os.OpenFile(localfile.Path, os.O_RDWR|os.O_CREATE, 0666)
 	if err != nil {
 		zap.L().Error("Ошибка открытия файла для восстановления", zap.String("path", localfile.Path), zap.Error(err))
@@ -68,7 +77,6 @@ func (localfile *Localfile) RestoreData(s *MemStorage) error {
 	}
 	defer f.Close()
 
-	// Если файл пустой, пропускаем декодирование
 	fi, err := f.Stat()
 	if err != nil {
 		zap.L().Error("Ошибка получения информации о файле", zap.String("path", localfile.Path), zap.Error(err))
@@ -79,7 +87,6 @@ func (localfile *Localfile) RestoreData(s *MemStorage) error {
 		return nil
 	}
 
-	// Декодируем JSON из файла
 	decoder := json.NewDecoder(f)
 	err = decoder.Decode(s)
 	if err != nil {
@@ -91,18 +98,30 @@ func (localfile *Localfile) RestoreData(s *MemStorage) error {
 	return nil
 }
 
-// Периодическое сохранение данных
-func (localfile *Localfile) Save(t int, s MemStorage) error {
-	time.Sleep(time.Second * time.Duration(t))
-	err := localfile.Write(s)
-	if err != nil {
-		zap.L().Error("Ошибка сохранения данных", zap.String("path", localfile.Path), zap.Error(err))
-		return err
+// Фоновое сохранение данных с поддержкой graceful shutdown
+func (localfile *Localfile) Save(ctx context.Context, interval int, s *MemStorage) error {
+	ticker := time.NewTicker(time.Duration(interval) * time.Second)
+	defer ticker.Stop()
+
+	for {
+		select {
+		case <-ctx.Done():
+			zap.L().Info("Фоновое сохранение остановлено")
+			return nil
+		case <-ticker.C:
+			localfile.mu.RLock()
+			err := localfile.Write(*s)
+			localfile.mu.RUnlock()
+
+			if err != nil {
+				zap.L().Error("Ошибка автосохранения данных", zap.String("path", localfile.Path), zap.Error(err))
+				return err
+			}
+		}
 	}
-	return nil
 }
 
-// Закрытие файлового хранилища (если потребуется)
+// Закрытие файлового хранилища (логирование перед закрытием)
 func (localfile *Localfile) Close() {
-	// Пока не требуется
+	zap.L().Info("Файловое хранилище закрыто", zap.String("path", localfile.Path))
 }
