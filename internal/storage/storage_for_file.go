@@ -3,11 +3,10 @@ package storage
 import (
 	"context"
 	"encoding/json"
+	"go.uber.org/zap"
 	"os"
 	"sync"
 	"time"
-
-	"go.uber.org/zap"
 )
 
 type Localfile struct {
