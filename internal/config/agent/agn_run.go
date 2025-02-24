@@ -2,29 +2,34 @@ package agent
 
 import (
 	"context"
-	"go.uber.org/zap"
+	"os"
+	"os/signal"
+	"syscall"
 	"time"
+
+	"go.uber.org/zap"
 
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 )
 
 func Run() {
-	// Логируем старт приложения
-	logger.Info("Начало основного приложения")
+	logger.Info("Запуск агента...")
 
 	// Парсим параметры конфигурации
 	cfg, err := ParseOptions()
 	if err != nil {
-		logger.Fatal("Ошибка разбора флагов: ", zap.Any("err", err))
+		logger.Fatal("Ошибка разбора флагов: ", zap.Error(err))
 	}
 
-	if cfg.Key != "" {
-		Encrypt = true
-		Key = []byte(cfg.Key)
-	}
+	// Контекст с отменой для graceful shutdown
+	ctx, cancel := context.WithCancel(context.Background())
 
-	// Создаем тикеры
+	// Канал для обработки сигналов завершения
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
+
+	// Создаем таймеры для сбора и отправки метрик
 	pollTicker := time.NewTicker(time.Second * time.Duration(cfg.PollInterval))
 	defer pollTicker.Stop()
 
@@ -35,24 +40,52 @@ func Run() {
 	memStorage := storage.New()
 	logger.Info("Инициализация хранилища успешна. Начало работы")
 
-	// Запускаем основной цикл
-	for {
-		select {
-		case <-pollTicker.C:
-			logger.Debug("Сбор метрик")
-			ReadMemStats(&memStorage)
+	// Канал завершения работы
+	done := make(chan struct{})
 
-		case <-reportTicker.C:
-			logger.Debug("Отправка метрик")
-			send := Retry(func(ctx context.Context, serverAddress string, m storage.MemStorage) error {
-				return ProcessBatch(ctx, serverAddress, cfg.CryptoKey, m)
-			}, 3, 1*time.Second)
+	// Основной процесс в горутине
+	go func() {
+		defer close(done)
+		for {
+			select {
+			case <-ctx.Done():
+				logger.Info("Получен сигнал завершения. Отправляем последние метрики...")
 
-			err := send(context.Background(), cfg.ServerAddress, memStorage)
-			if err != nil {
-				logger.DebugLogger.Sugar().Error("Не удалось обработать пакет метрик: ", err)
+				// Отправляем накопленные метрики перед завершением
+				err := ProcessBatch(context.Background(), cfg.ServerAddress, cfg.CryptoKey, memStorage)
+				if err != nil {
+					logger.Error("Ошибка при отправке метрик перед завершением", zap.Error(err))
+				}
+
+				logger.Info("Агент завершил работу корректно.")
+				return
+
+			case <-pollTicker.C:
+				logger.Debug("Сбор метрик")
+				ReadMemStats(&memStorage)
+
+			case <-reportTicker.C:
+				logger.Debug("Отправка метрик")
+				send := Retry(func(ctx context.Context, serverAddress string, m storage.MemStorage) error {
+					return ProcessBatch(ctx, serverAddress, cfg.CryptoKey, m)
+				}, 3, 1*time.Second)
+
+				err := send(context.Background(), cfg.ServerAddress, memStorage)
+				if err != nil {
+					logger.Error("Ошибка отправки метрик", zap.Error(err))
+				} else {
+					logger.Info("Метрики успешно отправлены на сервер")
+				}
 			}
-			logger.Info("Метрики отправлены на сервер")
 		}
-	}
+	}()
+
+	// Ожидаем сигнал завершения
+	sig := <-sigChan
+	logger.Info("Получен сигнал", zap.String("signal", sig.String()))
+	cancel() // Отправляем сигнал завершения в контекст
+
+	// Ожидаем завершения горутины
+	<-done
+	logger.Info("Агент завершил работу.")
 }

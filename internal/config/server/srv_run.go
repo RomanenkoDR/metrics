@@ -2,23 +2,22 @@ package server
 
 import (
 	"context"
+	"net/http"
+	"os"
+	"os/signal"
+	"syscall"
+	"time"
+
 	"github.com/RomanenkoDR/metrics/internal/db"
 	"github.com/RomanenkoDR/metrics/internal/handlers"
 	"github.com/RomanenkoDR/metrics/internal/middleware/logger"
 	"github.com/RomanenkoDR/metrics/internal/routers"
 	"github.com/RomanenkoDR/metrics/internal/storage"
 	"go.uber.org/zap"
-	"net/http"
-	"os"
-	"os/signal"
-	"syscall"
 )
 
 func Run() {
 	runPprof()
-
-	// Объявляем переменную для хранилища данных
-	var store storage.StorageWriter
 
 	logger.Info("Запуск сервера...")
 
@@ -40,6 +39,8 @@ func Run() {
 	}
 
 	// Определяем хранилище данных (БД или файл)
+	var store storage.StorageWriter
+
 	if cfg.DBDSN != "" {
 		database, err := db.Connect(cfg.DBDSN)
 		if err != nil {
@@ -56,8 +57,7 @@ func Run() {
 	h.Store = storage.New()
 
 	// Восстанавливаем данные, если они есть
-	err = store.RestoreData(&h.Store)
-	if err != nil {
+	if err := store.RestoreData(&h.Store); err != nil {
 		logger.Warn("Не удалось восстановить данные из хранилища", zap.Error(err))
 	} else {
 		logger.Info("Данные успешно загружены из хранилища")
@@ -69,46 +69,77 @@ func Run() {
 		logger.Fatal("Ошибка инициализации маршрутизатора", zap.Error(err))
 	}
 
-	// Запускаем сервер
-	server := http.Server{
+	// Создаём HTTP-сервер
+	server := &http.Server{
 		Addr:    cfg.Address,
 		Handler: router,
 	}
 
-	// Запускаем периодическое сохранение данных
+	// Контекст с отменой для graceful shutdown
+	// Контекст с отменой для graceful shutdown
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel() // Гарантируем вызов cancel() перед выходом
+
+	// Канал для перехвата сигналов ОС
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT)
+
+	// Канал завершения работы сервера
+	done := make(chan struct{})
+
+	// Запускаем сервер в горутине
 	go func() {
-		for {
-			store.Save(cfg.Interval, h.Store)
+		logger.Info("Сервер запущен", zap.String("address", cfg.Address))
+		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
+			logger.Fatal("Ошибка запуска сервера", zap.Error(err))
 		}
 	}()
 
-	// Обрабатываем сигналы завершения работы сервера
-	idleConnectionsClosed := make(chan struct{})
+	// Запускаем периодическое сохранение данных в отдельной горутине
 	go func() {
-		sigint := make(chan os.Signal, 1)
-		signal.Notify(sigint, os.Interrupt, syscall.SIGINT, syscall.SIGTERM)
-		<-sigint
-
-		logger.Info("Остановка сервера")
-
-		// Сохраняем данные перед выходом
-		if err := store.Write(h.Store); err != nil {
-			logger.Error("Ошибка сохранения данных перед выходом", zap.Error(err))
+		ticker := time.NewTicker(time.Duration(cfg.Interval) * time.Second)
+		defer ticker.Stop()
+		for {
+			select {
+			case <-ctx.Done():
+				logger.Info("Остановка фонового сохранения данных")
+				return
+			case <-ticker.C:
+				logger.Debug("Автосохранение данных")
+				store.Save(cfg.Interval, h.Store)
+			}
 		}
+	}()
 
-		store.Close()
+	// Ожидаем сигнала завершения
+	go func() {
+		sig := <-sigChan
+		logger.Info("Получен сигнал завершения", zap.String("signal", sig.String()))
+		cancel() // Теперь вызываем cancel() при завершении работы сервера
 
-		if err := server.Shutdown(context.Background()); err != nil {
+		// Создаём контекст с таймаутом для shutdown
+		shutdownCtx, shutdownCancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer shutdownCancel()
+
+		// Завершаем HTTP-сервер
+		if err := server.Shutdown(shutdownCtx); err != nil {
 			logger.Error("Ошибка завершения сервера", zap.Error(err))
 		}
-		close(idleConnectionsClosed)
+
+		// Сохраняем все несохранённые данные
+		logger.Info("Сохранение данных перед выходом")
+		if err := store.Write(h.Store); err != nil {
+			logger.Error("Ошибка сохранения данных", zap.Error(err))
+		}
+
+		// Закрываем хранилище, если оно использует БД
+		store.Close()
+
+		close(done)
 	}()
 
-	logger.Info("Сервер запущен", zap.String("address", cfg.Address))
-	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-		logger.Fatal("Ошибка запуска сервера", zap.Error(err))
-	}
-
-	<-idleConnectionsClosed
+	// Ожидаем завершения работы
+	<-done
 	logger.Info("Сервер остановлен")
+
 }
